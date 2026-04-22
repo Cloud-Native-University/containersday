@@ -3,9 +3,7 @@
     .generic-hero { 
         position: relative;
         overflow: hidden;
-        {{ if not (fileExists "static/videos/hero-background.mp4") }}
-        background: linear-gradient(rgba(26, 42, 54, 0.8), rgba(26, 42, 54, 0.8)), url('{{ $event.images.titleBackground | absURL }}');
-        {{ end }}
+        background: linear-gradient(rgba(26, 42, 54, 0.8), rgba(26, 42, 54, 0.8)), url('{{ $event.images.titleBackground | relURL }}');
         background-size: cover; 
         background-position: center;
         background-repeat: no-repeat;

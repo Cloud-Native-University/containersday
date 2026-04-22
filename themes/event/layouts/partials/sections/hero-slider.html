@@ -202,9 +202,7 @@
     <div class="carousel-inner">
         {{ range $index, $slide := $slides }}
         <div class="carousel-item {{ if eq $index 0 }}active{{ end }}" 
-             {{ if or (ne $index 0) (not (fileExists "static/videos/hero-background.mp4")) }}
-             style="background-image: url('{{ $slide.image | absURL }}');"
-             {{ end }}>
+             style="background-image: url('{{ $slide.image | relURL }}');">
             
             {{ if and (eq $index 0) (fileExists "static/videos/hero-background.mp4") }}
             <video autoplay muted loop playsinline class="hero-video-bg">

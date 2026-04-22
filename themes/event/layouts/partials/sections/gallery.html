@@ -71,7 +71,7 @@
         <div class="gallery-grid">
             {{ range $gallery.images }}
             <div class="gallery-item">
-                <img src="{{ . | absURL }}" alt="Galería Containers Day">
+                <img src="{{ . | relURL }}" alt="Galería Containers Day">
                 <div class="gallery-overlay">
                     <span style="color: white; font-weight: 700;">Containers Day 2026</span>
                 </div>

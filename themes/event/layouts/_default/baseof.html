@@ -154,7 +154,6 @@
                         <small>{{ .Site.Params.themes.event.contactEmail }}</small>
                     </div>
                     <div style="display: inline-flex; align-items: center; margin-left: -0.5rem;">
-                        <a class="custom-btn-square" href="{{ .Site.Params.themes.event.socialLinks.facebookUrl }}"><i class="fab fa-facebook-f"></i></a>
                         <a class="custom-btn-square" href="{{ .Site.Params.themes.event.socialLinks.xUrl }}"><i class="fab fa-twitter"></i></a>
                         <a class="custom-btn-square" href="{{ .Site.Params.themes.event.socialLinks.linkedinUrl }}"><i class="fab fa-linkedin-in"></i></a>
                     </div>
@@ -178,7 +177,7 @@
                     <a class="page-header__title-link" href="{{ site.Home.RelPermalink }}" style="display: flex; align-items: center; font-size: 2em; font-weight: bold; color: var(--color-primary); text-decoration: none;">
                         {{ $logoUrl := .Site.Params.themes.event.images.logo }}
                         {{ if $logoUrl }}
-                            <img src="{{ $logoUrl | absURL }}?v={{ now.Unix }}" alt="{{ .Site.Params.themes.event.title }}" style="max-height: 50px; margin-right: 15px;" />
+                            <img src="{{ $logoUrl | relURL }}" alt="{{ .Site.Params.themes.event.title }}" style="max-height: 50px; margin-right: 15px;" />
                         {{ else }}
                             {{ (strings.FirstUpper (or .Site.Params.themes.event.shortTitle .Site.Params.themes.event.title)) }}
                         {{ end }}
