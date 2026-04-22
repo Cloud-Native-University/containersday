@@ -1,0 +1,237 @@
+{{ define "main" }}
+    {{- partial "generic-hero.html" . }}
+
+    <style>
+        .tourism-section {
+            padding: 80px 0;
+            background-color: #f4f7f6;
+        }
+        .tourism-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .tourism-intro {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 60px auto;
+            font-size: 1.2rem;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        .activity-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .activity-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        }
+        .activity-img-wrapper {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+        }
+        .activity-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .activity-card:hover .activity-img-wrapper img {
+            transform: scale(1.1);
+        }
+        .activity-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--color-primary, #5dade2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+        .activity-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .activity-body h4 {
+            color: #1A2A36;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        .activity-body p {
+            color: #637381;
+            line-height: 1.6;
+            font-size: 1.05rem;
+            margin: 0;
+        }
+        .activity-footer-cta {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #edf2f7;
+            display: flex;
+            align-items: center;
+            color: var(--color-primary, #5dade2);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .cta-bottom-banner {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #1A2A36 0%, #2c3e50 100%);
+            border-radius: 30px;
+            padding: 60px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .cta-bottom-banner h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .cta-bottom-banner p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+        .btn-register {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: #1A2A36;
+            padding: 15px 45px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-register:hover {
+            transform: scale(1.05);
+            background-color: #27ae60;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .activity-grid { grid-template-columns: 1fr; }
+            .cta-bottom-banner { padding: 40px 20px; }
+            .cta-bottom-banner h3 { font-size: 1.8rem; }
+        }
+    </style>
+
+    <div class="tourism-section">
+        <div class="tourism-container">
+            <div class="tourism-intro">
+                {{ .Content }}
+            </div>
+
+            <div class="activity-grid">
+                <!-- Activity 1 -->
+                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                    <div class="activity-img-wrapper">
+                        <span class="activity-tag">Cultura</span>
+                        <img src="/images/tourism/monumento.png" alt="Monumento a la Restauración">
+                    </div>
+                    <div class="activity-body">
+                        <h4>Monumento a la Restauración</h4>
+                        <p>El icono indiscutible de Santiago. Una torre majestuosa de 70 metros que ofrece las mejores vistas panorámicas de la ciudad y el valle del Cibao.</p>
+                        <div class="activity-footer-cta">Explorar Museo →</div>
+                    </div>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <div class="activity-img-wrapper">
+                        <span class="activity-tag">Arte</span>
+                        <img src="/images/tourism/centro-leon.png" alt="Centro León">
+                    </div>
+                    <div class="activity-body">
+                        <h4>Centro Cultural León</h4>
+                        <p>Uno de los museos más modernos y premiados del Caribe. Una inmersión profunda en la identidad, el arte y la ecología dominicana.</p>
+                        <div class="activity-footer-cta">Ver Exposiciones →</div>
+                    </div>
+                </div>
+
+                <!-- Activity 3 -->
+                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                    <div class="activity-img-wrapper">
+                        <span class="activity-tag">Tradición</span>
+                        <img src="/images/tourism/la-aurora.png" alt="La Aurora Cigar World">
+                    </div>
+                    <div class="activity-body">
+                        <h4>La Aurora Cigar World</h4>
+                        <p>Visita la fábrica de cigarros más antigua del país. Conoce el proceso artesanal del tabaco premium que ha puesto a Santiago en el mapa mundial.</p>
+                        <div class="activity-footer-cta">Agendar Tour →</div>
+                    </div>
+                </div>
+
+                <!-- Activity 4 -->
+                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                    <div class="activity-img-wrapper">
+                        <span class="activity-tag">Urbano</span>
+                        <img src="/images/tourism/murales.png" alt="Murales de Los Pepines">
+                    </div>
+                    <div class="activity-body">
+                        <h4>Murales de Los Pepines</h4>
+                        <p>Un estallido de creatividad en las calles. Arte urbano vibrante que celebra el carnaval, la música y las tradiciones santiagueras.</p>
+                        <div class="activity-footer-cta">Paseo Fotográfico →</div>
+                    </div>
+                </div>
+
+                <!-- Activity 5 -->
+                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
+                    <div class="activity-img-wrapper">
+                        <span class="activity-tag">Gastronomía</span>
+                        <img src="/images/tourism/gastronomia.png" alt="Mofongo Cibaeño">
+                    </div>
+                    <div class="activity-body">
+                        <h4>Sabor del Cibao</h4>
+                        <p>Desde el legendario Mofongo hasta la alta cocina fusión. Santiago es el epicentro gastronómico para los paladares más exigentes.</p>
+                        <div class="activity-footer-cta">Guía Gastronómica →</div>
+                    </div>
+                </div>
+
+                <!-- Activity 6 -->
+                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+                    <div class="activity-img-wrapper">
+                        <span class="activity-tag">Historia</span>
+                        <img src="/images/tourism/catedral.png" alt="Catedral Santiago Apóstol">
+                    </div>
+                    <div class="activity-body">
+                        <h4>Catedral Santiago Apóstol</h4>
+                        <p>Pilar del centro histórico. Una joya arquitectónica de finales del siglo XIX que guarda la esencia espiritual y patriótica de la ciudad.</p>
+                        <div class="activity-footer-cta">Visita Histórica →</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-bottom-banner animate__animated animate__zoomIn">
+                <h3>¿Listo para vivir Santiago?</h3>
+                <p>Combina el aprendizaje tecnológico de vanguardia con la calidez y cultura de la Ciudad Corazón.</p>
+                <a href="#register" class="btn-register">¡Regístrate Ahora!</a>
+            </div>
+        </div>
+    </div>
+{{ end }}

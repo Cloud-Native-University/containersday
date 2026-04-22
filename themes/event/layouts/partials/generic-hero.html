@@ -1,0 +1,78 @@
+{{ $event := .Site.Params.themes.event }}
+<style>
+    .generic-hero { 
+        position: relative;
+        overflow: hidden;
+        {{ if not (fileExists "static/videos/hero-background.mp4") }}
+        background: linear-gradient(rgba(26, 42, 54, 0.8), rgba(26, 42, 54, 0.8)), url('{{ $event.images.titleBackground | absURL }}');
+        {{ end }}
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 100px 0; 
+        text-align: center; 
+        color: white; 
+        margin-bottom: 50px;
+    }
+    .generic-hero__video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+    }
+    .generic-hero__overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(26, 42, 54, 0.7);
+        z-index: 1;
+    }
+    .generic-hero .container {
+        position: relative;
+        z-index: 2;
+    }
+    .generic-hero h1 { 
+        font-size: 3.5rem; 
+        font-weight: 800; 
+        text-transform: uppercase; 
+        letter-spacing: 2px; 
+    }
+    .generic-hero .breadcrumb {
+        background: transparent;
+        padding: 0;
+        margin-bottom: 15px;
+    }
+    .generic-hero .breadcrumb-item a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+    }
+    .generic-hero .breadcrumb-item.active {
+        color: white;
+    }
+</style>
+
+<section class="generic-hero">
+    {{ if fileExists "static/videos/hero-background.mp4" }}
+    <video autoplay muted loop playsinline class="generic-hero__video">
+        <source src="/videos/hero-background.mp4" type="video/mp4">
+    </video>
+    <div class="generic-hero__overlay"></div>
+    {{ end }}
+    <div class="container text-center">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                {{ if and .Parent (not .Parent.IsHome) }}
+                    <li class="breadcrumb-item"><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a></li>
+                {{ end }}
+                <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+            </ol>
+        </nav>
+        <h1 class="animate__animated animate__fadeInDown">{{ .Title }}</h1>
+    </div>
+</section>

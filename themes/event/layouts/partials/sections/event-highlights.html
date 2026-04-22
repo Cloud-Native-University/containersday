@@ -1,0 +1,75 @@
+{{ $input := . }}
+
+
+<style>
+    .event-highlights-section { 
+        padding-top: 20px !important; 
+        padding-bottom: 20px !important; 
+        background-color: #ffffff;
+        color: #1A2A36;
+        border-bottom: 1px solid #eee;
+    }
+    .event-highlights-section .highlight-figure__caption { 
+        color: #1A2A36 !important; 
+        font-weight: bold; 
+        font-size: 1.1rem !important; /* Texto ligeramente más pequeño */
+    }
+    .event-highlights-section__figures {
+        margin-top: 2rem !important;
+        gap: 1rem !important; /* Menos espacio entre iconos */
+    }
+    .event-highlights-section .highlight-figure {
+        width: 12rem !important; /* Menos ancho por figura */
+    }
+    .event-highlights-section .highlight-figure__image {
+        width: 4rem !important; /* Iconos un poco más pequeños */
+        height: 4rem !important;
+        padding: 1rem !important;
+    }
+    .event-highlights-section .highlight-figure__image-wrapper::after {
+        width: 3rem !important; /* Acortar línea punteada si aparece */
+    }
+</style>
+
+<div class="section-container">
+    <section class="section section--short event-highlights-section">
+        <article class="event-highlights-section__figures">
+            {{- if $input.numberOfSpeakers }}
+                {{ partial "highlight-figure.html" (
+                    dict
+                    "icon" "icons/speaker.svg"
+                    "caption" (T "event_highlights_section.number_of_speakers" $input.numberOfSpeakers)
+                    )
+                }}
+            {{- end }}
+            {{- if $input.numberOfSessions }}
+                {{- partial "highlight-figure.html" (
+                    dict "icon" "icons/session.svg"
+                    "caption" (T "event_highlights_section.number_of_sessions" $input.numberOfSessions)
+                    )
+                }}
+            {{- end }}
+            {{- if $input.numberOfWorkshops }}
+                {{- partial "highlight-figure.html" (
+                    dict "icon" "icons/session.svg"
+                    "caption" (T "event_highlights_section.number_of_workshops" $input.numberOfWorkshops)
+                    )
+                }}
+            {{- end }}
+            {{- if $input.numberOfDays }}
+                {{- partial "highlight-figure.html" (
+                    dict "icon" "icons/calendar.svg"
+                    "caption" (T "event_highlights_section.number_of_days" $input.numberOfDays)
+                    )
+                }}
+            {{- end }}
+            {{- if $input.location }}
+                {{- partial "highlight-figure.html" (
+                    dict "icon" "icons/location.svg"
+                    "caption" $input.location
+                    )
+                }}
+            {{- end }}
+        </article>
+    </section>
+</div>

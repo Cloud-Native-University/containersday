@@ -1,0 +1,231 @@
+{{- define "main" }}
+    {{- $scheduledSessionPages := where (where .Site.RegularPages "Section" "sessions") "Params.isScheduled" true }}
+    {{- $sessionsGroupedByDay := $scheduledSessionPages.GroupByParamDate "date" "2006-01-02" "asc" }}
+    {{- $sessionsGroupedByTrack := $scheduledSessionPages.GroupByParam "track" }}
+    {{- $sessionTrackIndices := dict }}
+    {{- range $index, $element := $sessionsGroupedByTrack }}
+        {{- $sessionTrackIndices = $sessionTrackIndices | merge (dict $element.Key $index) }}
+    {{- end }}
+    {{- $sectionResources := .Resources }}
+
+    {{- range $index, $element := $sessionsGroupedByDay }}
+        <input name="filter-day" type="radio" class="session-filter-input" value="day-{{ $index }}" id="filter-day-{{ $index }}" {{ if eq $index 0 }}checked{{ end }} />
+    {{- end }}
+
+    {{- range $index, $element := $sessionsGroupedByTrack }}
+        <input name="filter-track" type="checkbox" class="session-filter-input" value="track-{{ $index }}" id="filter-track-{{ $index }}" checked />
+    {{- end }}
+
+    <style>
+        :root {
+            --event-blue: #5dade2;
+            --event-dark: #1A2A36;
+        }
+        /* Page structure */
+        .filters-section {
+            background: white;
+            border-bottom: 1px solid #ebebeb;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+        .session-list-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .filter-group__title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .filter-options {
+            display: flex;
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+        }
+        .filter-pill {
+            cursor: pointer;
+            padding: 8px 22px;
+            border-radius: 5px;
+            border: 1px solid var(--event-blue);
+            background: white;
+            color: var(--event-blue);
+            transition: 0.3s;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .session-filter-input:checked + .filter-pill {
+            background: var(--event-blue);
+            color: white;
+        }
+        .session-filter-input { display: none; }
+
+        .day-group { margin-bottom: 60px; }
+        .day-group__label {
+            color: var(--event-blue);
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .day-group__date {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--event-dark);
+            margin-bottom: 40px;
+        }
+        .time-slot__time { 
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--event-dark);
+            margin: 45px 0 20px 0;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        /* Session Cards */
+        .event-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 25px 35px;
+            border-radius: 10px;
+            border: 1px solid var(--event-blue);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-bottom: 20px;
+        }
+        .event-row--service-session {
+            background-color: #f6f9fc;
+            border: 1px solid #e1e8f0;
+            padding: 15px 35px;
+        }
+        .event-row:hover:not(.event-row--service-session) {
+            box-shadow: 0 8px 20px rgba(93, 173, 226, 0.2);
+            transform: translateY(-2px);
+        }
+        .event-row__track {
+            color: var(--event-blue);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .event-row__title {
+            color: var(--event-dark);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .event-row__speakers {
+            color: #555;
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+        }
+        .event-row__room {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .event-row__avatar-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 15px; /* Espacio para las categorías debajo */
+        }
+        .event-row__categories {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: flex-end;
+        }
+        .event-row__category {
+            padding: 3px 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 0.75rem;
+            color: #777;
+            background: #fff;
+        }
+    </style>
+
+    {{- partial "generic-hero.html" . }}
+
+    <div class="filters-section">
+        <div class="container">
+            <div class="session-list-filters">
+                {{- if gt ($sessionsGroupedByDay | len) 1 }}
+                    <div class="filter-group">
+                        <h2 class="filter-group__title">{{ T "sessions_page.heading_day_filter" }}</h2>
+                        <ul class="filter-options">
+                            {{- range $index, $element := $sessionsGroupedByDay }}
+                                <li>
+                                    <input name="filter-day" type="radio" class="session-filter-input" value="day-{{ $index }}" id="day-pill-{{ $index }}" {{ if eq $index 0 }}checked{{ end }}>
+                                    <label class="filter-pill" for="day-pill-{{ $index }}">{{ T "sessions_page.day" (add $index 1) }}</label>
+                                </li>
+                            {{- end }}
+                        </ul>
+                    </div>
+                {{- end }}
+
+                {{- if gt ($sessionsGroupedByTrack | len) 1 }}
+                    <div class="filter-group">
+                        <h2 class="filter-group__title">{{ T "sessions_page.heading_track_filter" }}</h2>
+                        <ul class="filter-options">
+                            {{- range $index, $element := $sessionsGroupedByTrack }}
+                                <li>
+                                    <input name="filter-track" type="checkbox" class="session-filter-input" value="track-{{ $index }}" id="track-pill-{{ $index }}" checked>
+                                    <label class="filter-pill" for="track-pill-{{ $index }}">#{{- $element.Key }}</label>
+                                </li>
+                            {{- end }}
+                        </ul>
+                    </div>
+                {{- end }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        {{- range $index, $element := $sessionsGroupedByDay }}
+            <section class="day-group" data-day="{{ $index }}">
+                <p class="day-group__label">{{ T "sessions_page.day" (add $index 1) | upper }}</p>
+                <h2 class="day-group__date">{{ .Key | time.Format ":date_long" }}</h2>
+                
+                {{- range .Pages.GroupByParamDate "startsAt" "2006-01-02T15:04:00" "asc" }}
+                    <h3 class="time-slot__time">{{ .Key | time.Format ":time_short" }}</h3>
+                    <div class="time-slot__sessions">
+                        {{- range .Pages }}
+                            {{- $page := . }}
+                            <div class="session-item-wrapper" {{- if .Params.track }} data-track="{{ (index $sessionTrackIndices .Params.track) }}" {{- end }}>
+                                {{- $transformedSpeakers := slice }}
+                                {{- range .Params.speakers }}
+                                    {{- $speakerId := .id }}
+                                    {{- $speakerName := .fullName }}
+                                    {{- $speakerAvatar := "" }}
+                                    
+                                    {{/* Intentar obtener el avatar del orador desde su archivo de contenido */}}
+                                    {{- with $.Site.GetPage (printf "/speakers/%s" $speakerId) }}
+                                        {{- $speakerAvatar = .Params.avatar | absURL }}
+                                    {{- end }}
+
+                                    {{- $transformedSpeakers = $transformedSpeakers | append (dict "name" $speakerName "avatarResource" $speakerAvatar) }}
+                                {{- end }}
+                                {{- partial "event-row.html" (dict "track" .Params.track "title" .Title "link" .RelPermalink "speakers" $transformedSpeakers "isServiceSession" .Params.isServiceSession "room" .Params.room.name "categories" .Params.categories) -}}
+                            </div>
+                        {{- end }}
+                    </div>
+                {{- end }}
+            </section>
+        {{- end }}
+    </div>
+
+    {{- partial "sections/cta.html" (dict "eventbriteId" .Site.Params.themes.event.callToAction.eventbrite.eventId "ctaUrl" .Site.Params.themes.event.callToAction.other.url ) }}
+{{- end }}
+

@@ -1,0 +1,104 @@
+{{ $sponsors := .sponsors }}
+{{ $validSponsors := slice }}
+{{ range $sponsor := $sponsors }}
+    {{ if and $sponsor.logo $sponsor.url }}
+        {{ $validSponsors = $validSponsors | append $sponsor }}
+    {{ end }}
+{{- end }}
+
+{{ if gt (len $validSponsors) 0 }}
+    <style>
+        .our-sponsors-wrapper { 
+            background-color: #1A2A36; 
+            padding: 30px 0; 
+            margin-top: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .our-sponsors-content {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .our-sponsors-content .heading--highlighted { 
+            color: #ffffff !important; 
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .our-sponsors-content .heading--2 { 
+            color: #ffffff !important; 
+            opacity: 0.9;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        /* Ticker Animation */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+        .ticker {
+            display: flex;
+            width: fit-content;
+            animation: ticker 30s linear infinite;
+        }
+        .ticker:hover { animation-play-state: paused; }
+        
+        .ticker__item {
+            flex-shrink: 0;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sponsor-card__logo { 
+            filter: grayscale(1) brightness(200%); 
+            opacity: 0.7; 
+            transition: all 0.4s ease; 
+            max-height: 50px; /* Logos más pequeños */
+            width: auto;
+        }
+        .ticker__item:hover .sponsor-card__logo { 
+            filter: grayscale(0) brightness(100%); 
+            opacity: 1; 
+            transform: scale(1.1);
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+
+    <div class="our-sponsors-wrapper">
+        <div class="container">
+            <div class="our-sponsors-content">
+                <span class="heading--highlighted">Patrocinadores</span>
+                <p class="heading--2">¡Gracias a quienes lo hacen posible!</p>
+            </div>
+            
+            <div class="ticker-wrap">
+                <div class="ticker">
+                    {{/* Duplicamos la lista para el efecto infinito */}}
+                    {{ range (seq 2) }}
+                        {{ range $sponsor := $validSponsors }}
+                            <div class="ticker__item">
+                                <a href="{{ $sponsor.url }}" target="_blank" rel="noopener">
+                                    <img src="{{ (resources.Get $sponsor.logo).RelPermalink }}" 
+                                         alt="{{ $sponsor.name }}" 
+                                         class="sponsor-card__logo">
+                                </a>
+                            </div>
+                        {{ end }}
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+{{ end }}

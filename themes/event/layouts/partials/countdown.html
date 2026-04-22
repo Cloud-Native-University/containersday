@@ -1,0 +1,61 @@
+{{ $input := . }}
+
+<time class="counter-container" datetime="{{ $input.targetDate }}" style="display: none;">
+    <div class="counter__segment">
+        <span class="counter__value countdown-days"></span>
+        <span class="counter__label">{{ T "countdown.days" }}</span>
+    </div>
+    <div class="counter__segment">
+        <span class="counter__value countdown-hours"></span>
+        <span class="counter__label">{{ T "countdown.hours" }}</span>
+    </div>
+    <div class="counter__segment">
+        <span class="counter__value countdown-minutes"></span>
+        <span class="counter__label">{{ T "countdown.minutes" }}</span>
+    </div>
+    <div class="counter__segment">
+        <span class="counter__value countdown-seconds"></span>
+        <span class="counter__label">{{ T "countdown.seconds" }}</span>
+    </div>
+</time>
+
+<script>
+  (function() {
+    // Unique check to avoid multiple script declarations if possible, 
+    // but here we just ensure we select all segments in each run.
+    
+    const containers = document.querySelectorAll(".counter-container");
+    containers.forEach(el => el.style.display = "flex");
+
+    const SECOND_IN_MS = 1000;
+    const MINUTE_IN_MS = SECOND_IN_MS * 60;
+    const HOUR_IN_MS = MINUTE_IN_MS * 60;
+    const DAY_IN_MS = HOUR_IN_MS * 24;
+
+    const end = new Date("{{ $input.targetDate }}");
+
+    function updateAllCounters() {
+      const now = new Date();
+      let distance = end - now;
+      if (distance < 0) distance = 0;
+
+      const d = Math.floor(distance / DAY_IN_MS);
+      const h = Math.floor((distance % DAY_IN_MS) / HOUR_IN_MS);
+      const m = Math.floor((distance % HOUR_IN_MS) / MINUTE_IN_MS);
+      const s = Math.floor((distance % MINUTE_IN_MS) / SECOND_IN_MS);
+
+      document.querySelectorAll(".countdown-days").forEach(el => el.innerHTML = d);
+      document.querySelectorAll(".countdown-hours").forEach(el => el.innerHTML = h);
+      document.querySelectorAll(".countdown-minutes").forEach(el => el.innerHTML = m);
+      document.querySelectorAll(".countdown-seconds").forEach(el => el.innerHTML = s);
+    }
+
+    // Only set interval once per page load if possible, 
+    // but Hugo partials might be injected multiple times.
+    // We use a window level variable to prevent multiple intervals.
+    if (!window.countdownInterval) {
+        updateAllCounters();
+        window.countdownInterval = setInterval(updateAllCounters, 1000);
+    }
+  })();
+</script>

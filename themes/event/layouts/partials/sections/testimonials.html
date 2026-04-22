@@ -1,0 +1,65 @@
+<style>
+.testimonial-section { padding: 4rem 0; font-family: sans-serif; background-color: #f1f1f1; margin-top: 4rem; margin-bottom: 0; width: 100vw; margin-left: calc(50% - 50vw); }
+.testimonial-title { text-align: center; margin-bottom: 3rem; }
+.testimonial-title h6 { color: var(--color-primary); text-transform: uppercase; font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem; }
+.testimonial-title h1 { font-size: 2.5rem; color: #1A2A36; font-weight: bold; margin: 0; }
+.testimonial-grid { display: flex; gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 1rem; flex-wrap: wrap; justify-content: center; }
+.testimonial-item { flex: 1 1 300px; text-align: center; max-width: 350px; }
+.testimonial-img { position: relative; margin-bottom: 2rem; display: flex; justify-content: center; }
+.testimonial-img img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 5px solid white; box-shadow: 0 0 15px rgba(0,0,0,0.05); }
+.testimonial-quote-icon { width: 40px; height: 40px; background-color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; bottom: -5px; right: calc(50% - 40px); border: 3px solid white; }
+.testimonial-quote-icon i { color: white; font-size: 14px; }
+.testimonial-text { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.05); position: relative; }
+.testimonial-text p { font-size: 16px; color: #666; margin-bottom: 1.5rem; font-style: italic; line-height: 1.6; }
+.testimonial-text h5 { color: #1A2A36; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.25rem; }
+.testimonial-text span { color: #888; font-size: 14px; font-weight: 600; }
+@media (max-width: 768px) { .testimonial-title h1 { font-size: 2rem; } }
+</style>
+
+<div class="testimonial-section">
+    <div class="testimonial-title">
+        <h6>Nuestra Comunidad</h6>
+        <h1>Lo que espera del evento nuestra comunidad universitaria</h1>
+    </div>
+    <div class="testimonial-grid">
+        <div class="testimonial-item">
+            <div class="testimonial-img">
+                <img src="https://i.pravatar.cc/150?u=student1" alt="Marcos Santana">
+                <div class="testimonial-quote-icon">
+                    <i class="fa fa-quote-left"></i>
+                </div>
+            </div>
+            <div class="testimonial-text">
+                <p>"Quiero aprender de Kubernetes para entender cómo las grandes empresas gestionan sus aplicaciones a escala mundial y aplicarlo en mis proyectos."</p>
+                <h5>Marcos Santana</h5>
+                <span>Estudiante de Ingeniería de Software</span>
+            </div>
+        </div>
+        <div class="testimonial-item">
+            <div class="testimonial-img">
+                <img src="https://i.pravatar.cc/150?u=student2" alt="Dra. Lucía Rivera">
+                <div class="testimonial-quote-icon">
+                    <i class="fa fa-quote-left"></i>
+                </div>
+            </div>
+            <div class="testimonial-text">
+                <p>"Me interesa el almacenamiento en contenedores porque quiero especializarme en soluciones de nube híbrida y alta disponibilidad."</p>
+                <h5>Dra. Lucía Rivera</h5>
+                <span>Docente de Redes y Sistemas</span>
+            </div>
+        </div>
+        <div class="testimonial-item">
+            <div class="testimonial-img">
+                <img src="https://i.pravatar.cc/150?u=student3" alt="Ing. Roberto Mejía">
+                <div class="testimonial-quote-icon">
+                    <i class="fa fa-quote-left"></i>
+                </div>
+            </div>
+            <div class="testimonial-text">
+                <p>"Quiero aprender sobre IA en contenedores para llevar mis modelos de machine learning al siguiente nivel de eficiencia y escalabilidad."</p>
+                <h5>Ing. Roberto Mejía</h5>
+                <span>Postgrado en Inteligencia Artificial</span>
+            </div>
+        </div>
+    </div>
+</div>

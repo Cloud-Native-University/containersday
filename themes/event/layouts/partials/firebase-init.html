@@ -1,0 +1,79 @@
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, collection, getDocs, updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA-M3fk4gBjzvq9Wr-gu_okIAOo5dbdjbc",
+  authDomain: "containersday.firebaseapp.com",
+  projectId: "containersday",
+  storageBucket: "containersday.firebasestorage.app",
+  messagingSenderId: "169548391580",
+  appId: "1:169548391580:web:c4b6e0a4952beac99df959",
+  measurementId: "G-J8F1Z50YCY"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// Expose to global window object so Hugo buttons can call it easily without module scoping issues
+window.firebaseAuth = auth;
+window.firebaseDb = db;
+
+window.signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider).then(async (result) => {
+        const user = result.user;
+        // Upsert user in Firestore
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+        if (!userSnap.exists()) {
+            await setDoc(userRef, {
+                name: user.displayName,
+                email: user.email,
+                role: "attendee",
+                reservedSessions: [],
+                createdAt: new Date()
+            });
+        }
+    }).catch(error => {
+        console.error("Login failed", error);
+        alert("Error iniciando sesión: " + error.message);
+    });
+};
+
+window.signOutUser = () => signOut(auth);
+
+// UI Listeners
+onAuthStateChanged(auth, (user) => {
+    window.currentUser = user;
+    const loginLink = document.getElementById('nav-login-link');
+    const myAgendaLink = document.getElementById('nav-agenda-link');
+    const adminLink = document.getElementById('nav-admin-link');
+    
+    if(user) {
+        if(loginLink) loginLink.style.display = 'none';
+        if(myAgendaLink) {
+            myAgendaLink.style.display = 'block';
+            myAgendaLink.querySelector('span').innerText = `Mi Ruta (${user.displayName.split(' ')[0]})`;
+        }
+        
+        // Optional: Admin Check
+        getDoc(doc(db, "users", user.uid)).then(docSnap => {
+            if (docSnap.exists() && docSnap.data().role === 'admin') {
+                if(adminLink) adminLink.style.display = 'block';
+            }
+        });
+        
+    } else {
+        if(loginLink) loginLink.style.display = 'block';
+        if(myAgendaLink) myAgendaLink.style.display = 'none';
+        if(adminLink) adminLink.style.display = 'none';
+    }
+    
+    // Dispatch a custom event so other pages (like a sessions page) know Auth has loaded
+    document.dispatchEvent(new CustomEvent('firebaseAuthReady', { detail: { user } }));
+});
+</script>

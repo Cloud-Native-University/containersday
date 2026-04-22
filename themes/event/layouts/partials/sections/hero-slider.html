@@ -1,0 +1,272 @@
+{{ $input := . }}
+{{ $slides := $input.slides }}
+
+<style>
+    .hero-carousel {
+        position: relative;
+        width: 100%;
+    }
+    .hero-carousel .carousel-item {
+        height: 100vh;
+        min-height: 700px;
+        position: relative;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .hero-video-bg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+    }
+    .hero-carousel .carousel-item::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(26, 42, 54, 0.5); /* Overlay semi-transparente */
+        z-index: 1;
+    }
+    .hero-carousel .carousel-caption {
+        z-index: 10;
+        bottom: 50%;
+        transform: translateY(50%);
+        text-align: center;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+    .hero-carousel .hero-badge {
+        display: inline-block;
+        padding: 5px 25px;
+        background: transparent;
+        color: #2ecc71; /* HighTech green */
+        font-weight: 700;
+        text-transform: capitalize;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+    }
+    .hero-carousel .display-1 {
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 25px;
+        line-height: 1.2;
+        font-size: 4.5rem; /* Massive heading */
+    }
+    .hero-carousel .hero-description {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 800px;
+        margin: 0 auto 40px auto;
+        line-height: 1.6;
+    }
+    
+    .hero-carousel .btn-group {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+    .hero-carousel .btn-green {
+        background-color: #2ecc71;
+        color: #1A2A36;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    .hero-carousel .btn-blue {
+        background-color: #1b4fb1;
+        color: #ffffff;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    .hero-carousel .btn-blue:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    /* Countdown Styling inside Hero */
+    .hero-countdown-wrapper {
+        margin-bottom: 30px;
+    }
+    .hero-countdown-wrapper .counter-container {
+        display: flex !important;
+        justify-content: center;
+        gap: 20px;
+    }
+    .hero-countdown-wrapper .counter__segment {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        padding: 10px 20px;
+        border-radius: 12px;
+        min-width: 90px;
+    }
+    .hero-countdown-wrapper .counter__value {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #2ecc71;
+        display: block;
+        line-height: 1;
+    }
+    .hero-countdown-wrapper .counter__label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: 1px;
+    }
+    
+    /* Stats Bar at the bottom */
+    .hero-stats-bar {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: #2ecc71;
+        padding: 20px 0;
+        z-index: 20;
+    }
+    .hero-stats-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .hero-stat-item {
+        color: #1A2A36;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .hero-stat-value {
+        font-size: 2.5rem;
+        font-weight: 900;
+        margin: 0;
+    }
+    .hero-stat-label {
+        font-size: 1rem;
+        font-weight: 600;
+        max-width: 150px;
+        text-align: left;
+        line-height: 1.2;
+    }
+
+    /* Controls */
+    .carousel-control-prev, .carousel-control-next {
+        width: 5%;
+        z-index: 30;
+    }
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        background-color: #1b4fb1;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        background-size: 50%;
+    }
+    .carousel-indicators [data-bs-target] {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #1b4fb1;
+        margin: 0 5px;
+    }
+
+    @media (max-width: 768px) {
+        .hero-carousel .display-1 { font-size: 2.5rem; }
+        .hero-stats-bar { display: none; }
+    }
+</style>
+
+<div id="mainHeroSlider" class="carousel slide hero-carousel" data-bs-ride="carousel">
+    {{ if gt ($slides | len) 1 }}
+    <!-- Indicators -->
+    <div class="carousel-indicators" style="bottom: 120px;">
+        {{ range $index, $slide := $slides }}
+        <button type="button" data-bs-target="#mainHeroSlider" data-bs-slide-to="{{ $index }}" {{ if eq $index 0 }}class="active" aria-current="true"{{ end }} aria-label="Slide {{ add $index 1 }}"></button>
+        {{ end }}
+    </div>
+    {{ end }}
+
+    <div class="carousel-inner">
+        {{ range $index, $slide := $slides }}
+        <div class="carousel-item {{ if eq $index 0 }}active{{ end }}" 
+             {{ if or (ne $index 0) (not (fileExists "static/videos/hero-background.mp4")) }}
+             style="background-image: url('{{ $slide.image | absURL }}');"
+             {{ end }}>
+            
+            {{ if and (eq $index 0) (fileExists "static/videos/hero-background.mp4") }}
+            <video autoplay muted loop playsinline class="hero-video-bg">
+                <source src="/videos/hero-background.mp4" type="video/mp4">
+            </video>
+            {{ end }}
+            <div class="carousel-caption">
+                <div class="container animate__animated {{ if eq $index 0 }}animate__fadeInDown{{ else }}animate__fadeInUp{{ end }}">
+                    <span class="hero-badge">{{ $slide.subtitle }}</span>
+                    <h1 class="display-1">{{ $slide.title }}</h1>
+                    
+                    {{- if $.context.Site.Params.themes.event.startDate }}
+                        <div class="hero-countdown-wrapper animated fadeInUp" style="animation-delay: 0.3s;">
+                             {{ partial "countdown.html" (dict "targetDate" $.context.Site.Params.themes.event.startDate) }}
+                        </div>
+                    {{- end }}
+
+                    <p class="hero-description">{{ $slide.description | markdownify }}</p>
+                    
+                    <div class="btn-group">
+                        <a href="#about" class="btn-green">Aprender Más</a>
+                        <a href="#contact" class="btn-blue">Contáctanos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    
+    {{ if gt ($slides | len) 1 }}
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainHeroSlider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainHeroSlider" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    {{ end }}
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const counters = document.querySelectorAll('.counter-value');
+        const speed = 200;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const count = parseInt(counter.innerText);
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(animateCounters, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        };
+
+        // Trigger animation
+        animateCounters();
+    });
+</script>

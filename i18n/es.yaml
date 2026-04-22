@@ -1,0 +1,72 @@
+countdown.days: Días
+countdown.hours: Hrs
+countdown.minutes: Min
+countdown.seconds: Seg
+cta_banner.message: ¡Consigue tu boleto ahora!
+cta_button.get_ticket: ¡Regístrate!
+cta_section.heading: ¿Encontraste algo emocionante?
+cta_section.subheading: ¡Regístrate hoy!
+cta_section.message: |
+    ¡No pierdas la oportunidad de aprender de expertos mundiales y hacer contactos valiosos!
+header_featured_speakers: Oradores Destacados
+speakers_page.heading: Oradores
+speakers_page.social_links: 'Redes sociales de {{ . }}'
+sessions_page.heading: Agenda
+sessions_page.day: Día {{ . }}
+sessions_page.heading_day_filter: Fecha
+sessions_page.heading_track_filter: Tema
+sessions_page.speaker: Orador
+sessions_page.room: Sala
+sessions_page.read_more: leer más
+sessions_page.heading_no_sessions: Aún no hay sesiones programadas
+sessions_page.heading_come_back_soon: Vuelve pronto o síguenos
+menu.code_of_conduct: Código de Conducta
+menu.about: Nosotros
+menu.sessions: Agenda
+menu.speakers: Oradores
+menu.location: Ubicación
+menu.sponsors: Patrocinadores
+main_menu.label: Menú Principal
+social-links_list.label: Redes sociales
+secondary_menu.label: Menú secundario
+language_menu.label: Idioma
+location_page.heading: Ubicación
+location_page.directions_heading: Cómo llegar
+location_page.map_frame: Mapa interactivo
+location_page.map_fullscreen: Ver mapa más grande
+sponsors_page.heading_sponsors: Patrocinadores
+sponsors_page.heading_partners: Socios
+about_page.heading: Nosotros
+about_page.organizers_heading: 'El equipo de {{ . }}'
+conference_tracks_section.heading: Temas
+conference_tracks_section.subheading: Descubre lo que traemos
+conference_tracks_section.action: Ver agenda
+featured_speakers_section.heading: Oradores Destacados
+featured_speakers_section.subheading: Conoce a los Expertos
+featured_speakers_section.action: Ver todos los oradores
+featured_sessions_section.heading: Sesiones Destacadas
+featured_sessions_section.read_more: leer más
+featured_sessions_section.action: Ver toda la agenda
+sponsors_section.heading: Patrocinadores
+sponsors_section.subheading: ¡Gracias a quienes lo hacen posible!
+event_highlights_section.number_of_speakers:
+    one: '{{ . }} Orador'
+    other: '{{ . }} Oradores'
+event_highlights_section.number_of_sessions:
+    one: '{{ . }} Charla'
+    other: '{{ . }} Charlas'
+event_highlights_section.number_of_days:
+    one: '{{ . }} Día'
+    other: '{{ . }} Días'
+event_highlights_section.number_of_workshops:
+    one: '{{ . }} Workshop'
+    other: '{{ . }} Workshops'
+event_highlights_section.number_of_attendees:
+    one: '{{ . }} Asistente'
+    other: '{{ . }} Asistentes'
+speaker_page.sessions_by: Sesiones de
+session_page.further_sessions: Más sesiones
+session_page.further_sessions_from: Más sesiones de
+carousel.button_next: Siguiente
+carousel.button_previous: Anterior
+session_categories.label: Categorías

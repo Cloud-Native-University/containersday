@@ -1,0 +1,83 @@
+{{ $gallery := .Site.Params.languages.es.params.gallery }}
+{{ if $gallery }}
+<style>
+    .gallery-section {
+        padding: 80px 0;
+        background-color: #ffffff;
+    }
+    .gallery-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .gallery-title {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    .gallery-title h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1A2A36;
+        text-transform: uppercase;
+    }
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        aspect-ratio: 4/3;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    .gallery-item:hover {
+        transform: translateY(-5px);
+    }
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+    .gallery-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(transparent, rgba(26, 42, 54, 0.8));
+        display: flex;
+        align-items: flex-end;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+</style>
+
+<div class="gallery-section">
+    <div class="gallery-container">
+        <div class="gallery-title">
+            <h2>{{ $gallery.title }}</h2>
+        </div>
+        <div class="gallery-grid">
+            {{ range $gallery.images }}
+            <div class="gallery-item">
+                <img src="{{ . | absURL }}" alt="Galería Containers Day">
+                <div class="gallery-overlay">
+                    <span style="color: white; font-weight: 700;">Containers Day 2026</span>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</div>
+{{ end }}
