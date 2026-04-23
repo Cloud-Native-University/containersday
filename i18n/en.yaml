@@ -1,3 +1,162 @@
-menu.imprint: Imprint
-menu.privacy: Privacy Policy
-cta_banner.message: Get your free ticket now!
+cd_home:
+  other: "HOME"
+cd_tickets:
+  other: "Tickets"
+cd_buy_tickets:
+  other: "Buy Tickets"
+cd_become_speaker:
+  other: "Become a Speaker"
+cd_apply_speaker:
+  other: "Apply as Speaker"
+cd_why_participate:
+  other: "Why participate?"
+cd_event_benefits:
+  other: "Event Benefits"
+cd_conferences:
+  other: "Conferences"
+cd_conferences_desc:
+  other: "Listen to experts share their knowledge and experiences in the real world."
+cd_community:
+  other: "Community"
+cd_community_desc:
+  other: "Attend high-level talks and learn new skills together with tech enthusiasts."
+cd_networking_desc:
+  other: "Connect with other professionals, startups, and leading tech companies."
+cd_innovation:
+  other: "Innovation"
+cd_innovation_desc:
+  other: "Explore the latest trends and news related to Containers and Cloud Native."
+cd_mentoring:
+  other: "Mentoring"
+cd_mentoring_desc:
+  other: "Receive direct guidance and practical advice from experts with years of experience."
+cd_inspiration:
+  other: "Inspiration"
+cd_inspiration_desc:
+  other: "Discover new ideas and innovative approaches to boost your personal and professional projects."
+cd_career:
+  other: "Professional Career"
+cd_career_desc:
+  other: "Access exclusive job opportunities and connect with companies looking for specialized talent."
+cd_certification:
+  other: "Certification"
+cd_certification_desc:
+  other: "Get an official certificate of participation to boost your resume and professional profile."
+cd_code_of_conduct:
+  other: "Code of Conduct"
+cd_all_rights:
+  other: "All rights reserved."
+menu.sessions:
+  other: "Schedule"
+menu.speakers:
+  other: "Speakers"
+menu.tourism:
+  other: "Tropical Tourism"
+menu.sponsors:
+  other: "Sponsors"
+cd_event_title:
+  other: "Containers Day"
+cd_event_slogan:
+  other: "The most important tech conference in the Caribbean!"
+cd_event_location:
+  other: "UAPA, Santiago"
+cd_hero_subtitle_1:
+  other: "Containers Day 2026"
+cd_hero_title_1:
+  other: "The most important tech conference in the Caribbean!"
+cd_hero_desc_1:
+  other: "We drive technological innovation in the Caribbean. Containers Day is the meeting point for experts in Cloud Native, Kubernetes, and DevOps."
+cd_hero_subtitle_2:
+  other: "Technical Sessions"
+cd_hero_title_2:
+  other: "Learn from the Best Experts"
+cd_hero_desc_2:
+  other: "Dive into high-level talks on Kubernetes, Docker, and the Cloud Native ecosystem with international and local speakers."
+cd_hero_subtitle_3:
+  other: "Our Vision"
+cd_hero_title_3:
+  other: "Driving the Tech Ecosystem"
+cd_hero_desc_3:
+  other: "Be part of the change. Containers Day is the innovation engine for the next generation of professionals in the Caribbean and the world."
+cd_sponsors:
+  other: "Sponsors"
+cd_sponsors_thanks:
+  other: "Thanks to those who make it possible!"
+cd_sponsor_default_desc:
+  other: "A key sponsor driving excellence at Containers Day."
+cd_sponsor_space_available:
+  other: "🚀 This space is available for your organization."
+cd_sponsor_cta:
+  other: "I want to sponsor the event!"
+sponsor_desc.NixVersity:
+  other: "Leaders in DevOps and Cloud Native training in the region. NixVersity drives local talent towards global standards."
+sponsor_desc.UAPA:
+  other: "Official venue for Containers Day 2026. The Open University for Adults (UAPA) is a pioneer in distance education and tech leadership in Santiago."
+cd_sponsor_tier_platinum:
+  other: "🏆 Platinum Sponsor"
+cd_sponsor_tier_gold:
+  other: "🥇 Gold Sponsor"
+cd_sponsor_tier_silver:
+  other: "🥈 Silver Sponsor"
+cd_sponsor_tier_community:
+  other: "🤝 Community Sponsor"
+cd_tourism_intro:
+  other: "Take advantage of your trip to Containers Day in Santiago de los Caballeros to immerse yourself in history, culture, and joy."
+cd_tourism_activity_1_tag:
+  other: "Culture"
+cd_tourism_activity_1_title:
+  other: "Monument to the Restoration"
+cd_tourism_activity_1_desc:
+  other: "The undisputed icon of Santiago. A majestic 70-meter tower offering the best panoramic views of the city and the Cibao Valley."
+cd_tourism_activity_1_cta:
+  other: "Explore Museum →"
+cd_tourism_activity_2_tag:
+  other: "Art"
+cd_tourism_activity_2_title:
+  other: "León Cultural Center"
+cd_tourism_activity_2_desc:
+  other: "One of the most modern and award-winning museums in the Caribbean. A deep dive into Dominican identity, art, and ecology."
+cd_tourism_activity_2_cta:
+  other: "View Exhibitions →"
+cd_tourism_activity_3_tag:
+  other: "Tradition"
+cd_tourism_activity_3_title:
+  other: "La Aurora Cigar World"
+cd_tourism_activity_3_desc:
+  other: "Visit the country's oldest cigar factory. Learn about the artisanal process of premium tobacco that has put Santiago on the world map."
+cd_tourism_activity_3_cta:
+  other: "Schedule Tour →"
+cd_tourism_activity_4_tag:
+  other: "Urban"
+cd_tourism_activity_4_title:
+  other: "Los Pepines Murals"
+cd_tourism_activity_4_desc:
+  other: "A burst of creativity in the streets. Vibrant urban art celebrating carnival, music, and Santiago traditions."
+cd_tourism_activity_4_cta:
+  other: "Photo Walk →"
+cd_tourism_activity_5_tag:
+  other: "Gastronomy"
+cd_tourism_activity_5_title:
+  other: "Taste of Cibao"
+cd_tourism_activity_5_desc:
+  other: "From legendary Mofongo to high-end fusion cuisine. Santiago is the gastronomic epicenter for the most demanding palates."
+cd_tourism_activity_5_cta:
+  other: "Food Guide →"
+cd_tourism_activity_6_tag:
+  other: "History"
+cd_tourism_activity_6_title:
+  other: "Santiago Apostle Cathedral"
+cd_tourism_activity_6_desc:
+  other: "Pillar of the historic center. An architectural gem from the late 19th century that holds the city's spiritual essence."
+cd_tourism_activity_6_cta:
+  other: "Historic Visit →"
+cd_tourism_ready_to_live:
+  other: "Ready to experience Santiago?"
+cd_tourism_ready_desc:
+  other: "Combine cutting-edge tech learning with the warmth and culture of the Heart City."
+cd_register_now:
+  other: "Register Now!"
+cd_our_community:
+  other: "Our Community"
+cd_community_expectations:
+  other: "What our university community expects from the event"

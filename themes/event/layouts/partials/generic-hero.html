@@ -64,7 +64,7 @@
     <div class="container text-center">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="{{ site.Home.RelPermalink }}">{{ T "cd_home" }}</a></li>
                 {{ if and .Parent (not .Parent.IsHome) }}
                     <li class="breadcrumb-item"><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a></li>
                 {{ end }}

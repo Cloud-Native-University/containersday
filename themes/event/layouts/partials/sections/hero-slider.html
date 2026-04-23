@@ -212,8 +212,8 @@
             {{ end }}
             <div class="carousel-caption">
                 <div class="container animate__animated {{ if eq $index 0 }}animate__fadeInDown{{ else }}animate__fadeInUp{{ end }}">
-                    <span class="hero-badge">{{ $slide.subtitle }}</span>
-                    <h1 class="display-1">{{ $slide.title }}</h1>
+                    <span class="hero-badge">{{ T (printf "cd_hero_subtitle_%d" (add $index 1)) }}</span>
+                    <h1 class="display-1">{{ T (printf "cd_hero_title_%d" (add $index 1)) }}</h1>
                     
                     {{- if $.context.Site.Params.themes.event.startDate }}
                         <div class="hero-countdown-wrapper animated fadeInUp" style="animation-delay: 0.3s;">
@@ -221,12 +221,12 @@
                         </div>
                     {{- end }}
 
-                    <p class="hero-description">{{ $slide.description | markdownify }}</p>
+                    <p class="hero-description">{{ T (printf "cd_hero_desc_%d" (add $index 1)) | markdownify }}</p>
                     
                     <div class="btn-group">
-                        <a href="{{ $.context.Site.Params.themes.event.callToAction.url | default "#register" }}" class="btn-green">Comprar Boletos</a>
+                        <a href="{{ $.context.Site.Params.themes.event.callToAction.url | default "#register" }}" class="btn-green">{{ T "cd_buy_tickets" }}</a>
                         {{ if $.context.Site.Params.themes.event.callToActionSecondary.url }}
-                        <a href="{{ $.context.Site.Params.themes.event.callToActionSecondary.url }}" class="btn-blue" target="_blank">{{ $.context.Site.Params.themes.event.callToActionSecondary.label | default "Aplicar como Orador" }}</a>
+                        <a href="{{ $.context.Site.Params.themes.event.callToActionSecondary.url }}" class="btn-blue" target="_blank">{{ T "cd_apply_speaker" }}</a>
                         {{ end }}
                     </div>
                 </div>

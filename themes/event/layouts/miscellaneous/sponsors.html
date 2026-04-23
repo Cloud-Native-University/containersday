@@ -73,7 +73,7 @@
 
                     <div class="tier-section">
                         <h2 class="tier-title" style="color: {{ $config.color }};">
-                            {{ $config.label }}
+                            {{ T (printf "cd_sponsor_tier_%s" $tierKey) | default $config.label }}
                         </h2>
 
                         {{ if gt (len $tierSponsors) 0 }}
@@ -88,7 +88,7 @@
                                             </div>
                                             <div class="sponsor-ritmo-content">
                                                 <h5 class="sponsor-ritmo-title">{{ $sponsor.name }}</h5>
-                                                <p class="sponsor-ritmo-text">{{ $sponsor.description | default "Un patrocinador clave que impulsa la excelencia en Containers Day." }}</p>
+                                                <p class="sponsor-ritmo-text">{{ T (printf "sponsor_desc.%s" $sponsor.name) | default $sponsor.description | default (T "cd_sponsor_default_desc") }}</p>
                                             </div>
                                         </a>
                                     {{ end }}
@@ -106,8 +106,8 @@
                             {{ end }}
                         {{ else }}
                             <div class="empty-tier">
-                                <p>🚀 Este espacio está disponible para tu organización.</p>
-                                <p><a href="mailto:{{ $event.contactEmail }}">¡Quiero patrocinar el evento!</a></p>
+                                <p>{{ T "cd_sponsor_space_available" }}</p>
+                                <p><a href="mailto:{{ $event.contactEmail }}">{{ T "cd_sponsor_cta" }}</a></p>
                             </div>
                         {{ end }}
                     </div>

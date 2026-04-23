@@ -148,89 +148,32 @@
             </div>
 
             <div class="activity-grid">
-                <!-- Activity 1 -->
-                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                {{ range (seq 6) }}
+                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: {{ mul . 0.1 }}s;">
                     <div class="activity-img-wrapper">
-                        <span class="activity-tag">Cultura</span>
-                        <img src="{{ "images/tourism/monumento.png" | relURL }}" alt="Monumento a la Restauración">
+                        <span class="activity-tag">{{ T (printf "cd_tourism_activity_%d_tag" .) }}</span>
+                        {{ $imgName := "" }}
+                        {{ if eq . 1 }}{{ $imgName = "monumento.png" }}{{ end }}
+                        {{ if eq . 2 }}{{ $imgName = "centro-leon.png" }}{{ end }}
+                        {{ if eq . 3 }}{{ $imgName = "la-aurora.png" }}{{ end }}
+                        {{ if eq . 4 }}{{ $imgName = "murales.png" }}{{ end }}
+                        {{ if eq . 5 }}{{ $imgName = "gastronomia.png" }}{{ end }}
+                        {{ if eq . 6 }}{{ $imgName = "catedral.png" }}{{ end }}
+                        <img src="{{ (printf "images/tourism/%s" $imgName) | relURL }}" alt="{{ T (printf "cd_tourism_activity_%d_title" .) }}">
                     </div>
                     <div class="activity-body">
-                        <h4>Monumento a la Restauración</h4>
-                        <p>El icono indiscutible de Santiago. Una torre majestuosa de 70 metros que ofrece las mejores vistas panorámicas de la ciudad y el valle del Cibao.</p>
-                        <div class="activity-footer-cta">Explorar Museo →</div>
+                        <h4>{{ T (printf "cd_tourism_activity_%d_title" .) }}</h4>
+                        <p>{{ T (printf "cd_tourism_activity_%d_desc" .) }}</p>
+                        <div class="activity-footer-cta">{{ T (printf "cd_tourism_activity_%d_cta" .) }}</div>
                     </div>
                 </div>
-
-                <!-- Activity 2 -->
-                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                    <div class="activity-img-wrapper">
-                        <span class="activity-tag">Arte</span>
-                        <img src="{{ "images/tourism/centro-leon.png" | relURL }}" alt="Centro León">
-                    </div>
-                    <div class="activity-body">
-                        <h4>Centro Cultural León</h4>
-                        <p>Uno de los museos más modernos y premiados del Caribe. Una inmersión profunda en la identidad, el arte y la ecología dominicana.</p>
-                        <div class="activity-footer-cta">Ver Exposiciones →</div>
-                    </div>
-                </div>
-
-                <!-- Activity 3 -->
-                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
-                    <div class="activity-img-wrapper">
-                        <span class="activity-tag">Tradición</span>
-                        <img src="{{ "images/tourism/la-aurora.png" | relURL }}" alt="La Aurora Cigar World">
-                    </div>
-                    <div class="activity-body">
-                        <h4>La Aurora Cigar World</h4>
-                        <p>Visita la fábrica de cigarros más antigua del país. Conoce el proceso artesanal del tabaco premium que ha puesto a Santiago en el mapa mundial.</p>
-                        <div class="activity-footer-cta">Agendar Tour →</div>
-                    </div>
-                </div>
-
-                <!-- Activity 4 -->
-                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-                    <div class="activity-img-wrapper">
-                        <span class="activity-tag">Urbano</span>
-                        <img src="{{ "images/tourism/murales.png" | relURL }}" alt="Murales de Los Pepines">
-                    </div>
-                    <div class="activity-body">
-                        <h4>Murales de Los Pepines</h4>
-                        <p>Un estallido de creatividad en las calles. Arte urbano vibrante que celebra el carnaval, la música y las tradiciones santiagueras.</p>
-                        <div class="activity-footer-cta">Paseo Fotográfico →</div>
-                    </div>
-                </div>
-
-                <!-- Activity 5 -->
-                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
-                    <div class="activity-img-wrapper">
-                        <span class="activity-tag">Gastronomía</span>
-                        <img src="{{ "images/tourism/gastronomia.png" | relURL }}" alt="Mofongo Cibaeño">
-                    </div>
-                    <div class="activity-body">
-                        <h4>Sabor del Cibao</h4>
-                        <p>Desde el legendario Mofongo hasta la alta cocina fusión. Santiago es el epicentro gastronómico para los paladares más exigentes.</p>
-                        <div class="activity-footer-cta">Guía Gastronómica →</div>
-                    </div>
-                </div>
-
-                <!-- Activity 6 -->
-                <div class="activity-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
-                    <div class="activity-img-wrapper">
-                        <span class="activity-tag">Historia</span>
-                        <img src="{{ "images/tourism/catedral.png" | relURL }}" alt="Catedral Santiago Apóstol">
-                    </div>
-                    <div class="activity-body">
-                        <h4>Catedral Santiago Apóstol</h4>
-                        <p>Pilar del centro histórico. Una joya arquitectónica de finales del siglo XIX que guarda la esencia espiritual y patriótica de la ciudad.</p>
-                        <div class="activity-footer-cta">Visita Histórica →</div>
-                    </div>
-                </div>
+                {{ end }}
             </div>
 
             <div class="cta-bottom-banner animate__animated animate__zoomIn">
-                <h3>¿Listo para vivir Santiago?</h3>
-                <p>Combina el aprendizaje tecnológico de vanguardia con la calidez y cultura de la Ciudad Corazón.</p>
-                <a href="#register" class="btn-register">¡Regístrate Ahora!</a>
+                <h3>{{ T "cd_tourism_ready_to_live" }}</h3>
+                <p>{{ T "cd_tourism_ready_desc" }}</p>
+                <a href="#register" class="btn-register">{{ T "cd_register_now" }}</a>
             </div>
         </div>
     </div>

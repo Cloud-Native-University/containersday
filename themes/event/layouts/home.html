@@ -11,15 +11,15 @@
     {{ $dayInSeconds := 86400 }}
     {{ partial "sections/event-highlights.html" (
         dict
-        "title" .Site.Params.themes.event.title
-        "subtitle" .Site.Params.themes.event.slogan
+        "title" (T "cd_event_title")
+        "subtitle" (T "cd_event_slogan")
         "description" .Site.Params.themes.event.description
         "logo" .Site.Params.themes.event.images.logo
         "numberOfSpeakers" 15
         "numberOfSessions" 12
         "numberOfWorkshops" 3
         "numberOfDays" 2
-        "location" "UAPA, Santiago" )
+        "location" (T "cd_event_location") )
     }}
 
     {{ partial "sections/benefits.html" . }}

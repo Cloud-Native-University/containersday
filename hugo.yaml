@@ -2,220 +2,71 @@ baseURL: https://containers.day/
 theme: event
 
 defaultContentLanguage: es
+
 languages:
-    _merge: deep
     es:
         disabled: false
+        languageName: "Español"
+        contentDir: "content"
+        weight: 1
         menus:
             main:
-
                 - identifier: sessions
                   name: "Agenda"
                   pageRef: /sessions
                   weight: 20
                 - identifier: speakers
                   name: "Ponentes"
-                  url: /speakers/
+                  pageRef: /speakers
                   weight: 30
-
                 - identifier: tourism
                   name: "Turismo Tropical"
-                  url: /tourism/
+                  pageRef: /tourism
                   weight: 45
                 - identifier: sponsors
                   name: "Patrocinadores"
-                  url: /sponsors/
+                  pageRef: /sponsors
                   weight: 50
-
-            footer:
-                - identifier: imprint
-                  pageRef: /imprint
-                  weight: 10
-                - identifier: privacy
-                  pageRef: /privacy-policy
-                  weight: 20
-        params:
-            # Open Graph / X (Twitter) Cards
-            description: |
-                Containers Day 2026: La conferencia tecnológica líder en el Caribe sobre Contenedores, Kubernetes y Cloud Native. Únete a expertos internacionales en Santiago, República Dominicana.
-            themes:
-                event:
-                    slogan: ¡La conferencia tecnológica más importante del Caribe!
-                    location: UAPA, Santiago
-                    description: |
-                        **Containers Day 2026** es la conferencia tecnológica pionera en la región del Caribe dedicada exclusivamente al ecosistema de Contenedores, Kubernetes y tecnologías Cloud Native. Diseñado para ingenieros, arquitectos, desarrolladores y líderes tecnológicos, este evento de dos días combina el rigor técnico con la calidez del networking caribeño. 
-
-                        El primer día estará centrado en conferencias magistrales impartidas por expertos locales e internacionales, profundizando en casos de éxito, mejores prácticas de DevOps y la evolución del código abierto. El segundo día está reservado para la colaboración, mentorías y la creación de alianzas estratégicas en un entorno único. Únete a nosotros en Santiago para ser parte de la transformación digital que está redefiniendo el futuro del software.
-                    directions: |
-                        #### Llegando al Evento
-                        Puedes volar directamente al Aeropuerto Internacional del Cibao (STI) en Santiago. Contaremos con transporte dedicado para asistentes hacia el campus universitario.
-
-                        #### Hospedaje y Ciudad:
-                        Santiago de los Caballeros ofrece una gran variedad de hoteles y alojamientos estratégicos muy cerca de la UAPA para tu máxima comodidad y conveniencia.
-                    aboutUs: |
-                        ### Misión
-                        Ayudamos a las empresas y organizaciones a transformar digitalmente sus negocios, productos y procesos a través de consultoría,
-                        estrategia, diseño, desarrollo de software y formación utilizando tecnología de vanguardia.
-
-                        ### Fundación
-                        - **2002** - Año de fundación
-
-                        ### Nuestro Equipo
-                        - **25+** Empleados
-                        - **5** Nacionalidades
-
-                        ### Información Adicional
-                        - Reunimos diversas experiencias e innovación.
-                    callToActionSecondary:
-                        label: Ser Orador
-                    heroSlides:
-                        - title: "¡La conferencia tecnológica más importante del Caribe!"
-                          subtitle: "Containers Day 2026"
-                          description: "Impulsamos la innovación tecnológica en el Caribe. Containers Day es el punto de encuentro para expertos en Cloud Native, Kubernetes y DevOps."
-                          image: images/hero-background-v2.jpg
-                        - title: "Aprende de los Mejores Expertos"
-                          subtitle: "Sesiones Técnicas"
-                          description: "Sumérgete en charlas de alto nivel sobre Kubernetes, Docker y el ecosistema Cloud Native con conferencistas internacionales y locales."
-                          image: images/hero-background-v5.png
-                        - title: "Impulsando el Ecosistema Tecnológico"
-                          subtitle: "Nuestra Visión"
-                          description: "Forma parte del cambio. Containers Day es el motor de innovación para la próxima generación de profesionales en el Caribe y el mundo."
-                          image: images/hero-background-v4.png
-                    gallery:
-                        title: "Nuestra Galería"
-                        images:
-                            - images/hero-background-v2.jpg
-                            - images/hero-background-v3.jpg
-                            - images/hero-background-v4.png
-                            - images/hero-background-v5.png
-
-    de:
-        disabled: true
+    en:
+        disabled: false
+        languageName: "English"
+        contentDir: "content/en"
+        weight: 2
         menus:
             main:
-                - identifier: about
-                  pageRef: /about
-                  weight: 10
                 - identifier: sessions
+                  name: "Schedule"
                   pageRef: /sessions
                   weight: 20
                 - identifier: speakers
+                  name: "Speakers"
                   pageRef: /speakers
                   weight: 30
-                - identifier: location
-                  pageRef: /location
-                  weight: 40
+                - identifier: tourism
+                  name: "Tropical Tourism"
+                  pageRef: /tourism
+                  weight: 45
                 - identifier: sponsors
+                  name: "Sponsors"
                   pageRef: /sponsors
                   weight: 50
-                - identifier: code_of_conduct
-                  pageRef: /code-of-conduct
-                  weight: 60
-            footer:
-                - identifier: imprint
-                  pageRef: /imprint
-                  weight: 10
-                - identifier: privacy
-                  pageRef: /privacy-policy
-                  weight: 20
-            secondary:
-                - identifier: about
-                  pageRef: /about
-                  weight: 10
-                  params:
-                      description: |
-                          Erfahren Sie mehr über unsere Mission, Werte und die Menschen hinter unserer Organisation.
-                          Die Seite „Über uns“ bietet Einblicke, wer wir sind, was wir tun
-                          und warum wir leidenschaftlich an unserer Arbeit interessiert sind.
-                - identifier: speakers
-                  pageRef: /speakers
-                  weight: 30
-                  params:
-                      description: |
-                          Lernen Sie unsere herausragenden Referenten kennen, die ihr Fachwissen mit uns teilen werden.
-                          Erfahren Sie mehr über ihre Hintergründe und was sie besprechen werden.
-                - identifier: location
-                  pageRef: /location
-                  weight: 40
-                  params:
-                      description: |
-                          Finden Sie heraus, wo die Veranstaltung stattfindet.
-                          Dieser Abschnitt bietet Informationen zum Veranstaltungsort,
-                          zu Anfahrtsbeschreibungen und zu nahegelegenen Unterkünften.
-                - identifier: code_of_conduct
-                  pageRef: /code-of-conduct
-                  weight: 60
-                  params:
-                      description: |
-                          Lesen Sie die Verhaltensregeln für unsere Veranstaltung.
-                          Dieser Abschnitt beschreibt die Erwartungen an das Verhalten der Teilnehmer
-                          und die Veranstaltungsrichtlinien.
-        params:
-            # Open Graph / X (Twitter) Cards
-            description: |
-                Eine Demo-Website die das Thema "Event" für den statischen
-                Website-Generator HUGO vorstellt.
-            themes:
-                event:
-                    slogan: Keine echte Konferenz - nur eine Demo!
-                    location: Pforzheim
-                    description: |
-                        Dies ist eine Demo-Website, um die Funktionen des Thema __Event__
-                        für den statischen Website-Generator [Hugo](https://gohugo.io)
-                        vorzustellen. Der Quellcode dieser Website steht auf
-                        [GitHub](https://github.com/medialesson/hugo-theme-event-demo)
-                        bereit. Das Thema kann Daten einer beliebigen Veranstaltung von
-                        [Sessionize](https://sessionize.com) abrufen und generiert
-                        automatisch einen Zeitplan, eine Rednerliste und mehr. Es lässt sich
-                        zudem gut mit [Eventbrite](https://www.eventbrite.com) integrieren,
-                        um Tickets zu verkaufen.
-                    directions: |
-                        #### Mit den Öffentlichen:
-                        Nehmen Sie den Bus Nummer 25 vom Stadtzentrum. [Hier klicken für den
-                        Busfahrplan](https://www.kvv.de/en/plan-trip/timetables.html).
-
-                        #### Mit dem Auto:
-                        Fahren Sie vom Stadtzentrum aus 2 Meilen nach Norden auf der Main
-                        Street und biegen Sie dann rechts in die Elm Street ab.
-                        [Wegbeschreibung
-                        abrufen](https://www.kvv.de/en/plan-trip/timetables.html).
-
-                    aboutUs: |
-                        ### Mission
-                        Wir helfen Unternehmen und Organisationen, ihr Geschäft, ihre Produkte und Prozesse durch Beratung, Strategie, Design, Softwareentwicklung und Schulungen mit modernster Technologie digital zu transformieren.
-
-                        ### Gründung
-                        - **2002** - Gegründet
-
-                        ### Unser Team
-                        - **25+** Mitarbeiter
-                        - **5** Nationalitäten
-
-                        ### Zusätzliche Informationen
-                        - Wir vereinen vielfältige Expertise und Innovation.
-                    callToActionSecondary:
-                      label: Sprecher:in werden!
 
 params:
-    # Open Graph / X (Twitter) Cards
     images:
         - logos/logo-containersday-v2.png
     themes:
         event:
-            sessionizeId: ""
-            title: Containers Day
-            contactEmail: hola@containers.day
-            favicon: logos/logo-containersday-v2.png
-            shortTitle:
-            startDate: 2026-08-22
-            endDate: 2026-08-22
+            title: "Containers Day"
+            slogan: "¡La conferencia tecnológica más importante del Caribe!"
+            location: "UAPA, Santiago"
+            contactEmail: "hola@containers.day"
+            favicon: "logos/logo-containersday-v2.png"
+            startDate: "2026-08-22"
+            endDate: "2026-08-22"
             address:
-                - Universidad UAPA
-                - Santiago de los Caballeros
-                - República Dominicana
-            map:
-                embeddableMapUrl:
-                viewLargerMapUrl:
+                - "Universidad UAPA"
+                - "Santiago de los Caballeros"
+                - "República Dominicana"
             callToAction:
                 url: "#register"
             callToActionSecondary:
@@ -228,51 +79,41 @@ params:
             images:
                 logo: logos/logo-containersday-v2.png
                 titleBackground: images/hero-background-v2.jpg
-                location: images/habermehlstr.webp
+            heroSlides:
+                - title: "¡La conferencia tecnológica más importante del Caribe!"
+                  subtitle: "Containers Day 2026"
+                  description: "Impulsamos la innovación tecnológica en el Caribe. Containers Day es el punto de encuentro para expertos en Cloud Native, Kubernetes y DevOps."
+                  image: images/hero-background-v2.jpg
+                - title: "Aprende de los Mejores Expertos"
+                  subtitle: "Sesiones Técnicas"
+                  description: "Sumérgete en charlas de alto nivel sobre Kubernetes, Docker y el ecosistema Cloud Native con conferencistas internacionales y locales."
+                  image: images/hero-background-v5.png
+                - title: "Impulsando el Ecosistema Tecnológico"
+                  subtitle: "Nuestra Visión"
+                  description: "Forma parte del cambio. Containers Day es el motor de innovación para la próxima generación de profesionales en el Caribe y el mundo."
+                  image: images/hero-background-v4.png
             sponsors:
-                - logo: logos/nixversity-cover.png
-                  url: https://nixversity.com/
+                - logo: "logos/nixversity-cover.png"
+                  url: "https://nixversity.com/"
                   name: 'NixVersity'
-                  description: 'Líderes en formación de DevOps y Cloud Native en la región. NixVersity impulsa el talento local hacia estándares globales.'
-                  tier: platinum
-                - logo: logos/uapa-logo-white.png
-                  url: https://www.uapa.edu.do/
+                  description: 'Líderes en formación de DevOps y Cloud Native en la región.'
+                  tier: "platinum"
+                - logo: "logos/uapa-logo-white.png"
+                  url: "https://www.uapa.edu.do/"
                   name: 'UAPA'
-                  description: 'Sede oficial de Containers Day 2026. La Universidad para Adultos (UAPA) es pionera en educación a distancia y liderazgo tecnológico en Santiago.'
-                  tier: platinum
+                  description: 'Sede oficial de Containers Day 2026.'
+                  tier: "platinum"
             sponsorTiers:
                 platinum:
                     label: "🏆 Patrocinador Platinum"
                     color: "#E5E4E2"
                 gold:
                     label: "🥇 Patrocinador Oro"
-                    color: "#FFD700"
                 silver:
                     label: "🥈 Patrocinador Plata"
-                    color: "#C0C0C0"
                 community:
                     label: "🤝 Patrocinador Comunitario"
-                    color: "#4ECDC4"
-            partners:
-                - logo: logos/nixversity-cover.png
-                  url: https://nixversity.com/
-                  name: 'NixVersity'
-            organizers:
-                - '00000000-0000-0000-0000-000000000000'
-                - '00000000-0000-0000-0000-000000000001'
-                - '00000000-0000-0000-0000-000000000004'
-                - '00000000-0000-0000-0000-000000000002'
-            featuredSessions:
-                - '729572'
-                - '729576'
-                - '729579'
             colors:
-                primaryLighter: '#7fbef5'
                 primary: '#5dade2'
                 primaryDarker: '#143e8b'
-                primaryDarkest: '#102a43'
-                secondary: '#f7f8fa'
-                secondaryDarker: '#637381'
-                track: '#5dade2'
-                shadow: '#a6afc366'
-            redirectBasedOnBrowserLang: true
+            redirectBasedOnBrowserLang: false

@@ -1,72 +1,162 @@
-countdown.days: Días
-countdown.hours: Hrs
-countdown.minutes: Min
-countdown.seconds: Seg
-cta_banner.message: ¡Consigue tu boleto ahora!
-cta_button.get_ticket: ¡Regístrate!
-cta_section.heading: ¿Encontraste algo emocionante?
-cta_section.subheading: ¡Regístrate hoy!
-cta_section.message: |
-    ¡No pierdas la oportunidad de aprender de expertos mundiales y hacer contactos valiosos!
-header_featured_speakers: Oradores Destacados
-speakers_page.heading: Oradores
-speakers_page.social_links: 'Redes sociales de {{ . }}'
-sessions_page.heading: Agenda
-sessions_page.day: Día {{ . }}
-sessions_page.heading_day_filter: Fecha
-sessions_page.heading_track_filter: Tema
-sessions_page.speaker: Orador
-sessions_page.room: Sala
-sessions_page.read_more: leer más
-sessions_page.heading_no_sessions: Aún no hay sesiones programadas
-sessions_page.heading_come_back_soon: Vuelve pronto o síguenos
-menu.code_of_conduct: Código de Conducta
-menu.about: Nosotros
-menu.sessions: Agenda
-menu.speakers: Oradores
-menu.location: Ubicación
-menu.sponsors: Patrocinadores
-main_menu.label: Menú Principal
-social-links_list.label: Redes sociales
-secondary_menu.label: Menú secundario
-language_menu.label: Idioma
-location_page.heading: Ubicación
-location_page.directions_heading: Cómo llegar
-location_page.map_frame: Mapa interactivo
-location_page.map_fullscreen: Ver mapa más grande
-sponsors_page.heading_sponsors: Patrocinadores
-sponsors_page.heading_partners: Socios
-about_page.heading: Nosotros
-about_page.organizers_heading: 'El equipo de {{ . }}'
-conference_tracks_section.heading: Temas
-conference_tracks_section.subheading: Descubre lo que traemos
-conference_tracks_section.action: Ver agenda
-featured_speakers_section.heading: Oradores Destacados
-featured_speakers_section.subheading: Conoce a los Expertos
-featured_speakers_section.action: Ver todos los oradores
-featured_sessions_section.heading: Sesiones Destacadas
-featured_sessions_section.read_more: leer más
-featured_sessions_section.action: Ver toda la agenda
-sponsors_section.heading: Patrocinadores
-sponsors_section.subheading: ¡Gracias a quienes lo hacen posible!
-event_highlights_section.number_of_speakers:
-    one: '{{ . }} Orador'
-    other: '{{ . }} Oradores'
-event_highlights_section.number_of_sessions:
-    one: '{{ . }} Charla'
-    other: '{{ . }} Charlas'
-event_highlights_section.number_of_days:
-    one: '{{ . }} Día'
-    other: '{{ . }} Días'
-event_highlights_section.number_of_workshops:
-    one: '{{ . }} Workshop'
-    other: '{{ . }} Workshops'
-event_highlights_section.number_of_attendees:
-    one: '{{ . }} Asistente'
-    other: '{{ . }} Asistentes'
-speaker_page.sessions_by: Sesiones de
-session_page.further_sessions: Más sesiones
-session_page.further_sessions_from: Más sesiones de
-carousel.button_next: Siguiente
-carousel.button_previous: Anterior
-session_categories.label: Categorías
+cd_home:
+  other: "INICIO"
+cd_tickets:
+  other: "Tickets"
+cd_buy_tickets:
+  other: "Comprar Boletos"
+cd_become_speaker:
+  other: "Ser Orador"
+cd_apply_speaker:
+  other: "Aplicar como Orador"
+cd_why_participate:
+  other: "¿Por qué participar?"
+cd_event_benefits:
+  other: "Beneficios del Evento"
+cd_conferences:
+  other: "Conferencias"
+cd_conferences_desc:
+  other: "Escucha a expertos compartiendo sus conocimientos y experiencias en el mundo real."
+cd_community:
+  other: "Comunidad"
+cd_community_desc:
+  other: "Asiste a charlas de alto nivel y aprende nuevas habilidades junto a apasionados de la tecnología."
+cd_networking_desc:
+  other: "Conéctate con otros profesionales, startups y empresas líderes del sector tecnológico."
+cd_innovation:
+  other: "Innovación"
+cd_innovation_desc:
+  other: "Explora las últimas tendencias y novedades relacionadas con Contenedores y Cloud Native."
+cd_mentoring:
+  other: "Mentoría"
+cd_mentoring_desc:
+  other: "Recibe orientación directa y consejos prácticos de expertos con años de experiencia."
+cd_inspiration:
+  other: "Inspiración"
+cd_inspiration_desc:
+  other: "Descubre nuevas ideas y enfoques innovadores para potenciar tus proyectos personales y profesionales."
+cd_career:
+  other: "Carrera Profesional"
+cd_career_desc:
+  other: "Accede a oportunidades laborales exclusivas y conéctate con empresas que buscan talento especializado."
+cd_certification:
+  other: "Certificación"
+cd_certification_desc:
+  other: "Obtén un certificado de participación oficial para potenciar tu currículum y perfil profesional."
+cd_code_of_conduct:
+  other: "Código de Conducta"
+cd_all_rights:
+  other: "Todos los derechos reservados."
+menu.sessions:
+  other: "Agenda"
+menu.speakers:
+  other: "Ponentes"
+menu.tourism:
+  other: "Turismo Tropical"
+menu.sponsors:
+  other: "Patrocinadores"
+cd_event_title:
+  other: "Containers Day"
+cd_event_slogan:
+  other: "¡La conferencia tecnológica más importante del Caribe!"
+cd_event_location:
+  other: "UAPA, Santiago"
+cd_hero_subtitle_1:
+  other: "Containers Day 2026"
+cd_hero_title_1:
+  other: "¡La conferencia tecnológica más importante del Caribe!"
+cd_hero_desc_1:
+  other: "Impulsamos la innovación tecnológica en el Caribe. Containers Day es el punto de encuentro para expertos en Cloud Native, Kubernetes y DevOps."
+cd_hero_subtitle_2:
+  other: "Sesiones Técnicas"
+cd_hero_title_2:
+  other: "Aprende de los Mejores Expertos"
+cd_hero_desc_2:
+  other: "Sumérgete en charlas de alto nivel sobre Kubernetes, Docker y el ecosistema Cloud Native con conferencistas internacionales y locales."
+cd_hero_subtitle_3:
+  other: "Nuestra Visión"
+cd_hero_title_3:
+  other: "Impulsando el Ecosistema Tecnológico"
+cd_hero_desc_3:
+  other: "Forma parte del cambio. Containers Day es el motor de innovación para la próxima generación de profesionales en el Caribe y el mundo."
+cd_sponsors:
+  other: "Patrocinadores"
+cd_sponsors_thanks:
+  other: "¡Gracias a quienes lo hacen posible!"
+cd_sponsor_default_desc:
+  other: "Un patrocinador clave que impulsa la excelencia en Containers Day."
+cd_sponsor_space_available:
+  other: "🚀 Este espacio está disponible para tu organización."
+cd_sponsor_cta:
+  other: "¡Quiero patrocinar el evento!"
+sponsor_desc.NixVersity:
+  other: "Líderes en formación de DevOps y Cloud Native en la región. NixVersity impulsa el talento local hacia estándares globales."
+sponsor_desc.UAPA:
+  other: "Sede oficial de Containers Day 2026. La Universidad para Adultos (UAPA) es pionera en educación a distancia y liderazgo tecnológico en Santiago."
+cd_sponsor_tier_platinum:
+  other: "🏆 Patrocinador Platinum"
+cd_sponsor_tier_gold:
+  other: "🥇 Patrocinador Oro"
+cd_sponsor_tier_silver:
+  other: "🥈 Patrocinador Plata"
+cd_sponsor_tier_community:
+  other: "🤝 Patrocinador Comunitario"
+cd_tourism_intro:
+  other: "Aprovecha tu viaje a Containers Day en Santiago de los Caballeros para sumergirte en la historia, la cultura y la alegría."
+cd_tourism_activity_1_tag:
+  other: "Cultura"
+cd_tourism_activity_1_title:
+  other: "Monumento a la Restauración"
+cd_tourism_activity_1_desc:
+  other: "El icono indiscutible de Santiago. Una torre majestuosa de 70 metros que ofrece las mejores vistas panorámicas de la ciudad y el valle del Cibao."
+cd_tourism_activity_1_cta:
+  other: "Explorar Museo →"
+cd_tourism_activity_2_tag:
+  other: "Arte"
+cd_tourism_activity_2_title:
+  other: "Centro Cultural León"
+cd_tourism_activity_2_desc:
+  other: "Uno de los museos más modernos y premiados del Caribe. Una inmersión profunda en la identidad, el arte y la ecología dominicana."
+cd_tourism_activity_2_cta:
+  other: "Ver Exposiciones →"
+cd_tourism_activity_3_tag:
+  other: "Tradición"
+cd_tourism_activity_3_title:
+  other: "La Aurora Cigar World"
+cd_tourism_activity_3_desc:
+  other: "Visita la fábrica de cigarros más antigua del país. Conoce el proceso artesanal del tabaco premium que ha puesto a Santiago en el mapa mundial."
+cd_tourism_activity_3_cta:
+  other: "Agendar Tour →"
+cd_tourism_activity_4_tag:
+  other: "Urbano"
+cd_tourism_activity_4_title:
+  other: "Murales de Los Pepines"
+cd_tourism_activity_4_desc:
+  other: "Un estallido de creatividad en las calles. Arte urbano vibrante que celebra el carnaval, la música y las tradiciones santiagueras."
+cd_tourism_activity_4_cta:
+  other: "Paseo Fotográfico →"
+cd_tourism_activity_5_tag:
+  other: "Gastronomía"
+cd_tourism_activity_5_title:
+  other: "Sabor del Cibao"
+cd_tourism_activity_5_desc:
+  other: "Desde el legendario Mofongo hasta la alta cocina fusión. Santiago es el epicentro gastronómico para los paladares más exigentes."
+cd_tourism_activity_5_cta:
+  other: "Guía Gastronómica →"
+cd_tourism_activity_6_tag:
+  other: "Historia"
+cd_tourism_activity_6_title:
+  other: "Catedral Santiago Apóstol"
+cd_tourism_activity_6_desc:
+  other: "Pillar del centro histórico. Una joya arquitectónica de finales del siglo XIX que guarda la esencia espiritual y patriótica de la ciudad."
+cd_tourism_activity_6_cta:
+  other: "Visita Histórica →"
+cd_tourism_ready_to_live:
+  other: "¿Listo para vivir Santiago?"
+cd_tourism_ready_desc:
+  other: "Combina el aprendizaje tecnológico de vanguardia con la calidez y cultura de la Ciudad Corazón."
+cd_register_now:
+  other: "¡Regístrate Ahora!"
+cd_our_community:
+  other: "Nuestra Comunidad"
+cd_community_expectations:
+  other: "Lo que espera del evento nuestra comunidad universitaria"
