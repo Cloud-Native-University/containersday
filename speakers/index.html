@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        
+        <script>
+            (function () {
+                try {
+                    const isVisited = localStorage.getItem('visited');
+                    if (isVisited) return;
+                    localStorage.setItem('visited', '1');
+
+                    const availableLangs = ["es"];
+
+                    const langMap = {"es": "\/"
+                };
+
+                    const browserLang = (navigator.languages?.[0] || navigator.language || '').toLowerCase();
+                    if (!browserLang) return;
+                    const browserLangShort = browserLang.split('-')[0];
+                    const currentLang = "es".toLowerCase();
+
+                    
+                    const normalizedLangs = availableLangs.map(l => l.toLowerCase());
+
+                    
+                    const exactIdx = normalizedLangs.indexOf(browserLang);
+                    const shortIdx = exactIdx === -1 ? normalizedLangs.indexOf(browserLangShort) : -1;
+                    const matchIdx = exactIdx !== -1 ? exactIdx : shortIdx;
+                    const targetLang = matchIdx !== -1 ? availableLangs[matchIdx] : null;
+
+                    if (targetLang && targetLang.toLowerCase() !== currentLang) {
+                        const redirectUrl = langMap[targetLang];
+                        if (redirectUrl) {
+                            window.location.replace(redirectUrl);
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Language redirect failed', e);
+                }
+            })();
+        </script>
+        
+
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="https://containers.day/logos/logo-containersday-v2.png" />
+
+        <title>Nuestros Ponentes -
+            Containers Day
+        </title>
+
+        <meta name="description" content="Containers Day 2026 es la conferencia tecnológica pionera en la región del Caribe dedicada exclusivamente al ecosistema de Contenedores, Kubernetes y tecnologías Cloud Native. Diseñado para ingenieros, arquitectos, desarrolladores y líderes tecnológicos, este evento de dos días combina el rigor técnico con la calidez del networking caribeño.
+El primer día estará centrado en conferencias magistrales impartidas por expertos locales e internacionales, profundizando en casos de éxito, mejores prácticas de DevOps y la evolución del código abierto. El segundo día está reservado para la colaboración, mentorías y la creación de alianzas estratégicas en un entorno único. Únete a nosotros en Santiago para ser parte de la transformación digital que está redefiniendo el futuro del software.
+" />
+
+        
+
+        <meta property="og:url" content="https://containers.day/speakers/">
+  <meta property="og:title" content="Nuestros Ponentes">
+  <meta property="og:description" content="Conoce a los expertos que nos acompañarán en esta edición.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="https://containers.day/logos/logo-containersday-v2.png">
+
+        
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://containers.day/logos/logo-containersday-v2.png">
+  <meta name="twitter:title" content="Nuestros Ponentes">
+  <meta name="twitter:description" content="Conoce a los expertos que nos acompañarán en esta edición.">
+
+
+        
+            <link rel="stylesheet" href="/styles.min.d53f4572184e8d5c1ca9ce259f84519c33c35d46d46f81d02f11017cc2119f37.css" type="text/css" media="screen" integrity="sha256-1T9FchhOjVwcqc4ln4RRnDPDXUbUb4HQLxEBfMIRnzc=" />
+        
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <style>
+      :root {
+        --color-primary-lighter:#7fbef5;
+        --color-primary:#5dade2;
+        --color-primary-darker:#143e8b;
+        --color-primary-darkest:#102a43;
+        --color-secondary:#f7f8fa;
+        --color-secondary-darker:#637381;
+        --color-track:#5dade2;
+        --color-shadow:#a6afc366;
+      }
+       
+      .custom-topbar { background-color: #1A2A36 !important; display: none; padding: 0; color: #9A9DA2; font-size: 14px; }
+      @media (min-width: 992px) { .custom-topbar { display: flex; } }
+      .custom-topbar-row { display: flex; width: 100%; margin: 0; }
+      .custom-topbar-col-left { flex: 0 0 50%; padding: 0 3rem; display: flex; align-items: center; justify-content: flex-start; }
+      .custom-topbar-col-right { flex: 0 0 50%; padding: 0 3rem; display: flex; align-items: center; justify-content: flex-end; margin-left: auto; }
+      .custom-topbar-item { display: inline-flex; align-items: center; height: 100%; margin-right: 1.5rem; }
+      .custom-topbar-icon { color: var(--color-primary); margin-right: 0.5rem; }
+      .custom-btn-square { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; color: #9A9DA2; text-decoration: none; transition: 0.5s; border-right: 1px solid rgba(255,255,255,0.1); }
+      .custom-btn-square:hover { color: var(--color-primary); }
+      .custom-btn-square:last-child { border-right: none; }
+      
+       
+      .custom-topbar, .custom-topbar * { box-sizing: border-box !important; }
+      .page-header, .page-header * { box-sizing: border-box !important; }
+      
+       
+      .page-header { background: #fff !important; box-shadow: 0 0 15px rgba(0,0,0,0.05); padding: 0 !important; width: 100% !important; max-width: 100% !important; border: none !important; margin: 0 !important; }
+      #pageHeaderContent, .page-header__content { max-width: 100% !important; padding: 0 !important; width: 100% !important; margin: 0 !important; }
+      .page-header__navigation { flex-wrap: nowrap !important; padding-left: 3rem; align-items: stretch; justify-content: space-between; display: flex; width: 100%; height: 80px; }
+      .page-header__title-link { display: flex !important; align-items: center !important; }
+      .header-menu { display: flex; align-items: center; gap: 2rem; margin-right: 2rem; margin-bottom: 0px !important; height: 100%; }
+      .header-menu li { list-style: none; height: 100%; display: flex; align-items: center; }
+      .header-menu__link { color: #1A2A36 !important; font-weight: 600 !important; text-transform: uppercase; font-size: 15px; text-decoration: none; display: flex; align-items: center; height: 100%; }
+      .header-menu__link:hover, .header-menu__link--active { color: var(--color-primary) !important; }
+      .solartec-cta { display: inline-flex; align-items: center; justify-content: center; padding: 0 2rem; height: 80px !important; background-color: #1b4fb1; color: white !important; font-weight: 600; font-size: 16px; text-decoration: none; transition: 0.3s; margin: 0; white-space: nowrap; border: none; }
+      .solartec-cta:hover { background-color: #163f8d; color: white !important; }
+      .solartec-cta-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 0 2rem; height: 80px !important; background-color: #2ecc71; color: white !important; font-weight: 600; font-size: 16px; text-decoration: none; transition: 0.3s; margin: 0; white-space: nowrap; border: none; }
+      .solartec-cta-secondary:hover { background-color: #27ae60; color: white !important; }
+      .header-buttons-group { display: flex; align-items: stretch; margin: 0; padding: 0; }
+      @media (max-width: 991px) { .header-buttons-group { display: none !important; } .page-header__navigation { padding-right: 2rem; height: auto; padding: 1rem 2rem; } .header-menu { display: none !important; } }
+      @media (min-width: 992px) { .page-header__toggle-sidebar-label { display: none !important; } }
+    </style>
+    </head>
+
+    <body class="page-body">
+        <input type="checkbox" class="sidebar-toggle" id="sidebarToggle" />
+
+
+
+
+        
+        <div class="custom-topbar">
+            <div class="custom-topbar-row">
+                <div class="custom-topbar-col-left">
+                    <div class="custom-topbar-item">
+                        <small class="fas fa-map-marker-alt custom-topbar-icon"></small>
+                        <small>UAPA, Santiago</small>
+                    </div>
+                    <div class="custom-topbar-item">
+                        <small class="far fa-clock custom-topbar-icon"></small>
+                        <small>2026-08-22 - 2026-08-22</small>
+                    </div>
+                </div>
+                <div class="custom-topbar-col-right">
+                    <div class="custom-topbar-item">
+                        <small class="fa fa-envelope custom-topbar-icon"></small>
+                        <small>hola@containers.day</small>
+                    </div>
+                    <div style="display: inline-flex; align-items: center; margin-left: -0.5rem;">
+                        <a class="custom-btn-square" href="https://x.com/containerslatam"><i class="fab fa-twitter"></i></a>
+                        <a class="custom-btn-square" href="https://www.linkedin.com/company/containersday-dr"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div style="display: inline-flex; align-items: center; margin-left: 1rem;">
+                        <a href="/agenda" id="nav-agenda-link" style="display:none; color: white; font-weight: bold; text-decoration: none; font-size: 0.9rem;"><i class="fa fa-calendar-alt"></i> <span style="margin-left:5px;">Mi Ruta</span></a>
+                        <a href="/admin" id="nav-admin-link" style="display:none; color: #ff6b6b; font-weight: bold; text-decoration: none; font-size: 0.9rem; margin-left: 15px;"><i class="fa fa-cogs"></i> Admin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <header class="section-container page-header" id="pageHeader">
+            <div class="section section--short page-header__content" id="pageHeaderContent">
+                <nav id="mainNavigation" class="page-header__navigation" style="align-items: center;" aria-labelledby="main-navigation-label">
+                    
+                    <label id="main-navigation-label" class="sr-only">Menú Principal</label>
+                    <label class="page-header__toggle-sidebar-label" for="sidebarToggle"><svg width="28" height="16" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="22.4" height="1.33333" fill="black" />
+    <rect x="5.6001" y="7.33334" width="22.4" height="1.33333" fill="black" />
+    <rect y="14.6667" width="22.4" height="1.33333" fill="black" />
+</svg>
+
+                    </label>
+                    <a class="page-header__title-link" href="/" style="display: flex; align-items: center; font-size: 2em; font-weight: bold; color: var(--color-primary); text-decoration: none;">
+                        
+                        
+                            <img src="/logos/logo-containersday-v2.png" alt="Containers Day" style="max-height: 50px; margin-right: 15px;" />
+                        
+                    </a>
+
+                    <div class="page-header__menu-container" style="display: flex; align-items: center; justify-content: flex-end; flex-grow: 1;">
+                        <div id="pageHeaderMenuScriptValidator" style="display: none;">
+                            <script>
+                                
+                                pageHeaderMenuScriptValidator.style.display = 'inherit';
+                            </script>
+
+
+<ul class="header-menu">
+    <li>
+        <a
+                class="header-menu__link"
+            href="/">
+            INICIO
+        </a>
+    </li>
+        <li>
+            <a
+                href="/sessions/"
+                    class="header-menu__link">Agenda
+            </a>
+        </li>
+        <li>
+            <a
+                href="/speakers/"
+                    class="header-menu__link">Oradores
+            </a>
+        </li>
+        <li>
+            <a
+                href="/tourism/"
+                    class="header-menu__link">Turismo Tropical
+            </a>
+        </li>
+        <li>
+            <a
+                href="/sponsors/"
+                    class="header-menu__link">Patrocinadores
+            </a>
+        </li>
+</ul>
+
+                        </div>
+                    </div>
+
+                    <div class="header-buttons-group">
+                        <a href="https://sessionize.com/containers-days-dr/" class="solartec-cta-secondary" target="_blank">Ser Orador</a>
+                        <a href="#register" class="solartec-cta">Tickets <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
+                    </div>
+                    
+                </nav>
+            </div>
+        </header>
+
+        <aside class="page-sidebar">
+            <nav class="page-sidebar__navigation" aria-labelledby="main-navigation-label">
+                <header class="page-sidebar__header">
+                    <a class="page-sidebar__heading-link" href="/">
+                        Containers Day
+                    </a>
+
+                    <label class="page-sidebar__close-label" for="sidebarToggle"><svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0.943359" width="22.4" height="1.33333" transform="rotate(45 0.943359 0)" fill="white" />
+    <rect y="15.8392" width="22.4" height="1.33333" transform="rotate(-45 0 15.8392)" fill="white" />
+</svg>
+
+                    </label>
+                </header>
+
+
+
+
+
+<ul class="sidebar-menu">
+        <li class="sidebar-menu__item">
+            <a
+                href="/sessions/"
+                    class="sidebar-menu__link"
+                aria-label="Agenda">Agenda
+            </a>
+        </li>
+        <li class="sidebar-menu__item">
+            <a
+                href="/speakers/"
+                    class="sidebar-menu__link"
+                aria-label="Ponentes">Oradores
+            </a>
+        </li>
+        <li class="sidebar-menu__item">
+            <a
+                href="/tourism/"
+                    class="sidebar-menu__link"
+                aria-label="Turismo Tropical">Turismo Tropical
+            </a>
+        </li>
+        <li class="sidebar-menu__item">
+            <a
+                href="/sponsors/"
+                    class="sidebar-menu__link"
+                aria-label="Patrocinadores">Patrocinadores
+            </a>
+        </li>
+</ul>
+
+
+
+                <div class="page-sidebar__social-links">
+
+
+
+
+<label id="social-links-list-label-0" class="sr-only"></label>
+
+<ul class="social-links" aria-labelledby="social-links-list-label-0">
+        <li class="social-links__menu-item">
+            <a
+                href="https://www.linkedin.com/company/containersday-dr"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer external"
+                class="social-links__link page-sidebar__social-link"><svg width="100%" height="100%" viewBox="5 5 30 30" xmlns="http://www.w3.org/2000/svg">
+    <path
+        fill="currentColor"
+        d="M10.9886 8.41679C10.9882 9.25664 10.6542 10.0619 10.06 10.6555C9.46583 11.2491 8.66021 11.5823 7.82036 11.5819C6.9805 11.5814 6.17522 11.2474 5.58165 10.6533C4.98808 10.0591 4.65485 9.25347 4.65527 8.41362C4.65569 7.57377 4.98973 6.76848 5.58389 6.17491C6.17805 5.58134 6.98367 5.24812 7.82352 5.24854C8.66338 5.24896 9.46866 5.58299 10.0622 6.17715C10.6558 6.77131 10.989 7.57693 10.9886 8.41679ZM11.0836 13.9268H4.75027V33.7501H11.0836V13.9268ZM21.0903 13.9268H14.7886V33.7501H21.0269V23.3476C21.0269 17.5526 28.5794 17.0143 28.5794 23.3476V33.7501H34.8336V21.1943C34.8336 11.4251 23.6553 11.7893 21.0269 16.5868L21.0903 13.9268Z" />
+</svg>
+
+            </a>
+        </li>
+    
+        <li class="social-links__menu-item">
+            <a
+                href="https://x.com/containerslatam"
+                aria-label="X (Twitter)"
+                target="_blank"
+                rel="noopener noreferrer external"
+                class="social-links__link page-sidebar__social-link"><svg width="100%" height="100%" viewBox="0 0 26 27" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M15.4451 11.5357L25.0011 0.666504H22.7369L14.4357 10.1021L7.81031 0.666504H0.166992L10.1881 14.9361L0.166992 26.3332H2.43116L11.1921 16.3665L18.1903 26.3332H25.8337L15.4451 11.5357ZM12.3429 15.0614L11.326 13.6396L3.24768 2.33672H6.72591L13.2473 11.4619L14.2599 12.8837L22.7358 24.7443H19.2576L12.3429 15.0614Z"
+        fill="currentColor" />
+</svg>
+
+            </a>
+        </li>
+    
+        <li class="social-links__menu-item">
+            <a
+                href="https://www.facebook.com/containersday"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer external"
+                class="social-links__link page-sidebar__social-link"><svg width="100%" height="100%" viewBox="0 0 28 29" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_34_6169)">
+        <path
+            d="M20.7381 11.7875H18.2881H17.4131V10.9125V8.2V7.325H18.2881H20.1256C20.6068 7.325 21.0006 6.975 21.0006 6.45V1.8125C21.0006 1.33125 20.6506 0.9375 20.1256 0.9375H16.9318C13.4756 0.9375 11.0693 3.3875 11.0693 7.01875V10.825V11.7H10.1943H7.21934C6.60684 11.7 6.03809 12.1812 6.03809 12.8812V16.0312C6.03809 16.6437 6.51934 17.2125 7.21934 17.2125H10.1068H10.9818V18.0875V26.8812C10.9818 27.4937 11.4631 28.0625 12.1631 28.0625H16.2756C16.5381 28.0625 16.7568 27.9312 16.9318 27.7562C17.1068 27.5812 17.2381 27.275 17.2381 27.0125V18.1312V17.2562H18.1568H20.1256C20.6943 17.2562 21.1318 16.9062 21.2193 16.3812V16.3375V16.2937L21.8318 13.275C21.8756 12.9688 21.8318 12.6187 21.5693 12.2687C21.4818 12.05 21.0881 11.8312 20.7381 11.7875Z"
+            fill="currentColor" />
+    </g>
+    <defs>
+        <clipPath id="clip0_34_6169">
+            <rect width="28" height="28" fill="currentColor" transform="translate(0 0.5)" />
+        </clipPath>
+    </defs>
+</svg>
+
+            </a>
+        </li>
+    
+</ul>
+
+                </div>
+
+
+            </nav>
+
+            <label class="page-sidebar__empty-space" for="sidebarToggle">
+                
+            </label>
+        </aside>
+
+        <script>
+            const header = document.getElementById('pageHeader');
+            const intercept = document.createElement('div');
+
+            intercept.setAttribute('data-observer-intercept', '');
+            header.before(intercept);
+
+            const observer = new IntersectionObserver(([entry]) => {
+                header.classList.toggle('page-header--scrolled', !entry.isIntersecting);
+            });
+
+            observer.observe(intercept);
+        </script>
+
+        <script>
+            function checkWhichMenuToUse() {
+                document.body.setAttribute('data-menu-mode', 'header');
+                if (pageHeaderContent.scrollWidth > pageHeaderContent.clientWidth) {
+                    document.body.setAttribute('data-menu-mode', 'sidebar');
+                }
+            }
+
+            new ResizeObserver(checkWhichMenuToUse).observe(document.body);
+        </script>
+
+        <main class="page-main">
+            
+<style>
+    .generic-hero { 
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(rgba(26, 42, 54, 0.8), rgba(26, 42, 54, 0.8)), url('/images/hero-background-v2.jpg');
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 100px 0; 
+        text-align: center; 
+        color: white; 
+        margin-bottom: 50px;
+    }
+    .generic-hero__video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+    }
+    .generic-hero__overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(26, 42, 54, 0.7);
+        z-index: 1;
+    }
+    .generic-hero .container {
+        position: relative;
+        z-index: 2;
+    }
+    .generic-hero h1 { 
+        font-size: 3.5rem; 
+        font-weight: 800; 
+        text-transform: uppercase; 
+        letter-spacing: 2px; 
+    }
+    .generic-hero .breadcrumb {
+        background: transparent;
+        padding: 0;
+        margin-bottom: 15px;
+    }
+    .generic-hero .breadcrumb-item a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+    }
+    .generic-hero .breadcrumb-item.active {
+        color: white;
+    }
+</style>
+
+<section class="generic-hero">
+    
+    <video autoplay muted loop playsinline class="generic-hero__video">
+        <source src="/videos/hero-background.mp4" type="video/mp4">
+    </video>
+    <div class="generic-hero__overlay"></div>
+    
+    <div class="container text-center">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                
+                <li class="breadcrumb-item active" aria-current="page">Nuestros Ponentes</li>
+            </ol>
+        </nav>
+        <h1 class="animate__animated animate__fadeInDown">Nuestros Ponentes</h1>
+    </div>
+</section>
+
+    
+    <style>
+        .speaker-list { 
+            background-color: #f9f9f9; 
+            padding-bottom: 80px; 
+        }
+        .speaker-list__menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+
+    <div class="speaker-list">
+        <div class="container">
+            <menu class="speaker-list__menu">
+                
+            </menu>
+        </div>
+    </div>
+
+
+<div class="section-container section-container--highlighted">
+    <section class="section section--long cta-section">
+        <h1 class="cta-section__heading">¿Encontraste algo emocionante?</h1>
+
+        <h2 class="cta-section__subheading">¡Regístrate hoy!</h2>
+
+        <p class="cta-section__message">¡No pierdas la oportunidad de aprender de expertos mundiales y hacer contactos valiosos!
+</p>
+
+
+
+    </section>
+</div>
+
+
+        </main>
+
+
+        <footer class="section-container">
+            <section class="section section--short page-footer-section">
+                <div class="page-footer-section__start">
+                    
+                    
+                    <a href="/code-of-conduct" style="color: #1A2A36; font-weight: 600; text-decoration: none; font-size: 14px;">Código de Conducta</a>
+                </div>
+
+
+<ul class="footer-menu">
+        <li>
+            <a class="footer-menu__link" href="" aria-label="">
+            </a>
+        </li>
+        <li>
+            <a class="footer-menu__link" href="" aria-label="">
+            </a>
+        </li>
+</ul>
+
+
+
+                <div class="page-footer-section__end">
+                    <small style="opacity:0.6;">© 2026 Containers Day. Todos los derechos reservados.</small>
+                </div>
+            </section>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, collection, getDocs, updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA-M3fk4gBjzvq9Wr-gu_okIAOo5dbdjbc",
+  authDomain: "containersday.firebaseapp.com",
+  projectId: "containersday",
+  storageBucket: "containersday.firebasestorage.app",
+  messagingSenderId: "169548391580",
+  appId: "1:169548391580:web:c4b6e0a4952beac99df959",
+  measurementId: "G-J8F1Z50YCY"
+};
+
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+
+window.firebaseAuth = auth;
+window.firebaseDb = db;
+
+window.signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider).then(async (result) => {
+        const user = result.user;
+        
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+        if (!userSnap.exists()) {
+            await setDoc(userRef, {
+                name: user.displayName,
+                email: user.email,
+                role: "attendee",
+                reservedSessions: [],
+                createdAt: new Date()
+            });
+        }
+    }).catch(error => {
+        console.error("Login failed", error);
+        alert("Error iniciando sesión: " + error.message);
+    });
+};
+
+window.signOutUser = () => signOut(auth);
+
+
+onAuthStateChanged(auth, (user) => {
+    window.currentUser = user;
+    const loginLink = document.getElementById('nav-login-link');
+    const myAgendaLink = document.getElementById('nav-agenda-link');
+    const adminLink = document.getElementById('nav-admin-link');
+    
+    if(user) {
+        if(loginLink) loginLink.style.display = 'none';
+        if(myAgendaLink) {
+            myAgendaLink.style.display = 'block';
+            myAgendaLink.querySelector('span').innerText = `Mi Ruta (${user.displayName.split(' ')[0]})`;
+        }
+        
+        
+        getDoc(doc(db, "users", user.uid)).then(docSnap => {
+            if (docSnap.exists() && docSnap.data().role === 'admin') {
+                if(adminLink) adminLink.style.display = 'block';
+            }
+        });
+        
+    } else {
+        if(loginLink) loginLink.style.display = 'block';
+        if(myAgendaLink) myAgendaLink.style.display = 'none';
+        if(adminLink) adminLink.style.display = 'none';
+    }
+    
+    
+    document.dispatchEvent(new CustomEvent('firebaseAuthReady', { detail: { user } }));
+});
+</script>
+</body>
+</html>

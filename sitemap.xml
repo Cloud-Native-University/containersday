@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://containers.day/</loc>
+  </url><url>
+    <loc>https://containers.day/about/</loc>
+    <priority>0</priority>
+  </url><url>
+    <loc>https://containers.day/sessions/</loc>
+  </url><url>
+    <loc>https://containers.day/categories/</loc>
+  </url><url>
+    <loc>https://containers.day/code-of-conduct/</loc>
+  </url><url>
+    <loc>https://containers.day/location/</loc>
+    <priority>0</priority>
+  </url><url>
+    <loc>https://containers.day/speakers/</loc>
+  </url><url>
+    <loc>https://containers.day/sponsors/</loc>
+    <priority>0</priority>
+  </url><url>
+    <loc>https://containers.day/tags/</loc>
+  </url><url>
+    <loc>https://containers.day/tourism/</loc>
+  </url>
+</urlset>

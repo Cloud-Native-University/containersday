@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link>https://containers.day/</link>
+    <description>Recent content on </description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <atom:link href="https://containers.day/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Us</title>
+      <link>https://containers.day/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://containers.day/about/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Código de Conducta</title>
+      <link>https://containers.day/code-of-conduct/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://containers.day/code-of-conduct/</guid>
+      <description>&lt;h1 class=&#34;heading heading--1&#34; id=&#34;código-de-conducta-de-containers-day&#34;&gt;Código de Conducta de Containers Day&lt;/h1&gt;&#xA;&lt;h2 class=&#34;heading heading--2&#34; id=&#34;visión-general&#34;&gt;Visión General&lt;/h2&gt;&lt;p&gt;Containers Day es un evento dedicado al aprendizaje y la colaboración. Creemos que las mejores ideas surgen en ambientes donde todos se sienten seguros y valorados. Este código de conducta establece las normas para asegurar que nuestra comunidad universitaria y profesional prospere.&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;heading heading--2&#34; id=&#34;nuestro-compromiso&#34;&gt;Nuestro Compromiso&lt;/h2&gt;&lt;p&gt;Con el objetivo de fomentar un entorno abierto y acogedor, nosotros, como organizadores y colaboradores, nos comprometemos a hacer que la participación en &lt;strong&gt;Containers Day&lt;/strong&gt; sea una experiencia libre de acoso para todos, independientemente de la edad, dimensión corporal, discapacidad, etnia, identidad y expresión de género, nivel de experiencia, nacionalidad, apariencia personal, raza, religión, identidad u orientación sexual.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Location</title>
+      <link>https://containers.day/location/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://containers.day/location/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sponsors &amp; Partners</title>
+      <link>https://containers.day/sponsors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://containers.day/sponsors/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Turismo Tropical</title>
+      <link>https://containers.day/tourism/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://containers.day/tourism/</guid>
+      <description>&lt;p&gt;Aprovecha tu viaje al &lt;strong&gt;Containers Day&lt;/strong&gt; en Santiago de los Caballeros para sumergirte en la historia, la cultura y la alegría de la segunda ciudad más importante de la República Dominicana. Ubicada en el fértil valle del Cibao, Santiago ofrece una experiencia urbana única llena de tradición y modernidad.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
