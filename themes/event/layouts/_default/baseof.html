@@ -122,9 +122,12 @@
       .header-menu li { list-style: none; height: 100%; display: flex; align-items: center; }
       .header-menu__link { color: #1A2A36 !important; font-weight: 600 !important; text-transform: uppercase; font-size: 15px; text-decoration: none; display: flex; align-items: center; height: 100%; }
       .header-menu__link:hover, .header-menu__link--active { color: var(--color-primary) !important; }
-      .solartec-cta { display: inline-flex; align-items: center; justify-content: center; padding: 0 3rem; height: 80px !important; background-color: var(--color-primary); color: white !important; font-weight: 600; font-size: 16px; text-decoration: none; align-self: stretch; transition: 0.3s; margin: 0; white-space: nowrap; }
-      .solartec-cta:hover { background-color: var(--color-primary-darker); }
-      @media (max-width: 991px) { .solartec-cta { display: none !important; } .page-header__navigation { padding-right: 2rem; height: auto; padding: 1rem 2rem; } .header-menu { display: none !important; } }
+      .solartec-cta { display: inline-flex; align-items: center; justify-content: center; padding: 0 2rem; height: 80px !important; background-color: #1b4fb1; color: white !important; font-weight: 600; font-size: 16px; text-decoration: none; transition: 0.3s; margin: 0; white-space: nowrap; border: none; }
+      .solartec-cta:hover { background-color: #163f8d; color: white !important; }
+      .solartec-cta-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 0 2rem; height: 80px !important; background-color: #2ecc71; color: white !important; font-weight: 600; font-size: 16px; text-decoration: none; transition: 0.3s; margin: 0; white-space: nowrap; border: none; }
+      .solartec-cta-secondary:hover { background-color: #27ae60; color: white !important; }
+      .header-buttons-group { display: flex; align-items: stretch; margin: 0; padding: 0; }
+      @media (max-width: 991px) { .header-buttons-group { display: none !important; } .page-header__navigation { padding-right: 2rem; height: auto; padding: 1rem 2rem; } .header-menu { display: none !important; } }
       @media (min-width: 992px) { .page-header__toggle-sidebar-label { display: none !important; } }
     </style>
     </head>
@@ -199,7 +202,10 @@
                         </div>
                     </div>
 
-                    <a href="{{ .Site.Params.themes.event.callToActionSecondary.url | default '#' }}" class="solartec-cta">Comprar Boleto <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
+                    <div class="header-buttons-group">
+                        <a href="{{ .Site.Params.themes.event.callToActionSecondary.url }}" class="solartec-cta-secondary" target="_blank">{{ .Site.Params.themes.event.callToActionSecondary.label | default "Ser Orador" }}</a>
+                        <a href="{{ .Site.Params.themes.event.callToAction.url | default "#register" }}" class="solartec-cta">Tickets <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
+                    </div>
                     
                 </nav>
             </div>

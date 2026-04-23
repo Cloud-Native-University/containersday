@@ -37,14 +37,15 @@ languages:
         params:
             # Open Graph / X (Twitter) Cards
             description: |
-                Un sitio web de demostración para mostrar las características del tema "Event" para el
-                generador de sitios web estáticos HUGO.
+                Containers Day 2026: La conferencia tecnológica líder en el Caribe sobre Contenedores, Kubernetes y Cloud Native. Únete a expertos internacionales en Santiago, República Dominicana.
             themes:
                 event:
-                    slogan: ¡La cumbre tecnológica más importante del Caribe!
+                    slogan: ¡La conferencia tecnológica más importante del Caribe!
                     location: UAPA, Santiago
                     description: |
-                        Bienvenido a **Containers Day**. Esta será la primera versión del evento más importante de contenedores y cloud native de la región del Caribe. Un evento de 2 días: 1 día de charlas técnicas de alto nivel y 1 día de networking exclusivo.
+                        **Containers Day 2026** es la conferencia tecnológica pionera en la región del Caribe dedicada exclusivamente al ecosistema de Contenedores, Kubernetes y tecnologías Cloud Native. Diseñado para ingenieros, arquitectos, desarrolladores y líderes tecnológicos, este evento de dos días combina el rigor técnico con la calidez del networking caribeño. 
+
+                        El primer día estará centrado en conferencias magistrales impartidas por expertos locales e internacionales, profundizando en casos de éxito, mejores prácticas de DevOps y la evolución del código abierto. El segundo día está reservado para la colaboración, mentorías y la creación de alianzas estratégicas en un entorno único. Únete a nosotros en Santiago para ser parte de la transformación digital que está redefiniendo el futuro del software.
                     directions: |
                         #### Llegando al Evento
                         Puedes volar directamente al Aeropuerto Internacional del Cibao (STI) en Santiago. Contaremos con transporte dedicado para asistentes hacia el campus universitario.
@@ -66,9 +67,9 @@ languages:
                         ### Información Adicional
                         - Reunimos diversas experiencias e innovación.
                     callToActionSecondary:
-                        label: ¡Conviértete en ponente!
+                        label: Ser Orador
                     heroSlides:
-                        - title: "¡La cumbre tecnológica más importante del Caribe!"
+                        - title: "¡La conferencia tecnológica más importante del Caribe!"
                           subtitle: "Containers Day 2026"
                           description: "Impulsamos la innovación tecnológica en el Caribe. Containers Day es el punto de encuentro para expertos en Cloud Native, Kubernetes y DevOps."
                           image: images/hero-background-v2.jpg
@@ -216,10 +217,10 @@ params:
                 embeddableMapUrl:
                 viewLargerMapUrl:
             callToAction:
-                eventbrite:
-                    eventId:
+                url: "#register"
             callToActionSecondary:
-                url:
+                url: "https://sessionize.com/containers-days-dr/"
+                label: "Ser Orador"
             socialLinks:
                 xUrl: https://x.com/containerslatam
                 facebookUrl: https://www.facebook.com/containersday

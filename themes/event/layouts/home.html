@@ -22,6 +22,8 @@
         "location" "UAPA, Santiago" )
     }}
 
+    {{ partial "sections/benefits.html" . }}
+
     {{- $tracks := slice }}
     {{- range (.Site.RegularPages.GroupByParam "track") }}
         {{- $tracks = $tracks | append (.Key) }}
