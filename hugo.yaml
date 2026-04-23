@@ -221,9 +221,9 @@ params:
             callToActionSecondary:
                 url:
             socialLinks:
-                xUrl: https://x.com/containersday
+                xUrl: https://x.com/containerslatam
                 facebookUrl: https://www.facebook.com/containersday
-                linkedinUrl: https://www.linkedin.com/company/containersday
+                linkedinUrl: https://www.linkedin.com/company/containersday-dr
             images:
                 logo: logos/logo-containersday-v2.png
                 titleBackground: images/hero-background-v2.jpg
