@@ -80,18 +80,26 @@ params:
                 logo: logos/logo-containersday-v2.png
                 titleBackground: images/hero-background-v2.jpg
             heroSlides:
-                - title: "¡La conferencia tecnológica más importante del Caribe!"
-                  subtitle: "Containers Day 2026"
-                  description: "Impulsamos la innovación tecnológica en el Caribe. Containers Day es el punto de encuentro para expertos en Cloud Native, Kubernetes y DevOps."
+                - title: "Orquestando el Mañana"
+                  subtitle: "Innovación"
+                  description: "IA + Cloud Native"
                   image: images/hero-background-v2.jpg
-                - title: "Aprende de los Mejores Expertos"
-                  subtitle: "Sesiones Técnicas"
-                  description: "Sumérgete en charlas de alto nivel sobre Kubernetes, Docker y el ecosistema Cloud Native con conferencistas internacionales y locales."
-                  image: images/hero-background-v5.png
-                - title: "Impulsando el Ecosistema Tecnológico"
-                  subtitle: "Nuestra Visión"
-                  description: "Forma parte del cambio. Containers Day es el motor de innovación para la próxima generación de profesionales en el Caribe y el mundo."
+                - title: "Infraestructura Inteligente"
+                  subtitle: "Escalabilidad"
+                  description: "Modelos de IA"
+                  image: images/hero-background-v3.jpg
+                - title: "El Motor de la Innovación"
+                  subtitle: "Tecnología"
+                  description: "Contenedores e IA"
                   image: images/hero-background-v4.png
+                - title: "Modernización Blindada"
+                  subtitle: "Seguridad"
+                  description: "Arquitecturas Cloud Native"
+                  image: images/hero-background-v5.png
+                - title: "Más allá de la Nube"
+                  subtitle: "Rendimiento"
+                  description: "Escalabilidad y Seguridad"
+                  image: images/hero-background-v2.jpg
             sponsors:
                 - logo: "logos/nixversity-cover.png"
                   url: "https://nixversity.com/"

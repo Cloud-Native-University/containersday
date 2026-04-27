@@ -61,23 +61,35 @@ cd_event_slogan:
 cd_event_location:
   other: "UAPA, Santiago"
 cd_hero_subtitle_1:
-  other: "Containers Day 2026"
+  other: "Innovation"
 cd_hero_title_1:
-  other: "The most important tech conference in the Caribbean!"
+  other: "Orchestrating Tomorrow: Where AI meets Cloud Native."
 cd_hero_desc_1:
-  other: "We drive technological innovation in the Caribbean. Containers Day is the meeting point for experts in Cloud Native, Kubernetes, and DevOps."
+  other: "We drive the convergence of Artificial Intelligence and modern architectures to define the technological future of the Caribbean."
 cd_hero_subtitle_2:
-  other: "Technical Sessions"
+  other: "Scalability"
 cd_hero_title_2:
-  other: "Learn from the Best Experts"
+  other: "Intelligent Infrastructure: Deploying AI Models at Global Scale."
 cd_hero_desc_2:
-  other: "Dive into high-level talks on Kubernetes, Docker, and the Cloud Native ecosystem with international and local speakers."
+  other: "Learn how Cloud Native technologies allow AI to transcend borders with unprecedented performance and efficiency."
 cd_hero_subtitle_3:
-  other: "Our Vision"
+  other: "Technology"
 cd_hero_title_3:
-  other: "Driving the Tech Ecosystem"
+  other: "The Innovation Engine: Containers, AI, and the Cloud of the Future."
 cd_hero_desc_3:
-  other: "Be part of the change. Containers Day is the innovation engine for the next generation of professionals in the Caribbean and the world."
+  other: "Discover the power of containers as the fundamental basis for the new era of intelligent and distributed applications."
+cd_hero_subtitle_4:
+  other: "Security"
+cd_hero_title_4:
+  other: "Armored Modernization: Infallible Security for Cloud Native Architectures."
+cd_hero_desc_4:
+  other: "Protect your digital assets with the best security practices and tools in highly dynamic cloud environments."
+cd_hero_subtitle_5:
+  other: "Performance"
+cd_hero_title_5:
+  other: "Beyond the Cloud: Scalability, Security, and High-Performance Storage."
+cd_hero_desc_5:
+  other: "Master the art of scaling massive infrastructures while maintaining integrity and speed at every layer of your stack."
 cd_sponsors:
   other: "Sponsors"
 cd_sponsors_thanks:

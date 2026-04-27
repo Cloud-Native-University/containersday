@@ -61,23 +61,35 @@ cd_event_slogan:
 cd_event_location:
   other: "UAPA, Santiago"
 cd_hero_subtitle_1:
-  other: "Containers Day 2026"
+  other: "Innovación"
 cd_hero_title_1:
-  other: "¡La conferencia tecnológica más importante del Caribe!"
+  other: "Orquestando el Mañana: Donde la IA se encuentra con el Cloud Native."
 cd_hero_desc_1:
-  other: "Impulsamos la innovación tecnológica en el Caribe. Containers Day es el punto de encuentro para expertos en Cloud Native, Kubernetes y DevOps."
+  other: "Impulsamos la convergencia de la Inteligencia Artificial y las arquitecturas modernas para definir el futuro tecnológico del Caribe."
 cd_hero_subtitle_2:
-  other: "Sesiones Técnicas"
+  other: "Escalabilidad"
 cd_hero_title_2:
-  other: "Aprende de los Mejores Expertos"
+  other: "Infraestructura Inteligente: Desplegando Modelos de IA a Escala Global."
 cd_hero_desc_2:
-  other: "Sumérgete en charlas de alto nivel sobre Kubernetes, Docker y el ecosistema Cloud Native con conferencistas internacionales y locales."
+  other: "Aprende cómo las tecnologías Cloud Native permiten que la IA trascienda fronteras con un rendimiento y eficiencia sin precedentes."
 cd_hero_subtitle_3:
-  other: "Nuestra Visión"
+  other: "Tecnología"
 cd_hero_title_3:
-  other: "Impulsando el Ecosistema Tecnológico"
+  other: "El Motor de la Innovación: Contenedores, IA y la Nube del Futuro."
 cd_hero_desc_3:
-  other: "Forma parte del cambio. Containers Day es el motor de innovación para la próxima generación de profesionales en el Caribe y el mundo."
+  other: "Descubre el poder de los contenedores como base fundamental para la nueva era de aplicaciones inteligentes y distribuidas."
+cd_hero_subtitle_4:
+  other: "Seguridad"
+cd_hero_title_4:
+  other: "Modernización Blindada: Seguridad Infalible para Arquitecturas Cloud Native."
+cd_hero_desc_4:
+  other: "Protege tus activos digitales con las mejores prácticas y herramientas de seguridad en entornos de nube altamente dinámicos."
+cd_hero_subtitle_5:
+  other: "Rendimiento"
+cd_hero_title_5:
+  other: "Más allá de la Nube: Escalabilidad, Seguridad y Almacenamiento de Alto Rendimiento."
+cd_hero_desc_5:
+  other: "Domina el arte de escalar infraestructuras masivas manteniendo la integridad y la velocidad en cada capa de tu stack."
 cd_sponsors:
   other: "Patrocinadores"
 cd_sponsors_thanks:
