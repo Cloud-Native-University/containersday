@@ -104,6 +104,8 @@ sponsor_desc.NixVersity:
   other: "Leaders in DevOps and Cloud Native training in the region. NixVersity drives local talent towards global standards."
 sponsor_desc.UAPA:
   other: "Official venue for Containers Day 2026. The Open University for Adults (UAPA) is a pioneer in distance education and tech leadership in Santiago."
+sponsor_desc.Innmotrix:
+  other: "Innovation partner in technological solutions applied to the health and wellness sector."
 cd_sponsor_tier_platinum:
   other: "🏆 Platinum Sponsor"
 cd_sponsor_tier_gold:

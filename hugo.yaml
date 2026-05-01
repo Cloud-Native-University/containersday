@@ -111,6 +111,11 @@ params:
                   name: 'UAPA'
                   description: 'Sede oficial de Containers Day 2026.'
                   tier: "platinum"
+                - logo: "logos/innmotrix.png"
+                  url: "https://innmotrix.com/"
+                  name: 'Innmotrix'
+                  description: 'Socio de salud y tecnología.'
+                  tier: "silver"
             sponsorTiers:
                 platinum:
                     label: "🏆 Patrocinador Platinum"

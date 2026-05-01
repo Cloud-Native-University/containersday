@@ -90,9 +90,11 @@
                         {{ range $sponsor := $validSponsors }}
                             <div class="ticker__item">
                                 <a href="{{ $sponsor.url }}" target="_blank" rel="noopener">
-                                    <img src="{{ (resources.Get $sponsor.logo).RelPermalink }}" 
+                                    {{ with resources.Get $sponsor.logo }}
+                                    <img src="{{ .RelPermalink }}" 
                                          alt="{{ $sponsor.name }}" 
                                          class="sponsor-card__logo">
+                                    {{ end }}
                                 </a>
                             </div>
                         {{ end }}
