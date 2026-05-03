@@ -174,3 +174,15 @@ cd_our_community:
   other: "Nuestra Comunidad"
 cd_community_expectations:
   other: "Lo que espera del evento nuestra comunidad universitaria"
+event_highlights_section.number_of_speakers:
+  one: "{{ . }} Ponente"
+  other: "{{ . }} Ponentes"
+event_highlights_section.number_of_sessions:
+  one: "{{ . }} Sesión"
+  other: "{{ . }} Sesiones"
+event_highlights_section.number_of_workshops:
+  one: "{{ . }} Taller"
+  other: "{{ . }} Talleres"
+event_highlights_section.number_of_days:
+  one: "{{ . }} Día"
+  other: "{{ . }} Días"

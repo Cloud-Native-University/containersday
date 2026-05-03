@@ -127,8 +127,98 @@
       .solartec-cta-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 0 2rem; height: 80px !important; background-color: #2ecc71; color: white !important; font-weight: 600; font-size: 16px; text-decoration: none; transition: 0.3s; margin: 0; white-space: nowrap; border: none; }
       .solartec-cta-secondary:hover { background-color: #27ae60; color: white !important; }
       .header-buttons-group { display: flex; align-items: stretch; margin: 0; padding: 0; }
-      @media (max-width: 991px) { .header-buttons-group { display: none !important; } .page-header__navigation { padding-right: 2rem; height: auto; padding: 1rem 2rem; } .header-menu { display: none !important; } }
+      
+      /* Mobile App-like Bottom Navigation */
+      .mobile-bottom-nav { display: none; }
+      
+      @media (max-width: 991px) { 
+          .custom-topbar { display: flex; flex-direction: column; padding: 12px 15px; align-items: center; justify-content: center; background-color: rgba(26, 42, 54, 0.95) !important; backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+          .custom-topbar-col-left { display: flex; flex-direction: column; align-items: center; padding: 0; width: 100%; justify-content: center; gap: 6px; }
+          .custom-topbar-col-right { display: none; }
+          .custom-topbar-item { margin-right: 0; display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center; width: 100%; }
+          .custom-topbar-item small { white-space: normal; font-size: 13px; font-weight: 600; color: #ffffff; line-height: 1.2; }
+          .custom-topbar-item .custom-topbar-icon { font-size: 14px; color: var(--color-primary); }
+          
+          .page-header { display: none !important; }
+          
+          .header-buttons-group { display: none !important; } 
+          .page-header__navigation { padding-right: 2rem; height: auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; } 
+          .header-menu { display: none !important; } 
+          .page-header__title-link { order: 1; margin-right: auto; margin-left: auto; justify-content: center; }
+          .page-header__toggle-sidebar-label { display: none !important; } /* Hide old hamburger */
+          
+          /* Show Bottom Nav */
+          .mobile-bottom-nav {
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              position: fixed;
+              bottom: 0;
+              left: 0;
+              width: 100vw;
+              background-color: #ffffff;
+              box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+              z-index: 9998;
+              height: 70px;
+              padding-bottom: env(safe-area-inset-bottom);
+          }
+          .mobile-nav-item {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              color: #9A9DA2;
+              text-decoration: none;
+              font-size: 11px;
+              font-weight: 600;
+              flex: 1;
+              cursor: pointer;
+              transition: color 0.2s;
+          }
+          .mobile-nav-item i {
+              font-size: 20px;
+              margin-bottom: 4px;
+          }
+          .mobile-nav-item:hover, .mobile-nav-item:active {
+              color: var(--color-primary);
+          }
+          .mobile-nav-item--primary {
+              color: var(--color-primary);
+          }
+          
+          /* Floating Action Button for Whale */
+          .mobile-nav-item--center {
+              position: relative;
+              top: -20px;
+          }
+          .circle-btn {
+              background-color: var(--color-primary);
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: white;
+              box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+              border: 4px solid #ffffff; /* to blend with navbar */
+              transition: transform 0.3s ease;
+          }
+          .circle-btn:active {
+              transform: scale(0.95);
+          }
+          .circle-btn i {
+              font-size: 30px;
+              margin-bottom: 0;
+          }
+
+          /* Add padding to body to prevent content from hiding behind nav */
+          body.page-body {
+              padding-bottom: 70px;
+          }
+      }
       @media (min-width: 992px) { .page-header__toggle-sidebar-label { display: none !important; } }
+
     </style>
     </head>
 
@@ -140,15 +230,29 @@
 
         <!-- Topbar Start -->
         <div class="custom-topbar">
-            <div class="custom-topbar-row">
+            <!-- Mobile Action Buttons -->
+            <div class="mobile-topbar-actions d-flex d-lg-none w-100 justify-content-center" style="gap: 15px; padding: 0 10px;">
+                <a href="{{ .Site.Params.themes.event.callToAction.url | default "#register" }}" class="btn" style="flex: 1; font-weight: 700; font-size: 14px; border-radius: 8px; padding: 10px 0; background-color: var(--color-primary); color: white; border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">{{ T "cd_tickets" | default "Comprar Tickets" }}</a>
+                <a href="/sponsors" class="btn" style="flex: 1; font-weight: 700; font-size: 14px; border-radius: 8px; padding: 10px 0; background-color: #2ecc71; color: white; border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Patrocinar</a>
+            </div>
+
+            <div class="custom-topbar-row d-none d-lg-flex" style="width: 100%;">
                 <div class="custom-topbar-col-left">
                     <div class="custom-topbar-item">
                         <small class="fas fa-map-marker-alt custom-topbar-icon"></small>
                         <small>{{ .Site.Params.themes.event.location | default "Punta Cana, RD" }}</small>
                     </div>
                     <div class="custom-topbar-item">
-                        <small class="far fa-clock custom-topbar-icon"></small>
-                        <small>{{ .Site.Params.themes.event.startDate }} - {{ .Site.Params.themes.event.endDate }}</small>
+                        <small class="far fa-calendar-alt custom-topbar-icon" style="margin-right: 5px;"></small>
+                        <small style="text-transform: capitalize;">
+                            {{ $start := time .Site.Params.themes.event.startDate }}
+                            {{ $end := time .Site.Params.themes.event.endDate }}
+                            {{ if eq .Site.Params.themes.event.startDate .Site.Params.themes.event.endDate }}
+                                {{ $start | time.Format ":date_long" }}
+                            {{ else }}
+                                {{ $start | time.Format ":date_medium" }} - {{ $end | time.Format ":date_medium" }}
+                            {{ end }}
+                        </small>
                     </div>
                 </div>
                 <div class="custom-topbar-col-right">
@@ -232,13 +336,21 @@
                     </label>
                 </header>
 
-                {{- partial "cta/button.html" (
-                    dict
-                    "eventbriteId" .Site.Params.themes.event.callToAction.eventbrite.eventId
-                    "ctaUrl" .Site.Params.themes.event.callToAction.other.url
-                    "buttonClass" "button--scaled"
-                    )
-                }}
+                <div class="mobile-menu-ctas" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 2rem;">
+                    <a href="{{ .Site.Params.themes.event.callToAction.url | default "#register" }}" class="solartec-cta" style="width: 100%; height: 50px !important;">{{ T "cd_tickets" }}</a>
+                    <a href="{{ .Site.Params.themes.event.callToActionSecondary.url }}" class="solartec-cta-secondary" target="_blank" style="width: 100%; height: 50px !important;">{{ T "cd_become_speaker" }}</a>
+                </div>
+
+                <div class="mobile-lang-switcher" style="margin-bottom: 2rem;">
+                    <span style="color: #9A9DA2; font-size: 14px; text-transform: uppercase; margin-bottom: 5px; display: block;">{{ T "language" | default "Language" }}:</span>
+                    <select class="lang-select" onchange="location = this.value;" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; text-transform: uppercase; width: 100%; outline: none;">
+                        {{ range .AllTranslations }}
+                            <option value="{{ .Permalink }}" {{ if eq .Language.Lang $.Language.Lang }}selected{{ end }} style="color: #1A2A36;">
+                                {{ if eq .Language.Lang "en" }}English (EN){{ else }}Español (ES){{ end }}
+                            </option>
+                        {{ end }}
+                    </select>
+                </div>
 
                 {{- partial "menus/sidebar.html" (
                     dict
@@ -310,7 +422,7 @@
 
         <footer class="section-container">
             <section class="section section--short page-footer-section">
-                <div class="page-footer-section__start">
+                <div class="page-footer-section__start d-none d-lg-block">
                     <a href="/code-of-conduct" style="color: #1A2A36; font-weight: 600; text-decoration: none; font-size: 14px;">{{ T "cd_code_of_conduct" }}</a>
                 </div>
 
@@ -323,6 +435,32 @@
             </section>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <nav class="mobile-bottom-nav">
+            <a href="{{ .Site.Params.themes.event.callToAction.url | default "#register" }}" class="mobile-nav-item mobile-nav-item--primary">
+                <i class="fas fa-ticket-alt"></i>
+                <span>{{ T "cd_tickets" | default "Tickets" }}</span>
+            </a>
+            <a href="{{ "sessions" | relLangURL }}" class="mobile-nav-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>{{ T "menu.sessions" | default "Agenda" }}</span>
+            </a>
+            
+            <a href="{{ site.Home.RelPermalink }}" class="mobile-nav-item mobile-nav-item--center">
+                <div class="circle-btn">
+                    <i class="fas fa-home"></i>
+                </div>
+            </a>
+
+            <a href="{{ "speakers" | relLangURL }}" class="mobile-nav-item">
+                <i class="fas fa-users"></i>
+                <span>{{ T "menu.speakers" | default "Ponentes" }}</span>
+            </a>
+            <label for="sidebarToggle" class="mobile-nav-item">
+                <i class="fas fa-bars"></i>
+                <span>{{ T "menu.more" | default "Más" }}</span>
+            </label>
+        </nav>
+
         {{- partial "firebase-init.html" . -}}
     </body>
 </html>

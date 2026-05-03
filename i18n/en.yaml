@@ -174,3 +174,6 @@ cd_our_community:
   other: "Our Community"
 cd_community_expectations:
   other: "What our university community expects from the event"
+event_highlights_section.number_of_workshops:
+  one: "{{ . }} Workshop"
+  other: "{{ . }} Workshops"
