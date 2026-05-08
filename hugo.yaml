@@ -11,10 +11,7 @@ languages:
         weight: 1
         menus:
             main:
-                - identifier: sessions
-                  name: "Agenda"
-                  pageRef: /sessions
-                  weight: 20
+
                 - identifier: speakers
                   name: "Ponentes"
                   pageRef: /speakers
@@ -34,10 +31,7 @@ languages:
         weight: 2
         menus:
             main:
-                - identifier: sessions
-                  name: "Schedule"
-                  pageRef: /sessions
-                  weight: 20
+
                 - identifier: speakers
                   name: "Speakers"
                   pageRef: /speakers
@@ -115,6 +109,11 @@ params:
                   url: "https://innmotrix.com/"
                   name: 'Innmotrix'
                   description: 'Socio de salud y tecnología.'
+                  tier: "silver"
+                - logo: "logos/darian-vargas-color.png"
+                  url: "https://darianvargas.com/"
+                  name: 'Darian Vargas'
+                  description: 'Ministro de Educación Independiente'
                   tier: "silver"
             sponsorTiers:
                 platinum:

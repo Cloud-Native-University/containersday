@@ -440,11 +440,6 @@
                 <i class="fas fa-ticket-alt"></i>
                 <span>{{ T "cd_tickets" | default "Tickets" }}</span>
             </a>
-            <a href="{{ "sessions" | relLangURL }}" class="mobile-nav-item">
-                <i class="fas fa-calendar-alt"></i>
-                <span>{{ T "menu.sessions" | default "Agenda" }}</span>
-            </a>
-            
             <a href="{{ site.Home.RelPermalink }}" class="mobile-nav-item mobile-nav-item--center">
                 <div class="circle-btn">
                     <i class="fas fa-home"></i>
@@ -452,7 +447,7 @@
             </a>
 
             <a href="{{ "speakers" | relLangURL }}" class="mobile-nav-item">
-                <i class="fas fa-users"></i>
+                <img src="{{ "speakers/judlup/avatar.jpg" | relURL }}" alt="Speaker" style="width: 28px; height: 28px; border-radius: 50%; object-fit: cover; margin-bottom: 2px; border: 2px solid var(--color-primary); background-color: #fff;">
                 <span>{{ T "menu.speakers" | default "Ponentes" }}</span>
             </a>
             <label for="sidebarToggle" class="mobile-nav-item">

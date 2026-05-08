@@ -25,7 +25,7 @@
         }
         .sponsor-modern:hover { background: #ffffff; border-color: var(--color-primary); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
         .sponsor-modern img { max-width: 100%; max-height: 80px; filter: grayscale(1); transition: 0.3s; opacity: 0.7; }
-        .sponsor-modern:hover img { filter: grayscale(0); opacity: 1; }
+        .sponsor-modern:hover img { filter: grayscale(0); opacity: 1; transform: scale(1.05); }
 
         /* Ritmo Style (Platinum/Gold) */
         .sponsor-ritmo { 
@@ -77,23 +77,6 @@
                         </h2>
 
                         {{ if gt (len $tierSponsors) 0 }}
-                            {{ if or (eq $tierKey "platinum") (eq $tierKey "gold") }}
-                                <div class="sponsors-grid grid-3">
-                                    {{ range $sponsor := $tierSponsors }}
-                                        <a href="{{ $sponsor.url }}" target="_blank" rel="noopener" class="sponsor-ritmo">
-                                            <div class="sponsor-ritmo-image-wrap">
-                                                {{ with resources.Get $sponsor.logo }}
-                                                    <img src="{{ .RelPermalink }}" alt="{{ $sponsor.name }}">
-                                                {{ end }}
-                                            </div>
-                                            <div class="sponsor-ritmo-content">
-                                                <h5 class="sponsor-ritmo-title">{{ $sponsor.name }}</h5>
-                                                <p class="sponsor-ritmo-text">{{ T (printf "sponsor_desc.%s" $sponsor.name) | default $sponsor.description | default (T "cd_sponsor_default_desc") }}</p>
-                                            </div>
-                                        </a>
-                                    {{ end }}
-                                </div>
-                            {{ else }}
                                 <div class="sponsors-grid grid-4">
                                     {{ range $sponsor := $tierSponsors }}
                                         <a href="{{ $sponsor.url }}" target="_blank" rel="noopener" class="sponsor-modern">
@@ -103,7 +86,6 @@
                                         </a>
                                     {{ end }}
                                 </div>
-                            {{ end }}
                         {{ else }}
                             <div class="empty-tier">
                                 <p>{{ T "cd_sponsor_space_available" }}</p>
