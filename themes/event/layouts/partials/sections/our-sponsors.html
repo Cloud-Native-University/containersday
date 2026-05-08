@@ -1,7 +1,7 @@
 {{ $sponsors := .sponsors }}
 {{ $validSponsors := slice }}
 {{ range $sponsor := $sponsors }}
-    {{ if and $sponsor.logo $sponsor.url }}
+    {{ if and $sponsor.logo $sponsor.url (ne $sponsor.tier "community") }}
         {{ $validSponsors = $validSponsors | append $sponsor }}
     {{ end }}
 {{- end }}

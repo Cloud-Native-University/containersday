@@ -115,6 +115,11 @@ params:
                   name: 'Darian Vargas'
                   description: 'Ministro de Educación Independiente'
                   tier: "silver"
+                - logo: "logos/docker-rd-hq.png"
+                  url: "https://www.meetup.com/dockerrd/"
+                  name: 'Docker República Dominicana'
+                  description: 'Comunidad Oficial de Docker en República Dominicana'
+                  tier: "community"
             sponsorTiers:
                 platinum:
                     label: "🏆 Patrocinador Platinum"
