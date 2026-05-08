@@ -177,3 +177,11 @@ cd_community_expectations:
 event_highlights_section.number_of_workshops:
   one: "{{ . }} Workshop"
   other: "{{ . }} Workshops"
+cd_partner_with_us:
+  other: "Partner With Us"
+cd_partner_with_us_desc:
+  other: "Fueling the growth of our cloud native community. Join the vanguard of tech leadership."
+cd_download_prospectus:
+  other: "Download Prospectus"
+cd_contact_team:
+  other: "Contact Team"

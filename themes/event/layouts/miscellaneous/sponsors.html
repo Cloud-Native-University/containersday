@@ -52,10 +52,82 @@
             text-align: center; color: #999; font-style: italic;
         }
         .empty-tier a { color: var(--color-primary); font-weight: 700; text-decoration: none; }
+
+        .partner-header {
+            text-align: center;
+            padding: 100px 20px 60px 20px;
+            background: #ffffff;
+            margin-bottom: 60px;
+        }
+        .partner-header h1 {
+            font-size: 3.5rem;
+            color: #1A2A36;
+            font-weight: 900;
+            margin-bottom: 20px;
+            font-family: inherit;
+        }
+        .partner-header p {
+            font-size: 1.3rem;
+            color: #4B5563;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+        .partner-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .partner-btn {
+            padding: 15px 35px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .partner-btn-primary {
+            background-color: #e55c42; /* Color naranja/rojo del botón */
+            color: #ffffff;
+            border: 2px solid #e55c42;
+            box-shadow: 0 4px 15px rgba(229, 92, 66, 0.3);
+        }
+        .partner-btn-primary:hover {
+            background-color: #c94630;
+            border-color: #c94630;
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+        .partner-btn-outline {
+            background-color: transparent;
+            color: #1A2A36;
+            border: 2px solid #1A2A36;
+        }
+        .partner-btn-outline:hover {
+            background-color: #1A2A36;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .partner-header h1 { font-size: 2.5rem; }
+            .partner-header p { font-size: 1.1rem; }
+            .partner-buttons { flex-direction: column; align-items: stretch; max-width: 300px; margin: 0 auto; }
+        }
     </style>
 
     <div class="sponsors-page">
-        {{- partial "generic-hero.html" . }}
+
+        <div class="partner-header">
+            <div class="container">
+                <h1>{{ T "cd_partner_with_us" }}</h1>
+                <p>{{ T "cd_partner_with_us_desc" }}</p>
+                <div class="partner-buttons">
+                    <a href="/ContainersDay_2026.pdf" download target="_blank" class="partner-btn partner-btn-primary">{{ T "cd_download_prospectus" }}</a>
+                    <a href="mailto:hola@containers.day" class="partner-btn partner-btn-outline">{{ T "cd_contact_team" }}</a>
+                </div>
+            </div>
+        </div>
 
         <div class="container">
             {{ $tierOrder := slice "platinum" "gold" "silver" "community" }}
