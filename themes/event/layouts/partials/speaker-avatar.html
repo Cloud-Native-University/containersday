@@ -9,7 +9,7 @@
         )
     }}
 
-    {{- if (or $input.linkedinUrl $input.xUrl $input.companyUrl) }}
+    {{- if (or $input.linkedinUrl $input.xUrl $input.companyUrl $input.instagramUrl $input.websiteUrl) }}
         {{ $ariaLabel := T "speakers_page.social_links" $input.avatarAlt }}
 
         {{- partial "social-links.html" (
@@ -17,6 +17,8 @@
             "linkedinUrl" $input.linkedinUrl
             "xUrl" $input.xUrl
             "companyUrl" $input.companyUrl
+            "instagramUrl" $input.instagramUrl
+            "websiteUrl" $input.websiteUrl
             "linkClass" "speaker-avatar-container__social-link"
             "ariaLabel" $ariaLabel
             )

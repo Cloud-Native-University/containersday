@@ -4,7 +4,7 @@
 <div class="speaker-card">
     <a class="speaker-card__link" href="{{ $input.profileUrl }}" aria-label="{{ $input.name }}">
         {{ with $input.avatarResource }}
-            {{ with . | images.Filter (images.Process "resize 256x") }}
+            {{ with . | images.Filter (images.Process "fill 256x256") }}
                 <img
                     class="speaker-card__avatar"
                     src="{{ .RelPermalink }}"
@@ -27,7 +27,7 @@
     </a>
     <div class="speaker-card__social-links">
         {{ $ariaLabel := T "speakers_page.social_links" $input.name }}
-        {{- $hasSocialLinks := or $input.linkedinUrl $input.xUrl $input.companyUrl }}
+        {{- $hasSocialLinks := or $input.linkedinUrl $input.xUrl $input.companyUrl $input.instagramUrl $input.websiteUrl }}
 
         {{- if $hasSocialLinks }}
             {{- partial "social-links.html" (
@@ -35,6 +35,8 @@
                 "linkedinUrl" $input.linkedinUrl
                 "xUrl" $input.xUrl
                 "companyUrl" $input.companyUrl
+                "instagramUrl" $input.instagramUrl
+                "websiteUrl" $input.websiteUrl
                 "linkClass" "speaker-card__social-link"
                 "ariaLabel" $ariaLabel
                 )
