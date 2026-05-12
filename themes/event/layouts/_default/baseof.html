@@ -232,7 +232,7 @@
         <div class="custom-topbar">
             <!-- Mobile Action Buttons -->
             <div class="mobile-topbar-actions d-flex d-lg-none w-100 justify-content-center" style="gap: 15px; padding: 0 10px;">
-                <a href="{{ .Site.Params.themes.event.callToAction.url | default "#register" }}" class="btn" style="flex: 1; font-weight: 700; font-size: 14px; border-radius: 8px; padding: 10px 0; background-color: var(--color-primary); color: white; border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">{{ T "cd_tickets" | default "Comprar Tickets" }}</a>
+                <a href="{{ .Site.Params.themes.event.callToAction.url | default "#register" }}" target="_blank" class="btn" style="flex: 1; font-weight: 700; font-size: 14px; border-radius: 8px; padding: 10px 0; background-color: var(--color-primary); color: white; border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">{{ T "cd_tickets" | default "Comprar Tickets" }}</a>
                 <a href="/sponsors" class="btn" style="flex: 1; font-weight: 700; font-size: 14px; border-radius: 8px; padding: 10px 0; background-color: #2ecc71; color: white; border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Patrocinar</a>
             </div>
 
@@ -317,7 +317,7 @@
 
                     <div class="header-buttons-group">
                         <a href="{{ .Site.Params.themes.event.callToActionSecondary.url }}" class="solartec-cta-secondary" target="_blank">{{ T "cd_become_speaker" }}</a>
-                        <a href="{{ .Site.Params.themes.event.callToAction.url | default "#register" }}" class="solartec-cta">{{ T "cd_tickets" }} <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
+                        <a href="{{ .Site.Params.themes.event.callToAction.url | default "#register" }}" target="_blank" class="solartec-cta">{{ T "cd_tickets" }} <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
                     </div>
                     
                 </nav>
@@ -337,7 +337,7 @@
                 </header>
 
                 <div class="mobile-menu-ctas" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 2rem;">
-                    <a href="{{ .Site.Params.themes.event.callToAction.url | default "#register" }}" class="solartec-cta" style="width: 100%; height: 50px !important;">{{ T "cd_tickets" }}</a>
+                    <a href="{{ .Site.Params.themes.event.callToAction.url | default "#register" }}" target="_blank" class="solartec-cta" style="width: 100%; height: 50px !important;">{{ T "cd_tickets" }}</a>
                     <a href="{{ .Site.Params.themes.event.callToActionSecondary.url }}" class="solartec-cta-secondary" target="_blank" style="width: 100%; height: 50px !important;">{{ T "cd_become_speaker" }}</a>
                 </div>
 

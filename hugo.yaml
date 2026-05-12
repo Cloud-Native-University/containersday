@@ -62,7 +62,7 @@ params:
                 - "Santiago de los Caballeros"
                 - "República Dominicana"
             callToAction:
-                url: "#register"
+                url: "https://cap.uapa.edu.do/producto/containers-day-2026/"
             callToActionSecondary:
                 url: "https://sessionize.com/containers-days-dr/"
                 label: "Ser Orador"

@@ -173,7 +173,7 @@
             <div class="cta-bottom-banner animate__animated animate__zoomIn">
                 <h3>{{ T "cd_tourism_ready_to_live" }}</h3>
                 <p>{{ T "cd_tourism_ready_desc" }}</p>
-                <a href="#register" class="btn-register">{{ T "cd_register_now" }}</a>
+                <a href="{{ .Site.Params.themes.event.callToAction.url | default "#register" }}" class="btn-register" target="_blank">{{ T "cd_register_now" }}</a>
             </div>
         </div>
     </div>

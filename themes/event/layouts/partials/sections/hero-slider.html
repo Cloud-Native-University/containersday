@@ -224,7 +224,7 @@
                     <p class="hero-description">{{ T (printf "cd_hero_desc_%d" (add $index 1)) | markdownify }}</p>
                     
                     <div class="btn-group">
-                        <a href="{{ $.context.Site.Params.themes.event.callToAction.url | default "#register" }}" class="btn-green">{{ T "cd_buy_tickets" }}</a>
+                        <a href="{{ $.context.Site.Params.themes.event.callToAction.url | default "#register" }}" target="_blank" class="btn-green">{{ T "cd_buy_tickets" }}</a>
                         {{ if $.context.Site.Params.themes.event.callToActionSecondary.url }}
                         <a href="{{ $.context.Site.Params.themes.event.callToActionSecondary.url }}" class="btn-blue" target="_blank">{{ T "cd_apply_speaker" }}</a>
                         {{ end }}
