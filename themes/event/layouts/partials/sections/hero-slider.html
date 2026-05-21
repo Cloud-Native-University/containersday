@@ -254,12 +254,7 @@
 
 <div id="mainHeroSlider" class="carousel slide hero-carousel" data-bs-ride="carousel">
     {{ if gt ($slides | len) 1 }}
-    <!-- Indicators -->
-    <div class="carousel-indicators" style="bottom: 200px;">
-        {{ range $index, $slide := $slides }}
-        <button type="button" data-bs-target="#mainHeroSlider" data-bs-slide-to="{{ $index }}" {{ if eq $index 0 }}class="active" aria-current="true"{{ end }} aria-label="Slide {{ add $index 1 }}"></button>
-        {{ end }}
-    </div>
+    <!-- Previous/Next Buttons remain -->
     {{ end }}
 
     <div class="carousel-inner">
