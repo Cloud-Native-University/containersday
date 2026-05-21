@@ -185,3 +185,16 @@ cd_download_prospectus:
   other: "Download Prospectus"
 cd_contact_team:
   other: "Contact Team"
+
+cd_hero_organizers_title:
+  other: "AN INITIATIVE DRIVEN BY"
+cd_hero_innovation:
+  other: "INNOVATION"
+cd_hero_technology:
+  other: "TECHNOLOGY"
+cd_hero_collaboration:
+  other: "COLLABORATION"
+cd_hero_sustainability:
+  other: "SUSTAINABILITY"
+cd_hero_global_impact:
+  other: "GLOBAL IMPACT"

@@ -194,3 +194,16 @@ cd_download_prospectus:
   other: "Descargar Prospecto"
 cd_contact_team:
   other: "Contactar al Equipo"
+
+cd_hero_organizers_title:
+  other: "UNA INICIATIVA IMPULSADA POR"
+cd_hero_innovation:
+  other: "INNOVACIÓN"
+cd_hero_technology:
+  other: "TECNOLOGÍA"
+cd_hero_collaboration:
+  other: "COLABORACIÓN"
+cd_hero_sustainability:
+  other: "SOSTENIBILIDAD"
+cd_hero_global_impact:
+  other: "IMPACTO GLOBAL"
