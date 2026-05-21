@@ -192,7 +192,7 @@
 
     .hero-organizers-wrapper {
         position: absolute;
-        bottom: 30px;
+        bottom: 80px;
         left: 0;
         width: 100%;
         display: flex;
@@ -250,6 +250,64 @@
     .logo-eu { height: 45px; }
     .logo-cadesoft { height: 45px; }
     .logo-uapa { height: 45px; }
+
+    .hero-bottom-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 15, 40, 0.6);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+        z-index: 20;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-bottom-bar-items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 95%;
+        max-width: 1200px;
+    }
+
+    .hero-bottom-item {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
+
+    .hero-bottom-item i {
+        color: #00F48D;
+        margin-right: 8px;
+        font-size: 16px;
+    }
+
+    .hero-bottom-divider {
+        width: 1px;
+        height: 15px;
+        background-color: rgba(255, 255, 255, 0.3);
+        margin: 0 30px;
+    }
+
+    @media (max-width: 991px) {
+        .hero-bottom-divider { display: none; }
+        .hero-bottom-bar-items { gap: 20px; }
+        .hero-bottom-item { width: calc(33% - 20px); justify-content: center; text-align: center; }
+        .hero-organizers-wrapper { bottom: 120px; }
+    }
+    @media (max-width: 576px) {
+        .hero-bottom-item { width: calc(50% - 20px); }
+        .hero-organizers-wrapper { bottom: 160px; }
+    }
 </style>
 
 <div id="mainHeroSlider" class="carousel slide hero-carousel" data-bs-ride="carousel">
@@ -312,6 +370,20 @@
                 <img src="/logos/organizers/cadesoft.png" alt="CadeSoft" class="logo-cadesoft" />
                 <img src="/logos/organizers/uapa.png" alt="UAPA" class="logo-uapa" />
             </div>
+        </div>
+    </div>
+
+    <div class="hero-bottom-bar">
+        <div class="hero-bottom-bar-items">
+            <div class="hero-bottom-item"><i class="fas fa-graduation-cap"></i> INNOVACIÓN</div>
+            <div class="hero-bottom-divider"></div>
+            <div class="hero-bottom-item"><i class="fas fa-cloud"></i> TECNOLOGÍA</div>
+            <div class="hero-bottom-divider"></div>
+            <div class="hero-bottom-item"><i class="fas fa-users"></i> COLABORACIÓN</div>
+            <div class="hero-bottom-divider"></div>
+            <div class="hero-bottom-item"><i class="fas fa-leaf"></i> SOSTENIBILIDAD</div>
+            <div class="hero-bottom-divider"></div>
+            <div class="hero-bottom-item"><i class="fas fa-globe"></i> IMPACTO GLOBAL</div>
         </div>
     </div>
 </div>
