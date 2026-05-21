@@ -187,7 +187,61 @@
     @media (max-width: 768px) {
         .hero-carousel .display-1 { font-size: 2.5rem; }
         .hero-stats-bar { display: none; }
+        .hero-organizers { display: none; }
     }
+
+    .hero-organizers {
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 1000px;
+        z-index: 20;
+    }
+
+    .hero-organizers-title {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #2ecc71;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .hero-organizers-title::before,
+    .hero-organizers-title::after {
+        content: '';
+        flex: 1;
+        border-bottom: 2px solid #2ecc71;
+        margin: 0 15px;
+        opacity: 0.8;
+    }
+
+    .hero-organizers-box {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .hero-organizers-box img {
+        height: 60px;
+        object-fit: contain;
+        max-width: 100%;
+        filter: none;
+    }
+
+    /* Exceptions if needed for logos */
+    .logo-uapa { height: 45px !important; }
+    .logo-eu { height: 75px !important; }
 </style>
 
 <div id="mainHeroSlider" class="carousel slide hero-carousel" data-bs-ride="carousel">
@@ -245,6 +299,16 @@
         <span class="visually-hidden">Next</span>
     </button>
     {{ end }}
+
+    <div class="hero-organizers animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
+        <div class="hero-organizers-title">{{ T "cd_hero_organizers_title" | default "UNA INICIATIVA IMPULSADA POR" }}</div>
+        <div class="hero-organizers-box">
+            <img src="/logos/organizers/scale2connect.png" alt="Scale2Connect" class="logo-scale2connect" />
+            <img src="/logos/organizers/eu.png" alt="Funded by the European Union" class="logo-eu" />
+            <img src="/logos/organizers/cadesoft.png" alt="CadeSoft" class="logo-cadesoft" />
+            <img src="/logos/organizers/uapa.png" alt="UAPA" class="logo-uapa" />
+        </div>
+    </div>
 </div>
 
 <script>
