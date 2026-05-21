@@ -192,7 +192,7 @@
 
     .hero-organizers-wrapper {
         position: absolute;
-        bottom: 60px;
+        bottom: 30px;
         left: 0;
         width: 100%;
         display: flex;
@@ -201,28 +201,30 @@
     }
 
     .hero-organizers {
-        width: 90%;
-        max-width: 1000px;
+        width: 95%;
+        max-width: 1200px;
     }
 
     .hero-organizers-title {
+        color: #00F48D;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 2px;
+        text-align: center;
+        margin-bottom: 15px;
         display: flex;
         align-items: center;
-        text-align: center;
-        color: #2ecc71;
-        font-weight: 700;
-        font-size: 0.85rem;
-        letter-spacing: 1px;
-        margin-bottom: 15px;
+        justify-content: center;
     }
 
     .hero-organizers-title::before,
     .hero-organizers-title::after {
-        content: '';
-        flex: 1;
-        border-bottom: 2px solid #2ecc71;
+        content: "";
+        display: inline-block;
+        width: 50px;
+        height: 2px;
+        background-color: #00F48D;
         margin: 0 15px;
-        opacity: 0.8;
     }
 
     .hero-organizers-box {
@@ -230,31 +232,30 @@
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border-radius: 12px;
-        padding: 20px 40px;
+        padding: 15px 30px;
         display: flex;
         align-items: center;
         justify-content: space-around;
-        gap: 30px;
+        gap: 20px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         flex-wrap: wrap;
     }
 
     .hero-organizers-box img {
-        height: 60px;
+        height: 45px;
         object-fit: contain;
-        max-width: 100%;
-        filter: none;
     }
 
-    /* Exceptions if needed for logos */
-    .logo-uapa { height: 45px !important; }
-    .logo-eu { height: 75px !important; }
+    .logo-scale2connect { height: 45px; }
+    .logo-eu { height: 45px; }
+    .logo-cadesoft { height: 45px; }
+    .logo-uapa { height: 45px; }
 </style>
 
 <div id="mainHeroSlider" class="carousel slide hero-carousel" data-bs-ride="carousel">
     {{ if gt ($slides | len) 1 }}
     <!-- Indicators -->
-    <div class="carousel-indicators" style="bottom: 120px;">
+    <div class="carousel-indicators" style="bottom: 200px;">
         {{ range $index, $slide := $slides }}
         <button type="button" data-bs-target="#mainHeroSlider" data-bs-slide-to="{{ $index }}" {{ if eq $index 0 }}class="active" aria-current="true"{{ end }} aria-label="Slide {{ add $index 1 }}"></button>
         {{ end }}
