@@ -190,14 +190,19 @@
         .hero-organizers { display: none; }
     }
 
-    .hero-organizers {
+    .hero-organizers-wrapper {
         position: absolute;
         bottom: 60px;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        z-index: 20;
+    }
+
+    .hero-organizers {
         width: 90%;
         max-width: 1000px;
-        z-index: 20;
     }
 
     .hero-organizers-title {
@@ -300,13 +305,15 @@
     </button>
     {{ end }}
 
-    <div class="hero-organizers animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
-        <div class="hero-organizers-title">{{ T "cd_hero_organizers_title" | default "UNA INICIATIVA IMPULSADA POR" }}</div>
-        <div class="hero-organizers-box">
-            <img src="/logos/organizers/scale2connect.png" alt="Scale2Connect" class="logo-scale2connect" />
-            <img src="/logos/organizers/eu.png" alt="Funded by the European Union" class="logo-eu" />
-            <img src="/logos/organizers/cadesoft.png" alt="CadeSoft" class="logo-cadesoft" />
-            <img src="/logos/organizers/uapa.png" alt="UAPA" class="logo-uapa" />
+    <div class="hero-organizers-wrapper">
+        <div class="hero-organizers animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
+            <div class="hero-organizers-title">{{ T "cd_hero_organizers_title" | default "UNA INICIATIVA IMPULSADA POR" }}</div>
+            <div class="hero-organizers-box">
+                <img src="/logos/organizers/scale2connect.png" alt="Scale2Connect" class="logo-scale2connect" />
+                <img src="/logos/organizers/eu.png" alt="Funded by the European Union" class="logo-eu" />
+                <img src="/logos/organizers/cadesoft.png" alt="CadeSoft" class="logo-cadesoft" />
+                <img src="/logos/organizers/uapa.png" alt="UAPA" class="logo-uapa" />
+            </div>
         </div>
     </div>
 </div>
