@@ -20,11 +20,21 @@
             <menu class="speaker-list__menu">
                 {{ range .Pages.GroupByParam "lastName" }}
                     {{ range .Pages.ByParam "firstName" }}
+                        {{- $avatarResource := .Resources.GetMatch "avatar.jpg" }}
+                        {{- if not $avatarResource }}
+                            {{- $avatarResource = .Resources.GetMatch "avatar.png" }}
+                        {{- end }}
+                        {{- if not $avatarResource }}
+                            {{- $avatarResource = .Resources.GetMatch "avatar.jpeg" }}
+                        {{- end }}
+                        {{- if not $avatarResource }}
+                            {{- $avatarResource = .Resources.GetMatch "avatar.*" }}
+                        {{- end }}
                         <li class="speaker-list__item">
                             {{- partial "speaker-card.html" (
                                 dict
                                 "profileUrl" .RelPermalink
-                                "avatarResource" (.Resources.GetMatch "avatar.*")
+                                "avatarResource" $avatarResource
                                 "name" .Title
                                 "description" .Params.tagLine
                                 "linkedinUrl" .Params.linkedinUrl

@@ -5,9 +5,14 @@
             <div class="single-speaker-section__avatar">
                 {{ $ariaLabel := T "speakers_page.social_links" page.Title }}
 
+                {{- $avatarResource := .Resources.GetMatch "avatar-large.*" }}
+                {{- if not $avatarResource }}
+                    {{- $avatarResource = .Resources.GetMatch "avatar.*" }}
+                {{- end }}
+
                 {{- partial "speaker-avatar.html" (
                     dict
-                    "avatarResource" (.Resources.GetMatch "avatar.*")
+                    "avatarResource" $avatarResource
                     "avatarAlt" page.Title
                     "linkedinUrl" page.Params.linkedinUrl
                     "xUrl" page.Params.xUrl
