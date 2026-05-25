@@ -1,5 +1,20 @@
 {{ $input := . }}
 
 {{- if $input.hashtag }}
-    #{{ (replaceRE "[^a-zA-Z0-9]" "" $input.hashtag) | upper }}
+    {{- $hashtag := $input.hashtag }}
+    {{- $hashtag = replace $hashtag "á" "a" }}
+    {{- $hashtag = replace $hashtag "é" "e" }}
+    {{- $hashtag = replace $hashtag "í" "i" }}
+    {{- $hashtag = replace $hashtag "ó" "o" }}
+    {{- $hashtag = replace $hashtag "ú" "u" }}
+    {{- $hashtag = replace $hashtag "ü" "u" }}
+    {{- $hashtag = replace $hashtag "ñ" "n" }}
+    {{- $hashtag = replace $hashtag "Á" "A" }}
+    {{- $hashtag = replace $hashtag "É" "E" }}
+    {{- $hashtag = replace $hashtag "Í" "I" }}
+    {{- $hashtag = replace $hashtag "Ó" "O" }}
+    {{- $hashtag = replace $hashtag "Ú" "U" }}
+    {{- $hashtag = replace $hashtag "Ü" "U" }}
+    {{- $hashtag = replace $hashtag "Ñ" "N" }}
+    #{{ (replaceRE "[^a-zA-Z0-9]" "" $hashtag) | upper }}
 {{- end }}
