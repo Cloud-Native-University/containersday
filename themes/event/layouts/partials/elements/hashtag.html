@@ -16,5 +16,10 @@
     {{- $hashtag = replace $hashtag "Ú" "U" }}
     {{- $hashtag = replace $hashtag "Ü" "U" }}
     {{- $hashtag = replace $hashtag "Ñ" "N" }}
-    #{{ (replaceRE "[^a-zA-Z0-9]" "" $hashtag) | upper }}
+    {{- $cleanHashtag := replaceRE "[^a-zA-Z0-9]" "" $hashtag }}
+    {{- if $input.keepCase }}
+        #{{ $cleanHashtag }}
+    {{- else }}
+        #{{ $cleanHashtag | upper }}
+    {{- end }}
 {{- end }}

@@ -56,7 +56,9 @@
                 <h1 class="h1 speaker-sessions-section__heading">
                     {{- T "speaker_page.sessions_by" | upper }}
                     <span class="speaker-sessions-section__hashtag">
-                        {{- partial "elements/hashtag.html" (dict "hashtag" page.Title) }}
+                        {{- $hashtag := page.Params.hashtag | default page.Title }}
+                        {{- $keepCase := not (not page.Params.hashtag) }}
+                        {{- partial "elements/hashtag.html" (dict "hashtag" $hashtag "keepCase" $keepCase) }}
                     </span>
                 </h1>
                 {{- partial "sessions-menu.html" (

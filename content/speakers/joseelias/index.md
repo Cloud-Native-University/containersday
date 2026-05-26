@@ -7,6 +7,7 @@ tagLine: "Conferencista y Consultor en IA & Cloud"
 instagramUrl: "https://www.instagram.com/eliax/"
 linkedinUrl: "https://www.linkedin.com/in/jose-elias-51729a4b/"
 websiteUrl: "https://eliax.com"
+hashtag: "Eliax"
 draft: false
 ---
 José Elías tiene 3 décadas ofreciendo consultoría de negocios y desarrollo de software para empresas Global 1000 en Estados Unidos, Europa y la mayoría de países latinoamericanos. 

@@ -7,6 +7,7 @@ tagLine: "Speaker and Consultant in AI & Cloud"
 instagramUrl: "https://www.instagram.com/eliax/"
 linkedinUrl: "https://www.linkedin.com/in/jose-elias-51729a4b/"
 websiteUrl: "https://eliax.com"
+hashtag: "Eliax"
 draft: false
 ---
 José Elías has 3 decades offering business consulting and software development for Global 1000 companies in the United States, Europe, and most Latin American countries.
