@@ -4,17 +4,18 @@
 .testimonial-title h6 { color: var(--color-primary); text-transform: uppercase; font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem; }
 .testimonial-title h1 { font-size: 2.5rem; color: #1A2A36; font-weight: bold; margin: 0; }
 .testimonial-grid { display: flex; gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 1rem; flex-wrap: wrap; justify-content: center; }
-.testimonial-item { flex: 1 1 300px; text-align: center; max-width: 600px; }
+.testimonial-item { flex: 1 1 450px; text-align: center; max-width: 550px; }
 .testimonial-img { position: relative; margin-bottom: 2rem; display: flex; justify-content: center; }
 .testimonial-img img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 5px solid white; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
 .testimonial-quote-icon { width: 40px; height: 40px; background-color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; bottom: -5px; right: calc(50% - 40px); border: 3px solid white; }
 .testimonial-quote-icon i { color: white; font-size: 14px; }
-.testimonial-text { background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); position: relative; }
-.testimonial-text p { font-size: 1.1rem; color: #444; margin-bottom: 1.5rem; font-style: italic; line-height: 1.7; }
-.testimonial-text h5 { color: #1A2A36; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.25rem; }
+.testimonial-text { background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); position: relative; min-height: 380px; display: flex; flex-direction: column; justify-content: space-between; }
+.testimonial-text p { font-size: 1.05rem; color: #444; margin-bottom: 1.5rem; font-style: italic; line-height: 1.7; flex-grow: 1; display: flex; align-items: center; justify-content: center; }
+.testimonial-author-info { margin-top: auto; }
+.testimonial-text h5 { color: #1A2A36; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.25rem; margin-top: 0; }
 .testimonial-text span { color: var(--color-primary); font-size: 14px; font-weight: 600; display: block; margin-top: 0.25rem; }
 .testimonial-subtitle { color: #888; font-size: 13px; font-weight: 500; display: block; margin-top: 0.25rem; }
-@media (max-width: 768px) { .testimonial-title h1 { font-size: 2rem; } .testimonial-text { padding: 1.5rem; } }
+@media (max-width: 768px) { .testimonial-title h1 { font-size: 2rem; } .testimonial-text { padding: 1.5rem; min-height: auto; } }
 </style>
 
 <div class="testimonial-section">
@@ -32,9 +33,27 @@
             </div>
             <div class="testimonial-text">
                 <p>{{ T "cd_testimonial_text" }}</p>
-                <h5>{{ T "cd_testimonial_name" }}</h5>
-                <span>{{ T "cd_testimonial_role" }}</span>
-                <span class="testimonial-subtitle">{{ T "cd_testimonial_subtitle" }}</span>
+                <div class="testimonial-author-info">
+                    <h5>{{ T "cd_testimonial_name" }}</h5>
+                    <span>{{ T "cd_testimonial_role" }}</span>
+                    <span class="testimonial-subtitle">{{ T "cd_testimonial_subtitle" }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-item">
+            <div class="testimonial-img">
+                <img src="/images/moises-mayet.jpg" alt="{{ T "cd_testimonial_moises_name" }}">
+                <div class="testimonial-quote-icon">
+                    <i class="fa fa-quote-left"></i>
+                </div>
+            </div>
+            <div class="testimonial-text">
+                <p>{{ T "cd_testimonial_moises_text" }}</p>
+                <div class="testimonial-author-info">
+                    <h5>{{ T "cd_testimonial_moises_name" }}</h5>
+                    <span>{{ T "cd_testimonial_moises_role" }}</span>
+                    <span class="testimonial-subtitle">{{ T "cd_testimonial_moises_subtitle" }}</span>
+                </div>
             </div>
         </div>
     </div>

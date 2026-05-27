@@ -216,3 +216,13 @@ cd_testimonial_role:
   other: "Ingeniero en Software"
 cd_testimonial_subtitle:
   other: "mentor de la Escuela de Ingeniería y Tecnología"
+
+cd_testimonial_moises_text:
+  other: "“La Inteligencia Artificial y el Cloud Native no son tecnologías del futuro; son las herramientas con las que estamos construyendo el presente. Containers Day representa una oportunidad para que nuestra comunidad universitaria conecte innovación, desarrollo de software e impacto real a escala global”"
+cd_testimonial_moises_name:
+  other: "Lic. Moises Alain Mayet Solano"
+cd_testimonial_moises_role:
+  other: "Cibernético, Director del Departamento de Inteligencia Artificial de UAPA"
+cd_testimonial_moises_subtitle:
+  other: "desarrollador de soluciones institucionales y programador principal de Scale2Connect"
+

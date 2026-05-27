@@ -208,3 +208,13 @@ cd_testimonial_role:
 cd_testimonial_subtitle:
   other: "mentor at the School of Engineering and Technology"
 
+cd_testimonial_moises_text:
+  other: "“Artificial Intelligence and Cloud Native are not future technologies; they are the tools with which we are building the present. Containers Day represents an opportunity for our university community to connect innovation, software development, and real impact on a global scale”"
+cd_testimonial_moises_name:
+  other: "Lic. Moises Alain Mayet Solano"
+cd_testimonial_moises_role:
+  other: "Cyberneticist, Director of the UAPA Artificial Intelligence Department"
+cd_testimonial_moises_subtitle:
+  other: "developer of institutional solutions and lead developer of Scale2Connect"
+
+
