@@ -198,3 +198,13 @@ cd_hero_sustainability:
   other: "SUSTAINABILITY"
 cd_hero_global_impact:
   other: "GLOBAL IMPACT"
+
+cd_testimonial_text:
+  other: "“Containers don't just transform the way we develop software; they transform the way we think about innovation. Learning Cloud Native today is preparing to build the smart, scalable, and resilient solutions that the world will need tomorrow”"
+cd_testimonial_name:
+  other: "Ing. Ismael Paulino Ureña"
+cd_testimonial_role:
+  other: "Software Engineer"
+cd_testimonial_subtitle:
+  other: "mentor at the School of Engineering and Technology"
+

@@ -207,3 +207,12 @@ cd_hero_sustainability:
   other: "SOSTENIBILIDAD"
 cd_hero_global_impact:
   other: "IMPACTO GLOBAL"
+
+cd_testimonial_text:
+  other: "“Los contenedores no solo transforman la forma en que desarrollamos software; transforman la manera en que pensamos la innovación. Aprender Cloud Native hoy es prepararse para construir las soluciones inteligentes, escalables y resilientes que el mundo necesitará mañana”"
+cd_testimonial_name:
+  other: "Ing. Ismael Paulino Ureña"
+cd_testimonial_role:
+  other: "Ingeniero en Software"
+cd_testimonial_subtitle:
+  other: "mentor de la Escuela de Ingeniería y Tecnología"
