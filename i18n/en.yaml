@@ -217,4 +217,14 @@ cd_testimonial_moises_role:
 cd_testimonial_moises_subtitle:
   other: "developer of institutional solutions and lead developer of Scale2Connect"
 
+cd_testimonial_reyna_text:
+  other: "“Continuous training is the key to remaining relevant in a technological world that evolves every day. Containers Day represents an opportunity to learn, innovate, and strengthen competencies in high-impact technologies such as Cloud Native and containers, preparing professionals capable of leading the digital transformation of the future.”"
+cd_testimonial_reyna_name:
+  other: "Dra. Reyna Hiraldo Trejo"
+cd_testimonial_reyna_role:
+  other: "Director of the UCAP Continuous Training Center, UAPA"
+cd_testimonial_reyna_subtitle:
+  other: "Facilitator at the School of Engineering and Technology and Postgraduate Program"
+
+
 

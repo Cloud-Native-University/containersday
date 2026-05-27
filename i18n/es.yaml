@@ -226,3 +226,13 @@ cd_testimonial_moises_role:
 cd_testimonial_moises_subtitle:
   other: "desarrollador de soluciones institucionales y programador principal de Scale2Connect"
 
+cd_testimonial_reyna_text:
+  other: "“La capacitación continua es la clave para mantenerse vigente en un mundo tecnológico que evoluciona cada día. Containers Day representa una oportunidad para aprender, innovar y fortalecer competencias en tecnologías de alto impacto como Cloud Native y contenedores, preparando profesionales capaces de liderar la transformación digital del futuro.”"
+cd_testimonial_reyna_name:
+  other: "Dra. Reyna Hiraldo Trejo"
+cd_testimonial_reyna_role:
+  other: "Directora del Centro de Capacitación Continua UCAP, UAPA"
+cd_testimonial_reyna_subtitle:
+  other: "Facilitadora de la Escuela de Ingeniería y Tecnología y el Posgrado"
+
+
