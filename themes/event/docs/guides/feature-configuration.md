@@ -104,12 +104,23 @@ The about page can present the organization team of your event.
 ## Sponsors and partners
 
 The sponsors page lists all event sponsors and partners. Additionally, the home
-page also displays the sponsors.
+page displays sponsors in a carousel.
 
-### Parameters
+Sponsors are maintained in `data/sponsors.json`. Each entry is an object with:
 
--   `sponsors`: A list of objects with properties `logo`, `url` and `name`.
--   `partners`: Same structure as `sponsors`, just for partners.
+-   `logo`: path to the logo image (relative to the `assets/` folder)
+-   `url`: external link for the sponsor
+-   `name`: sponsor name (used for alt text and labels)
+-   `description`: short description (used on the sponsors page)
+-   `tier`: sponsorship tier (e.g. `platinum`, `silver`, `community`)
+
+The home page carousel shows all sponsors except those with `tier: community`.
+The dedicated sponsors page lists every entry.
+
+### Legacy parameters
+
+-   `sponsors` and `partners` in the site parameters are still supported for the
+    sponsors page, but the home page carousel now reads from `data/sponsors.json`.
 
 ## Social links
 

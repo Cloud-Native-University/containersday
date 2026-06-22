@@ -7,12 +7,12 @@
         {{ with T "featured_speakers_section.heading" }}
             aria-label="{{ . }}"
         {{ end }}>
-        <h1 class="heading heading--highlighted heading--centered">
+        <h2 class="heading heading--highlighted heading--centered">
             {{ T "featured_speakers_section.heading" }}
-        </h1>
-        <h2 class="heading heading--2 heading--centered">
-            {{ T "featured_speakers_section.subheading" }}
         </h2>
+        <h3 class="heading heading--2 heading--centered">
+            {{ T "featured_speakers_section.subheading" }}
+        </h3>
         <ul
             class="featured-speakers__menu"
             {{- with (T "featured_speakers_section.heading") }}

@@ -7,8 +7,8 @@
     .testimonial-section .section-label {
         display: block;
         text-align: center;
-        color: #5dade2;
-        font-family: 'DM Sans', sans-serif;
+        color: var(--accent-light);
+        font-family: var(--font-body);
         font-weight: 700;
         font-size: 0.8rem;
         letter-spacing: 3px;
@@ -18,13 +18,14 @@
 
     .testimonial-section .section-heading {
         text-align: center;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 2.2rem;
+        font-family: var(--font-display);
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
         font-weight: 800;
         color: #ffffff;
         margin: 0 0 55px 0;
         line-height: 1.25;
         padding: 0 20px;
+        overflow-wrap: break-word;
     }
 
     .testimonial-grid {
@@ -48,13 +49,13 @@
 
     .testimonial-card:hover {
         background: rgba(255, 255, 255, 0.07);
-        border-color: rgba(93, 173, 226, 0.2);
+        border-color: rgba(var(--accent-rgb, 93, 173, 226), 0.2);
         transform: translateY(-4px);
     }
 
     .testimonial-card .quote {
-        color: rgba(255, 255, 255, 0.85);
-        font-family: 'DM Sans', sans-serif;
+        color: rgba(255, 255, 255, 0.92);
+        font-family: var(--font-body);
         font-size: 0.95rem;
         line-height: 1.7;
         flex-grow: 1;
@@ -64,9 +65,9 @@
 
     .testimonial-card .quote::before {
         content: "\201C";
-        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-family: var(--font-display);
         font-size: 2.5rem;
-        color: #5dade2;
+        color: var(--accent);
         display: block;
         margin-bottom: 8px;
         line-height: 1;
@@ -86,11 +87,11 @@
         height: 48px;
         border-radius: 50%;
         object-fit: cover;
-        border: 2px solid rgba(93, 173, 226, 0.3);
+        border: 2px solid rgba(var(--accent-rgb, 93, 173, 226), 0.3);
     }
 
-    .testimonial-author .author-info h5 {
-        font-family: 'Plus Jakarta Sans', sans-serif;
+    .testimonial-author .author-info h3 {
+        font-family: var(--font-display);
         color: #ffffff;
         font-weight: 700;
         font-size: 0.95rem;
@@ -98,8 +99,8 @@
     }
 
     .testimonial-author .author-info span {
-        font-family: 'DM Sans', sans-serif;
-        color: rgba(255, 255, 255, 0.5);
+        font-family: var(--font-body);
+        color: #9ba3aa;
         font-size: 0.8rem;
         display: block;
     }
@@ -139,7 +140,7 @@
             <div class="testimonial-author">
                 <img src="/images/ismael-paulino.jpg" alt="{{ T "cd_testimonial_name" }}">
                 <div class="author-info">
-                    <h5>{{ T "cd_testimonial_name" }}</h5>
+                    <h3>{{ T "cd_testimonial_name" }}</h3>
                     <span>{{ T "cd_testimonial_role" }}</span>
                 </div>
             </div>
@@ -149,7 +150,7 @@
             <div class="testimonial-author">
                 <img src="/images/moises-mayet.jpg" alt="{{ T "cd_testimonial_moises_name" }}">
                 <div class="author-info">
-                    <h5>{{ T "cd_testimonial_moises_name" }}</h5>
+                    <h3>{{ T "cd_testimonial_moises_name" }}</h3>
                     <span>{{ T "cd_testimonial_moises_role" }}</span>
                 </div>
             </div>
@@ -159,7 +160,7 @@
             <div class="testimonial-author">
                 <img src="/images/reyna-hiraldo.jpg" alt="{{ T "cd_testimonial_reyna_name" }}">
                 <div class="author-info">
-                    <h5>{{ T "cd_testimonial_reyna_name" }}</h5>
+                    <h3>{{ T "cd_testimonial_reyna_name" }}</h3>
                     <span>{{ T "cd_testimonial_reyna_role" }}</span>
                 </div>
             </div>

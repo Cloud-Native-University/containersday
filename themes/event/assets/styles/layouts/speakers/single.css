@@ -15,7 +15,7 @@
 
 .single-speaker-section__avatar {
     color: var(--color-primary);
-    max-width: 50%;
+    max-width: min(50%, 320px);
 }
 
 .single-speaker-section__biography {
@@ -32,9 +32,11 @@
 
 .speaker-sessions-section__heading {
     all: unset;
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 2.25rem);
+    font-weight: 800;
+    color: var(--color-primary-darkest);
+    line-height: 1.2;
 }
 
 .speaker-sessions-section__hashtag {

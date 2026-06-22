@@ -63,36 +63,48 @@
         <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css" media="screen" integrity="{{ .Data.Integrity }}" />
     {{ end }}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
     {{- partial "structured-data.html" . -}}
 
     <style>
         :root {
             --bg-dark: #0A1128;
-            --bg-dark-2: #14213D;
+            --bg-dark-2: #111928;
             --bg-light: #ffffff;
             --bg-light-2: #f8fafc;
-            --primary: #5dade2;
+            --primary: #2378b0;
             --primary-dark: #143e8b;
-            --accent: #00E5FF;
-            --accent-hover: #00B8D4;
-            --accent-text: #0A1128;
+            --accent: #2378b0;
+            --accent-light: #5dade2;
+            --accent-rgb: 35, 120, 176;
+            --accent-hover: #1f6fa0;
+            --accent-text: #ffffff;
             --warm: #f59e0b;
             --text-dark: #1a2a36;
             --text-muted: #64748b;
             --text-light: #f8fafc;
-            --border: rgba(255,255,255,0.06);
+            --border: rgba(255,255,255,0.08);
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
             --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
             --font-display: 'Plus Jakarta Sans', sans-serif;
             --font-body: 'DM Sans', sans-serif;
+
+            /* Unify legacy theme palette with the new accent */
+            --color-primary-lighter: #eaf4fb;
+            --color-primary: #2378b0;
+            --color-primary-darker: #143e8b;
+            --color-primary-darkest: #111928;
+            --color-secondary: #f7f8fa;
+            --color-secondary-darker: #637381;
+            --color-track: #143e8b;
+            --color-shadow: rgba(10, 17, 40, 0.15);
         }
 
         *, *::before, *::after { box-sizing: border-box; }
@@ -100,8 +112,17 @@
         body {
             margin: 0;
             font-family: var(--font-body);
-            color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.8);
+            background-color: var(--bg-dark);
             -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            color: #fff;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         a { color: inherit; }
@@ -186,13 +207,14 @@
 
         /* Desktop Header */
         .site-header {
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(10, 17, 40, 0.06);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 1px 3px rgba(10, 17, 40, 0.04);
         }
 
         .site-header__inner {
@@ -202,7 +224,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 24px;
-            height: 68px;
+            height: 72px;
         }
 
         .site-header__logo {
@@ -212,12 +234,12 @@
             flex-shrink: 0;
         }
 
-        .site-header__logo img { max-height: 40px; width: auto; }
+        .site-header__logo img { max-height: 42px; width: auto; }
 
         .site-header__nav {
             display: flex;
             align-items: center;
-            gap: 28px;
+            gap: 32px;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -226,7 +248,7 @@
         .site-header__nav a {
             color: var(--text-muted);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.9rem;
             transition: color 0.2s;
             position: relative;
@@ -235,13 +257,13 @@
         .site-header__nav a::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
             background: var(--accent);
             transition: width 0.25s ease;
-            border-radius: 1px;
+            border-radius: 2px;
         }
 
         .site-header__nav a:hover,
@@ -253,7 +275,7 @@
         .site-header__actions {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             flex-shrink: 0;
         }
 
@@ -261,10 +283,11 @@
         .btn-pill {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
-            padding: 10px 24px;
+            padding: 10px 22px;
             border-radius: 100px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.85rem;
             text-decoration: none;
             transition: all 0.2s ease;
@@ -281,19 +304,21 @@
 
         .btn-pill-primary:hover {
             background: var(--accent-hover);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(var(--accent-rgb), 0.25);
             color: var(--accent-text);
         }
 
         .btn-pill-outline {
             background: transparent;
             color: var(--text-muted);
-            border: 1.5px solid rgba(0,0,0,0.1);
+            border: 1.5px solid rgba(10, 17, 40, 0.1);
         }
 
         .btn-pill-outline:hover {
             border-color: var(--accent);
             color: var(--accent);
+            background: rgba(var(--accent-rgb), 0.05);
         }
 
         .btn-pill-outline-light {
@@ -311,16 +336,18 @@
         /* Mobile Header */
         .mobile-header {
             display: none;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(10, 17, 40, 0.06);
             position: sticky;
             top: 0;
             z-index: 100;
             padding: 0 16px;
-            height: 52px;
+            height: 60px;
             align-items: center;
             justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(10, 17, 40, 0.04);
         }
 
         .mobile-header__logo {
@@ -329,11 +356,11 @@
             text-decoration: none;
         }
 
-        .mobile-header__logo img { max-height: 28px; width: auto; }
+        .mobile-header__logo img { max-height: 32px; width: auto; }
 
         .mobile-header__hamburger {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border: none;
             background: none;
             cursor: pointer;
@@ -343,23 +370,126 @@
             justify-content: center;
             gap: 5px;
             padding: 0;
-            border-radius: 8px;
+            border-radius: 10px;
             transition: background 0.2s;
+        }
+
+        .mobile-header__hamburger:hover,
+        .mobile-header__hamburger:focus-visible {
+            background: rgba(10, 17, 40, 0.05);
+            outline: none;
         }
 
         .mobile-header__hamburger span {
             display: block;
-            width: 20px;
+            width: 22px;
             height: 2px;
             background: var(--text-dark);
             border-radius: 2px;
             transition: all 0.3s ease;
         }
 
+        /* Mobile Offcanvas Menu */
+        .mobile-menu {
+            background: var(--bg-dark);
+            color: #fff;
+            width: 85vw;
+            max-width: 360px;
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .mobile-menu__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .mobile-menu__title {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #fff;
+            margin: 0;
+        }
+
+        .mobile-menu__body {
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+            height: 100%;
+        }
+
+        .mobile-menu__ctas {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-menu__ctas .btn-pill {
+            justify-content: center;
+            padding: 14px;
+            font-size: 0.95rem;
+        }
+
+        .mobile-menu__lang {
+            margin-bottom: 2rem;
+        }
+
+        .mobile-menu__lang-label {
+            display: block;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .mobile-menu__lang-select {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            outline: none;
+            appearance: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+        }
+
+        .mobile-menu__lang-select option { color: var(--bg-dark); }
+
+        .mobile-menu__socials {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .mobile-menu__socials a {
+            color: #fff;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .mobile-menu__socials a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
         /* Footer */
         .site-footer {
             background: var(--bg-dark);
-            color: rgba(255,255,255,0.45);
+            color: #82869a;
             padding: 32px 24px;
             text-align: center;
             font-size: 0.85rem;
@@ -403,6 +533,7 @@
             line-height: 1.2;
         }
 
+
         .section-subtitle {
             text-align: center;
             font-size: 1.05rem;
@@ -428,21 +559,18 @@
     </style>
 </head>
 <body>
-    <input type="checkbox" class="sidebar-toggle" id="sidebarToggle" />
-
     <!-- Desktop Top Bar -->
     <div class="site-topbar">
         <div class="site-topbar__inner">
             <div class="site-topbar__left">
-                <span><i class="fas fa-map-marker-alt"></i> {{ .Site.Params.themes.event.location }}</span>
-                <span><i class="far fa-calendar-alt"></i> {{ $start := time .Site.Params.themes.event.startDate }}{{ $start | time.Format ":date_long" }}</span>
+                <span>{{ T "cd_event_title" }} {{ now.Format "2006" }}</span>
             </div>
             <div class="site-topbar__right">
-                <a href="{{ .Site.Params.themes.event.socialLinks.xUrl }}" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-                <a href="{{ .Site.Params.themes.event.socialLinks.linkedinUrl }}" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="{{ .Site.Params.themes.event.socialLinks.xUrl }}" aria-label="X / Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
+                <a href="{{ .Site.Params.themes.event.socialLinks.linkedinUrl }}" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
                 <div class="site-topbar__lang">
                     <i class="fas fa-globe"></i>
-                    <select onchange="location = this.value;">
+                    <select onchange="location = this.value;" aria-label="{{ T "language" }}">
                         {{ range .AllTranslations }}
                             <option value="{{ .Permalink }}" {{ if eq .Language.Lang $.Language.Lang }}selected{{ end }}>{{ if eq .Language.Lang "en" }}EN{{ else }}ES{{ end }}</option>
                         {{ end }}
@@ -455,10 +583,11 @@
     <!-- Desktop Header -->
     <header class="site-header">
         <div class="site-header__inner">
+            {{ $logoUrl := .Site.Params.themes.event.images.logo }}
+            {{ $logoRes := and $logoUrl (resources.Get $logoUrl) }}
             <a class="site-header__logo" href="{{ site.Home.RelPermalink }}">
-                {{ $logoUrl := .Site.Params.themes.event.images.logo }}
                 {{ if $logoUrl }}
-                    <img src="{{ $logoUrl | relURL }}" alt="{{ .Site.Params.themes.event.title }}">
+                    <img src="{{ if $logoRes }}{{ $logoRes.RelPermalink }}{{ else }}{{ $logoUrl | relURL }}{{ end }}" alt="{{ .Site.Params.themes.event.title }}"{{ if and $logoRes $logoRes.Width $logoRes.Height }} width="{{ $logoRes.Width }}" height="{{ $logoRes.Height }}"{{ end }}>
                 {{ else }}
                     <strong>{{ .Site.Params.themes.event.title }}</strong>
                 {{ end }}
@@ -482,42 +611,47 @@
     <div class="mobile-header">
         <a class="mobile-header__logo" href="{{ site.Home.RelPermalink }}">
             {{ if $logoUrl }}
-                <img src="{{ $logoUrl | relURL }}" alt="{{ .Site.Params.themes.event.title }}">
+                <img src="{{ if $logoRes }}{{ $logoRes.RelPermalink }}{{ else }}{{ $logoUrl | relURL }}{{ end }}" alt="{{ .Site.Params.themes.event.title }}"{{ if and $logoRes $logoRes.Width $logoRes.Height }} width="{{ $logoRes.Width }}" height="{{ $logoRes.Height }}"{{ end }}>
             {{ else }}
                 <strong>{{ .Site.Params.themes.event.title }}</strong>
             {{ end }}
         </a>
-        <button class="mobile-header__hamburger" aria-label="{{ T "menu.more" }}" onclick="document.getElementById('sidebarToggle').click();">
+        <button class="mobile-header__hamburger" aria-label="{{ T "menu.more" }}" aria-expanded="false" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
             <span></span><span></span><span></span>
         </button>
     </div>
 
-    <!-- Sidebar -->
-    <aside class="page-sidebar">
-        <nav class="page-sidebar__navigation" aria-labelledby="main-navigation-label">
-            <header class="page-sidebar__header">
-                <a class="page-sidebar__heading-link" href="{{ site.Home.RelPermalink }}">{{ .Site.Params.themes.event.title }}</a>
-                <label class="page-sidebar__close-label" for="sidebarToggle">{{- partial "graphics/close.html" }}</label>
-            </header>
-            <div class="mobile-menu-ctas" style="display:flex;flex-direction:column;gap:10px;margin-bottom:2rem;">
-                <a href="{{ .Site.Params.themes.event.callToAction.url }}" class="btn-pill btn-pill-primary" style="width:100%;justify-content:center;padding:12px;" target="_blank">{{ T "cd_tickets" }}</a>
-                <a href="{{ .Site.Params.themes.event.callToActionSecondary.url }}" class="btn-pill btn-pill-outline" style="width:100%;justify-content:center;padding:12px;" target="_blank">{{ T "cd_become_speaker" }}</a>
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start mobile-menu" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="mobile-menu__header">
+            <h5 class="mobile-menu__title" id="mobileMenuLabel">{{ .Site.Params.themes.event.title }}</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body mobile-menu__body">
+            <div class="mobile-menu__ctas">
+                <a href="{{ .Site.Params.themes.event.callToAction.url }}" class="btn-pill btn-pill-primary" target="_blank" rel="noopener noreferrer">{{ T "cd_tickets" }}</a>
+                <a href="{{ .Site.Params.themes.event.callToActionSecondary.url }}" class="btn-pill btn-pill-outline-light" target="_blank" rel="noopener noreferrer">{{ T "cd_become_speaker" }}</a>
             </div>
-            <div class="mobile-lang-switcher" style="margin-bottom:2rem;">
-                <span style="color:rgba(255,255,255,0.4);font-size:13px;text-transform:uppercase;margin-bottom:6px;display:block;letter-spacing:1px;">{{ T "language" }}:</span>
-                <select onchange="location=this.value;" style="background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;font-size:0.95rem;font-weight:600;text-transform:uppercase;width:100%;outline:none;">
+
+            <div class="mobile-menu__lang">
+                <span class="mobile-menu__lang-label">{{ T "language" }}</span>
+                <select onchange="location=this.value;" class="mobile-menu__lang-select" aria-label="{{ T "language" }}">
                     {{ range .AllTranslations }}
-                        <option value="{{ .Permalink }}" {{ if eq .Language.Lang $.Language.Lang }}selected{{ end }} style="color:var(--bg-dark);">{{ if eq .Language.Lang "en" }}ENGLISH{{ else }}ESPAÑOL{{ end }}</option>
+                        <option value="{{ .Permalink }}" {{ if eq .Language.Lang $.Language.Lang }}selected{{ end }}>{{ if eq .Language.Lang "en" }}English{{ else }}Español{{ end }}</option>
                     {{ end }}
                 </select>
             </div>
-            {{- partial "menus/sidebar.html" (dict "menu" .Site.Menus.main "context" .) }}
-            <div class="page-sidebar__social-links">
-                {{- partial "social-links.html" (dict "linkedinUrl" .Site.Params.themes.event.socialLinks.linkedinUrl "xUrl" .Site.Params.themes.event.socialLinks.xUrl "facebookUrl" .Site.Params.themes.event.socialLinks.facebookUrl "linkClass" "page-sidebar__social-link") }}
+
+            <div style="flex-grow: 1;">
+                {{- partial "menus/sidebar.html" (dict "menu" .Site.Menus.main "context" .) }}
             </div>
-        </nav>
-        <label class="page-sidebar__empty-space" for="sidebarToggle"></label>
-    </aside>
+
+            <div class="mobile-menu__socials">
+                <a href="{{ .Site.Params.themes.event.socialLinks.xUrl }}" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="{{ .Site.Params.themes.event.socialLinks.linkedinUrl }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
 
     <main class="page-main">
         {{ block "main" . }}{{ end }}

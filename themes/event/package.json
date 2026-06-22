@@ -1,5 +1,6 @@
 {
     "devDependencies": {
+        "@axe-core/playwright": "^4.11.3",
         "@playwright/test": "^1.46.1",
         "@types/node": "^22.5.0",
         "eslint": "^9.9.0",
@@ -11,7 +12,8 @@
         "prettier-plugin-go-template": "^0.0.15"
     },
     "scripts": {
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "test:e2e": "playwright test --config playwright.project.config.ts"
     },
     "husky": {
         "hooks": {

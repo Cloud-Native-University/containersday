@@ -9,6 +9,17 @@ languages:
         languageName: "Español"
         contentDir: "content"
         weight: 1
+        params:
+            themes:
+                event:
+                    directions: |
+                        La **Universidad Abierta para Adultos (UAPA)** se encuentra en Santiago de los Caballeros.
+                        
+                        **En vehículo particular o taxi:**  
+                        Puedes llegar fácilmente tomando la Autopista Duarte. La UAPA está ubicada en la Av. Hispanoamericana, una de las principales vías de acceso en la zona sur de la ciudad. Hay amplio estacionamiento disponible para los asistentes.
+                        
+                        **Desde el Aeropuerto Internacional del Cibao (STI):**  
+                        El campus se encuentra a unos 15 minutos en taxi desde el aeropuerto siguiendo la Autopista Duarte hacia el este y luego tomando la Av. Hispanoamericana.
         menus:
             main:
 
@@ -20,6 +31,10 @@ languages:
                   name: "Organizadores"
                   pageRef: /organizers
                   weight: 35
+                - identifier: venue
+                  name: "Sede"
+                  pageRef: /venue
+                  weight: 40
                 - identifier: tourism
                   name: "Turismo Tropical"
                   pageRef: /tourism
@@ -33,6 +48,17 @@ languages:
         languageName: "English"
         contentDir: "content/en"
         weight: 2
+        params:
+            themes:
+                event:
+                    directions: |
+                        The **Universidad Abierta para Adultos (UAPA)** is located in Santiago de los Caballeros.
+                        
+                        **By car or taxi:**  
+                        You can easily reach the campus via the Duarte Highway (Autopista Duarte). UAPA is situated on Av. Hispanoamericana, one of the main access roads in the southern part of the city. Ample parking is available for attendees.
+                        
+                        **From Cibao International Airport (STI):**  
+                        The campus is approximately a 15-minute taxi ride from the airport. Follow the Duarte Highway west and exit onto Av. Hispanoamericana.
         menus:
             main:
 
@@ -44,6 +70,10 @@ languages:
                   name: "Organizers"
                   pageRef: /organizers
                   weight: 35
+                - identifier: venue
+                  name: "Venue"
+                  pageRef: /venue
+                  weight: 40
                 - identifier: tourism
                   name: "Tropical Tourism"
                   pageRef: /tourism
@@ -70,9 +100,14 @@ params:
                 - "Universidad UAPA"
                 - "Santiago de los Caballeros"
                 - "República Dominicana"
+            map:
+                embeddableMapUrl: "https://www.google.com/maps/place/Universidad+Abierta+para+Adultos+(UAPA)/@19.4260527,-70.6718996,17z/data=!3m1!4b1!4m6!3m5!1s0x8eb1cf0bcd591469:0xa2db20e45ebcd6c9!8m2!3d19.4260527!4d-70.6718996!16s%2Fg%2F11h4q7t7cc?output=embed"
+                viewLargerMapUrl: "https://maps.app.goo.gl/PBWurwB7mkr4j7jr6"
             # sessionizeId: ""
             callToAction:
                 url: "https://cap.uapa.edu.do/producto/containers-day-2026/"
+                other:
+                    url: "https://cap.uapa.edu.do/producto/containers-day-2026/"
             callToActionSecondary:
                 url: "https://sessionize.com/containers-days-dr/"
                 label: "Ser Orador"
@@ -83,6 +118,7 @@ params:
             images:
                 logo: logos/logo-containersday-v2.png
                 titleBackground: images/hero-background-v2.jpg
+                location: images/uapa-campus.jpg
             heroSlides:
                 - title: "Orquestando el Mañana"
                   subtitle: "Innovación"
@@ -110,7 +146,7 @@ params:
                   name: 'NixVersity'
                   description: 'Líderes en formación de DevOps y Cloud Native en la región.'
                   tier: "platinum"
-                - logo: "logos/uapa-logo-white.png"
+                - logo: "logos/uapa-logo.png"
                   url: "https://www.uapa.edu.do/"
                   name: 'UAPA'
                   description: 'Sede oficial de Containers Day 2026.'

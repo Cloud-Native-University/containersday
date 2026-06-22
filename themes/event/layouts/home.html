@@ -3,6 +3,8 @@
         (dict
         "slides" .Site.Params.themes.event.heroSlides
         "context" .
+        "startDate" .Site.Params.themes.event.startDate
+        "location" .Site.Params.themes.event.location
         )
     }}
 
@@ -21,6 +23,8 @@
         "numberOfDays" 1
         "location" (T "cd_event_location") )
     }}
+
+    {{- partial "sections/our-sponsors.html" . -}}
 
     {{ partial "sections/benefits.html" . }}
 
@@ -105,6 +109,4 @@
     {{- partial "sections/gallery.html" . -}}
 
     {{- partial "sections/testimonials.html" . -}}
-
-    {{- partial "sections/our-sponsors.html" (dict "sponsors" .Site.Params.themes.event.sponsors) -}}
 {{- end }}

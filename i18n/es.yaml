@@ -365,6 +365,19 @@ cd_testimonial_reyna_role:
 cd_testimonial_reyna_subtitle:
   other: "Facilitadora de la Escuela de Ingeniería y Tecnología y el Posgrado"
 
+menu.more:
+  other: "Menú"
+main_menu.label:
+  other: "Navegación principal"
+language:
+  other: "Idioma"
+speaker_page.sessions_by:
+  other: "Sesiones de"
+cd_event_date:
+  other: "Fecha"
+cd_event_location_label:
+  other: "Ubicación"
+
 cd_organizers_intro:
   other: "Conoce al equipo organizador detrás del Containers Day 2026, comprometido con llevar el aprendizaje y la innovación Cloud Native al corazón de la República Dominicana."
 cd_organizer_role_harys:
@@ -379,3 +392,25 @@ cd_organizer_role_paul:
   other: "Co-organizador de Containers Day, Tech Community Builder"
 cd_organizer_role_luz:
   other: "Co-organizadora de Containers Day, Asesora Legal & Operaciones"
+
+location_page.heading:
+  other: "Nuestra Sede"
+location_page.directions_heading:
+  other: "Cómo llegar"
+location_page.map_frame:
+  other: "Mapa interactivo de la sede del evento"
+location_page.map_fullscreen:
+  other: "Ver mapa de la sede en pantalla completa"
+
+cta_banner.message:
+  other: "¡Consigue tu entrada ahora!"
+cta_button.get_ticket:
+  other: "¡Regístrate ahora!"
+cta_section.heading:
+  other: "¿Quieres ser parte de la conferencia de tecnología más importante del Caribe?"
+cta_section.subheading:
+  other: "¡Regístrate hoy mismo!"
+cta_section.message:
+  other: "No pierdas la oportunidad de aprender de los principales expertos de la industria, descubrir tendencias Cloud Native y hacer contactos valiosos."
+
+

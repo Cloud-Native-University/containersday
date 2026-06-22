@@ -1,16 +1,18 @@
 {{ $event := .Site.Params.themes.event }}
 <style>
-    .generic-hero { 
+    .generic-hero {
         position: relative;
         overflow: hidden;
-        background: linear-gradient(rgba(26, 42, 54, 0.8), rgba(26, 42, 54, 0.8)), url('{{ $event.images.titleBackground | relURL }}');
-        background-size: cover; 
+        background:
+            linear-gradient(rgba(10, 17, 40, 0.82), rgba(10, 17, 40, 0.72)),
+            url('{{ $event.images.titleBackground | relURL }}');
+        background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        padding: 100px 0; 
-        text-align: center; 
-        color: white; 
-        margin-bottom: 50px;
+        padding: clamp(72px, 12vh, 120px) 0;
+        text-align: center;
+        color: white;
+        margin-bottom: 0;
     }
     .generic-hero__video {
         position: absolute;
@@ -27,30 +29,47 @@
     .generic-hero__overlay {
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(26, 42, 54, 0.7);
+        background: rgba(10, 17, 40, 0.72);
         z-index: 1;
     }
     .generic-hero .container {
         position: relative;
         z-index: 2;
     }
-    .generic-hero h1 { 
-        font-size: 3.5rem; 
-        font-weight: 800; 
-        text-transform: uppercase; 
-        letter-spacing: 2px; 
+    .generic-hero h1 {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        line-height: 1.1;
+        margin: 0;
+        overflow-wrap: break-word;
     }
     .generic-hero .breadcrumb {
         background: transparent;
         padding: 0;
-        margin-bottom: 15px;
+        margin-bottom: 16px;
+        justify-content: center;
     }
     .generic-hero .breadcrumb-item a {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(255, 255, 255, 0.75);
         text-decoration: none;
+        transition: color 0.2s;
+    }
+    .generic-hero .breadcrumb-item a:hover {
+        color: var(--accent);
     }
     .generic-hero .breadcrumb-item.active {
         color: white;
+    }
+    .generic-hero .breadcrumb-item + .breadcrumb-item::before {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    @media (max-width: 576px) {
+        .generic-hero { padding: 64px 0; }
+        .generic-hero h1 { letter-spacing: 1px; }
     }
 </style>
 

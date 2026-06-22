@@ -2,22 +2,41 @@
     {{- partial "generic-hero.html" . }}
     
     <style>
-        .speaker-list { 
-            background-color: #f9f9f9; 
-            padding-bottom: 80px; 
+        .speaker-list {
+            background-color: #f9f9f9;
+            padding: 64px 0 80px;
         }
         .speaker-list__menu {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 30px;
             list-style: none;
             padding: 0;
+            justify-items: center;
+        }
+
+        @media (max-width: 991px) {
+            .speaker-list__menu {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .speaker-list__menu {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .speaker-list { padding: 48px 0 64px; }
         }
     </style>
 
     <div class="speaker-list">
         <div class="container">
-            <menu class="speaker-list__menu">
+            <ul class="speaker-list__menu" role="list" aria-label="{{ T "menu.speakers" }}">
                 {{ range .Pages.GroupByParam "lastName" }}
                     {{ range .Pages.ByParam "firstName" }}
                         {{- $avatarResource := .Resources.GetMatch "avatar.jpg" }}
@@ -47,7 +66,7 @@
                         </li>
                     {{ end }}
                 {{ end }}
-            </menu>
+            </ul>
         </div>
     </div>
 

@@ -8,7 +8,7 @@
 {{- page.Scratch.Add "social_links_instance" 1 }}
 
 
-<label id="{{ $labelId }}" class="sr-only">{{ $input.ariaLabel }}</label>
+<span id="{{ $labelId }}" class="sr-only">{{ $input.ariaLabel }}</span>
 
 <ul class="social-links" aria-labelledby="{{ $labelId }}">
     {{- if $input.linkedinUrl }}
@@ -19,7 +19,7 @@
                 target="_blank"
                 rel="noopener noreferrer external"
                 class="social-links__link {{ $input.linkClass }}">
-                {{- partial "graphics/social/linkedin.html" }}
+                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
             </a>
         </li>
     {{ end }}
@@ -32,7 +32,7 @@
                 target="_blank"
                 rel="noopener noreferrer external"
                 class="social-links__link {{ $input.linkClass }}">
-                {{- partial "graphics/social/x.html" }}
+                <i class="fab fa-x-twitter" aria-hidden="true"></i>
             </a>
         </li>
     {{ end }}
@@ -45,7 +45,7 @@
                 target="_blank"
                 rel="noopener noreferrer external"
                 class="social-links__link {{ $input.linkClass }}">
-                {{- partial "graphics/social/facebook.html" }}
+                <i class="fab fa-facebook-f" aria-hidden="true"></i>
             </a>
         </li>
     {{ end }}
@@ -54,12 +54,11 @@
         <li class="social-links__menu-item">
             <a
                 href="{{- $input.companyUrl }}"
-                role="menuitem"
                 aria-label="Company"
                 target="_blank"
                 rel="noopener noreferrer external"
                 class="social-links__link {{ $input.linkClass }}">
-                {{- partial "graphics/social/company.html" }}
+                <i class="fas fa-building" aria-hidden="true"></i>
             </a>
         </li>
     {{ end }}
@@ -67,12 +66,11 @@
         <li class="social-links__menu-item">
             <a
                 href="{{- $input.instagramUrl }}"
-                role="menuitem"
                 aria-label="Instagram"
                 target="_blank"
                 rel="noopener noreferrer external"
                 class="social-links__link {{ $input.linkClass }}">
-                {{- partial "graphics/social/instagram.html" }}
+                <i class="fab fa-instagram" aria-hidden="true"></i>
             </a>
         </li>
     {{ end }}
@@ -81,12 +79,11 @@
         <li class="social-links__menu-item">
             <a
                 href="{{- $input.websiteUrl }}"
-                role="menuitem"
                 aria-label="Website"
                 target="_blank"
                 rel="noopener noreferrer external"
                 class="social-links__link {{ $input.linkClass }}">
-                {{- partial "graphics/social/website.html" }}
+                <i class="fas fa-link" aria-hidden="true"></i>
             </a>
         </li>
     {{ end }}

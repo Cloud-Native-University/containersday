@@ -1,11 +1,10 @@
 .event-title-section {
-    background-color: #00000059;
+    background-color: rgba(0, 0, 0, 0.35);
     background-blend-mode: overlay;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 33.5rem;
-    height: 5.8125rem;
     width: 100%;
     display: flex;
     justify-content: space-around;

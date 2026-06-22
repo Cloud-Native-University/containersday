@@ -15,7 +15,7 @@
         }
 
         .sponsors-hero h1 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: var(--font-display);
             font-size: 2.8rem;
             font-weight: 800;
             color: #1A2A36;
@@ -23,7 +23,7 @@
         }
 
         .sponsors-hero p {
-            font-family: 'DM Sans', sans-serif;
+            font-family: var(--font-body);
             font-size: 1.15rem;
             color: #637381;
             max-width: 680px;
@@ -47,7 +47,7 @@
             color: #111928;
             border: none;
             border-radius: 8px;
-            font-family: 'DM Sans', sans-serif;
+            font-family: var(--font-body);
             font-weight: 700;
             font-size: 0.95rem;
             text-decoration: none;
@@ -68,7 +68,7 @@
             color: #1A2A36;
             border: 1.5px solid rgba(0,0,0,0.12);
             border-radius: 8px;
-            font-family: 'DM Sans', sans-serif;
+            font-family: var(--font-body);
             font-weight: 600;
             font-size: 0.95rem;
             text-decoration: none;
@@ -86,7 +86,7 @@
         }
 
         .tier-heading {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: var(--font-display);
             font-size: 1.2rem;
             font-weight: 700;
             color: #1A2A36;
@@ -174,7 +174,7 @@
             border-radius: 12px;
             text-align: center;
             color: #98a2b3;
-            font-family: 'DM Sans', sans-serif;
+            font-family: var(--font-body);
             font-size: 0.9rem;
         }
 
@@ -219,11 +219,12 @@
             {{ $tierOrder := slice "platinum" "gold" "silver" "community" }}
             {{ $tierConfig := $event.sponsorTiers }}
 
+            {{ $allSponsors := site.Data.sponsors }}
             {{ range $tierKey := $tierOrder }}
                 {{ $config := index $tierConfig $tierKey }}
                 {{ if $config }}
                     {{ $tierSponsors := slice }}
-                    {{ range $sponsor := $event.sponsors }}
+                    {{ range $sponsor := $allSponsors }}
                         {{ if eq $sponsor.tier $tierKey }}
                             {{ $tierSponsors = $tierSponsors | append $sponsor }}
                         {{ end }}
