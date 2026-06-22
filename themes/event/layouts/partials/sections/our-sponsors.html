@@ -1,4 +1,4 @@
-{{ $allSponsors := site.Data.sponsors }}
+{{ $allSponsors := site.Params.themes.event.sponsors }}
 {{ $validSponsors := slice }}
 {{ range $sponsor := $allSponsors }}
     {{ if and $sponsor.logo $sponsor.url (ne $sponsor.tier "community") }}

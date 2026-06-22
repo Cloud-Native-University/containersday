@@ -219,7 +219,7 @@
             {{ $tierOrder := slice "platinum" "gold" "silver" "community" }}
             {{ $tierConfig := $event.sponsorTiers }}
 
-            {{ $allSponsors := site.Data.sponsors }}
+            {{ $allSponsors := site.Params.themes.event.sponsors }}
             {{ range $tierKey := $tierOrder }}
                 {{ $config := index $tierConfig $tierKey }}
                 {{ if $config }}
