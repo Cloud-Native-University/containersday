@@ -166,6 +166,124 @@ cd_tourism_activity_6_desc:
   other: "Pillar of the historic center. An architectural gem from the late 19th century that holds the city's spiritual essence."
 cd_tourism_activity_6_cta:
   other: "Historic Visit →"
+cd_venue_name:
+  other: "Universidad UAPA (UAPA)"
+cd_venue_desc:
+  other: "Official venue of Containers Day 2026. A modern campus designed for education and technological innovation."
+cd_venue_address:
+  other: "Av. Hispanoamericana, Santiago de los Caballeros, Dominican Republic"
+cd_venue_about_title:
+  other: "About the Venue"
+cd_venue_about_desc:
+  other: "The Open University for Adults (UAPA) is a pioneer in distance higher education in the Dominican Republic. Its Santiago campus features auditoriums, smart classrooms, and modern spaces ideal for a tech conference."
+cd_venue_accessibility_title:
+  other: "Accessibility"
+cd_venue_accessibility_desc:
+  other: "The UAPA campus has accessible facilities including ramps, elevators, and adapted restrooms for people with reduced mobility."
+cd_venue_amenities_title:
+  other: "Amenities"
+cd_venue_amenity_wifi:
+  other: "High-speed WiFi throughout the campus"
+cd_venue_amenity_ac:
+  other: "Air conditioning in all rooms"
+cd_venue_amenity_power:
+  other: "Power outlets at every seat"
+cd_venue_amenity_parking:
+  other: "Parking available"
+cd_transport_title:
+  other: "Getting There"
+cd_transport_from_sti:
+  other: "From Cibao Airport (STI)"
+cd_transport_from_sti_desc:
+  other: "Cibao International Airport is just 20 minutes by car from UAPA — the most convenient option. A taxi or Uber costs approximately RD$600-900."
+cd_transport_from_sdq:
+  other: "From Las Américas Airport (SDQ)"
+cd_transport_from_sdq_desc:
+  other: "Located in Santo Domingo, 2.5 hours from Santiago. Take a bus (guagua) from Santo Domingo to Santiago for RD$400-600, or rent a car. Main operators: Caribe Tours and APTPRA."
+cd_transport_public:
+  other: "Public Transit"
+cd_transport_public_desc:
+  other: "Santiago has public car routes (conchos) and buses connecting the entire city. The closest route to UAPA runs along Av. Hispanoamericana. Average fare: RD$35 per trip."
+cd_transport_private:
+  other: "Private Transport"
+cd_transport_private_desc:
+  other: "Several private transport companies offer door-to-door service. A taxi from anywhere in Santiago to UAPA costs RD$200-500 depending on distance."
+cd_transport_rideshare:
+  other: "Uber / Indriver"
+cd_transport_rideshare_desc:
+  other: "Uber and InDriver operate in Santiago with affordable rates. From downtown to UAPA costs approximately RD$150-300. The most recommended option for comfort and price."
+cd_transport_rental:
+  other: "Car Rental"
+cd_transport_rental_desc:
+  other: "At Cibao Airport you'll find Hertz, Avis, and Budget. Prices range from USD $30-60 per day. Driving in Santiago is straightforward with ample parking at UAPA."
+cd_hotels_label:
+  other: "Accommodation"
+cd_hotels_heading:
+  other: "Hotels Near UAPA"
+cd_hotel_1_name:
+  other: "Hotel Matum & Suites"
+cd_hotel_1_distance:
+  other: "1.5 km from venue — 5 min by car"
+cd_hotel_1_desc:
+  other: "5-star hotel with pool, gym, restaurant, and business center. Spacious rooms with city views."
+cd_hotel_2_name:
+  other: "Hodelpa Gran Almirante"
+cd_hotel_2_distance:
+  other: "2 km from venue — 7 min by car"
+cd_hotel_2_desc:
+  other: "5-star hotel with spa, multiple restaurants, and casino. Located in the heart of Santiago's commercial center."
+cd_hotel_3_name:
+  other: "Hotel Centro Plaza"
+cd_hotel_3_distance:
+  other: "1 km from venue — 3 min by car"
+cd_hotel_3_desc:
+  other: "Modern 4-star hotel with excellent value. Comfortable rooms and complimentary breakfast."
+cd_hotel_4_name:
+  other: "Hotel Madre Vieja"
+cd_hotel_4_distance:
+  other: "0.8 km from venue — 10 min walking"
+cd_hotel_4_desc:
+  other: "Cozy 3-star hotel, ideal for attendees looking for affordability and proximity to the event."
+cd_hotel_5_name:
+  other: "Hotel Camino Real"
+cd_hotel_5_distance:
+  other: "2.5 km from venue — 8 min by car"
+cd_hotel_5_desc:
+  other: "3-star hotel with pool and restaurant. Good budget option near the main avenue."
+cd_hotel_6_name:
+  other: "Hotel Colonial"
+cd_hotel_6_distance:
+  other: "3 km from venue — 10 min by car"
+cd_hotel_6_desc:
+  other: "3-star hotel with historic charm in downtown Santiago. Close to restaurants and nightlife."
+cd_restaurants_label:
+  other: "Dining"
+cd_restaurants_heading:
+  other: "Nearby Restaurants"
+cd_restaurant_1_name:
+  other: "El Tablado"
+cd_restaurant_1_cuisine:
+  other: "Dominican cuisine & grill — 5 min from venue"
+cd_restaurant_2_name:
+  other: "La Trattoria"
+cd_restaurant_2_cuisine:
+  other: "Italian food & artisan pizza — 10 min from venue"
+cd_restaurant_3_name:
+  other: "Café Santo Domingo"
+cd_restaurant_3_cuisine:
+  other: "Coffee, pastries & light meals — 3 min from venue"
+cd_restaurant_4_name:
+  other: "PikNik"
+cd_restaurant_4_cuisine:
+  other: "Gourmet burgers & fast food — 7 min from venue"
+cd_restaurant_5_name:
+  other: "Marítimo Restaurante"
+cd_restaurant_5_cuisine:
+  other: "Fresh fish & seafood — 12 min from venue"
+cd_restaurant_6_name:
+  other: "Green Bar"
+cd_restaurant_6_cuisine:
+  other: "Healthy food, bowls & smoothies — 8 min from venue"
 cd_tourism_ready_to_live:
   other: "Ready to experience Santiago?"
 cd_tourism_ready_desc:

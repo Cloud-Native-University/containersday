@@ -61,7 +61,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="{{ .Site.Params.themes.event.favicon | absURL }}" />
 
-        <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Params.themes.event.title }}</title>
+        <title>{{ if .Title }}{{ if .IsHome }}{{ .Title }}{{ else }}{{ .Title }} | {{ .Site.Params.themes.event.title }}{{ end }}{{ else }}{{ .Site.Params.themes.event.title }}{{ end }}</title>
 
         <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.themes.event.description | markdownify | plainify }}{{ end }}" />
         <link rel="canonical" href="{{ .Permalink }}" />
