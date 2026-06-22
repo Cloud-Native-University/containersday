@@ -357,5 +357,21 @@ cd_testimonial_reyna_role:
 cd_testimonial_reyna_subtitle:
   other: "Facilitator at the School of Engineering and Technology and Postgraduate Program"
 
+cd_organizers_intro:
+  other: "Meet the organizing team behind Containers Day 2026, dedicated to bringing Cloud Native learning and innovation to the heart of the Dominican Republic."
+cd_organizer_role_harys:
+  other: "Co-organizer of Containers Day, Software & DevOps Engineer"
+cd_organizer_role_victor:
+  other: "Co-organizer of Containers Day, Cloud Solutions Architect"
+cd_organizer_role_angel:
+  other: "Co-organizer of Containers Day, Software Engineer"
+cd_organizer_role_winifer:
+  other: "Co-organizer of Containers Day, Logistics & Tech Coordinator"
+cd_organizer_role_paul:
+  other: "Co-organizer of Containers Day, Tech Community Builder"
+cd_organizer_role_luz:
+  other: "Co-organizer of Containers Day, Legal Advisor & Operations"
+
+
 
 
