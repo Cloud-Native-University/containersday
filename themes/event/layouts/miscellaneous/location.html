@@ -4,12 +4,12 @@
 
     <div class="section-container" style="padding-bottom: 1.5rem;">
         <section class="section">
-            <h1 class="heading heading--1" style="color: #0f172a;">
+            <h1 class="heading heading--1" style="color: #ffffff;">
                 {{- T "location_page.heading" }}
             </h1>
 
             {{ with $event.address }}
-                <address class="location__address" style="color: #334155; font-weight: 500; font-size: 1.05rem; line-height: 1.6;">
+                <address class="location__address" style="color: #cbd5e1; font-weight: 500; font-size: 1.05rem; line-height: 1.6;">
                     {{ range $event.address }}
                         {{ . | markdownify }}
                         <br />
