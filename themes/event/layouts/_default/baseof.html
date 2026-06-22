@@ -324,13 +324,14 @@
       /* Mobile Header */
       .mobile-header {
         display: none;
-        background: #ffffff;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
+        background: rgba(255,255,255,0.97);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         position: sticky;
         top: 0;
         z-index: 100;
         padding: 0 16px;
-        height: 56px;
+        height: 52px;
         align-items: center;
         justify-content: space-between;
       }
@@ -342,19 +343,8 @@
       }
 
       .mobile-header__logo img {
-        max-height: 32px;
+        max-height: 28px;
         width: auto;
-      }
-
-      .mobile-header__right {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .mobile-header .btn-primary {
-        padding: 8px 16px;
-        font-size: 0.8rem;
       }
 
       .mobile-header__hamburger {
@@ -369,6 +359,12 @@
         justify-content: center;
         gap: 5px;
         padding: 0;
+        border-radius: 8px;
+        transition: background 0.2s;
+      }
+
+      .mobile-header__hamburger:hover {
+        background: rgba(0,0,0,0.04);
       }
 
       .mobile-header__hamburger span {
@@ -413,40 +409,11 @@
         .site-header { display: none; }
         .mobile-header { display: flex; }
 
-        .mobile-header__topbar {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 16px;
-          background: #111928;
-          color: rgba(255,255,255,0.6);
-          font-size: 0.75rem;
-          padding: 8px 16px;
-          position: sticky;
-          top: 0;
-          z-index: 101;
-        }
-
-        .mobile-header__topbar span {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-        }
-
-        .mobile-header__topbar i {
-          color: #2ecc71;
-          font-size: 0.7rem;
-        }
-
-        .mobile-header.sticky {
-          top: 0;
-        }
-
         .mobile-header__bottom-actions {
           display: flex;
           justify-content: center;
           gap: 10px;
-          padding: 12px 16px 16px;
+          padding: 12px 16px;
           background: #ffffff;
           border-top: 1px solid rgba(0,0,0,0.05);
           position: sticky;
@@ -454,34 +421,24 @@
           z-index: 99;
         }
 
-        .mobile-header__bottom-actions .btn-outline,
         .mobile-header__bottom-actions .btn-primary {
           flex: 1;
           justify-content: center;
           padding: 12px 20px;
           font-size: 0.85rem;
-          max-width: 220px;
-        }
-
-        body.page-body {
-          padding-bottom: 0;
+          max-width: 260px;
+          border-radius: 10px;
         }
       }
 
       @media (max-width: 576px) {
-        .mobile-header__topbar span:last-child {
-          display: none;
-        }
-
         .mobile-header__bottom-actions {
-          gap: 8px;
-          padding: 10px 12px 14px;
+          padding: 10px 12px;
         }
 
-        .mobile-header__bottom-actions .btn-outline,
         .mobile-header__bottom-actions .btn-primary {
-          padding: 10px 14px;
-          font-size: 0.8rem;
+          padding: 11px 16px;
+          font-size: 0.85rem;
         }
       }
 
@@ -541,12 +498,6 @@
             </div>
         </header>
 
-        <!-- Mobile Top Info Bar -->
-        <div class="mobile-header__topbar">
-            <span><i class="fas fa-map-marker-alt"></i> {{ .Site.Params.themes.event.location }}</span>
-            <span><i class="far fa-calendar-alt"></i> {{ $start := time .Site.Params.themes.event.startDate }}{{ $start | time.Format ":date_long" }}</span>
-        </div>
-
         <!-- Mobile Header -->
         <div class="mobile-header">
             <a class="mobile-header__logo" href="{{ site.Home.RelPermalink }}">
@@ -556,12 +507,9 @@
                     <strong>{{ .Site.Params.themes.event.title }}</strong>
                 {{ end }}
             </a>
-            <div class="mobile-header__right">
-                <a href="{{ .Site.Params.themes.event.callToAction.url }}" class="btn-primary" target="_blank">{{ T "cd_tickets" }}</a>
-                <button class="mobile-header__hamburger" aria-label="{{ T "menu.more" }}" onclick="document.getElementById('sidebarToggle').click();">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
+            <button class="mobile-header__hamburger" aria-label="{{ T "menu.more" }}" onclick="document.getElementById('sidebarToggle').click();">
+                <span></span><span></span><span></span>
+            </button>
         </div>
 
         <!-- Sidebar -->
@@ -596,12 +544,6 @@
             </nav>
             <label class="page-sidebar__empty-space" for="sidebarToggle"></label>
         </aside>
-
-        <!-- Mobile Bottom CTA -->
-        <div class="mobile-header__bottom-actions">
-            <a href="{{ .Site.Params.themes.event.callToActionSecondary.url }}" class="btn-outline" target="_blank">{{ T "cd_become_speaker" }} <i class="fas fa-microphone"></i></a>
-            <a href="{{ .Site.Params.themes.event.callToAction.url }}" class="btn-primary" target="_blank">{{ T "cd_tickets" }} <i class="fas fa-arrow-right"></i></a>
-        </div>
 
         <main class="page-main">
             {{ block "main" . }}{{ end }}

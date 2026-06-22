@@ -2,130 +2,216 @@
     {{ $event := .Site.Params.themes.event }}
 
     <style>
-        .sponsors-page { background-color: #f9f9f9; padding-bottom: 80px; }
-        .sponsors-page { background-color: #f9f9f9; padding-bottom: 80px; }
-        
-        .tier-section { margin-bottom: 80px; }
-        .tier-title { 
-            font-size: 1.8rem; font-weight: 800; color: #151515; 
-            margin-bottom: 50px; text-transform: uppercase; 
-            display: flex; align-items: center; justify-content: center; gap: 20px;
-            text-align: center;
-        }
-        .tier-title::before, .tier-title::after { 
-            content: ""; flex-grow: 1; height: 3px; background: #e1e1e1; 
+        .sponsors-page {
+            background: #f7f8fa;
+            padding-bottom: 80px;
         }
 
-        /* Modern Style (Silver/Community) */
-        .sponsor-modern { 
-            display: block; background: #f0f0f0; border-radius: 8px; 
-            padding: 30px; transition: 0.3s; text-decoration: none;
-            height: 160px; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 30px; border: 1px solid transparent;
-        }
-        .sponsor-modern:hover { background: #ffffff; border-color: var(--color-primary); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-        .sponsor-modern img { max-width: 100%; max-height: 80px; filter: grayscale(1); transition: 0.3s; opacity: 0.7; }
-        .sponsor-modern:hover img { filter: grayscale(0); opacity: 1; transform: scale(1.05); }
-
-        /* Ritmo Style (Platinum/Gold) */
-        .sponsor-ritmo { 
-            background: #ffffff; border: 1px solid #e1e1e1; border-radius: 12px;
-            overflow: hidden; transition: 0.3s; text-decoration: none; display: block;
-            margin-bottom: 30px; height: 100%;
-        }
-        .sponsor-ritmo:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--color-primary); }
-        .sponsor-ritmo-image-wrap { 
-            background: #1A2A36; padding: 40px; height: 200px; 
-            display: flex; align-items: center; justify-content: center;
-        }
-        .sponsor-ritmo-image-wrap img { max-width: 100%; max-height: 120px; transition: 0.3s; }
-        .sponsor-ritmo-content { padding: 30px; text-align: left; }
-        .sponsor-ritmo-title { font-size: 1.4rem; font-weight: 800; color: #151515; margin-bottom: 10px; }
-        .sponsor-ritmo-text { color: #888; font-size: 0.95rem; line-height: 1.6; margin: 0; }
-
-        .sponsors-grid { display: grid; gap: 30px; }
-        .grid-4 { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
-        .grid-3 { grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); }
-
-        .empty-tier { 
-            padding: 40px; border: 2px dashed #e1e1e1; border-radius: 12px; 
-            text-align: center; color: #999; font-style: italic;
-        }
-        .empty-tier a { color: var(--color-primary); font-weight: 700; text-decoration: none; }
-
-        .partner-header {
-            text-align: center;
-            padding: 100px 20px 60px 20px;
+        .sponsors-hero {
             background: #ffffff;
+            padding: 80px 20px 60px;
+            text-align: center;
             margin-bottom: 60px;
         }
-        .partner-header h1 {
-            font-size: 3.5rem;
+
+        .sponsors-hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
             color: #1A2A36;
-            font-weight: 900;
-            margin-bottom: 20px;
-            font-family: inherit;
+            margin: 0 0 12px;
         }
-        .partner-header p {
-            font-size: 1.3rem;
-            color: #4B5563;
-            max-width: 800px;
-            margin: 0 auto 40px auto;
+
+        .sponsors-hero p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.15rem;
+            color: #637381;
+            max-width: 680px;
+            margin: 0 auto 32px;
             line-height: 1.6;
         }
-        .partner-buttons {
+
+        .sponsors-hero .hero-actions {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 14px;
             flex-wrap: wrap;
         }
-        .partner-btn {
-            padding: 15px 35px;
-            font-size: 1.15rem;
+
+        .sponsors-hero .btn-prospectus {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: #2ecc71;
+            color: #111928;
+            border: none;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
             font-weight: 700;
-            border-radius: 6px;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .sponsors-hero .btn-prospectus:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .sponsors-hero .btn-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: transparent;
+            color: #1A2A36;
+            border: 1.5px solid rgba(0,0,0,0.12);
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .sponsors-hero .btn-contact:hover {
+            border-color: #1A2A36;
+        }
+
+        .tier-section {
+            max-width: 960px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .tier-heading {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1A2A36;
+            margin: 0 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e8ecf0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tier-heading .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .tier-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .tier-grid.platinum-grid {
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        }
+
+        .tier-grid.gold-grid {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+
+        .tier-grid.silver-grid {
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        }
+
+        .tier-grid.community-grid {
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        }
+
+        .sponsor-card {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.04);
+            border-radius: 12px;
+            padding: 28px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
+            min-height: 100px;
         }
-        .partner-btn-primary {
-            background-color: #e55c42; /* Color naranja/rojo del botón */
-            color: #ffffff;
-            border: 2px solid #e55c42;
-            box-shadow: 0 4px 15px rgba(229, 92, 66, 0.3);
+
+        .sponsor-card:hover {
+            border-color: rgba(46, 204, 113, 0.2);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            transform: translateY(-3px);
         }
-        .partner-btn-primary:hover {
-            background-color: #c94630;
-            border-color: #c94630;
-            transform: translateY(-2px);
-            color: #ffffff;
+
+        .sponsor-card img {
+            max-width: 100%;
+            max-height: 50px;
+            object-fit: contain;
+            filter: grayscale(1) brightness(0.4);
+            transition: filter 0.3s ease;
         }
-        .partner-btn-outline {
-            background-color: transparent;
-            color: #1A2A36;
-            border: 2px solid #1A2A36;
+
+        .sponsor-card:hover img {
+            filter: grayscale(0) brightness(0);
         }
-        .partner-btn-outline:hover {
-            background-color: #1A2A36;
-            color: #ffffff;
-            transform: translateY(-2px);
+
+        .sponsor-card.platinum {
+            padding: 36px 28px;
+            min-height: 130px;
+            border-color: rgba(229, 228, 226, 0.6);
+            background: linear-gradient(135deg, #fafafa, #ffffff);
         }
+
+        .sponsor-card.platinum img {
+            max-height: 65px;
+        }
+
+        .tier-empty {
+            padding: 32px;
+            border: 1.5px dashed #d0d5dd;
+            border-radius: 12px;
+            text-align: center;
+            color: #98a2b3;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .tier-empty a {
+            color: #2ecc71;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
         @media (max-width: 768px) {
-            .partner-header h1 { font-size: 2.5rem; }
-            .partner-header p { font-size: 1.1rem; }
-            .partner-buttons { flex-direction: column; align-items: stretch; max-width: 300px; margin: 0 auto; }
+            .sponsors-hero { padding: 50px 20px 40px; }
+            .sponsors-hero h1 { font-size: 1.8rem; }
+            .tier-grid.platinum-grid,
+            .tier-grid.gold-grid,
+            .tier-grid.silver-grid,
+            .tier-grid.community-grid { grid-template-columns: repeat(2, 1fr); }
+            .sponsor-card { min-height: 80px; padding: 20px 16px; }
+            .sponsor-card.platinum { min-height: 100px; padding: 24px 20px; }
+            .sponsor-card img { max-height: 36px; }
+            .sponsor-card.platinum img { max-height: 48px; }
+        }
+
+        @media (max-width: 480px) {
+            .tier-grid.platinum-grid,
+            .tier-grid.gold-grid,
+            .tier-grid.silver-grid,
+            .tier-grid.community-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 
     <div class="sponsors-page">
-
-        <div class="partner-header">
-            <div class="container">
-                <h1>{{ T "cd_partner_with_us" }}</h1>
-                <p>{{ T "cd_partner_with_us_desc" }}</p>
-                <div class="partner-buttons">
-                    <a href="/ContainersDay_2026.pdf" download target="_blank" class="partner-btn partner-btn-primary">{{ T "cd_download_prospectus" }}</a>
-                    <a href="mailto:hola@containers.day" class="partner-btn partner-btn-outline">{{ T "cd_contact_team" }}</a>
-                </div>
+        <div class="sponsors-hero">
+            <h1>{{ T "cd_partner_with_us" }}</h1>
+            <p>{{ T "cd_partner_with_us_desc" }}</p>
+            <div class="hero-actions">
+                <a href="/ContainersDay_2026.pdf" download target="_blank" class="btn-prospectus"><i class="fas fa-download"></i> {{ T "cd_download_prospectus" }}</a>
+                <a href="mailto:{{ $event.contactEmail }}" class="btn-contact"><i class="fas fa-envelope"></i> {{ T "cd_contact_team" }}</a>
             </div>
         </div>
 
@@ -144,22 +230,23 @@
                     {{ end }}
 
                     <div class="tier-section">
-                        <h2 class="tier-title" style="color: {{ $config.color }};">
+                        <h3 class="tier-heading">
+                            <span class="dot" style="background: {{ $config.color | default "#2ecc71" }};"></span>
                             {{ T (printf "cd_sponsor_tier_%s" $tierKey) | default $config.label }}
-                        </h2>
+                        </h3>
 
                         {{ if gt (len $tierSponsors) 0 }}
-                                <div class="sponsors-grid grid-4">
-                                    {{ range $sponsor := $tierSponsors }}
-                                        <a href="{{ $sponsor.url }}" target="_blank" rel="noopener" class="sponsor-modern">
-                                            {{ with resources.Get $sponsor.logo }}
-                                                <img src="{{ .RelPermalink }}" alt="{{ $sponsor.name }}">
-                                            {{ end }}
-                                        </a>
-                                    {{ end }}
-                                </div>
+                            <div class="tier-grid {{ $tierKey }}-grid">
+                                {{ range $s := $tierSponsors }}
+                                    <a href="{{ $s.url }}" target="_blank" rel="noopener" class="sponsor-card{{ if eq $tierKey "platinum" }} platinum{{ end }}">
+                                        {{ with resources.Get $s.logo }}
+                                            <img src="{{ .RelPermalink }}" alt="{{ $s.name }}">
+                                        {{ end }}
+                                    </a>
+                                {{ end }}
+                            </div>
                         {{ else }}
-                            <div class="empty-tier">
+                            <div class="tier-empty">
                                 <p>{{ T "cd_sponsor_space_available" }}</p>
                                 <p><a href="mailto:{{ $event.contactEmail }}">{{ T "cd_sponsor_cta" }}</a></p>
                             </div>

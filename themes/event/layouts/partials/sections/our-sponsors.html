@@ -9,7 +9,7 @@
 {{ if gt (len $validSponsors) 0 }}
     <style>
         .sponsors-section {
-            padding: 70px 0;
+            padding: 60px 0 50px;
             background: #ffffff;
         }
 
@@ -19,84 +19,96 @@
             color: #2ecc71;
             font-family: 'DM Sans', sans-serif;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .sponsors-section .section-heading {
             text-align: center;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: #1A2A36;
-            margin: 0 0 35px 0;
+            margin: 0 0 30px 0;
         }
 
-        .sponsor-grid {
+        .sponsor-carousel {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .sponsor-track {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
+            gap: 48px;
+            width: max-content;
+            animation: scroll-sponsors 28s linear infinite;
         }
 
-        .sponsor-item {
+        .sponsor-track:hover {
+            animation-play-state: paused;
+        }
+
+        .sponsor-track a {
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            opacity: 0.6;
+            flex-shrink: 0;
+            opacity: 0.45;
+            transition: opacity 0.4s ease;
         }
 
-        .sponsor-item:hover {
+        .sponsor-track a:hover {
             opacity: 1;
-            transform: scale(1.05);
         }
 
-        .sponsor-item img {
-            max-height: 48px;
+        .sponsor-track img {
+            max-height: 40px;
             width: auto;
             object-fit: contain;
-            filter: brightness(0.3);
-            transition: filter 0.3s ease;
+            filter: grayscale(1) brightness(0.4);
+            transition: filter 0.4s ease;
         }
 
-        .sponsor-item:hover img {
-            filter: brightness(0);
+        .sponsor-track a:hover img {
+            filter: grayscale(0) brightness(0);
         }
 
-        .sponsor-tier-label {
+        @keyframes scroll-sponsors {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .sponsors-section .view-all {
             text-align: center;
+            margin-top: 24px;
+        }
+
+        .sponsors-section .view-all a {
             font-family: 'DM Sans', sans-serif;
             font-size: 0.85rem;
             font-weight: 600;
             color: #637381;
-            margin-top: 40px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .sponsors-section .view-all a:hover {
+            color: #2ecc71;
+        }
+
+        .sponsors-section .view-all a i {
+            font-size: 0.7rem;
+            margin-left: 4px;
         }
 
         @media (max-width: 768px) {
-            .sponsors-section {
-                padding: 50px 0;
-            }
-
-            .sponsors-section .section-heading {
-                font-size: 1.5rem;
-            }
-
-            .sponsor-grid {
-                gap: 24px;
-            }
-
-            .sponsor-item img {
-                max-height: 36px;
-            }
+            .sponsors-section { padding: 40px 0 30px; }
+            .sponsors-section .section-heading { font-size: 1.2rem; }
+            .sponsor-track { gap: 32px; }
+            .sponsor-track img { max-height: 30px; }
         }
     </style>
 
@@ -104,18 +116,24 @@
         <div class="container">
             <span class="section-label">{{ T "cd_sponsors" }}</span>
             <h2 class="section-heading">{{ T "cd_sponsors_thanks" }}</h2>
+        </div>
 
-            <div class="sponsor-grid">
-                {{ range $s := $validSponsors }}
-                    <a href="{{ $s.url }}" target="_blank" rel="noopener" class="sponsor-item">
-                        {{ with resources.Get $s.logo }}
-                            <img src="{{ .RelPermalink }}" alt="{{ $s.name }}">
-                        {{ end }}
-                    </a>
+        <div class="sponsor-carousel">
+            <div class="sponsor-track">
+                {{ range (seq 2) }}
+                    {{ range $s := $validSponsors }}
+                        <a href="{{ $s.url }}" target="_blank" rel="noopener">
+                            {{ with resources.Get $s.logo }}
+                                <img src="{{ .RelPermalink }}" alt="{{ $s.name }}">
+                            {{ end }}
+                        </a>
+                    {{ end }}
                 {{ end }}
             </div>
+        </div>
 
-            <div class="sponsor-tier-label">{{ T "cd_sponsor_tier_platinum" }}</div>
+        <div class="view-all">
+            <a href="{{ "sponsors" | relLangURL }}">{{ T "cd_partner_with_us" }} <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
 {{ end }}
