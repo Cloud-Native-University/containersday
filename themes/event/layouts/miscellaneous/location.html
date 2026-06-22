@@ -2,30 +2,20 @@
     {{ $event := .Site.Params.themes.event }}
 
 
-    <div class="section-container">
+    <div class="section-container" style="padding-bottom: 1.5rem;">
         <section class="section">
-            <h1 class="heading heading--1">
+            <h1 class="heading heading--1" style="color: #0f172a;">
                 {{- T "location_page.heading" }}
             </h1>
 
             {{ with $event.address }}
-                <address class="location__address">
+                <address class="location__address" style="color: #334155; font-weight: 500; font-size: 1.05rem; line-height: 1.6;">
                     {{ range $event.address }}
                         {{ . | markdownify }}
                         <br />
                     {{ end }}
                 </address>
             {{ end }}
-
-            {{ if $event.directions }}
-                {{- partial "directions-card.html"
-                    (dict
-                    "locationImg" $event.images.location
-                    "locationImgAlt" $event.location
-                    "directions" $event.directions
-                    )
-                }}
-            {{- end }}
         </section>
     </div>
 
