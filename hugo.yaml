@@ -16,6 +16,10 @@ languages:
                   name: "Ponentes"
                   pageRef: /speakers
                   weight: 30
+                - identifier: organizers
+                  name: "Organizadores"
+                  pageRef: /organizers
+                  weight: 35
                 - identifier: tourism
                   name: "Turismo Tropical"
                   pageRef: /tourism
@@ -36,6 +40,10 @@ languages:
                   name: "Speakers"
                   pageRef: /speakers
                   weight: 30
+                - identifier: organizers
+                  name: "Organizers"
+                  pageRef: /organizers
+                  weight: 35
                 - identifier: tourism
                   name: "Tropical Tourism"
                   pageRef: /tourism

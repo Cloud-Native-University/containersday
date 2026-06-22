@@ -1,0 +1,292 @@
+{{ define "main" }}
+    {{- partial "generic-hero.html" . }}
+
+    <style>
+        .organizers-section {
+            padding: 100px 0;
+            background-color: #fafbfc;
+            background-image: radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
+            background-size: 24px 24px;
+            position: relative;
+        }
+        .organizers-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .organizers-intro {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 70px auto;
+            font-size: 1.25rem;
+            color: #475569;
+            line-height: 1.8;
+            font-weight: 450;
+            position: relative;
+        }
+        .organizers-intro::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            border-radius: 2px;
+        }
+        .organizers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            justify-content: center;
+            align-items: stretch;
+        }
+        .organizer-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .organizer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 114, 255, 0.12), 0 2px 8px rgba(0, 114, 255, 0.04);
+            border-color: rgba(0, 114, 255, 0.3);
+        }
+        .organizer-img-wrapper {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            position: relative;
+            padding: 5px;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, rgba(0, 114, 255, 0.1) 0%, rgba(0, 198, 255, 0.1) 100%);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .organizer-card:hover .organizer-img-wrapper {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+        }
+        .organizer-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .organizer-name {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+        .organizer-role {
+            font-size: 0.95rem;
+            color: #64748b;
+            font-weight: 500;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            flex-grow: 1;
+            padding: 0 10px;
+        }
+        .organizer-socials {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+        }
+        .organizer-social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-decoration: none;
+        }
+        .organizer-social-link[aria-label="LinkedIn"]:hover {
+            background-color: #0077b5;
+            color: white;
+            border-color: #0077b5;
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 0 10px 15px -3px rgba(0, 119, 181, 0.3);
+        }
+        .organizer-social-link[aria-label="Instagram"]:hover {
+            background: linear-gradient(45deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 0 10px 15px -3px rgba(238, 42, 123, 0.3);
+        }
+        .organizers-sponsors-section {
+            width: 100%;
+            padding-top: 1.25rem !important;
+            padding-bottom: 1.25rem !important;
+        }
+        .organizers-sponsors-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .organizers-sponsors-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .organizers-sponsors-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+        .organizers-sponsor-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 10px 20px;
+            height: 64px;
+            width: 160px;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+        .organizers-sponsor-item:hover {
+            background: #ffffff;
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .organizers-sponsor-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+        .organizers-sponsor-item:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+
+    <div class="organizers-section">
+        <div class="organizers-container">
+            <p class="organizers-intro">
+                {{ T "cd_organizers_intro" }}
+            </p>
+
+            <div class="organizers-grid">
+                <div class="organizer-card">
+                    <div class="organizer-img-wrapper">
+                        <img src="/images/harys-vizcaino.jpg" class="organizer-img" alt="Harys Vizcaíno">
+                    </div>
+                    <h3 class="organizer-name">Harys Vizcaíno</h3>
+                    <p class="organizer-role">{{ T "cd_organizer_role_harys" }}</p>
+                    <div class="organizer-socials">
+                        <a href="https://www.linkedin.com/in/harys-vizcaino/" target="_blank" class="organizer-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="organizer-card">
+                    <div class="organizer-img-wrapper">
+                        <img src="/images/victor-recio.jpg" class="organizer-img" alt="Víctor Recio">
+                    </div>
+                    <h3 class="organizer-name">Víctor Recio</h3>
+                    <p class="organizer-role">{{ T "cd_organizer_role_victor" }}</p>
+                    <div class="organizer-socials">
+                        <a href="https://www.linkedin.com/in/vsrecio/" target="_blank" class="organizer-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="organizer-card">
+                    <div class="organizer-img-wrapper">
+                        <img src="/images/angel-jose.jpg" class="organizer-img" alt="Angel Jose">
+                    </div>
+                    <h3 class="organizer-name">Angel Jose</h3>
+                    <p class="organizer-role">{{ T "cd_organizer_role_angel" }}</p>
+                    <div class="organizer-socials">
+                        <a href="https://www.linkedin.com/in/ajose19/" target="_blank" class="organizer-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="organizer-card">
+                    <div class="organizer-img-wrapper">
+                        <img src="/images/winifer-mosquea.jpg" class="organizer-img" alt="Winifer Mosquea Cabrera">
+                    </div>
+                    <h3 class="organizer-name">Winifer Mosquea Cabrera</h3>
+                    <p class="organizer-role">{{ T "cd_organizer_role_winifer" }}</p>
+                    <div class="organizer-socials">
+                        <a href="https://www.linkedin.com/in/winifer-mosquea-cabrera-18708b142/" target="_blank" class="organizer-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="organizer-card">
+                    <div class="organizer-img-wrapper">
+                        <img src="/images/paul-garcia.jpg" class="organizer-img" alt="Paul García">
+                    </div>
+                    <h3 class="organizer-name">Paul García</h3>
+                    <p class="organizer-role">{{ T "cd_organizer_role_paul" }}</p>
+                    <div class="organizer-socials">
+                        <a href="https://www.instagram.com/pagarciax/" target="_blank" class="organizer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="organizer-card">
+                    <div class="organizer-img-wrapper">
+                        <img src="/images/luz-yahaira.jpg" class="organizer-img" alt="Luz Yahaira Ramírez de Peña">
+                    </div>
+                    <h3 class="organizer-name">Luz Yahaira Ramírez de Peña</h3>
+                    <p class="organizer-role">{{ T "cd_organizer_role_luz" }}</p>
+                    <div class="organizer-socials">
+                        <a href="https://www.linkedin.com/in/luz-yahaira-ram%C3%ADrez-de-pe%C3%B1a-46383971/" target="_blank" class="organizer-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{- $event := .Site.Params.themes.event -}}
+    {{- $sponsors := $event.sponsors -}}
+    {{- if gt (len $sponsors) 0 -}}
+        <div class="section-container section-container--highlighted">
+            <section class="section section--short organizers-sponsors-section">
+                <div class="organizers-sponsors-wrapper">
+                    <h3 class="organizers-sponsors-title">{{ T "menu.sponsors" }}</h3>
+                    <div class="organizers-sponsors-logos">
+                        {{- range $sponsor := $sponsors -}}
+                            <a href="{{ $sponsor.url }}" target="_blank" rel="noopener" class="organizers-sponsor-item" aria-label="{{ $sponsor.name }}">
+                                {{- with resources.Get $sponsor.logo -}}
+                                    <img src="{{ .RelPermalink }}" alt="{{ $sponsor.name }}">
+                                {{- end -}}
+                            </a>
+                        {{- end -}}
+                    </div>
+                </div>
+            </section>
+        </div>
+    {{- end -}}
+{{ end }}
