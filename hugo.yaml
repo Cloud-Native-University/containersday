@@ -101,7 +101,7 @@ params:
                 - "Santiago de los Caballeros"
                 - "República Dominicana"
             map:
-                embeddableMapUrl: "https://www.google.com/maps/place/Universidad+Abierta+para+Adultos+(UAPA)/@19.4260527,-70.6718996,17z/data=!3m1!4b1!4m6!3m5!1s0x8eb1cf0bcd591469:0xa2db20e45ebcd6c9!8m2!3d19.4260527!4d-70.6718996!16s%2Fg%2F11h4q7t7cc?output=embed"
+                embeddableMapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.909095697624!2d-70.67566272483864!3d19.420609341065184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eb1cf44715456ab%3A0x6b45a05b2259173f!2sUAPA%20Sede%20Santiago!5e0!3m2!1sen!2sdo!4v1719099600000!5m2!1sen!2sdo"
                 viewLargerMapUrl: "https://maps.app.goo.gl/PBWurwB7mkr4j7jr6"
             # sessionizeId: ""
             callToAction:
