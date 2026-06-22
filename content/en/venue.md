@@ -6,17 +6,15 @@ type: "miscellaneous"
 ---
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap');
-
 .venue-redesign {
-font-family: 'Outfit', sans-serif;
+font-family: var(--font-body);
 color: #e2e8f0;
 }
 .venue-redesign h1, 
 .venue-redesign h2, 
 .venue-redesign h3, 
 .venue-redesign h4 {
-font-family: 'Syne', sans-serif;
+font-family: var(--font-display);
 font-weight: 800;
 }
 
@@ -52,7 +50,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 gap: 8px;
-font-family: 'Syne', sans-serif;
+font-family: var(--font-display);
 }
 .v-tab-trigger:hover {
 color: #ffffff;
@@ -365,7 +363,7 @@ transition: all 0.3s ease;
 cursor: pointer;
 text-transform: uppercase;
 letter-spacing: 0.5px;
-font-family: 'Syne', sans-serif;
+font-family: var(--font-display);
 }
 .v-action-btn:hover {
 background: #38bdf8;
