@@ -74,22 +74,23 @@
 
     <style>
         :root {
-            --bg-dark: #0f1724;
-            --bg-dark-2: #1a2a36;
+            --bg-dark: #0A1128;
+            --bg-dark-2: #14213D;
             --bg-light: #ffffff;
             --bg-light-2: #f8fafc;
             --primary: #5dade2;
             --primary-dark: #143e8b;
-            --accent: #2ecc71;
-            --accent-hover: #27ae60;
+            --accent: #00E5FF;
+            --accent-hover: #00B8D4;
+            --accent-text: #0A1128;
             --warm: #f59e0b;
             --text-dark: #1a2a36;
             --text-muted: #64748b;
             --text-light: #f8fafc;
-            --border: rgba(0,0,0,0.06);
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+            --border: rgba(255,255,255,0.06);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
             --font-display: 'Plus Jakarta Sans', sans-serif;
             --font-body: 'DM Sans', sans-serif;
         }
@@ -275,13 +276,13 @@
 
         .btn-pill-primary {
             background: var(--accent);
-            color: #fff;
+            color: var(--accent-text);
         }
 
         .btn-pill-primary:hover {
             background: var(--accent-hover);
             transform: translateY(-1px);
-            color: #fff;
+            color: var(--accent-text);
         }
 
         .btn-pill-outline {
