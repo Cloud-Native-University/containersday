@@ -88,45 +88,56 @@
 
 .hero-carousel .btn-group {
     display: flex;
-    gap: 16px;
+    gap: 14px;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.hero-carousel .btn-group a {
+    min-width: 0;
 }
 
 .hero-carousel .btn-primary {
     background-color: #2ecc71;
     color: #111928;
-    padding: 14px 36px;
-    border-radius: 6px;
+    padding: 14px 34px;
+    border-radius: 8px;
     font-weight: 700;
     text-decoration: none;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.95rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
+    box-shadow: 0 2px 8px rgba(46, 204, 113, 0.25);
+    white-space: nowrap;
 }
 
 .hero-carousel .btn-primary:hover {
     background-color: #27ae60;
+    box-shadow: 0 4px 14px rgba(46, 204, 113, 0.35);
     transform: translateY(-2px);
+    color: #111928;
 }
 
 .hero-carousel .btn-secondary {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.06);
     color: #ffffff;
-    padding: 14px 36px;
-    border-radius: 6px;
+    padding: 14px 34px;
+    border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
-    border: 1.5px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.25s ease;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    transition: all 0.2s ease;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.95rem;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
 }
 
 .hero-carousel .btn-secondary:hover {
     border-color: #ffffff;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
 }
 
 .hero-countdown-wrapper {
@@ -289,12 +300,19 @@
         margin-bottom: 14px;
     }
 
+    .hero-carousel .btn-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
     .hero-carousel .btn-primary,
     .hero-carousel .btn-secondary {
-        padding: 12px 28px;
+        padding: 13px 28px;
         font-size: 0.9rem;
         width: 100%;
         max-width: 280px;
+        white-space: normal;
     }
 
     .hero-countdown-wrapper .counter__segment {

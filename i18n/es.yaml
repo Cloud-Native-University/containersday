@@ -62,6 +62,16 @@ cd_event_slogan:
   other: "¡La conferencia tecnológica más importante del Caribe!"
 cd_event_location:
   other: "UAPA, Santiago"
+countdown.days:
+  other: "Días"
+countdown.hours:
+  other: "Horas"
+countdown.minutes:
+  other: "Min"
+countdown.seconds:
+  other: "Seg"
+countdown.ended:
+  other: "🚀 ¡El evento ha comenzado!"
 cd_hero_subtitle_1:
   other: "Innovación"
 cd_hero_title_1:

@@ -62,6 +62,8 @@ cd_event_slogan:
   other: "The most important tech conference in the Caribbean!"
 cd_event_location:
   other: "UAPA, Santiago"
+countdown.ended:
+  other: "🚀 The event has started!"
 cd_hero_subtitle_1:
   other: "Innovation"
 cd_hero_title_1:
