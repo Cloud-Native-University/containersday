@@ -1,5 +1,5 @@
 cd_home:
-  other: "INICIO"
+  other: "Inicio"
 cd_tickets:
   other: "Tickets"
 cd_buy_tickets:
@@ -379,6 +379,3 @@ cd_organizer_role_paul:
   other: "Co-organizador de Containers Day, Tech Community Builder"
 cd_organizer_role_luz:
   other: "Co-organizadora de Containers Day, Asesora Legal & Operaciones"
-
-
-
