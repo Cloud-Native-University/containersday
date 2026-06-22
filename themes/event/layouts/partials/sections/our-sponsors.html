@@ -8,99 +8,114 @@
 
 {{ if gt (len $validSponsors) 0 }}
     <style>
-        .our-sponsors-wrapper { 
-            background-color: #1A2A36; 
-            padding: 30px 0; 
-            margin-top: 0;
-            overflow: hidden;
-            position: relative;
-        }
-        .our-sponsors-content {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .our-sponsors-content .heading--highlighted { 
-            color: #ffffff !important; 
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-            display: block;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        .our-sponsors-content .heading--2 { 
-            color: #ffffff !important; 
-            opacity: 0.9;
-            font-size: 1.1rem;
-            margin-bottom: 0;
-            font-weight: normal;
+        .sponsors-section {
+            padding: 70px 0;
+            background: #ffffff;
         }
 
-        /* Ticker Animation */
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            padding: 10px 0;
+        .sponsors-section .section-label {
+            display: block;
+            text-align: center;
+            color: #2ecc71;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
         }
-        .ticker {
+
+        .sponsors-section .section-heading {
+            text-align: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1A2A36;
+            margin: 0 0 35px 0;
+        }
+
+        .sponsor-grid {
             display: flex;
-            width: fit-content;
-            animation: ticker 30s linear infinite;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .ticker:hover { animation-play-state: paused; }
-        
-        .ticker__item {
-            flex-shrink: 0;
-            padding: 0 40px;
+
+        .sponsor-item {
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
+            opacity: 0.6;
         }
 
-        .sponsor-card__logo { 
-            filter: grayscale(1) brightness(200%);
-            opacity: 0.7; 
-            transition: all 0.4s ease; 
-            max-height: 50px; /* Logos más pequeños */
+        .sponsor-item:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .sponsor-item img {
+            max-height: 48px;
             width: auto;
-        }
-        .ticker__item:hover .sponsor-card__logo { 
-            filter: grayscale(0) brightness(100%);
-            opacity: 1; 
-            transform: scale(1.1);
+            object-fit: contain;
+            filter: brightness(0.3);
+            transition: filter 0.3s ease;
         }
 
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        .sponsor-item:hover img {
+            filter: brightness(0);
+        }
+
+        .sponsor-tier-label {
+            text-align: center;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #637381;
+            margin-top: 40px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .sponsors-section {
+                padding: 50px 0;
+            }
+
+            .sponsors-section .section-heading {
+                font-size: 1.5rem;
+            }
+
+            .sponsor-grid {
+                gap: 24px;
+            }
+
+            .sponsor-item img {
+                max-height: 36px;
+            }
         }
     </style>
 
-    <div class="our-sponsors-wrapper">
+    <div class="sponsors-section">
         <div class="container">
-            <div class="our-sponsors-content">
-                <span class="heading--highlighted">{{ T "cd_sponsors" }}</span>
-                <p class="heading--2">{{ T "cd_sponsors_thanks" }}</p>
-            </div>
-            
-            <div class="ticker-wrap">
-                <div class="ticker">
-                    {{/* Duplicamos la lista para el efecto infinito */}}
-                    {{ range (seq 2) }}
-                        {{ range $sponsor := $validSponsors }}
-                            <div class="ticker__item">
-                                <a href="{{ $sponsor.url }}" target="_blank" rel="noopener">
-                                    {{ with resources.Get $sponsor.logo }}
-                                    <img src="{{ .RelPermalink }}" 
-                                         alt="{{ $sponsor.name }}" 
-                                         class="sponsor-card__logo">
-                                    {{ end }}
-                                </a>
-                            </div>
+            <span class="section-label">{{ T "cd_sponsors" }}</span>
+            <h2 class="section-heading">{{ T "cd_sponsors_thanks" }}</h2>
+
+            <div class="sponsor-grid">
+                {{ range $s := $validSponsors }}
+                    <a href="{{ $s.url }}" target="_blank" rel="noopener" class="sponsor-item">
+                        {{ with resources.Get $s.logo }}
+                            <img src="{{ .RelPermalink }}" alt="{{ $s.name }}">
                         {{ end }}
-                    {{ end }}
-                </div>
+                    </a>
+                {{ end }}
             </div>
+
+            <div class="sponsor-tier-label">{{ T "cd_sponsor_tier_platinum" }}</div>
         </div>
     </div>
 {{ end }}

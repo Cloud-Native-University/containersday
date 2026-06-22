@@ -2,318 +2,343 @@
 {{ $slides := $input.slides }}
 
 <style>
-    .hero-carousel {
-        position: relative;
-        width: 100%;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap');
+
+.hero-carousel {
+    position: relative;
+    width: 100%;
+}
+
+.hero-carousel .carousel-item {
+    min-height: 600px;
+    height: 85vh;
+    max-height: 900px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.hero-carousel .carousel-item::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(17, 25, 40, 0.85) 0%, rgba(26, 42, 54, 0.6) 100%);
+    z-index: 1;
+}
+
+.hero-carousel .carousel-caption {
+    z-index: 10;
+    bottom: 50%;
+    transform: translateY(50%);
+    text-align: center;
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+}
+
+.hero-carousel .hero-badge {
+    display: inline-block;
+    padding: 6px 24px;
+    border: 1px solid rgba(46, 204, 113, 0.4);
+    color: #2ecc71;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    border-radius: 4px;
+}
+
+.hero-carousel .display-1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.15;
+    font-size: 3.8rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-carousel .hero-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 700px;
+    margin: 0 auto 35px auto;
+    line-height: 1.7;
+}
+
+.hero-carousel .btn-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-carousel .btn-primary {
+    background-color: #2ecc71;
+    color: #111928;
+    padding: 14px 36px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.hero-carousel .btn-primary:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+.hero-carousel .btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    padding: 14px 36px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.25s ease;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+}
+
+.hero-carousel .btn-secondary:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-countdown-wrapper {
+    margin-bottom: 25px;
+}
+
+.hero-countdown-wrapper .counter-container {
+    display: flex !important;
+    justify-content: center;
+    gap: 12px;
+}
+
+.hero-countdown-wrapper .counter__segment {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 18px;
+    border-radius: 8px;
+    min-width: 75px;
+}
+
+.hero-countdown-wrapper .counter__value {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #2ecc71;
+    display: block;
+    line-height: 1;
+}
+
+.hero-countdown-wrapper .counter__label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+    display: block;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    z-index: 30;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    background-size: 40%;
+    transition: border-color 0.3s;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    border-color: #2ecc71;
+}
+
+.carousel-indicators {
+    bottom: 20px;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: none;
+    margin: 0 5px;
+    transition: all 0.3s;
+}
+
+.carousel-indicators .active {
+    background-color: #2ecc71;
+    width: 28px;
+    border-radius: 4px;
+}
+
+.hero-organizers-wrapper {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.hero-organizers {
+    pointer-events: auto;
+}
+
+.hero-organizers-title {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.hero-organizers-box {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 12px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.hero-organizers-box img {
+    height: 32px;
+    object-fit: contain;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    filter: brightness(0) invert(1);
+}
+
+.hero-organizers-box img:hover {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
     .hero-carousel .carousel-item {
+        min-height: 520px;
         height: 100vh;
-        min-height: 700px;
-        position: relative;
-        overflow: hidden;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
     }
-    .hero-video-bg {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        z-index: 0;
-        transform: translate(-50%, -50%);
-        object-fit: cover;
-    }
-    .hero-carousel .carousel-item::after {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(26, 42, 54, 0.5); /* Overlay semi-transparente */
-        z-index: 1;
-    }
-    .hero-carousel .carousel-caption {
-        z-index: 10;
-        bottom: 50%;
-        transform: translateY(50%);
-        text-align: center;
-        width: 100%;
-        left: 0;
-        right: 0;
-    }
-    .hero-carousel .hero-badge {
-        display: inline-block;
-        padding: 5px 25px;
-        background: transparent;
-        color: #2ecc71; /* HighTech green */
-        font-weight: 700;
-        text-transform: capitalize;
-        margin-bottom: 15px;
-        font-size: 1.2rem;
-    }
+
     .hero-carousel .display-1 {
-        font-weight: 800;
-        color: #ffffff;
-        margin-bottom: 25px;
-        line-height: 1.2;
-        font-size: 4.5rem; /* Massive heading */
+        font-size: 2rem;
+        max-width: 100%;
     }
+
     .hero-carousel .hero-description {
-        font-size: 1.2rem;
-        color: rgba(255, 255, 255, 0.8);
-        max-width: 800px;
-        margin: 0 auto 40px auto;
-        line-height: 1.6;
-    }
-    
-    .hero-carousel .btn-group {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-    }
-    .hero-carousel .btn-green {
-        background-color: #2ecc71;
-        color: #1A2A36;
-        padding: 15px 40px;
-        border-radius: 50px;
-        font-weight: 700;
-        text-decoration: none;
-        transition: 0.3s;
-    }
-    .hero-carousel .btn-blue {
-        background-color: #2ecc71;
-        color: #1A2A36;
-        padding: 15px 40px;
-        border-radius: 50px;
-        font-weight: 700;
-        text-decoration: none;
-        transition: 0.3s;
-    }
-    .hero-carousel .btn-blue:hover {
-        background-color: #27ae60;
-        color: white;
-        transform: translateY(-2px);
-    }
-
-    /* Countdown Styling inside Hero */
-    .hero-countdown-wrapper {
-        margin-bottom: 30px;
-    }
-    .hero-countdown-wrapper .counter-container {
-        display: flex !important;
-        justify-content: center;
-        gap: 20px;
-    }
-    .hero-countdown-wrapper .counter__segment {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(5px);
-        padding: 10px 20px;
-        border-radius: 12px;
-        min-width: 90px;
-    }
-    .hero-countdown-wrapper .counter__value {
-        font-size: 2.2rem;
-        font-weight: 800;
-        color: #2ecc71;
-        display: block;
-        line-height: 1;
-    }
-    .hero-countdown-wrapper .counter__label {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.6);
-        letter-spacing: 1px;
-    }
-    
-    /* Stats Bar at the bottom */
-    .hero-stats-bar {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        background-color: #2ecc71;
-        padding: 20px 0;
-        z-index: 20;
-    }
-    .hero-stats-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .hero-stat-item {
-        color: #1A2A36;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-    .hero-stat-value {
-        font-size: 2.5rem;
-        font-weight: 900;
-        margin: 0;
-    }
-    .hero-stat-label {
         font-size: 1rem;
-        font-weight: 600;
-        max-width: 150px;
-        text-align: left;
-        line-height: 1.2;
+        margin-bottom: 25px;
     }
 
-    /* Controls */
-    .carousel-control-prev, .carousel-control-next {
-        width: 5%;
-        z-index: 30;
-    }
-    .carousel-control-prev-icon, .carousel-control-next-icon {
-        background-color: #1b4fb1;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        background-size: 50%;
-    }
-    .carousel-indicators [data-bs-target] {
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background-color: #1b4fb1;
-        margin: 0 5px;
+    .hero-carousel .hero-badge {
+        font-size: 0.75rem;
+        padding: 4px 16px;
+        margin-bottom: 14px;
     }
 
-    @media (max-width: 768px) {
-        .hero-carousel .display-1 { font-size: 2.5rem; }
-        .hero-stats-bar { display: none; }
-        .hero-organizers { display: none; }
+    .hero-carousel .btn-primary,
+    .hero-carousel .btn-secondary {
+        padding: 12px 28px;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .hero-countdown-wrapper .counter__segment {
+        min-width: 60px;
+        padding: 8px 12px;
+    }
+
+    .hero-countdown-wrapper .counter__value {
+        font-size: 1.4rem;
+    }
+
+    .hero-countdown-wrapper .counter__label {
+        font-size: 0.6rem;
     }
 
     .hero-organizers-wrapper {
-        position: absolute;
-        bottom: 80px;
-        left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        z-index: 20;
-    }
-
-    .hero-organizers {
-        width: 95%;
-        max-width: 1100px;
-    }
-
-    .hero-organizers-title {
-        color: #00F48D;
-        font-weight: 700;
-        font-size: 14px;
-        letter-spacing: 2px;
-        text-align: center;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .hero-organizers-title::before,
-    .hero-organizers-title::after {
-        content: "";
-        display: inline-block;
-        width: 50px;
-        height: 2px;
-        background-color: #00F48D;
-        margin: 0 15px;
+        bottom: 16px;
     }
 
     .hero-organizers-box {
-        background: rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 12px;
-        padding: 15px 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        gap: 20px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        flex-wrap: wrap;
+        padding: 10px 16px;
+        gap: 14px;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+        border-radius: 8px;
     }
 
     .hero-organizers-box img {
-        height: 45px;
-        object-fit: contain;
+        height: 22px;
     }
 
-    .logo-scale2connect { height: 45px; }
-    .logo-eu { height: 45px; }
-    .logo-cadesoft { height: 45px; }
-    .logo-uapa { height: 45px; }
-
-    .hero-bottom-bar {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 15, 40, 0.6);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 15px 0;
-        z-index: 20;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    .hero-organizers-title {
+        font-size: 0.6rem;
+        margin-bottom: 8px;
     }
 
-    .hero-bottom-bar-items {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        width: 95%;
-        max-width: 1200px;
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none;
     }
-
-    .hero-bottom-item {
-        display: flex;
-        align-items: center;
-        color: #fff;
-        font-size: 13px;
-        font-weight: 500;
-        letter-spacing: 1px;
-    }
-
-    .hero-bottom-item i {
-        color: #00F48D;
-        margin-right: 8px;
-        font-size: 16px;
-    }
-
-    .hero-bottom-divider {
-        width: 1px;
-        height: 15px;
-        background-color: rgba(255, 255, 255, 0.3);
-        margin: 0 30px;
-    }
-
-    @media (max-width: 991px) {
-        .hero-bottom-divider { display: none; }
-        .hero-bottom-bar-items { gap: 20px; }
-        .hero-bottom-item { width: calc(33% - 20px); justify-content: center; text-align: center; }
-        .hero-organizers-wrapper { bottom: 120px; }
-    }
-    @media (max-width: 576px) {
-        .hero-bottom-item { width: calc(50% - 20px); }
-        .hero-organizers-wrapper { bottom: 160px; }
-    }
+}
 </style>
 
 <div id="mainHeroSlider" class="carousel slide hero-carousel" data-bs-ride="carousel">
-    {{ if gt ($slides | len) 1 }}
-    <!-- Previous/Next Buttons remain -->
-    {{ end }}
 
     <div class="carousel-inner">
         {{ range $index, $slide := $slides }}
@@ -325,23 +350,25 @@
                 <source src="/videos/hero-background.mp4" type="video/mp4">
             </video>
             {{ end }}
+
             <div class="carousel-caption">
                 <div class="container animate__animated {{ if eq $index 0 }}animate__fadeInDown{{ else }}animate__fadeInUp{{ end }}">
                     <span class="hero-badge">{{ T (printf "cd_hero_subtitle_%d" (add $index 1)) }}</span>
+
                     {{ if eq $index 0 }}<h1 class="display-1">{{ T (printf "cd_hero_title_%d" (add $index 1)) }}</h1>{{ else }}<h2 class="display-1">{{ T (printf "cd_hero_title_%d" (add $index 1)) }}</h2>{{ end }}
-                    
+
                     {{- if $.context.Site.Params.themes.event.startDate }}
-                        <div class="hero-countdown-wrapper animated fadeInUp" style="animation-delay: 0.3s;">
-                             {{ partial "countdown.html" (dict "targetDate" $.context.Site.Params.themes.event.startDate) }}
-                        </div>
+                    <div class="hero-countdown-wrapper animated fadeInUp" style="animation-delay: 0.2s;">
+                        {{ partial "countdown.html" (dict "targetDate" $.context.Site.Params.themes.event.startDate) }}
+                    </div>
                     {{- end }}
 
                     <p class="hero-description">{{ T (printf "cd_hero_desc_%d" (add $index 1)) | markdownify }}</p>
-                    
+
                     <div class="btn-group">
-                        <a href="{{ $.context.Site.Params.themes.event.callToAction.url | default "#register" }}" target="_blank" class="btn-green">{{ T "cd_buy_tickets" }}</a>
+                        <a href="{{ $.context.Site.Params.themes.event.callToAction.url | default "#register" }}" target="_blank" class="btn-primary">{{ T "cd_buy_tickets" }}</a>
                         {{ if $.context.Site.Params.themes.event.callToActionSecondary.url }}
-                        <a href="{{ $.context.Site.Params.themes.event.callToActionSecondary.url }}" class="btn-blue" target="_blank">{{ T "cd_apply_speaker" }}</a>
+                        <a href="{{ $.context.Site.Params.themes.event.callToActionSecondary.url }}" class="btn-secondary" target="_blank">{{ T "cd_apply_speaker" }}</a>
                         {{ end }}
                     </div>
                 </div>
@@ -349,7 +376,7 @@
         </div>
         {{ end }}
     </div>
-    
+
     {{ if gt ($slides | len) 1 }}
     <button class="carousel-control-prev" type="button" data-bs-target="#mainHeroSlider" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -371,20 +398,6 @@
                 <img src="/logos/organizers/scale2connect-v3.png" alt="Scale2Connect" class="logo-scale2connect" />
                 <img src="/logos/organizers/eu-flag-v1.png" alt="Funded by the European Union" class="logo-eu" />
             </div>
-        </div>
-    </div>
-
-    <div class="hero-bottom-bar">
-        <div class="hero-bottom-bar-items">
-            <div class="hero-bottom-item"><i class="fas fa-graduation-cap"></i> {{ T "cd_hero_innovation" }}</div>
-            <div class="hero-bottom-divider"></div>
-            <div class="hero-bottom-item"><i class="fas fa-cloud"></i> {{ T "cd_hero_technology" }}</div>
-            <div class="hero-bottom-divider"></div>
-            <div class="hero-bottom-item"><i class="fas fa-users"></i> {{ T "cd_hero_collaboration" }}</div>
-            <div class="hero-bottom-divider"></div>
-            <div class="hero-bottom-item"><i class="fas fa-leaf"></i> {{ T "cd_hero_sustainability" }}</div>
-            <div class="hero-bottom-divider"></div>
-            <div class="hero-bottom-item"><i class="fas fa-globe"></i> {{ T "cd_hero_global_impact" }}</div>
         </div>
     </div>
 </div>
@@ -409,7 +422,6 @@
             });
         };
 
-        // Trigger animation
         animateCounters();
     });
 </script>

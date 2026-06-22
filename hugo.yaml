@@ -62,6 +62,9 @@ params:
                 - "Universidad UAPA"
                 - "Santiago de los Caballeros"
                 - "República Dominicana"
+            # Get Sessionize API ID from https://sessionize.com/app/organizer/schedule/api/0
+            # Login -> click "Schedules" -> "API" -> copy the ID shown
+            # sessionizeId: ""
             callToAction:
                 url: "https://cap.uapa.edu.do/producto/containers-day-2026/"
             callToActionSecondary:
