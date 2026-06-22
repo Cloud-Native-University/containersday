@@ -1,5 +1,6 @@
 ---
 title: "Talks Schedule"
+description: "Explore the talks and workshops schedule for Containers Day 2026 — Kubernetes, Docker, and AI."
 headless: false
 type: sessions
 slug: agenda

@@ -50,6 +50,7 @@ params:
         - logos/logo-containersday-v2.png
     themes:
         event:
+            description: "Containers Day 2026 — la conferencia Cloud Native más importante del Caribe. IA, contenedores, Kubernetes y más en Santiago, RD. 22 de agosto de 2026."
             title: "Containers Day"
             slogan: "¡La conferencia tecnológica más importante del Caribe!"
             location: "UAPA, Santiago"

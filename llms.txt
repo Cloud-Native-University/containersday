@@ -1,0 +1,44 @@
+# Containers Day
+
+> Cloud Native conference in Santiago, Dominican Republic — August 22, 2026.
+
+## URLs
+- Site: https://containers.day
+- Tickets: https://cap.uapa.edu.do/producto/containers-day-2026/
+- CFP: https://sessionize.com/containers-days-dr/
+
+## Tech Stack
+- Static site: Hugo 0.128+
+- Theme: event (submodule from medialesson/hugo-theme-event)
+- Hosting: GitHub Pages
+- Auth: Firebase (Google Auth)
+- Database: Firestore
+- CDN: Bootstrap 5.3, Font Awesome 5.15, Animate.css
+- Languages: Spanish (default), English
+
+## Content Structure
+| Path | Description |
+|---|---|
+| `content/` | Spanish content |
+| `content/en/` | English content |
+| `content/speakers/` | Speaker profiles |
+| `content/sessions/` | Session/schedule data |
+| `i18n/` | Translation files (es.yaml, en.yaml, de.yaml) |
+| `themes/event/` | Theme with layouts, partials, assets |
+| `static/` | Static files (images, logos, PDFs) |
+
+## Key Pages
+- `/` — Homepage (ES)
+- `/en/` — Homepage (EN)
+- `/speakers/` — Speaker list
+- `/sessions/` — Schedule
+- `/sponsors/` — Sponsors
+- `/tourism/` — Travel info
+- `/code-of-conduct/` — Code of conduct
+
+## SEO Configuration
+- Default language: es
+- Sitemap: /sitemap.xml
+- Canonical: self-referencing
+- Structured data: Event + Organization schema
+- Robots.txt: at /robots.txt

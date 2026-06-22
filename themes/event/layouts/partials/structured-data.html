@@ -1,0 +1,49 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Event",
+      "name": "{{ .Site.Params.themes.event.title }}",
+      "description": {{ .Site.Params.themes.event.description | jsonify }},
+      "startDate": "{{ .Site.Params.themes.event.startDate }}",
+      "endDate": "{{ .Site.Params.themes.event.endDate }}",
+      "location": {
+        "@type": "Place",
+        "name": "{{ .Site.Params.themes.event.address }}",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Santiago de los Caballeros",
+          "addressCountry": "DO"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ .Site.Params.themes.event.callToAction.url }}",
+        "availability": "https://schema.org/InStock"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Containers Day",
+        "url": "https://containers.day"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "Containers Day",
+      "url": "https://containers.day",
+      "logo": "https://containers.day/logos/logo-containersday-v2.png",
+      "sameAs": [
+        "{{ .Site.Params.themes.event.socialLinks.xUrl }}",
+        "{{ .Site.Params.themes.event.socialLinks.facebookUrl }}",
+        "{{ .Site.Params.themes.event.socialLinks.linkedinUrl }}"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "name": "{{ .Site.Params.themes.event.title }}",
+      "url": "https://containers.day"
+    }
+  ]
+}
+</script>

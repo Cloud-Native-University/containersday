@@ -20,6 +20,8 @@ cd_community:
   other: "Community"
 cd_community_desc:
   other: "Attend high-level talks and learn new skills together with tech enthusiasts."
+cd_networking:
+  other: "Networking"
 cd_networking_desc:
   other: "Connect with other professionals, startups, and leading tech companies."
 cd_innovation:
@@ -174,6 +176,15 @@ cd_our_community:
   other: "Our Community"
 cd_community_expectations:
   other: "What our university community expects from the event"
+event_highlights_section.number_of_speakers:
+  one: '{{ . }} Speaker'
+  other: '{{ . }} Speakers'
+event_highlights_section.number_of_sessions:
+  one: '{{ . }} Session'
+  other: '{{ . }} Sessions'
+event_highlights_section.number_of_days:
+  one: '{{ . }} Day'
+  other: '{{ . }} Days'
 event_highlights_section.number_of_workshops:
   one: "{{ . }} Workshop"
   other: "{{ . }} Workshops"

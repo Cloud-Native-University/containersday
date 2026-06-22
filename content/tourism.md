@@ -1,5 +1,6 @@
 ---
 title: "Turismo Tropical"
+description: "Descubre Santiago de los Caballeros: cultura, historia y gastronomía durante tu visita a Containers Day 2026."
 layout: "tourism"
 type: "miscellaneous"
 ---

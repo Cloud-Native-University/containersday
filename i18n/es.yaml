@@ -20,6 +20,8 @@ cd_community:
   other: "Comunidad"
 cd_community_desc:
   other: "Asiste a charlas de alto nivel y aprende nuevas habilidades junto a apasionados de la tecnología."
+cd_networking:
+  other: "Networking"
 cd_networking_desc:
   other: "Conéctate con otros profesionales, startups y empresas líderes del sector tecnológico."
 cd_innovation:
