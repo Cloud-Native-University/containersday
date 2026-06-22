@@ -1,21 +1,15 @@
 <!doctype html>
 <html lang="{{- .Site.Language.Lang -}}">
-    <head>
-        {{ if .Site.Params.themes.event.redirectBasedOnBrowserLang }}
-        <script>
-            (function () {
-                try {
-                    const isVisited = localStorage.getItem('visited');
-                    if (isVisited) return;
-                    localStorage.setItem('visited', '1');
-
-                    const availableLangs = [
-                        {{- range $index, $lang := .Site.Languages -}}
-                    "{{ $lang.Lang }}"{{ if ne (add $index 1) (len $.Site.Languages) }}, {{ end }}
-                    {{- end -}}
-                ];
-
-                    const langMap = {
+<head>
+    {{ if .Site.Params.themes.event.redirectBasedOnBrowserLang }}
+    <script>
+        (function () {
+            try {
+                const isVisited = localStorage.getItem('visited');
+                if (isVisited) return;
+                localStorage.setItem('visited', '1');
+                const availableLangs = [{{- range $index, $lang := .Site.Languages -}}"{{ $lang.Lang }}"{{ if ne (add $index 1) (len $.Site.Languages) }}, {{ end }}{{- end -}}];
+                const langMap = {
                     {{- if .IsTranslated -}}
                     {{- $total := len .AllTranslations -}}
                     {{- range $index, $lang := .AllTranslations -}}
@@ -28,538 +22,516 @@
                     {{- end -}}
                     {{- end }}
                 };
-
-                    const browserLang = (navigator.languages?.[0] || navigator.language || '').toLowerCase();
-                    if (!browserLang) return;
-                    const browserLangShort = browserLang.split('-')[0];
-                    const currentLang = "{{ .Site.Language.Lang }}".toLowerCase();
-
-                    // Normalize available langs for case-insensitive comparison while preserving originals for lookup
-                    const normalizedLangs = availableLangs.map(l => l.toLowerCase());
-
-                    // Try exact match first (e.g. pt-BR → pt-BR), then fall back to base language subtag (e.g. pt-BR → pt)
-                    const exactIdx = normalizedLangs.indexOf(browserLang);
-                    const shortIdx = exactIdx === -1 ? normalizedLangs.indexOf(browserLangShort) : -1;
-                    const matchIdx = exactIdx !== -1 ? exactIdx : shortIdx;
-                    const targetLang = matchIdx !== -1 ? availableLangs[matchIdx] : null;
-
-                    if (targetLang && targetLang.toLowerCase() !== currentLang) {
-                        const redirectUrl = langMap[targetLang];
-                        if (redirectUrl) {
-                            window.location.replace(redirectUrl);
-                        }
-                    }
-                } catch (e) {
-                    console.warn('Language redirect failed', e);
+                const browserLang = (navigator.languages?.[0] || navigator.language || '').toLowerCase();
+                if (!browserLang) return;
+                const browserLangShort = browserLang.split('-')[0];
+                const currentLang = "{{ .Site.Language.Lang }}".toLowerCase();
+                const normalizedLangs = availableLangs.map(l => l.toLowerCase());
+                const exactIdx = normalizedLangs.indexOf(browserLang);
+                const shortIdx = exactIdx === -1 ? normalizedLangs.indexOf(browserLangShort) : -1;
+                const matchIdx = exactIdx !== -1 ? exactIdx : shortIdx;
+                const targetLang = matchIdx !== -1 ? availableLangs[matchIdx] : null;
+                if (targetLang && targetLang.toLowerCase() !== currentLang) {
+                    const redirectUrl = langMap[targetLang];
+                    if (redirectUrl) window.location.replace(redirectUrl);
                 }
-            })();
-        </script>
-        {{ end }}
+            } catch (e) {
+                console.warn('Language redirect failed', e);
+            }
+        })();
+    </script>
+    {{ end }}
 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{{ .Site.Params.themes.event.favicon | absURL }}" />
+    <title>{{ if .Title }}{{ if .IsHome }}{{ .Title }}{{ else }}{{ .Title }} | {{ .Site.Params.themes.event.title }}{{ end }}{{ else }}{{ .Site.Params.themes.event.title }}{{ end }}</title>
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.themes.event.description | markdownify | plainify }}{{ end }}" />
+    <link rel="canonical" href="{{ .Permalink }}" />
 
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="{{ .Site.Params.themes.event.favicon | absURL }}" />
-
-        <title>{{ if .Title }}{{ if .IsHome }}{{ .Title }}{{ else }}{{ .Title }} | {{ .Site.Params.themes.event.title }}{{ end }}{{ else }}{{ .Site.Params.themes.event.title }}{{ end }}</title>
-
-        <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.themes.event.description | markdownify | plainify }}{{ end }}" />
-        <link rel="canonical" href="{{ .Permalink }}" />
-
-        {{ if .IsTranslated }}
-            {{ range .Translations }}
-                <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
-            {{ end }}
+    {{ if .IsTranslated }}
+        {{ range .Translations }}
             <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
         {{ end }}
+        <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+    {{ end }}
 
-        {{ template "_internal/opengraph.html" . }}
-        {{ template "_internal/twitter_cards.html" . }}
+    {{ template "_internal/opengraph.html" . }}
+    {{ template "_internal/twitter_cards.html" . }}
 
-        {{ with (resources.Match "**/*.css" | resources.Concat "styles.css" | minify | fingerprint) }}
-            <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css" media="screen" integrity="{{ .Data.Integrity }}" />
-        {{ end }}
+    {{ with (resources.Match "**/*.css" | resources.Concat "styles.css" | minify | fingerprint) }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css" media="screen" integrity="{{ .Data.Integrity }}" />
+    {{ end }}
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
-        {{- partial "structured-data.html" . -}}
+    {{- partial "structured-data.html" . -}}
 
     <style>
-      :root {
-        --color-primary-lighter: {{- .Site.Params.themes.event.colors.primaryLighter }};
-        --color-primary: {{- .Site.Params.themes.event.colors.primary }};
-        --color-primary-darker: {{- .Site.Params.themes.event.colors.primaryDarker }};
-        --color-primary-darkest: {{- .Site.Params.themes.event.colors.primaryDarkest }};
-        --color-secondary: {{- .Site.Params.themes.event.colors.secondary }};
-        --color-secondary-darker: {{- .Site.Params.themes.event.colors.secondaryDarker }};
-        --color-track: {{- .Site.Params.themes.event.colors.track }};
-        --color-shadow: {{- .Site.Params.themes.event.colors.shadow }};
-        --font-display: 'Plus Jakarta Sans', sans-serif;
-        --font-body: 'DM Sans', sans-serif;
-      }
-
-      *, *::before, *::after { box-sizing: border-box; }
-
-      body {
-        margin: 0;
-        font-family: var(--font-body);
-      }
-
-      .page-main {
-        padding-top: 0;
-      }
-
-      /* Top Bar — thin, dark */
-      .site-topbar {
-        background: #111928;
-        color: rgba(255,255,255,0.55);
-        font-size: 0.8rem;
-        font-family: var(--font-body);
-        padding: 0;
-      }
-
-      .site-topbar__inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 24px;
-        height: 36px;
-      }
-
-      .site-topbar__left {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .site-topbar__left span {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .site-topbar__left i {
-        color: #2ecc71;
-        font-size: 0.75rem;
-      }
-
-      .site-topbar__right {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .site-topbar__right a {
-        color: rgba(255,255,255,0.5);
-        text-decoration: none;
-        transition: color 0.2s;
-        font-size: 0.9rem;
-      }
-
-      .site-topbar__right a:hover {
-        color: #ffffff;
-      }
-
-      .site-topbar__lang {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        border-left: 1px solid rgba(255,255,255,0.1);
-        padding-left: 12px;
-      }
-
-      .site-topbar__lang i {
-        color: #2ecc71;
-        font-size: 0.75rem;
-      }
-
-      .site-topbar__lang select {
-        background: transparent;
-        color: rgba(255,255,255,0.7);
-        border: none;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        cursor: pointer;
-        outline: none;
-        font-family: var(--font-body);
-      }
-
-      .site-topbar__lang select option {
-        color: #111928;
-      }
-
-      /* Main Header */
-      .site-header {
-        background: #ffffff;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-
-      .site-header__inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 24px;
-        height: 68px;
-      }
-
-      .site-header__logo {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        flex-shrink: 0;
-      }
-
-      .site-header__logo img {
-        max-height: 40px;
-        width: auto;
-      }
-
-      .site-header__nav {
-        display: flex;
-        align-items: center;
-        gap: 28px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .site-header__nav a {
-        color: #4a5568;
-        text-decoration: none;
-        font-family: var(--font-body);
-        font-weight: 500;
-        font-size: 0.9rem;
-        transition: color 0.2s;
-        position: relative;
-      }
-
-      .site-header__nav a::after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: #2ecc71;
-        transition: width 0.25s ease;
-        border-radius: 1px;
-      }
-
-      .site-header__nav a:hover {
-        color: #1A2A36;
-      }
-
-      .site-header__nav a:hover::after,
-      .site-header__nav a.active::after {
-        width: 100%;
-      }
-
-      .site-header__actions {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-shrink: 0;
-      }
-
-      .btn-outline {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 9px 20px;
-        border: 1.5px solid rgba(0,0,0,0.12);
-        border-radius: 8px;
-        font-family: var(--font-body);
-        font-weight: 600;
-        font-size: 0.85rem;
-        color: #4a5568;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        white-space: nowrap;
-      }
-
-      .btn-outline:hover {
-        border-color: #2ecc71;
-        color: #2ecc71;
-      }
-
-      .btn-primary {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 9px 20px;
-        background: #2ecc71;
-        color: #111928;
-        border: none;
-        border-radius: 8px;
-        font-family: var(--font-body);
-        font-weight: 700;
-        font-size: 0.85rem;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        white-space: nowrap;
-      }
-
-      .btn-primary:hover {
-        background: #27ae60;
-        transform: translateY(-1px);
-      }
-
-      .btn-primary i {
-        font-size: 0.75rem;
-      }
-
-      /* Mobile Header */
-      .mobile-header {
-        display: none;
-        background: rgba(255,255,255,0.97);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        padding: 0 16px;
-        height: 52px;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .mobile-header__logo {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-      }
-
-      .mobile-header__logo img {
-        max-height: 28px;
-        width: auto;
-      }
-
-      .mobile-header__hamburger {
-        width: 36px;
-        height: 36px;
-        border: none;
-        background: none;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        padding: 0;
-        border-radius: 8px;
-        transition: background 0.2s;
-      }
-
-      .mobile-header__hamburger:hover {
-        background: rgba(0,0,0,0.04);
-      }
-
-      .mobile-header__hamburger span {
-        display: block;
-        width: 20px;
-        height: 2px;
-        background: #1A2A36;
-        border-radius: 2px;
-        transition: all 0.3s ease;
-      }
-
-      /* Footer */
-      .site-footer {
-        background: #111928;
-        color: rgba(255,255,255,0.5);
-        padding: 24px;
-        text-align: center;
-        font-size: 0.85rem;
-        font-family: var(--font-body);
-      }
-
-      .site-footer a {
-        color: rgba(255,255,255,0.6);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-
-      .site-footer a:hover {
-        color: #ffffff;
-      }
-
-      .site-footer__links {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-bottom: 12px;
-        flex-wrap: wrap;
-      }
-
-      @media (max-width: 991px) {
-        .site-topbar { display: none; }
-        .site-header { display: none; }
-        .mobile-header { display: flex; }
-
-        .mobile-header__bottom-actions {
-          display: flex;
-          justify-content: center;
-          gap: 10px;
-          padding: 12px 16px;
-          background: #ffffff;
-          border-top: 1px solid rgba(0,0,0,0.05);
-          position: sticky;
-          bottom: 0;
-          z-index: 99;
+        :root {
+            --bg-dark: #0f1724;
+            --bg-dark-2: #1a2a36;
+            --bg-light: #ffffff;
+            --bg-light-2: #f8fafc;
+            --primary: #5dade2;
+            --primary-dark: #143e8b;
+            --accent: #2ecc71;
+            --accent-hover: #27ae60;
+            --warm: #f59e0b;
+            --text-dark: #1a2a36;
+            --text-muted: #64748b;
+            --text-light: #f8fafc;
+            --border: rgba(0,0,0,0.06);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
         }
 
-        .mobile-header__bottom-actions .btn-primary {
-          flex: 1;
-          justify-content: center;
-          padding: 12px 20px;
-          font-size: 0.85rem;
-          max-width: 260px;
-          border-radius: 10px;
-        }
-      }
+        *, *::before, *::after { box-sizing: border-box; }
 
-      @media (max-width: 576px) {
-        .mobile-header__bottom-actions {
-          padding: 10px 12px;
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
         }
 
-        .mobile-header__bottom-actions .btn-primary {
-          padding: 11px 16px;
-          font-size: 0.85rem;
-        }
-      }
+        a { color: inherit; }
 
+        .page-main { padding-top: 0; }
+
+        .container-wide {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Top Bar */
+        .site-topbar {
+            background: var(--bg-dark);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+        }
+
+        .site-topbar__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 36px;
+        }
+
+        .site-topbar__left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .site-topbar__left span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .site-topbar__left i { color: var(--accent); font-size: 0.75rem; }
+
+        .site-topbar__right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .site-topbar__right a {
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .site-topbar__right a:hover { color: #fff; }
+
+        .site-topbar__lang {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-left: 1px solid rgba(255,255,255,0.08);
+            padding-left: 12px;
+        }
+
+        .site-topbar__lang i { color: var(--accent); font-size: 0.75rem; }
+
+        .site-topbar__lang select {
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            border: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            outline: none;
+            font-family: var(--font-body);
+        }
+
+        .site-topbar__lang select option { color: var(--bg-dark); }
+
+        /* Desktop Header */
+        .site-header {
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .site-header__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 68px;
+        }
+
+        .site-header__logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .site-header__logo img { max-height: 40px; width: auto; }
+
+        .site-header__nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .site-header__nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .site-header__nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.25s ease;
+            border-radius: 1px;
+        }
+
+        .site-header__nav a:hover,
+        .site-header__nav a.active { color: var(--text-dark); }
+
+        .site-header__nav a:hover::after,
+        .site-header__nav a.active::after { width: 100%; }
+
+        .site-header__actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Global Button Styles */
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            font-family: var(--font-body);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-pill-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .btn-pill-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            color: #fff;
+        }
+
+        .btn-pill-outline {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1.5px solid rgba(0,0,0,0.1);
+        }
+
+        .btn-pill-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-pill-outline-light {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            border: 1.5px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-pill-outline-light:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.4);
+            color: #fff;
+        }
+
+        /* Mobile Header */
+        .mobile-header {
+            display: none;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0 16px;
+            height: 52px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-header__logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .mobile-header__logo img { max-height: 28px; width: auto; }
+
+        .mobile-header__hamburger {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 0;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .mobile-header__hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--bg-dark);
+            color: rgba(255,255,255,0.45);
+            padding: 32px 24px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .site-footer a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .site-footer a:hover { color: #fff; }
+
+        .site-footer__links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Section Helpers */
+        .section-label {
+            display: block;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin: 0 0 12px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 48px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 991px) {
+            .site-topbar { display: none; }
+            .site-header { display: none; }
+            .mobile-header { display: flex; }
+            .section-title { font-size: 1.6rem; }
+            .section-subtitle { font-size: 0.95rem; margin-bottom: 32px; padding: 0 16px; }
+        }
+
+        @media (max-width: 576px) {
+            .container-wide { padding: 0 16px; }
+            .section-title { font-size: 1.4rem; }
+            .section-subtitle { font-size: 0.9rem; }
+        }
     </style>
-    </head>
+</head>
+<body>
+    <input type="checkbox" class="sidebar-toggle" id="sidebarToggle" />
 
-    <body>
-        <input type="checkbox" class="sidebar-toggle" id="sidebarToggle" />
-
-        <!-- Desktop Top Bar -->
-        <div class="site-topbar">
-            <div class="site-topbar__inner">
-                <div class="site-topbar__left">
-                    <span><i class="fas fa-map-marker-alt"></i> {{ .Site.Params.themes.event.location }}</span>
-                    <span><i class="far fa-calendar-alt"></i> {{ $start := time .Site.Params.themes.event.startDate }}{{ $start | time.Format ":date_long" }}</span>
-                </div>
-                <div class="site-topbar__right">
-                    <a href="{{ .Site.Params.themes.event.socialLinks.xUrl }}" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-                    <a href="{{ .Site.Params.themes.event.socialLinks.linkedinUrl }}" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <div class="site-topbar__lang">
-                        <i class="fas fa-globe"></i>
-                        <select onchange="location = this.value;">
-                            {{ range .AllTranslations }}
-                                <option value="{{ .Permalink }}" {{ if eq .Language.Lang $.Language.Lang }}selected{{ end }}>{{ if eq .Language.Lang "en" }}EN{{ else }}ES{{ end }}</option>
-                            {{ end }}
-                        </select>
-                    </div>
+    <!-- Desktop Top Bar -->
+    <div class="site-topbar">
+        <div class="site-topbar__inner">
+            <div class="site-topbar__left">
+                <span><i class="fas fa-map-marker-alt"></i> {{ .Site.Params.themes.event.location }}</span>
+                <span><i class="far fa-calendar-alt"></i> {{ $start := time .Site.Params.themes.event.startDate }}{{ $start | time.Format ":date_long" }}</span>
+            </div>
+            <div class="site-topbar__right">
+                <a href="{{ .Site.Params.themes.event.socialLinks.xUrl }}" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="{{ .Site.Params.themes.event.socialLinks.linkedinUrl }}" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <div class="site-topbar__lang">
+                    <i class="fas fa-globe"></i>
+                    <select onchange="location = this.value;">
+                        {{ range .AllTranslations }}
+                            <option value="{{ .Permalink }}" {{ if eq .Language.Lang $.Language.Lang }}selected{{ end }}>{{ if eq .Language.Lang "en" }}EN{{ else }}ES{{ end }}</option>
+                        {{ end }}
+                    </select>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Desktop Header -->
-        <header class="site-header" id="pageHeader">
-            <div class="site-header__inner">
-                <a class="site-header__logo" href="{{ site.Home.RelPermalink }}">
-                    {{ $logoUrl := .Site.Params.themes.event.images.logo }}
-                    {{ if $logoUrl }}
-                        <img src="{{ $logoUrl | relURL }}" alt="{{ .Site.Params.themes.event.title }}">
-                    {{ else }}
-                        <strong>{{ .Site.Params.themes.event.title }}</strong>
-                    {{ end }}
-                </a>
-
-                <nav aria-label="{{ T "main_menu.label" }}">
-                    <ul class="site-header__nav">
-                        <li><a href="{{ site.Home.RelPermalink }}" {{ if .IsHome }}class="active"{{ end }}>{{ T "cd_home" }}</a></li>
-                        {{ range .Site.Menus.main }}
-                            <li><a href="{{ .URL }}" {{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}class="active"{{ end }}>{{ .Name }}</a></li>
-                        {{ end }}
-                    </ul>
-                </nav>
-
-                <div class="site-header__actions">
-                    <a href="{{ .Site.Params.themes.event.callToActionSecondary.url }}" class="btn-outline" target="_blank">{{ T "cd_become_speaker" }} <i class="fas fa-microphone"></i></a>
-                    <a href="{{ .Site.Params.themes.event.callToAction.url }}" class="btn-primary" target="_blank">{{ T "cd_tickets" }} <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </header>
-
-        <!-- Mobile Header -->
-        <div class="mobile-header">
-            <a class="mobile-header__logo" href="{{ site.Home.RelPermalink }}">
+    <!-- Desktop Header -->
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="{{ site.Home.RelPermalink }}">
+                {{ $logoUrl := .Site.Params.themes.event.images.logo }}
                 {{ if $logoUrl }}
                     <img src="{{ $logoUrl | relURL }}" alt="{{ .Site.Params.themes.event.title }}">
                 {{ else }}
                     <strong>{{ .Site.Params.themes.event.title }}</strong>
                 {{ end }}
             </a>
-            <button class="mobile-header__hamburger" aria-label="{{ T "menu.more" }}" onclick="document.getElementById('sidebarToggle').click();">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-
-        <!-- Sidebar -->
-        <aside class="page-sidebar">
-            <nav class="page-sidebar__navigation" aria-labelledby="main-navigation-label">
-                <header class="page-sidebar__header">
-                    <a class="page-sidebar__heading-link" href="{{ site.Home.RelPermalink }}">{{ .Site.Params.themes.event.title }}</a>
-                    <label class="page-sidebar__close-label" for="sidebarToggle">
-                        {{- partial "graphics/close.html" }}
-                    </label>
-                </header>
-
-                <div class="mobile-menu-ctas" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 2rem;">
-                    <a href="{{ .Site.Params.themes.event.callToAction.url }}" target="_blank" class="btn-primary" style="width:100%;justify-content:center;padding:12px;">{{ T "cd_tickets" }}</a>
-                    <a href="{{ .Site.Params.themes.event.callToActionSecondary.url }}" class="btn-outline" style="width:100%;justify-content:center;padding:12px;" target="_blank">{{ T "cd_become_speaker" }}</a>
-                </div>
-
-                <div class="mobile-lang-switcher" style="margin-bottom: 2rem;">
-                    <span style="color:#9A9DA2;font-size:14px;text-transform:uppercase;margin-bottom:5px;display:block;">{{ T "language" }}:</span>
-                    <select onchange="location=this.value;" style="background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2);border-radius:5px;padding:10px;font-size:1rem;font-weight:600;text-transform:uppercase;width:100%;outline:none;">
-                        {{ range .AllTranslations }}
-                            <option value="{{ .Permalink }}" {{ if eq .Language.Lang $.Language.Lang }}selected{{ end }} style="color:#1A2A36;">{{ if eq .Language.Lang "en" }}English (EN){{ else }}Español (ES){{ end }}</option>
-                        {{ end }}
-                    </select>
-                </div>
-
-                {{- partial "menus/sidebar.html" (dict "menu" .Site.Menus.main "context" .) }}
-
-                <div class="page-sidebar__social-links">
-                    {{- partial "social-links.html" (dict "linkedinUrl" .Site.Params.themes.event.socialLinks.linkedinUrl "xUrl" .Site.Params.themes.event.socialLinks.xUrl "facebookUrl" .Site.Params.themes.event.socialLinks.facebookUrl "linkClass" "page-sidebar__social-link") }}
-                </div>
+            <nav aria-label="{{ T "main_menu.label" }}">
+                <ul class="site-header__nav">
+                    <li><a href="{{ site.Home.RelPermalink }}" {{ if .IsHome }}class="active"{{ end }}>{{ T "cd_home" }}</a></li>
+                    {{ range .Site.Menus.main }}
+                        <li><a href="{{ .URL }}" {{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}class="active"{{ end }}>{{ .Name }}</a></li>
+                    {{ end }}
+                </ul>
             </nav>
-            <label class="page-sidebar__empty-space" for="sidebarToggle"></label>
-        </aside>
-
-        <main class="page-main">
-            {{ block "main" . }}{{ end }}
-        </main>
-
-        <footer class="site-footer">
-            <div class="site-footer__links">
-                <a href="/code-of-conduct">{{ T "cd_code_of_conduct" }}</a>
-                <a href="/privacy-policy.en">{{ T "menu.privacy" }}</a>
-                <a href="{{ .Site.Params.themes.event.socialLinks.xUrl }}" target="_blank">X / Twitter</a>
-                <a href="{{ .Site.Params.themes.event.socialLinks.linkedinUrl }}" target="_blank">LinkedIn</a>
+            <div class="site-header__actions">
+                <a href="{{ .Site.Params.themes.event.callToActionSecondary.url }}" class="btn-pill btn-pill-outline" target="_blank">{{ T "cd_become_speaker" }}</a>
+                <a href="{{ .Site.Params.themes.event.callToAction.url }}" class="btn-pill btn-pill-primary" target="_blank">{{ T "cd_tickets" }} <i class="fas fa-arrow-right"></i></a>
             </div>
-            <span>&copy; {{ now.Format "2006" }} Containers Day. {{ T "cd_all_rights" }}</span>
-        </footer>
+        </div>
+    </header>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        {{- partial "firebase-init.html" . -}}
-    </body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <a class="mobile-header__logo" href="{{ site.Home.RelPermalink }}">
+            {{ if $logoUrl }}
+                <img src="{{ $logoUrl | relURL }}" alt="{{ .Site.Params.themes.event.title }}">
+            {{ else }}
+                <strong>{{ .Site.Params.themes.event.title }}</strong>
+            {{ end }}
+        </a>
+        <button class="mobile-header__hamburger" aria-label="{{ T "menu.more" }}" onclick="document.getElementById('sidebarToggle').click();">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="page-sidebar">
+        <nav class="page-sidebar__navigation" aria-labelledby="main-navigation-label">
+            <header class="page-sidebar__header">
+                <a class="page-sidebar__heading-link" href="{{ site.Home.RelPermalink }}">{{ .Site.Params.themes.event.title }}</a>
+                <label class="page-sidebar__close-label" for="sidebarToggle">{{- partial "graphics/close.html" }}</label>
+            </header>
+            <div class="mobile-menu-ctas" style="display:flex;flex-direction:column;gap:10px;margin-bottom:2rem;">
+                <a href="{{ .Site.Params.themes.event.callToAction.url }}" class="btn-pill btn-pill-primary" style="width:100%;justify-content:center;padding:12px;" target="_blank">{{ T "cd_tickets" }}</a>
+                <a href="{{ .Site.Params.themes.event.callToActionSecondary.url }}" class="btn-pill btn-pill-outline" style="width:100%;justify-content:center;padding:12px;" target="_blank">{{ T "cd_become_speaker" }}</a>
+            </div>
+            <div class="mobile-lang-switcher" style="margin-bottom:2rem;">
+                <span style="color:rgba(255,255,255,0.4);font-size:13px;text-transform:uppercase;margin-bottom:6px;display:block;letter-spacing:1px;">{{ T "language" }}:</span>
+                <select onchange="location=this.value;" style="background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;font-size:0.95rem;font-weight:600;text-transform:uppercase;width:100%;outline:none;">
+                    {{ range .AllTranslations }}
+                        <option value="{{ .Permalink }}" {{ if eq .Language.Lang $.Language.Lang }}selected{{ end }} style="color:var(--bg-dark);">{{ if eq .Language.Lang "en" }}ENGLISH{{ else }}ESPAÑOL{{ end }}</option>
+                    {{ end }}
+                </select>
+            </div>
+            {{- partial "menus/sidebar.html" (dict "menu" .Site.Menus.main "context" .) }}
+            <div class="page-sidebar__social-links">
+                {{- partial "social-links.html" (dict "linkedinUrl" .Site.Params.themes.event.socialLinks.linkedinUrl "xUrl" .Site.Params.themes.event.socialLinks.xUrl "facebookUrl" .Site.Params.themes.event.socialLinks.facebookUrl "linkClass" "page-sidebar__social-link") }}
+            </div>
+        </nav>
+        <label class="page-sidebar__empty-space" for="sidebarToggle"></label>
+    </aside>
+
+    <main class="page-main">
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__links">
+            <a href="/code-of-conduct">{{ T "cd_code_of_conduct" }}</a>
+            <a href="{{ .Site.Params.themes.event.socialLinks.xUrl }}" target="_blank">X / Twitter</a>
+            <a href="{{ .Site.Params.themes.event.socialLinks.linkedinUrl }}" target="_blank">LinkedIn</a>
+        </div>
+        <span>&copy; {{ now.Format "2006" }} Containers Day. {{ T "cd_all_rights" }}</span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {{- partial "firebase-init.html" . -}}
+</body>
 </html>

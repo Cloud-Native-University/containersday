@@ -2,17 +2,15 @@
 {{ $slides := $input.slides }}
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap');
-
 .hero-carousel {
     position: relative;
     width: 100%;
 }
 
 .hero-carousel .carousel-item {
-    min-height: 600px;
+    min-height: 620px;
     height: 85vh;
-    max-height: 900px;
+    max-height: 920px;
     position: relative;
     overflow: hidden;
     background-size: cover;
@@ -41,7 +39,7 @@
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(135deg, rgba(17, 25, 40, 0.85) 0%, rgba(26, 42, 54, 0.6) 100%);
+    background: linear-gradient(135deg, rgba(15, 23, 36, 0.88) 0%, rgba(26, 42, 54, 0.55) 100%);
     z-index: 1;
 }
 
@@ -53,142 +51,130 @@
     width: 100%;
     left: 0;
     right: 0;
-    padding: 0 20px;
+    padding: 0 24px;
 }
 
 .hero-carousel .hero-badge {
     display: inline-block;
-    padding: 6px 24px;
-    border: 1px solid rgba(46, 204, 113, 0.4);
+    padding: 5px 20px;
+    border: 1px solid rgba(46, 204, 113, 0.35);
     color: #2ecc71;
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 20px;
-    font-size: 0.85rem;
+    margin-bottom: 18px;
+    font-size: 0.8rem;
     letter-spacing: 3px;
-    border-radius: 4px;
+    border-radius: 100px;
 }
 
-.hero-carousel .display-1 {
+.hero-carousel .display-1,
+.hero-carousel h2.display-1 {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 20px;
-    line-height: 1.15;
-    font-size: 3.8rem;
-    max-width: 900px;
+    color: #fff;
+    margin-bottom: 18px;
+    line-height: 1.12;
+    font-size: 3.5rem;
+    max-width: 860px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .hero-carousel .hero-description {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.15rem;
-    color: rgba(255, 255, 255, 0.75);
-    max-width: 700px;
-    margin: 0 auto 35px auto;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 680px;
+    margin: 0 auto 30px;
     line-height: 1.7;
 }
 
 .hero-carousel .btn-group {
     display: flex;
-    gap: 14px;
+    gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.hero-carousel .btn-group a {
-    min-width: 0;
-}
-
-.hero-carousel .btn-primary {
-    background-color: #2ecc71;
-    color: #111928;
-    padding: 14px 34px;
-    border-radius: 8px;
+.hero-carousel .btn-hero-primary {
+    background: #2ecc71;
+    color: #fff;
+    padding: 14px 36px;
+    border-radius: 100px;
     font-weight: 700;
     text-decoration: none;
     transition: all 0.2s ease;
-    font-family: 'DM Sans', sans-serif;
     font-size: 0.95rem;
-    letter-spacing: 0.3px;
-    box-shadow: 0 2px 8px rgba(46, 204, 113, 0.25);
+    box-shadow: 0 4px 14px rgba(46, 204, 113, 0.3);
     white-space: nowrap;
 }
 
-.hero-carousel .btn-primary:hover {
-    background-color: #27ae60;
-    box-shadow: 0 4px 14px rgba(46, 204, 113, 0.35);
+.hero-carousel .btn-hero-primary:hover {
+    background: #27ae60;
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
     transform: translateY(-2px);
-    color: #111928;
+    color: #fff;
 }
 
-@media (hover: hover) {
-    .hero-carousel .btn-primary:focus-visible {
-        outline: 2px solid #ffffff;
-        outline-offset: 2px;
-    }
-    .hero-carousel .btn-secondary:focus-visible {
-        outline: 2px solid #2ecc71;
-        outline-offset: 2px;
-    }
+.hero-carousel .btn-hero-primary:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
 }
 
-.hero-carousel .btn-secondary {
-    background: rgba(255, 255, 255, 0.06);
-    color: #ffffff;
-    padding: 14px 34px;
-    border-radius: 8px;
+.hero-carousel .btn-hero-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    padding: 14px 36px;
+    border-radius: 100px;
     font-weight: 600;
     text-decoration: none;
-    border: 1.5px solid rgba(255, 255, 255, 0.35);
     transition: all 0.2s ease;
-    font-family: 'DM Sans', sans-serif;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
     font-size: 0.95rem;
     white-space: nowrap;
-    backdrop-filter: blur(4px);
 }
 
-.hero-carousel .btn-secondary:hover {
-    border-color: #ffffff;
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
+.hero-carousel .btn-hero-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
 }
 
-.hero-countdown-wrapper {
-    margin-bottom: 25px;
+.hero-carousel .btn-hero-secondary:focus-visible {
+    outline: 2px solid #2ecc71;
+    outline-offset: 3px;
 }
+
+.hero-countdown-wrapper { margin-bottom: 22px; }
 
 .hero-countdown-wrapper .counter-container {
     display: flex !important;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .hero-countdown-wrapper .counter__segment {
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 10px 18px;
+    padding: 8px 16px;
     border-radius: 8px;
-    min-width: 75px;
+    min-width: 68px;
 }
 
 .hero-countdown-wrapper .counter__value {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 800;
     color: #2ecc71;
     display: block;
-    line-height: 1;
+    line-height: 1.2;
 }
 
 .hero-countdown-wrapper .counter__label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.45);
     letter-spacing: 1.5px;
-    margin-top: 4px;
+    margin-top: 2px;
     display: block;
 }
 
@@ -196,134 +182,89 @@
 .carousel-control-next {
     width: 5%;
     z-index: 30;
-    opacity: 0.6;
+    opacity: 0.5;
     transition: opacity 0.3s;
 }
 
 .carousel-control-prev:hover,
-.carousel-control-next:hover {
-    opacity: 1;
-}
+.carousel-control-next:hover { opacity: 1; }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: transparent;
-    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     background-size: 40%;
-    transition: border-color 0.3s;
 }
 
-.carousel-control-prev-icon:hover,
-.carousel-control-next-icon:hover {
-    border-color: #2ecc71;
-}
-
-.carousel-indicators {
-    bottom: 20px;
-}
+.carousel-indicators { bottom: 24px; }
 
 .carousel-indicators [data-bs-target] {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.35);
     border: none;
-    margin: 0 5px;
+    margin: 0 4px;
     transition: all 0.3s;
 }
 
 .carousel-indicators .active {
-    background-color: #2ecc71;
-    width: 28px;
-    border-radius: 4px;
+    background: #2ecc71;
+    width: 24px;
+    border-radius: 3px;
 }
 
-    .hero-mobile-info {
-        display: none;
-    }
+.hero-mobile-info { display: none; }
 
-    @media (max-width: 768px) {
-        .hero-mobile-info {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-            padding: 10px 16px;
-            background: rgba(17, 25, 40, 0.9);
-            backdrop-filter: blur(6px);
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.7);
-            font-family: 'DM Sans', sans-serif;
-            position: relative;
-            z-index: 5;
-        }
-
-        .hero-mobile-info span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .hero-mobile-info i {
-            color: #2ecc71;
-            font-size: 0.7rem;
-        }
-    }
-
-    .hero-organizers-wrapper {
-        position: absolute;
-        bottom: 60px;
-        left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        z-index: 20;
-        pointer-events: none;
-    }
-
-.hero-organizers {
-    pointer-events: auto;
+.hero-organizers-wrapper {
+    position: absolute;
+    bottom: 64px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 20;
+    pointer-events: none;
 }
+
+.hero-organizers { pointer-events: auto; }
 
 .hero-organizers-title {
-    color: rgba(255, 255, 255, 0.5);
-    font-family: 'DM Sans', sans-serif;
+    color: rgba(255,255,255,0.4);
     font-weight: 600;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     letter-spacing: 3px;
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     text-transform: uppercase;
 }
 
 .hero-organizers-box {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(0,0,0,0.35);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255,255,255,0.06);
     border-radius: 12px;
-    padding: 12px 28px;
+    padding: 10px 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .hero-organizers-box img {
-    height: 32px;
+    height: 28px;
     object-fit: contain;
-    opacity: 0.7;
+    opacity: 0.6;
     transition: opacity 0.3s;
     filter: brightness(0) invert(1);
 }
 
-.hero-organizers-box img:hover {
-    opacity: 1;
-}
+.hero-organizers-box img:hover { opacity: 1; }
 
 @media (max-width: 768px) {
     .hero-carousel .carousel-item {
@@ -331,102 +272,106 @@
         height: 92vh;
     }
 
-    .hero-carousel .display-1 {
-        font-size: 2rem;
-        max-width: 100%;
-    }
-
     .hero-carousel .carousel-caption {
-        padding: 0 16px;
         bottom: 50%;
         transform: translateY(50%);
+        padding: 0 16px;
     }
 
-    .hero-carousel .hero-description {
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-        display: none;
-    }
-
-    .hero-carousel .hero-badge {
-        font-size: 0.7rem;
-        padding: 4px 14px;
-        margin-bottom: 10px;
-    }
-
-    .hero-carousel .display-1 {
+    .hero-carousel .display-1,
+    .hero-carousel h2.display-1 {
         font-size: 1.6rem;
         margin-bottom: 14px;
     }
 
+    .hero-carousel .hero-description {
+        display: none;
+    }
+
+    .hero-carousel .hero-badge {
+        font-size: 0.65rem;
+        padding: 4px 14px;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+
     .hero-carousel .btn-group {
         flex-direction: row;
-        align-items: center;
         gap: 8px;
     }
 
-    .hero-carousel .btn-primary,
-    .hero-carousel .btn-secondary {
+    .hero-carousel .btn-hero-primary,
+    .hero-carousel .btn-hero-secondary {
         padding: 10px 18px;
         font-size: 0.8rem;
-        white-space: nowrap;
-        flex: 0 1 auto;
     }
 
-    .hero-countdown-wrapper {
-        margin-bottom: 18px;
-    }
+    .hero-countdown-wrapper { margin-bottom: 16px; }
 
     .hero-countdown-wrapper .counter__segment {
-        min-width: 52px;
-        padding: 6px 10px;
+        min-width: 48px;
+        padding: 6px 8px;
         border-radius: 6px;
     }
 
     .hero-countdown-wrapper .counter__value {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .hero-countdown-wrapper .counter__label {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
         letter-spacing: 1px;
     }
 
-    .hero-organizers-wrapper {
-        bottom: 16px;
+    .hero-mobile-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        padding: 8px 16px;
+        background: rgba(15, 23, 36, 0.92);
+        backdrop-filter: blur(6px);
+        font-size: 0.7rem;
+        color: rgba(255,255,255,0.65);
+        position: relative;
+        z-index: 5;
     }
+
+    .hero-mobile-info span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .hero-mobile-info i {
+        color: #2ecc71;
+        font-size: 0.65rem;
+    }
+
+    .hero-organizers-wrapper { bottom: 14px; }
 
     .hero-organizers-box {
-        padding: 10px 16px;
-        gap: 14px;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(8px);
+        padding: 8px 14px;
+        gap: 12px;
         border-radius: 8px;
+        background: rgba(0,0,0,0.5);
     }
 
-    .hero-organizers-box img {
-        height: 22px;
-    }
+    .hero-organizers-box img { height: 20px; }
 
-    .hero-organizers-title {
-        font-size: 0.6rem;
-        margin-bottom: 8px;
-    }
+    .hero-organizers-title { font-size: 0.55rem; margin-bottom: 6px; }
 
     .carousel-control-prev,
-    .carousel-control-next {
-        display: none;
-    }
+    .carousel-control-next,
+    .carousel-indicators { display: none; }
 }
 </style>
 
 <div id="mainHeroSlider" class="carousel slide hero-carousel" data-bs-ride="carousel">
-
     <div class="carousel-inner">
         {{ range $index, $slide := $slides }}
         <div class="carousel-item {{ if eq $index 0 }}active{{ end }}" 
              style="background-image: url('{{ $slide.image | relURL }}');">
-            
             {{ if and (eq $index 0) (fileExists "static/videos/hero-background.mp4") }}
             <video autoplay muted loop playsinline class="hero-video-bg">
                 <source src="/videos/hero-background.mp4" type="video/mp4">
@@ -434,13 +379,13 @@
             {{ end }}
 
             <div class="carousel-caption">
-                <div class="container animate__animated {{ if eq $index 0 }}animate__fadeInDown{{ else }}animate__fadeInUp{{ end }}">
+                <div class="animate__animated {{ if eq $index 0 }}animate__fadeInDown{{ else }}animate__fadeInUp{{ end }}">
                     <span class="hero-badge">{{ T (printf "cd_hero_subtitle_%d" (add $index 1)) }}</span>
 
                     {{ if eq $index 0 }}<h1 class="display-1">{{ T (printf "cd_hero_title_%d" (add $index 1)) }}</h1>{{ else }}<h2 class="display-1">{{ T (printf "cd_hero_title_%d" (add $index 1)) }}</h2>{{ end }}
 
                     {{- if $.context.Site.Params.themes.event.startDate }}
-                    <div class="hero-countdown-wrapper animated fadeInUp" style="animation-delay: 0.2s;">
+                    <div class="hero-countdown-wrapper animated fadeInUp" style="animation-delay:0.2s">
                         {{ partial "countdown.html" (dict "targetDate" $.context.Site.Params.themes.event.startDate) }}
                     </div>
                     {{- end }}
@@ -448,9 +393,9 @@
                     <p class="hero-description">{{ T (printf "cd_hero_desc_%d" (add $index 1)) | markdownify }}</p>
 
                     <div class="btn-group">
-                        <a href="{{ $.context.Site.Params.themes.event.callToAction.url | default "#register" }}" target="_blank" class="btn-primary">{{ T "cd_buy_tickets" }}</a>
+                        <a href="{{ $.context.Site.Params.themes.event.callToAction.url }}" target="_blank" class="btn-hero-primary">{{ T "cd_buy_tickets" }}</a>
                         {{ if $.context.Site.Params.themes.event.callToActionSecondary.url }}
-                        <a href="{{ $.context.Site.Params.themes.event.callToActionSecondary.url }}" class="btn-secondary" target="_blank">{{ T "cd_apply_speaker" }}</a>
+                        <a href="{{ $.context.Site.Params.themes.event.callToActionSecondary.url }}" class="btn-hero-secondary" target="_blank">{{ T "cd_apply_speaker" }}</a>
                         {{ end }}
                     </div>
                 </div>
@@ -461,12 +406,10 @@
 
     {{ if gt ($slides | len) 1 }}
     <button class="carousel-control-prev" type="button" data-bs-target="#mainHeroSlider" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        <span class="carousel-control-prev-icon"></span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#mainHeroSlider" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+        <span class="carousel-control-next-icon"></span>
     </button>
     {{ end }}
 
@@ -476,14 +419,14 @@
     </div>
 
     <div class="hero-organizers-wrapper">
-        <div class="hero-organizers animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
-            <div class="hero-organizers-title">{{ T "cd_hero_organizers_title" | default "UNA INICIATIVA IMPULSADA POR" }}</div>
+        <div class="hero-organizers animate__animated animate__fadeInUp" style="animation-delay:0.5s">
+            <div class="hero-organizers-title">{{ T "cd_hero_organizers_title" }}</div>
             <div class="hero-organizers-box">
-                <img src="/logos/organizers/brain.png" alt="Brain Logo" class="logo-brain" />
-                <img src="/logos/organizers/uapa-v2.png" alt="UAPA" class="logo-uapa" />
-                <img src="/logos/organizers/cadesoft-color.png" alt="CadeSoft" class="logo-cadesoft" />
-                <img src="/logos/organizers/scale2connect-v3.png" alt="Scale2Connect" class="logo-scale2connect" />
-                <img src="/logos/organizers/eu-flag-v1.png" alt="Funded by the European Union" class="logo-eu" />
+                <img src="/logos/organizers/brain.png" alt="Brain" />
+                <img src="/logos/organizers/uapa-v2.png" alt="UAPA" />
+                <img src="/logos/organizers/cadesoft-color.png" alt="CadeSoft" />
+                <img src="/logos/organizers/scale2connect-v3.png" alt="Scale2Connect" />
+                <img src="/logos/organizers/eu-flag-v1.png" alt="EU" />
             </div>
         </div>
     </div>
@@ -493,13 +436,11 @@
     document.addEventListener('DOMContentLoaded', function() {
         const counters = document.querySelectorAll('.counter-value');
         const speed = 200;
-
         const animateCounters = () => {
             counters.forEach(counter => {
                 const target = parseInt(counter.getAttribute('data-target'));
                 const count = parseInt(counter.innerText);
                 const inc = target / speed;
-
                 if (count < target) {
                     counter.innerText = Math.ceil(count + inc);
                     setTimeout(animateCounters, 20);
@@ -508,7 +449,6 @@
                 }
             });
         };
-
         animateCounters();
     });
 </script>
