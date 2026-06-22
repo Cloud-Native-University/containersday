@@ -20,6 +20,10 @@
     background-repeat: no-repeat;
 }
 
+.hero-carousel .carousel-item:not(.active) {
+    display: none !important;
+}
+
 .hero-video-bg {
     position: absolute;
     top: 50%;
@@ -117,6 +121,17 @@
     box-shadow: 0 4px 14px rgba(46, 204, 113, 0.35);
     transform: translateY(-2px);
     color: #111928;
+}
+
+@media (hover: hover) {
+    .hero-carousel .btn-primary:focus-visible {
+        outline: 2px solid #ffffff;
+        outline-offset: 2px;
+    }
+    .hero-carousel .btn-secondary:focus-visible {
+        outline: 2px solid #2ecc71;
+        outline-offset: 2px;
+    }
 }
 
 .hero-carousel .btn-secondary {
@@ -226,16 +241,48 @@
     border-radius: 4px;
 }
 
-.hero-organizers-wrapper {
-    position: absolute;
-    bottom: 60px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 20;
-    pointer-events: none;
-}
+    .hero-mobile-info {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        .hero-mobile-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 16px;
+            background: rgba(17, 25, 40, 0.9);
+            backdrop-filter: blur(6px);
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.7);
+            font-family: 'DM Sans', sans-serif;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-mobile-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hero-mobile-info i {
+            color: #2ecc71;
+            font-size: 0.7rem;
+        }
+    }
+
+    .hero-organizers-wrapper {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        z-index: 20;
+        pointer-events: none;
+    }
 
 .hero-organizers {
     pointer-events: auto;
@@ -280,8 +327,8 @@
 
 @media (max-width: 768px) {
     .hero-carousel .carousel-item {
-        min-height: 520px;
-        height: 100vh;
+        min-height: 480px;
+        height: 92vh;
     }
 
     .hero-carousel .display-1 {
@@ -289,43 +336,60 @@
         max-width: 100%;
     }
 
+    .hero-carousel .carousel-caption {
+        padding: 0 16px;
+        bottom: 50%;
+        transform: translateY(50%);
+    }
+
     .hero-carousel .hero-description {
-        font-size: 1rem;
-        margin-bottom: 25px;
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        display: none;
     }
 
     .hero-carousel .hero-badge {
-        font-size: 0.75rem;
-        padding: 4px 16px;
+        font-size: 0.7rem;
+        padding: 4px 14px;
+        margin-bottom: 10px;
+    }
+
+    .hero-carousel .display-1 {
+        font-size: 1.6rem;
         margin-bottom: 14px;
     }
 
     .hero-carousel .btn-group {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        gap: 12px;
+        gap: 8px;
     }
 
     .hero-carousel .btn-primary,
     .hero-carousel .btn-secondary {
-        padding: 13px 28px;
-        font-size: 0.9rem;
-        width: 100%;
-        max-width: 280px;
-        white-space: normal;
+        padding: 10px 18px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        flex: 0 1 auto;
+    }
+
+    .hero-countdown-wrapper {
+        margin-bottom: 18px;
     }
 
     .hero-countdown-wrapper .counter__segment {
-        min-width: 60px;
-        padding: 8px 12px;
+        min-width: 52px;
+        padding: 6px 10px;
+        border-radius: 6px;
     }
 
     .hero-countdown-wrapper .counter__value {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 
     .hero-countdown-wrapper .counter__label {
-        font-size: 0.6rem;
+        font-size: 0.55rem;
+        letter-spacing: 1px;
     }
 
     .hero-organizers-wrapper {
@@ -405,6 +469,11 @@
         <span class="visually-hidden">Next</span>
     </button>
     {{ end }}
+
+    <div class="hero-mobile-info">
+        <span><i class="fas fa-map-marker-alt"></i> {{ $.context.Site.Params.themes.event.location }}</span>
+        <span><i class="far fa-calendar-alt"></i> {{ $start := time $.context.Site.Params.themes.event.startDate }}{{ $start | time.Format ":date_long" }}</span>
+    </div>
 
     <div class="hero-organizers-wrapper">
         <div class="hero-organizers animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
