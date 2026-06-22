@@ -180,3 +180,9 @@ params:
                 primary: '#5dade2'
                 primaryDarker: '#143e8b'
             redirectBasedOnBrowserLang: false
+
+markup:
+    goldmark:
+        renderer:
+            unsafe: true
+

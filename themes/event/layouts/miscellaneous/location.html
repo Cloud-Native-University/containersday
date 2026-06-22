@@ -36,6 +36,16 @@
         )
     }}
 
+    {{ if .Content }}
+    <div class="section-container">
+        <section class="section">
+            <div class="markdown">
+                {{ .Content }}
+            </div>
+        </section>
+    </div>
+    {{ end }}
+
     {{- partial "sections/cta.html" (
         dict
         "eventbriteId" $event.callToAction.eventbrite.eventId
