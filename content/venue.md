@@ -110,7 +110,7 @@ type: "miscellaneous"
           <p style="color: #374151; font-size: 0.85rem; line-height: 1.55; margin-bottom: 0;">
             Uber y servicios de taxi están disponibles al salir de la terminal. El trayecto hacia el campus toma aproximadamente 15 minutos. Las agencias Avis, Hertz y Europcar también operan en el aeropuerto.
             <a href="https://www.uber.com/do/es/" target="_blank" rel="noopener" class="d-inline-block text-decoration-none ms-1 fw-semibold" style="color: #1d4ed8;">
-              Pedir Uber <i class="fa-solid fa-external-link" style="font-size: 0.65rem;"></i>
+              <i class="fa-brands fa-uber" style="margin-right: 3px;"></i> Pedir Uber <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
             </a>
           </p>
         </div>
@@ -128,10 +128,10 @@ type: "miscellaneous"
           <p style="color: #374151; font-size: 0.85rem; line-height: 1.55; margin-bottom: 0;">
             Los autobuses express Metro ST y Caribe Tours viajan directo desde Santo Domingo hacia Santiago por la Autopista Duarte. También se puede programar un servicio de traslado privado.
             <a href="https://metroserviciosturisticos.com/" target="_blank" rel="noopener" class="text-decoration-none ms-1 me-2 fw-semibold" style="color: #1d4ed8;">
-              Metro ST <i class="fa-solid fa-external-link" style="font-size: 0.65rem;"></i>
+              <i class="fa-solid fa-bus-simple" style="margin-right: 3px;"></i> Metro ST <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
             </a>
             <a href="https://caribetours.com.do/" target="_blank" rel="noopener" class="text-decoration-none fw-semibold" style="color: #1d4ed8;">
-              Caribe Tours <i class="fa-solid fa-external-link" style="font-size: 0.65rem;"></i>
+              <i class="fa-solid fa-bus-simple" style="margin-right: 3px;"></i> Caribe Tours <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
             </a>
           </p>
         </div>
@@ -153,7 +153,7 @@ type: "miscellaneous"
               <p class="fw-bold mb-3" style="color: #0f172a; font-size: 0.85rem;">Est. ~$130 - $180 / noche</p>
             </div>
             <a href="https://www.hodelpa.com/gran-almirante/" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary w-100 fw-semibold" style="border-radius: 6px; font-size: 0.75rem; color: #1e293b; border-color: #94a3b8;">
-              Reservar
+              <i class="fa-solid fa-calendar-check" style="margin-right: 4px;"></i> Reservar
             </a>
           </div>
         </div>
@@ -170,7 +170,7 @@ type: "miscellaneous"
               <p class="fw-bold mb-3" style="color: #0f172a; font-size: 0.85rem;">Est. ~$120 - $160 / noche</p>
             </div>
             <a href="https://www.campdavidranch.com/" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary w-100 fw-semibold" style="border-radius: 6px; font-size: 0.75rem; color: #1e293b; border-color: #94a3b8;">
-              Reservar
+              <i class="fa-solid fa-calendar-check" style="margin-right: 4px;"></i> Reservar
             </a>
           </div>
         </div>
@@ -187,7 +187,7 @@ type: "miscellaneous"
               <p class="fw-bold mb-3" style="color: #0f172a; font-size: 0.85rem;">Est. ~$60 - $80 / noche</p>
             </div>
             <a href="https://hotelplatino.com.do/" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary w-100 fw-semibold" style="border-radius: 6px; font-size: 0.75rem; color: #1e293b; border-color: #94a3b8;">
-              Reservar
+              <i class="fa-solid fa-calendar-check" style="margin-right: 4px;"></i> Reservar
             </a>
           </div>
         </div>
@@ -204,7 +204,7 @@ type: "miscellaneous"
               <p class="fw-bold mb-3" style="color: #0f172a; font-size: 0.85rem;">Est. ~$80 - $110 / noche</p>
             </div>
             <a href="https://www.hodelpa.com/centro-plaza/" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary w-100 fw-semibold" style="border-radius: 6px; font-size: 0.75rem; color: #1e293b; border-color: #94a3b8;">
-              Reservar
+              <i class="fa-solid fa-calendar-check" style="margin-right: 4px;"></i> Reservar
             </a>
           </div>
         </div>
@@ -225,7 +225,7 @@ type: "miscellaneous"
               <p class="mb-3" style="color: #374151; font-size: 0.85rem; line-height: 1.5;">Alta cocina internacional y cortes premium en un ambiente distinguido.</p>
             </div>
             <a href="https://www.instagram.com/sagarestaurant/" target="_blank" rel="noopener" class="text-decoration-none small fw-semibold" style="color: #1d4ed8;">
-              Instagram <i class="fa-solid fa-arrow-right" style="font-size: 0.7rem; margin-left: 2px;"></i>
+              <i class="fa-brands fa-instagram" style="font-size: 1rem; margin-right: 3px; vertical-align: middle;"></i> Instagram <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
             </a>
           </div>
         </div>
@@ -241,7 +241,7 @@ type: "miscellaneous"
               <p class="mb-3" style="color: #374151; font-size: 0.85rem; line-height: 1.5;">Platos de autor y fusión dominicana internacional de gran calidad.</p>
             </div>
             <a href="https://www.instagram.com/noah_restaurant/" target="_blank" rel="noopener" class="text-decoration-none small fw-semibold" style="color: #1d4ed8;">
-              Instagram <i class="fa-solid fa-arrow-right" style="font-size: 0.7rem; margin-left: 2px;"></i>
+              <i class="fa-brands fa-instagram" style="font-size: 1rem; margin-right: 3px; vertical-align: middle;"></i> Instagram <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
             </a>
           </div>
         </div>
@@ -257,7 +257,7 @@ type: "miscellaneous"
               <p class="mb-3" style="color: #374151; font-size: 0.85rem; line-height: 1.5;">Gastronomía caribeña y tragos en un ambiente festivo frente al Monumento.</p>
             </div>
             <a href="https://www.instagram.com/eltablonlatino/" target="_blank" rel="noopener" class="text-decoration-none small fw-semibold" style="color: #1d4ed8;">
-              Instagram <i class="fa-solid fa-arrow-right" style="font-size: 0.7rem; margin-left: 2px;"></i>
+              <i class="fa-brands fa-instagram" style="font-size: 1rem; margin-right: 3px; vertical-align: middle;"></i> Instagram <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
             </a>
           </div>
         </div>
