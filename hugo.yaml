@@ -13,7 +13,7 @@ languages:
             themes:
                 event:
                     directions: |
-                        La **Universidad Abierta para Adultos (UAPA)** se encuentra en Santiago de los Caballeros.
+                        La **Universidad Abierta para Adultos (UAPA)** se encuentra en la Av. Hispanoamericana #100, Thomén, Código postal 51000, Santiago de los Caballeros, República Dominicana.
                         
                         **En vehículo particular o taxi:**  
                         Puedes llegar fácilmente tomando la Autopista Duarte. La UAPA está ubicada en la Av. Hispanoamericana, una de las principales vías de acceso en la zona sur de la ciudad. Hay amplio estacionamiento disponible para los asistentes.
@@ -52,7 +52,7 @@ languages:
             themes:
                 event:
                     directions: |
-                        The **Universidad Abierta para Adultos (UAPA)** is located in Santiago de los Caballeros.
+                        The **Universidad Abierta para Adultos (UAPA)** is located at Av. Hispanoamericana #100, Thomén, Postal code 51000, Santiago de los Caballeros, Dominican Republic.
                         
                         **By car or taxi:**  
                         You can easily reach the campus via the Duarte Highway (Autopista Duarte). UAPA is situated on Av. Hispanoamericana, one of the main access roads in the southern part of the city. Ample parking is available for attendees.
@@ -97,12 +97,12 @@ params:
             startDate: "2026-08-22"
             endDate: "2026-08-22"
             address:
-                - "Universidad UAPA"
+                - "Av. Hispanoamericana #100, Thomén"
                 - "Santiago de los Caballeros"
-                - "República Dominicana"
+                - "51000, República Dominicana"
             map:
-                embeddableMapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.909095697624!2d-70.67566272483864!3d19.420609341065184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eb1cf44715456ab%3A0x6b45a05b2259173f!2sUAPA%20Sede%20Santiago!5e0!3m2!1sen!2sdo!4v1719099600000!5m2!1sen!2sdo"
-                viewLargerMapUrl: "https://maps.app.goo.gl/PBWurwB7mkr4j7jr6"
+                embeddableMapUrl: "https://www.google.com/maps?q=Av.+Hispanoamericana+%23100,+Thom%C3%A9n,+51000+Santiago+de+los+Caballeros,+Rep%C3%BAblica+Dominicana&output=embed"
+                viewLargerMapUrl: "https://www.google.com/maps/dir/?api=1&destination=Av.+Hispanoamericana+%23100,+Thom%C3%A9n,+51000+Santiago+de+los+Caballeros,+Rep%C3%BAblica+Dominicana"
             # sessionizeId: ""
             callToAction:
                 url: "https://cap.uapa.edu.do/producto/containers-day-2026/"
@@ -169,13 +169,16 @@ params:
             sponsorTiers:
                 platinum:
                     label: "🏆 Patrocinador Platinum"
-                    color: "#E5E4E2"
+                    color: "#f59e0b"
                 gold:
                     label: "🥇 Patrocinador Oro"
+                    color: "#f59e0b"
                 silver:
                     label: "🥈 Patrocinador Plata"
+                    color: "#8899aa"
                 community:
                     label: "🤝 Patrocinador Comunitario"
+                    color: "#5dade2"
             colors:
                 primary: '#5dade2'
                 primaryDarker: '#143e8b'
