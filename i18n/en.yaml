@@ -64,6 +64,8 @@ cd_event_location:
   other: "UAPA, Santiago"
 countdown.ended:
   other: "🚀 The event has started!"
+countdown.thanks:
+  other: "🙏 Thank you to everyone who made Containers Day an unforgettable experience! See you next year."
 cd_hero_subtitle_1:
   other: "Innovation"
 cd_hero_title_1:

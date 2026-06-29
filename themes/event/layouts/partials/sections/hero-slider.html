@@ -459,7 +459,7 @@
         {{ end }}
         {{ with $startDate }}
         <div class="hero-meta-band__countdown">
-            {{ partial "countdown.html" (dict "targetDate" .) }}
+            {{ partial "countdown.html" (dict "targetDate" . "endDate" $event.endDate) }}
         </div>
         {{ end }}
     </div>

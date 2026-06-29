@@ -45,9 +45,25 @@
     const raw = "{{ $input.targetDate }}";
     const end = /T/.test(raw) ? new Date(raw) : new Date(raw + "T00:00:00");
 
+    const endRaw = "{{ $input.endDate }}";
+    const eventEnd = endRaw ? (/T/.test(endRaw) ? new Date(endRaw) : new Date(endRaw + "T23:59:59")) : end;
+
     function updateAllCounters() {
       const now = new Date();
       let distance = end - now;
+
+      if (endRaw && now > eventEnd) {
+        containers.forEach(el => el.style.display = "none");
+        endedEls.forEach(el => {
+            el.style.display = "block";
+            el.innerHTML = "{{ T "countdown.thanks" }}";
+        });
+        if (window.countdownInterval) {
+            clearInterval(window.countdownInterval);
+            window.countdownInterval = null;
+        }
+        return;
+      }
 
       if (distance <= 0) {
         containers.forEach(el => el.style.display = "none");

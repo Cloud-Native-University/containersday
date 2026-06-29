@@ -72,6 +72,8 @@ countdown.seconds:
   other: "Seg"
 countdown.ended:
   other: "🚀 ¡El evento ha comenzado!"
+countdown.thanks:
+  other: "🙏 ¡Gracias a todos por hacer de Containers Day una experiencia inolvidable! Nos vemos el próximo año."
 cd_hero_subtitle_1:
   other: "Innovación"
 cd_hero_title_1:
