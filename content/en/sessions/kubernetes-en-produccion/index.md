@@ -18,7 +18,7 @@ room:
 categories:
   - "Kubernetes"
   - "DevOps"
-draft: false
+draft: true
 ---
 
 Real lessons learned running Kubernetes in production: from day 0 to day 2 operations, networking, security, observability, and costs. A practical session for teams already using or planning to use Kubernetes.

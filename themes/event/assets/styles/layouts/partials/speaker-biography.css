@@ -11,10 +11,10 @@
 
 .speaker-biography__slogan {
     all: unset;
-    display: block; /* Ensure it is a block element to properly handle margins */
+    display: block;
     font-weight: 400;
     font-size: 1rem;
-    color: #4b5563; /* slightly muted */
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .speaker-biography__description {
@@ -27,8 +27,8 @@
 /* Custom styling for markdown elements in speaker biography to look proportioned and premium */
 .speaker-biography__description.markdown p {
     font-size: 1rem;
-    line-height: 1.6rem;
-    color: #374151; /* neutral dark text */
+    line-height: 1.75rem;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 1rem;
 }
 
@@ -40,8 +40,8 @@
 
 .speaker-biography__description.markdown li {
     font-size: 1rem;
-    line-height: 1.6rem;
-    color: #374151;
+    line-height: 1.75rem;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 0.5rem;
 }
 
@@ -49,7 +49,7 @@
 .speaker-biography__description.markdown h4 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #111827;
-    margin-top: 1.75rem; /* Reduced from 2.875rem */
+    color: #fff;
+    margin-top: 1.75rem;
     margin-bottom: 0.75rem;
 }

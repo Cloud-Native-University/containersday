@@ -18,7 +18,7 @@ room:
 categories:
   - "Kubernetes"
   - "DevOps"
-draft: false
+draft: true
 ---
 
 Compartiremos lecciones reales aprendidas ejecutando Kubernetes en producción: desde el día 0 hasta el día 2, pasando por networking, seguridad, observabilidad y costos. Una sesión práctica para equipos que ya están usando o planean usar Kubernetes.

@@ -1,46 +1,65 @@
 {{ $input := . }}
 
-
-<div class="section-container">
+<div class="section-container featured-speakers-container">
     <section
         class="section section--long featured-speakers"
         {{ with T "featured_speakers_section.heading" }}
             aria-label="{{ . }}"
         {{ end }}>
-        <h2 class="heading heading--highlighted heading--centered">
-            {{ T "featured_speakers_section.heading" }}
-        </h2>
-        <h3 class="heading heading--2 heading--centered">
-            {{ T "featured_speakers_section.subheading" }}
-        </h3>
-        <ul
-            class="featured-speakers__menu"
-            {{- with (T "featured_speakers_section.heading") }}
-                aria-label="{{ . }}"
-            {{- end }}>
-            {{- range $index, $speaker := $input.speakers }}
-                <li aria-label="{{ $speaker.name }}">
-                    {{- partial "speaker-card.html" (
-                        dict
-                        "profileUrl" $speaker.profileUrl
-                        "avatarResource" $speaker.avatarResource
-                        "name" $speaker.name
-                        "description" $speaker.description
-                        "linkedinUrl" $speaker.linkedinUrl
-                        "xUrl" $speaker.xUrl
-                        "companyUrl" $speaker.companyUrl
-                        "instagramUrl" $speaker.instagramUrl
-                        "websiteUrl" $speaker.websiteUrl
-                        )
-                    }}
-                </li>
-            {{- end }}
-        </ul>
+        <div class="featured-speakers__header">
+            <span class="featured-speakers__overline">{{ T "featured_speakers_section.subheading" }}</span>
+            <h2 class="featured-speakers__heading">{{ T "featured_speakers_section.heading" }}</h2>
+            <div class="featured-speakers__divider">
+                <span class="featured-speakers__divider-line"></span>
+                <span class="featured-speakers__divider-dot"></span>
+                <span class="featured-speakers__divider-line"></span>
+            </div>
+        </div>
 
-        {{- with $input.speakersUrl }}
-            <a href="{{ . }}" class="button button--outlined">
-                {{ T "featured_speakers_section.action" }}
-            </a>
+        {{- if gt ($input.speakers | len) 0 }}
+            <div class="featured-speakers__grid">
+                {{- range $index, $speaker := $input.speakers }}
+                    <article class="featured-card" style="--index: {{ $index }}">
+                        <span class="featured-card__number">0{{ add $index 1 }}</span>
+                        <div class="featured-card__media">
+                            <a href="{{ $speaker.profileUrl }}" tabindex="-1" aria-hidden="true">
+                                {{- if $speaker.avatarResource }}
+                                    {{- with $speaker.avatarResource | images.Filter (images.Process "fill 300x300") }}
+                                        <img
+                                            class="featured-card__avatar"
+                                            src="{{ .RelPermalink }}"
+                                            alt="{{ $speaker.name }}"
+                                            width="{{ .Width }}"
+                                            height="{{ .Height }}"
+                                            loading="lazy" />
+                                    {{- end }}
+                                {{- else }}
+                                    <div class="featured-card__avatar--fallback">{{ substr $speaker.name 0 1 }}</div>
+                                {{- end }}
+                            </a>
+                            <div class="featured-card__ring"></div>
+                        </div>
+                        <div class="featured-card__body">
+                            <h3 class="featured-card__name">
+                                <a href="{{ $speaker.profileUrl }}">{{ $speaker.name }}</a>
+                            </h3>
+                            <p class="featured-card__tagline">{{ $speaker.description }}</p>
+                        </div>
+                    </article>
+                {{- end }}
+            </div>
+
+            <div class="featured-speakers__actions">
+                <a href="{{ $input.speakersUrl }}" class="button button--outlined featured-speakers__btn">
+                    {{ T "featured_speakers_section.all_speakers" }}
+                    <span class="featured-speakers__btn-arrow">→</span>
+                </a>
+                <div class="button button--disabled featured-speakers__btn" aria-disabled="true" title="{{ T "agenda.coming_soon.title" }}">
+                    {{ T "agenda.coming_soon.label" }}
+                </div>
+            </div>
+        {{- else }}
+            <p class="paragraph paragraph--centered">{{ T "coming_soon.speakers.message" }}</p>
         {{- end }}
     </section>
 </div>

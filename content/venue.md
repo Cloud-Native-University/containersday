@@ -481,7 +481,7 @@ margin-bottom: 1.5rem;
 <div class="v-card-body">
 <h3 class="v-card-title">Sede del Evento</h3>
 <p class="v-card-text">
-La <strong>Universidad Abierta para Adultos (UAPA)</strong> se encuentra ubicada en la Av. Hispanoamericana, en la zona sur de Santiago de los Caballeros.
+La <strong>Universidad Abierta para Adultos (UAPA)</strong> se encuentra ubicada en la Av. Hispanoamericana #100, Thomén, Código postal 51000, Santiago de los Caballeros, República Dominicana.
 </p>
 <p class="v-card-text" style="margin-bottom: 0;">
 <strong>Facilidad de Acceso:</strong> Se accede directamente desde la Autopista Duarte. Contamos con un amplio parqueo gratuito y con seguridad vigilada disponible para todos los asistentes durante la jornada de la conferencia.

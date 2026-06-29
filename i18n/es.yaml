@@ -181,7 +181,7 @@ cd_venue_name:
 cd_venue_desc:
   other: "Sede oficial de Containers Day 2026. Un campus moderno con instalaciones diseñadas para la educación y la innovación tecnológica."
 cd_venue_address:
-  other: "Av. Hispanoamericana, Santiago de los Caballeros, República Dominicana"
+  other: "Av. Hispanoamericana #100, Thomén, Código postal 51000, Santiago de los Caballeros, República Dominicana"
 cd_venue_about_title:
   other: "Sobre la Sede"
 cd_venue_about_desc:
@@ -378,6 +378,20 @@ cd_event_date:
 cd_event_location_label:
   other: "Ubicación"
 
+coming_soon.agenda.heading: "Próximamente"
+coming_soon.agenda.message: "La agenda completa está siendo curada con charlas y talleres de expertos. ¡Mantente atento!"
+coming_soon.speakers.heading: "Próximamente"
+coming_soon.speakers.message: "Los oradores destacados están siendo anunciados. ¡Vuelve pronto!"
+coming_soon.sessions.heading: "Próximamente"
+coming_soon.sessions.message: "Las sesiones destacadas están en preparación. ¡Estamos seleccionando las mejores charlas para ti!"
+coming_soon.tracks.heading: "Próximamente"
+coming_soon.tracks.message: "Los tracks de sesiones están siendo definidos. ¡Más información próximamente!"
+cfp_banner.heading: "Call for Papers Abierto"
+cfp_banner.message: "¿Quieres compartir tu conocimiento en Containers Day? Envía tu propuesta de charla — buscamos talks sobre Cloud Native, IA, Kubernetes, DevOps y más."
+featured_speakers_section.all_speakers: "Todos los Speakers"
+agenda.coming_soon.label: "Agenda — Próximamente"
+agenda.coming_soon.title: "La agenda completa está siendo curada"
+agenda.coming_soon.message: "La agenda está en preparación. Mientras tanto, ¡revisa nuestro Call for Papers arriba!"
 cd_organizers_intro:
   other: "Conoce al equipo organizador detrás del Containers Day 2026, comprometido con llevar el aprendizaje y la innovación Cloud Native al corazón de la República Dominicana."
 cd_organizer_role_harys:

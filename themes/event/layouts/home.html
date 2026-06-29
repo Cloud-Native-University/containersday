@@ -28,24 +28,12 @@
 
     {{ partial "sections/benefits.html" . }}
 
-    {{- $tracks := slice }}
-    {{- range (.Site.RegularPages.GroupByParam "track") }}
-        {{- $tracks = $tracks | append (.Key) }}
-    {{- end }}
-
-    {{- if gt ($tracks | len) 1 }}
-        {{- partial "sections/conference-tracks.html" (
-            dict
-            "tracks" $tracks
-            "sessionsUrl" (.Site.GetPage "sessions").RelPermalink
-            )
-        }}
-    {{- end }}
-
-    {{- $topSpeakers := slice }}
+    {{- $featuredSpeakerIds := slice "eriktaveras" "darianvargas" "joseelias" }}
+    {{- $featuredSpeakerList := slice }}
     {{- range (where .Site.Pages "Section" "speakers") }}
-        {{- if .Params.isTopSpeaker }}
-            {{- $topSpeakers = $topSpeakers | append (
+        {{- $id := .Params.speakerId | default "" }}
+        {{- if in $featuredSpeakerIds $id }}
+            {{- $featuredSpeakerList = $featuredSpeakerList | append (
                 dict
                 "profileUrl" .RelPermalink
                 "avatarResource" (.Resources.GetMatch "avatar.*")
@@ -61,47 +49,21 @@
         {{- end }}
     {{- end }}
 
-    {{- if gt ($topSpeakers | len) 0 }}
+    {{- if gt ($featuredSpeakerList | len) 0 }}
         {{ partial "sections/featured-speakers.html" (
             dict
-            "speakers" $topSpeakers
+            "speakers" $featuredSpeakerList
             "speakersUrl" (.Site.GetPage "speakers").RelPermalink
             )
         }}
     {{- end }}
 
-    {{- $featuredSessions := slice }}
-    {{- range (where .Site.Pages "Section" "sessions") }}
-        {{- if (in .Site.Params.themes.event.featuredSessions .Params.sessionId) }}
-            {{- $featuredSessionPage := . }}
-            {{- $featuredSessionSpeakers := slice }}
-            {{- range .Params.speakers }}
-                {{- $speaker :=  . }}
-                {{- $featuredSessionSpeakers = $featuredSessionSpeakers | append (
-                    dict
-                    "avatarResource" ($featuredSessionPage.Resources.GetMatch (printf "avatar-%s.*" $speaker.id))
-                    "name" $speaker.fullName
-                    "slogan" $speaker.tagLine
-                    )
-                }}
-            {{- end }}
-            {{- $featuredSessions = $featuredSessions | append (
-                dict
-                "sessionUrl" $featuredSessionPage.RelPermalink
-                "sessionName" $featuredSessionPage.Title
-                "sessionDescription" $featuredSessionPage.RawContent
-                "speakers" $featuredSessionSpeakers
-                "categories" $featuredSessionPage.Params.categories
-                )
-            }}
-        {{- end }}
-    {{- end }}
-
-    {{- if gt ($featuredSessions | len) 0 }}
-        {{ partial "sections/featured-sessions.html" (
+    {{- $cfpUrl := or .Site.Params.themes.event.callToActionSecondary.url "" }}
+    {{- if $cfpUrl }}
+        {{- partial "sections/cfp-banner.html" (
             dict
-            "sessions" $featuredSessions
-            "sessionsUrl" (.Site.GetPage "sessions").RelPermalink
+            "cfpUrl" $cfpUrl
+            "cfpLabel" (or .Site.Params.themes.event.callToActionSecondary.label "Call for Papers")
             )
         }}
     {{- end }}

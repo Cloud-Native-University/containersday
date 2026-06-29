@@ -173,7 +173,7 @@ cd_venue_name:
 cd_venue_desc:
   other: "Official venue of Containers Day 2026. A modern campus designed for education and technological innovation."
 cd_venue_address:
-  other: "Av. Hispanoamericana, Santiago de los Caballeros, Dominican Republic"
+  other: "Av. Hispanoamericana #100, Thomén, Postal code 51000, Santiago de los Caballeros, Dominican Republic"
 cd_venue_about_title:
   other: "About the Venue"
 cd_venue_about_desc:
@@ -380,6 +380,20 @@ countdown.minutes:
 countdown.seconds:
   other: "Sec"
 
+coming_soon.agenda.heading: "Coming Soon"
+coming_soon.agenda.message: "The full schedule is being curated with expert talks and workshops. Stay tuned!"
+coming_soon.speakers.heading: "Coming Soon"
+coming_soon.speakers.message: "Featured speakers are being announced. Check back soon!"
+coming_soon.sessions.heading: "Coming Soon"
+coming_soon.sessions.message: "Featured sessions coming soon! We're curating the best talks for you."
+coming_soon.tracks.heading: "Coming Soon"
+coming_soon.tracks.message: "Session tracks are being defined. More information coming soon!"
+cfp_banner.heading: "Call for Papers Open"
+cfp_banner.message: "Want to share your knowledge at Containers Day? Submit your talk proposal — we're looking for talks on Cloud Native, AI, Kubernetes, DevOps, and more."
+featured_speakers_section.all_speakers: "All Speakers"
+agenda.coming_soon.label: "Agenda — Coming Soon"
+agenda.coming_soon.title: "The full schedule is being curated"
+agenda.coming_soon.message: "The agenda is in preparation. While you wait, check out our Call for Papers above!"
 cd_organizers_intro:
   other: "Meet the organizing team behind Containers Day 2026, dedicated to bringing Cloud Native learning and innovation to the heart of the Dominican Republic."
 cd_organizer_role_harys:

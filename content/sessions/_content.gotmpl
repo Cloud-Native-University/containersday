@@ -1,1 +1,11 @@
 {{ .EnableAllLanguages }}
+
+{{ $sessionizeId := .Site.Params.themes.event.sessionizeId }}
+{{ if $sessionizeId }}
+  {{ with partialCached "sessionize-api/view-all.html" (dict "sessionizeId" $sessionizeId) }}
+    {{ with partial "content-adapters/create-session-content.html" (dict "sessionize" . "trackCategoryTitle" ($.Site.Params.themes.event.trackCategoryTitle | default "Track")) }}
+      {{ range .pages }}{{ $.AddPage . }}{{ end }}
+      {{ range .resources }}{{ $.AddResource . }}{{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}

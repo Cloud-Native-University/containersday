@@ -103,7 +103,7 @@ params:
             map:
                 embeddableMapUrl: "https://www.google.com/maps?q=Av.+Hispanoamericana+%23100,+Thom%C3%A9n,+51000+Santiago+de+los+Caballeros,+Rep%C3%BAblica+Dominicana&output=embed"
                 viewLargerMapUrl: "https://www.google.com/maps/dir/?api=1&destination=Av.+Hispanoamericana+%23100,+Thom%C3%A9n,+51000+Santiago+de+los+Caballeros,+Rep%C3%BAblica+Dominicana"
-            # sessionizeId: ""
+            sessionizeId: "hnm5gsws"
             callToAction:
                 url: "https://cap.uapa.edu.do/producto/containers-day-2026/"
                 other:

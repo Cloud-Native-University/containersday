@@ -18,7 +18,7 @@ room:
 categories:
   - "AI"
   - "Cloud Native"
-draft: false
+draft: true
 ---
 
 What lies beyond the current AI revolution? In this talk, José Elías guides us through a technological odyssey exploring the future of AI, technological singularity, and the impact of these disruptive technologies on humanity.

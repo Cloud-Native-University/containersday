@@ -9,18 +9,22 @@
         <h3 class="heading heading--2 heading--centered">
             {{ T "conference_tracks_section.subheading" }}
         </h3>
-        <ol class="conference-tracks-section__list">
-            {{- range $input.tracks }}
-                <li class="conference-tracks-section__list-item">
-                    #{{ . | upper }}
-                </li>
-            {{- end }}
-        </ol>
+        {{- if gt ($input.tracks | len) 0 }}
+            <ol class="conference-tracks-section__list">
+                {{- range $input.tracks }}
+                    <li class="conference-tracks-section__list-item">
+                        #{{ . | upper }}
+                    </li>
+                {{- end }}
+            </ol>
 
-        {{- with $input.sessionsUrl }}
-            <a href="{{ . }}" class="button button--outlined">
-                {{ T "conference_tracks_section.action" }}
-            </a>
+            {{- with $input.sessionsUrl }}
+                <a href="{{ . }}" class="button button--outlined">
+                    {{ T "conference_tracks_section.action" }}
+                </a>
+            {{- end }}
+        {{- else }}
+            <p class="paragraph paragraph--centered">{{ T "coming_soon.tracks.message" }}</p>
         {{- end }}
     </section>
 </div>

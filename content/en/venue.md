@@ -481,7 +481,7 @@ margin-bottom: 1.5rem;
 <div class="v-card-body">
 <h3 class="v-card-title">Event Venue</h3>
 <p class="v-card-text">
-The <strong>Universidad Abierta para Adultos (UAPA)</strong> is located on Av. Hispanoamericana, in the southern district of Santiago de los Caballeros.
+The <strong>Universidad Abierta para Adultos (UAPA)</strong> is located at Av. Hispanoamericana #100, Thomén, Postal code 51000, Santiago de los Caballeros, Dominican Republic.
 </p>
 <p class="v-card-text" style="margin-bottom: 0;">
 <strong>Easy Access:</strong> Conveniently accessible via the Duarte Highway (Autopista Duarte). There is ample free, secure, and monitored parking available on-site for all conference attendees throughout the event.
