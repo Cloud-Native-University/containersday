@@ -168,30 +168,34 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--warm);
+            color: var(--tile-accent, var(--warm));
             margin-bottom: 4px;
-            opacity: .6;
+            opacity: .8;
         }
-        .platinum-showcase__divider {
+        /* Shared by the platinum showcase and each gold/silver/community tier
+           heading; color comes from --tile-accent (set inline per tier). */
+        .tier-divider {
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
             justify-content: center;
         }
-        .platinum-showcase__divider-line {
+        .tier-divider-line {
             height: 1px;
             width: 60px;
-            background: linear-gradient(90deg, transparent, rgba(245,158,11,.3));
+            opacity: .45;
+            background: linear-gradient(90deg, transparent, var(--tile-accent, var(--warm)));
         }
-        .platinum-showcase__divider-line:last-child {
-            background: linear-gradient(90deg, rgba(245,158,11,.3), transparent);
+        .tier-divider-line:last-child {
+            background: linear-gradient(90deg, var(--tile-accent, var(--warm)), transparent);
         }
-        .platinum-showcase__divider-icon {
-            color: var(--warm);
+        .tier-divider-icon {
+            color: var(--tile-accent, var(--warm));
             font-size: 1.2rem;
-            opacity: .5;
+            opacity: .8;
         }
+        .platinum-showcase .tier-divider { margin-bottom: 20px; }
         .platinum-showcase__grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -337,10 +341,9 @@
         .tier-heading {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            margin-bottom: 14px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,.06);
+            margin-bottom: 18px;
         }
         .tier-dot {
             width: 10px;
@@ -579,11 +582,11 @@
                 </div>
 
                 {{ if gt (len $platinumSponsors) 0 }}
-                <div class="platinum-showcase">
-                    <div class="platinum-showcase__divider">
-                        <span class="platinum-showcase__divider-line"></span>
-                        <span class="platinum-showcase__divider-icon">✦</span>
-                        <span class="platinum-showcase__divider-line"></span>
+                <div class="platinum-showcase" style="--tile-accent: {{ $platinumConfig.color }};">
+                    <div class="tier-divider">
+                        <span class="tier-divider-line"></span>
+                        <span class="tier-divider-icon">✦</span>
+                        <span class="tier-divider-line"></span>
                     </div>
                     <span class="platinum-showcase__label">{{ T "cd_sponsor_tier_platinum" }}</span>
                     <div class="platinum-showcase__grid">
@@ -637,6 +640,11 @@
                         {{ $tierEmoji := $tierLabel | replaceRE "^\\s*(\\S+)\\s.*$" "$1" }}
                         {{ $tierText := $tierLabel | replaceRE "^\\s*\\S+\\s+" "" }}
                         <section class="tier-section">
+                            <div class="tier-divider" style="--tile-accent: {{ $config.color }};">
+                                <span class="tier-divider-line"></span>
+                                <span class="tier-divider-icon">✦</span>
+                                <span class="tier-divider-line"></span>
+                            </div>
                             <div class="tier-heading" style="--tile-accent: {{ $config.color }};">
                                 <span class="tier-dot"></span>
                                 <span class="tier-icon">{{ $tierEmoji }}</span>
