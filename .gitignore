@@ -4,3 +4,7 @@ resources
 .hugo_build.lock
 node_modules
 .idea
+
+# Claude Code local settings and skill-sync lockfile — not site content
+.claude
+skills-lock.json
