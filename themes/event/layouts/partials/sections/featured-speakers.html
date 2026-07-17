@@ -17,35 +17,23 @@
         </div>
 
         {{- if gt ($input.speakers | len) 0 }}
-            <div class="featured-speakers__grid">
-                {{- range $index, $speaker := $input.speakers }}
-                    <article class="featured-card" style="--index: {{ $index }}">
-                        <span class="featured-card__number">0{{ add $index 1 }}</span>
-                        <div class="featured-card__media">
-                            <a href="{{ $speaker.profileUrl }}" tabindex="-1" aria-hidden="true">
-                                {{- if $speaker.avatarResource }}
-                                    {{- with $speaker.avatarResource | images.Filter (images.Process "fill 300x300") }}
-                                        <img
-                                            class="featured-card__avatar"
-                                            src="{{ .RelPermalink }}"
-                                            alt="{{ $speaker.name }}"
-                                            width="{{ .Width }}"
-                                            height="{{ .Height }}"
-                                            loading="lazy" />
-                                    {{- end }}
-                                {{- else }}
-                                    <div class="featured-card__avatar--fallback">{{ substr $speaker.name 0 1 }}</div>
-                                {{- end }}
-                            </a>
-                            <div class="featured-card__ring"></div>
+            <div class="featured-speakers__carousel" role="region" aria-roledescription="carousel" aria-label="{{ T "featured_speakers_section.heading" }}">
+                {{- if gt ($input.speakers | len) 1 }}
+                    <button type="button" class="featured-speakers__nav featured-speakers__nav--prev" aria-label="{{ T "carousel.button_previous" }}" onclick="var t=this.nextElementSibling;t.scrollBy({left:-t.querySelector('.featured-speakers__item').getBoundingClientRect().width-24,behavior:'smooth'})">
+                        {{- partial "graphics/arrow-left.html" }}
+                    </button>
+                {{- end }}
+                <div class="featured-speakers__track">
+                    {{- range $index, $speaker := $input.speakers }}
+                        <div class="featured-speakers__item" role="group" aria-roledescription="slide" aria-label="{{ $speaker.name }}">
+                            {{- partial "speaker-card.html" $speaker }}
                         </div>
-                        <div class="featured-card__body">
-                            <h3 class="featured-card__name">
-                                <a href="{{ $speaker.profileUrl }}">{{ $speaker.name }}</a>
-                            </h3>
-                            <p class="featured-card__tagline">{{ $speaker.description }}</p>
-                        </div>
-                    </article>
+                    {{- end }}
+                </div>
+                {{- if gt ($input.speakers | len) 1 }}
+                    <button type="button" class="featured-speakers__nav featured-speakers__nav--next" aria-label="{{ T "carousel.button_next" }}" onclick="var t=this.previousElementSibling;t.scrollBy({left:t.querySelector('.featured-speakers__item').getBoundingClientRect().width+24,behavior:'smooth'})">
+                        {{- partial "graphics/arrow-right.html" }}
+                    </button>
                 {{- end }}
             </div>
 

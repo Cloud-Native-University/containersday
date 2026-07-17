@@ -28,25 +28,22 @@
 
     {{ partial "sections/benefits.html" . }}
 
-    {{- $featuredSpeakerIds := slice "eriktaveras" "darianvargas" "joseelias" }}
+    {{- $speakersSection := .Site.GetPage "speakers" }}
     {{- $featuredSpeakerList := slice }}
-    {{- range (where .Site.Pages "Section" "speakers") }}
-        {{- $id := .Params.speakerId | default "" }}
-        {{- if in $featuredSpeakerIds $id }}
-            {{- $featuredSpeakerList = $featuredSpeakerList | append (
-                dict
-                "profileUrl" .RelPermalink
-                "avatarResource" (.Resources.GetMatch "avatar.*")
-                "name" .Title
-                "description" .Params.tagLine
-                "linkedinUrl" .Params.linkedinUrl
-                "xUrl" .Params.xUrl
-                "companyUrl" .Params.companyUrl
-                "instagramUrl" .Params.instagramUrl
-                "websiteUrl" .Params.websiteUrl
-                )
-            }}
-        {{- end }}
+    {{- range sort $speakersSection.Pages "Params.lastName" }}
+        {{- $featuredSpeakerList = $featuredSpeakerList | append (
+            dict
+            "profileUrl" .RelPermalink
+            "avatarResource" (.Resources.GetMatch "avatar.*")
+            "name" .Title
+            "description" .Params.tagLine
+            "linkedinUrl" .Params.linkedinUrl
+            "xUrl" .Params.xUrl
+            "companyUrl" .Params.companyUrl
+            "instagramUrl" .Params.instagramUrl
+            "websiteUrl" .Params.websiteUrl
+            )
+        }}
     {{- end }}
 
     {{- if gt ($featuredSpeakerList | len) 0 }}
