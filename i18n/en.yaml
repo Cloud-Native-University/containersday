@@ -310,6 +310,10 @@ event_highlights_section.number_of_days:
 event_highlights_section.number_of_workshops:
   one: "{{ . }} Workshop"
   other: "{{ . }} Workshops"
+cd_initiative_partners_desc:
+  other: "Containers Day is part of the Horizon Europe Scale2Connect initiative — a collaboration between UAPA, CADESOFT, and partners funded by the European Union."
+cd_initiative_partners_heading:
+  other: "Initiative Partners"
 cd_partner_with_us:
   other: "Partner With Us"
 cd_partner_with_us_desc:
@@ -410,6 +414,8 @@ cd_organizer_role_paul:
   other: "Co-organizer of Containers Day, Tech Community Builder"
 cd_organizer_role_luz:
   other: "Co-organizer of Containers Day, Legal Advisor & Operations"
+cd_organizer_role_zoila:
+  other: "Co-organizer of Containers Day, Director of the School of Engineering and Technology, UAPA"
 
 location_page.heading:
   other: "Our Location"

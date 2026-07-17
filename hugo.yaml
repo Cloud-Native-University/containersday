@@ -179,6 +179,19 @@ params:
                 community:
                     label: "🤝 Patrocinador Comunitario"
                     color: "#5dade2"
+            initiativePartners:
+                - logo: "/logos/organizers/scale2connect-v3.png"
+                  url: "https://scale2connect.eu/"
+                  name: "Scale2Connect"
+                - logo: "/logos/organizers/eu-flag-v1.png"
+                  url: "https://cordis.europa.eu/project/id/101214553"
+                  name: "Funded by the European Union"
+                - logo: "/logos/organizers/cadesoft-color.png"
+                  url: "https://cadesoft.do/"
+                  name: "CADESOFT"
+                - logo: "/logos/organizers/brain.png"
+                  url: "https://cadesoft.do/"
+                  name: "Mente de Hacker"
             colors:
                 primary: '#5dade2'
                 primaryDarker: '#143e8b'
