@@ -154,6 +154,11 @@
 }
 
 .featured-speakers__btn {
+    /* .button resets box-sizing to content-box via `all: unset`, so the
+       width: 100% set below at the 576px breakpoint would add this
+       padding on top of that width and overflow the container. */
+    box-sizing: border-box;
+    max-width: 100%;
     padding: 0.85rem 2rem;
     font-size: 0.85rem;
     font-weight: 600;
