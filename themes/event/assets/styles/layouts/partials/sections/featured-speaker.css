@@ -76,73 +76,54 @@
 }
 
 /* ===== SPEAKER CAROUSEL =====
-   User-driven (scroll-snap + prev/next), not auto-playing: unlike the
-   sponsor marquee, speaker cards carry text worth reading, so scrolling
-   stays under the visitor's control rather than looping on its own. */
+   Auto-scrolling marquee, same mechanic as the homepage sponsor strip:
+   the track is duplicated and animated; hovering or focusing it pauses
+   the scroll so a visitor can actually read a card. */
 .featured-speakers__carousel {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    position: relative;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto 3rem;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
 }
 
 .featured-speakers__track {
     display: flex;
+    align-items: stretch;
     gap: 1.5rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    width: max-content;
     padding: 0.5rem 0.25rem;
-    flex: 1;
-    min-width: 0;
+    animation: featured-speakers-scroll var(--duration, 90s) linear infinite;
+    will-change: transform;
 }
 
-.featured-speakers__track::-webkit-scrollbar {
-    display: none;
+.featured-speakers__carousel:hover .featured-speakers__track,
+.featured-speakers__carousel:focus-within .featured-speakers__track {
+    animation-play-state: paused;
 }
 
 .featured-speakers__item {
     flex: 0 0 auto;
-    scroll-snap-align: start;
     width: min(270px, 78vw);
 }
 
-.featured-speakers__nav {
-    all: unset;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
-    color: #fff;
-    cursor: pointer;
-    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.2s ease;
-}
-
-.featured-speakers__nav:hover {
-    background: rgba(198, 235, 77, 0.1);
-    border-color: rgba(198, 235, 77, 0.4);
-}
-
-.featured-speakers__nav:active {
-    transform: scale(0.94);
-}
-
-.featured-speakers__nav:focus-visible {
-    outline: 2px solid var(--color-primary, #c6eb4d);
-    outline-offset: 2px;
-}
-
-.featured-speakers__nav svg {
-    width: 1.1rem;
-    height: 1.1rem;
+@keyframes featured-speakers-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 .featured-speakers__actions {
@@ -187,15 +168,6 @@
         font-size: 1.75rem;
     }
 
-    .featured-speakers__carousel {
-        gap: 0.5rem;
-    }
-
-    .featured-speakers__nav {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-
     .featured-speakers__actions {
         flex-direction: column;
         width: 100%;
@@ -209,6 +181,19 @@
 
 @media (prefers-reduced-motion: reduce) {
     .featured-speakers__track {
-        scroll-behavior: auto;
+        animation: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .featured-speakers__track .featured-speakers__item[aria-hidden="true"] {
+        display: none;
+    }
+
+    .featured-speakers__carousel {
+        -webkit-mask-image: none;
+        mask-image: none;
     }
 }

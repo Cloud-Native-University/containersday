@@ -17,24 +17,23 @@
         </div>
 
         {{- if gt ($input.speakers | len) 0 }}
+            {{- $count := $input.speakers | len }}
+            {{- $duration := mul $count 6 }}
             <div class="featured-speakers__carousel" role="region" aria-roledescription="carousel" aria-label="{{ T "featured_speakers_section.heading" }}">
-                {{- if gt ($input.speakers | len) 1 }}
-                    <button type="button" class="featured-speakers__nav featured-speakers__nav--prev" aria-label="{{ T "carousel.button_previous" }}" onclick="var t=this.nextElementSibling;t.scrollBy({left:-t.querySelector('.featured-speakers__item').getBoundingClientRect().width-24,behavior:'smooth'})">
-                        {{- partial "graphics/arrow-left.html" }}
-                    </button>
-                {{- end }}
-                <div class="featured-speakers__track">
-                    {{- range $index, $speaker := $input.speakers }}
+                <div class="featured-speakers__track" style="--duration: {{ $duration }}s">
+                    {{- range $speaker := $input.speakers }}
                         <div class="featured-speakers__item" role="group" aria-roledescription="slide" aria-label="{{ $speaker.name }}">
                             {{- partial "speaker-card.html" $speaker }}
                         </div>
                     {{- end }}
+                    {{/* Duplicate set for a seamless loop; inert removes it (and its links)
+                         from the tab order and assistive tech, not just visually. */}}
+                    {{- range $speaker := $input.speakers }}
+                        <div class="featured-speakers__item" aria-hidden="true" inert>
+                            {{- partial "speaker-card.html" $speaker }}
+                        </div>
+                    {{- end }}
                 </div>
-                {{- if gt ($input.speakers | len) 1 }}
-                    <button type="button" class="featured-speakers__nav featured-speakers__nav--next" aria-label="{{ T "carousel.button_next" }}" onclick="var t=this.previousElementSibling;t.scrollBy({left:t.querySelector('.featured-speakers__item').getBoundingClientRect().width+24,behavior:'smooth'})">
-                        {{- partial "graphics/arrow-right.html" }}
-                    </button>
-                {{- end }}
             </div>
 
             <div class="featured-speakers__actions">
