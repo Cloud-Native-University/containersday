@@ -169,7 +169,7 @@ params:
             sponsorTiers:
                 platinum:
                     label: "🏆 Patrocinador Platinum"
-                    color: "#f59e0b"
+                    color: "#cfe0f5"
                 gold:
                     label: "🥇 Patrocinador Oro"
                     color: "#f59e0b"
@@ -186,6 +186,7 @@ params:
                 - logo: "/logos/organizers/eu-flag-v1.png"
                   url: "https://cordis.europa.eu/project/id/101214553"
                   name: "Funded by the European Union"
+                  wide: true
                 - logo: "/logos/organizers/cadesoft-color.png"
                   url: "https://cadesoft.do/"
                   name: "CADESOFT"
