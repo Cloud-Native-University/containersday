@@ -190,9 +190,9 @@ params:
                 - logo: "/logos/organizers/cadesoft-color.png"
                   url: "https://cadesoft.do/"
                   name: "CADESOFT"
-                - logo: "/logos/organizers/brain.png"
-                  url: "https://cadesoft.do/"
-                  name: "Mente de Hacker"
+                - logo: "/logos/organizers/mente-de-hackers.png"
+                  url: "https://www.instagram.com/mentedehackers/?hl=en"
+                  name: "Mente de Hackers"
             colors:
                 primary: '#5dade2'
                 primaryDarker: '#143e8b'
