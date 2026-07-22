@@ -1,432 +1,432 @@
 cd_home:
-  other: "HOME"
+    other: 'HOME'
 cd_tickets:
-  other: "Tickets"
+    other: 'Tickets'
 cd_buy_tickets:
-  other: "Buy Tickets"
+    other: 'Buy Tickets'
 cd_become_speaker:
-  other: "Become a Speaker"
+    other: 'Become a Speaker'
 cd_apply_speaker:
-  other: "Apply as Speaker"
+    other: 'Apply as Speaker'
 cd_why_participate:
-  other: "Why participate?"
+    other: 'Why participate?'
 cd_event_benefits:
-  other: "Event Benefits"
+    other: 'Event Benefits'
 cd_conferences:
-  other: "Conferences"
+    other: 'Conferences'
 cd_conferences_desc:
-  other: "Listen to experts share their knowledge and experiences in the real world."
+    other: 'Listen to experts share their knowledge and experiences in the real world.'
 cd_community:
-  other: "Community"
+    other: 'Community'
 cd_community_desc:
-  other: "Attend high-level talks and learn new skills together with tech enthusiasts."
+    other: 'Attend high-level talks and learn new skills together with tech enthusiasts.'
 cd_networking:
-  other: "Networking"
+    other: 'Networking'
 cd_networking_desc:
-  other: "Connect with other professionals, startups, and leading tech companies."
+    other: 'Connect with other professionals, startups, and leading tech companies.'
 cd_innovation:
-  other: "Innovation"
+    other: 'Innovation'
 cd_innovation_desc:
-  other: "Explore the latest trends and news related to Containers and Cloud Native."
+    other: 'Explore the latest trends and news related to Containers and Cloud Native.'
 cd_mentoring:
-  other: "Mentoring"
+    other: 'Mentoring'
 cd_mentoring_desc:
-  other: "Receive direct guidance and practical advice from experts with years of experience."
+    other: 'Receive direct guidance and practical advice from experts with years of experience.'
 cd_inspiration:
-  other: "Inspiration"
+    other: 'Inspiration'
 cd_inspiration_desc:
-  other: "Discover new ideas and innovative approaches to boost your personal and professional projects."
+    other: 'Discover new ideas and innovative approaches to boost your personal and professional projects.'
 cd_career:
-  other: "Professional Career"
+    other: 'Professional Career'
 cd_career_desc:
-  other: "Access exclusive job opportunities and connect with companies looking for specialized talent."
+    other: 'Access exclusive job opportunities and connect with companies looking for specialized talent.'
 cd_certification:
-  other: "Certification"
+    other: 'Certification'
 cd_certification_desc:
-  other: "Get an official certificate of participation to boost your resume and professional profile."
+    other: 'Get an official certificate of participation to boost your resume and professional profile.'
 cd_code_of_conduct:
-  other: "Code of Conduct"
+    other: 'Code of Conduct'
 cd_all_rights:
-  other: "All rights reserved."
+    other: 'All rights reserved.'
 menu.sessions:
-  other: "Schedule"
+    other: 'Schedule'
 menu.speakers:
-  other: "Speakers"
+    other: 'Speakers'
 menu.tourism:
-  other: "Tropical Tourism"
+    other: 'Tropical Tourism'
 menu.sponsors:
-  other: "Sponsors"
+    other: 'Sponsors'
 cd_event_title:
-  other: "Containers Day"
+    other: 'Containers Day'
 cd_event_slogan:
-  other: "The most important tech conference in the Caribbean!"
+    other: 'The most important tech conference in the Caribbean!'
 cd_event_location:
-  other: "UAPA, Santiago"
+    other: 'UAPA, Santiago'
 countdown.ended:
-  other: "🚀 The event has started!"
+    other: '🚀 The event has started!'
 countdown.thanks:
-  other: "🙏 Thank you to everyone who made Containers Day an unforgettable experience! See you next year."
+    other: '🙏 Thank you to everyone who made Containers Day an unforgettable experience! See you next year.'
 cd_hero_subtitle_1:
-  other: "Innovation"
+    other: 'Innovation'
 cd_hero_title_1:
-  other: "Orchestrating Tomorrow: Where AI meets Cloud Native."
+    other: 'Orchestrating Tomorrow: Where AI meets Cloud Native.'
 cd_hero_desc_1:
-  other: "We drive the convergence of Artificial Intelligence and modern architectures to define the technological future of the Caribbean."
+    other: 'We drive the convergence of Artificial Intelligence and modern architectures to define the technological future of the Caribbean.'
 cd_hero_subtitle_2:
-  other: "Scalability"
+    other: 'Scalability'
 cd_hero_title_2:
-  other: "Intelligent Infrastructure: Deploying AI Models at Global Scale."
+    other: 'Intelligent Infrastructure: Deploying AI Models at Global Scale.'
 cd_hero_desc_2:
-  other: "Learn how Cloud Native technologies allow AI to transcend borders with unprecedented performance and efficiency."
+    other: 'Learn how Cloud Native technologies allow AI to transcend borders with unprecedented performance and efficiency.'
 cd_hero_subtitle_3:
-  other: "Technology"
+    other: 'Technology'
 cd_hero_title_3:
-  other: "The Innovation Engine: Containers, AI, and the Cloud of the Future."
+    other: 'The Innovation Engine: Containers, AI, and the Cloud of the Future.'
 cd_hero_desc_3:
-  other: "Discover the power of containers as the fundamental basis for the new era of intelligent and distributed applications."
+    other: 'Discover the power of containers as the fundamental basis for the new era of intelligent and distributed applications.'
 cd_hero_subtitle_4:
-  other: "Security"
+    other: 'Security'
 cd_hero_title_4:
-  other: "Armored Modernization: Infallible Security for Cloud Native Architectures."
+    other: 'Armored Modernization: Infallible Security for Cloud Native Architectures.'
 cd_hero_desc_4:
-  other: "Protect your digital assets with the best security practices and tools in highly dynamic cloud environments."
+    other: 'Protect your digital assets with the best security practices and tools in highly dynamic cloud environments.'
 cd_hero_subtitle_5:
-  other: "Performance"
+    other: 'Performance'
 cd_hero_title_5:
-  other: "Beyond the Cloud: Scalability, Security, and High-Performance Storage."
+    other: 'Beyond the Cloud: Scalability, Security, and High-Performance Storage.'
 cd_hero_desc_5:
-  other: "Master the art of scaling massive infrastructures while maintaining integrity and speed at every layer of your stack."
+    other: 'Master the art of scaling massive infrastructures while maintaining integrity and speed at every layer of your stack.'
 cd_sponsors:
-  other: "Sponsors"
+    other: 'Sponsors'
 cd_sponsors_thanks:
-  other: "Thanks to those who make it possible!"
+    other: 'Thanks to those who make it possible!'
 cd_sponsor_default_desc:
-  other: "A key sponsor driving excellence at Containers Day."
+    other: 'A key sponsor driving excellence at Containers Day.'
 cd_sponsor_space_available:
-  other: "🚀 This space is available for your organization."
+    other: '🚀 This space is available for your organization.'
 cd_sponsor_cta:
-  other: "I want to sponsor the event!"
+    other: 'I want to sponsor the event!'
 sponsor_desc.NixVersity:
-  other: "Leaders in DevOps and Cloud Native training in the region. NixVersity drives local talent towards global standards."
+    other: 'Leaders in DevOps and Cloud Native training in the region. NixVersity drives local talent towards global standards.'
 sponsor_desc.UAPA:
-  other: "Official venue for Containers Day 2026. The Open University for Adults (UAPA) is a pioneer in distance education and tech leadership in Santiago."
+    other: 'Official venue for Containers Day 2026. The Open University for Adults (UAPA) is a pioneer in distance education and tech leadership in Santiago.'
 sponsor_desc.Innmotrix:
-  other: "Innovation partner in technological solutions applied to the health and wellness sector."
+    other: 'Innovation partner in technological solutions applied to the health and wellness sector.'
 cd_sponsor_tier_platinum:
-  other: "🏆 Platinum Sponsor"
+    other: '🏆 Platinum Sponsor'
 cd_sponsor_tier_gold:
-  other: "🥇 Gold Sponsor"
+    other: '🥇 Gold Sponsor'
 cd_sponsor_tier_silver:
-  other: "🥈 Silver Sponsor"
+    other: '🥈 Silver Sponsor'
 cd_sponsor_tier_community:
-  other: "🤝 Community Sponsor"
+    other: '🤝 Community Sponsor'
 cd_tourism_intro:
-  other: "Take advantage of your trip to Containers Day in Santiago de los Caballeros to immerse yourself in history, culture, and joy."
+    other: 'Take advantage of your trip to Containers Day in Santiago de los Caballeros to immerse yourself in history, culture, and joy.'
 cd_tourism_activity_1_tag:
-  other: "Culture"
+    other: 'Culture'
 cd_tourism_activity_1_title:
-  other: "Monument to the Restoration"
+    other: 'Monument to the Restoration'
 cd_tourism_activity_1_desc:
-  other: "The undisputed icon of Santiago. A majestic 70-meter tower offering the best panoramic views of the city and the Cibao Valley."
+    other: 'The undisputed icon of Santiago. A majestic 70-meter tower offering the best panoramic views of the city and the Cibao Valley.'
 cd_tourism_activity_1_cta:
-  other: "Explore Museum →"
+    other: 'Explore Museum →'
 cd_tourism_activity_2_tag:
-  other: "Art"
+    other: 'Art'
 cd_tourism_activity_2_title:
-  other: "León Cultural Center"
+    other: 'León Cultural Center'
 cd_tourism_activity_2_desc:
-  other: "One of the most modern and award-winning museums in the Caribbean. A deep dive into Dominican identity, art, and ecology."
+    other: 'One of the most modern and award-winning museums in the Caribbean. A deep dive into Dominican identity, art, and ecology.'
 cd_tourism_activity_2_cta:
-  other: "View Exhibitions →"
+    other: 'View Exhibitions →'
 cd_tourism_activity_3_tag:
-  other: "Tradition"
+    other: 'Tradition'
 cd_tourism_activity_3_title:
-  other: "La Aurora Cigar World"
+    other: 'La Aurora Cigar World'
 cd_tourism_activity_3_desc:
-  other: "Visit the country's oldest cigar factory. Learn about the artisanal process of premium tobacco that has put Santiago on the world map."
+    other: "Visit the country's oldest cigar factory. Learn about the artisanal process of premium tobacco that has put Santiago on the world map."
 cd_tourism_activity_3_cta:
-  other: "Schedule Tour →"
+    other: 'Schedule Tour →'
 cd_tourism_activity_4_tag:
-  other: "Urban"
+    other: 'Urban'
 cd_tourism_activity_4_title:
-  other: "Los Pepines Murals"
+    other: 'Los Pepines Murals'
 cd_tourism_activity_4_desc:
-  other: "A burst of creativity in the streets. Vibrant urban art celebrating carnival, music, and Santiago traditions."
+    other: 'A burst of creativity in the streets. Vibrant urban art celebrating carnival, music, and Santiago traditions.'
 cd_tourism_activity_4_cta:
-  other: "Photo Walk →"
+    other: 'Photo Walk →'
 cd_tourism_activity_5_tag:
-  other: "Gastronomy"
+    other: 'Gastronomy'
 cd_tourism_activity_5_title:
-  other: "Taste of Cibao"
+    other: 'Taste of Cibao'
 cd_tourism_activity_5_desc:
-  other: "From legendary Mofongo to high-end fusion cuisine. Santiago is the gastronomic epicenter for the most demanding palates."
+    other: 'From legendary Mofongo to high-end fusion cuisine. Santiago is the gastronomic epicenter for the most demanding palates.'
 cd_tourism_activity_5_cta:
-  other: "Food Guide →"
+    other: 'Food Guide →'
 cd_tourism_activity_6_tag:
-  other: "History"
+    other: 'History'
 cd_tourism_activity_6_title:
-  other: "Santiago Apostle Cathedral"
+    other: 'Santiago Apostle Cathedral'
 cd_tourism_activity_6_desc:
-  other: "Pillar of the historic center. An architectural gem from the late 19th century that holds the city's spiritual essence."
+    other: "Pillar of the historic center. An architectural gem from the late 19th century that holds the city's spiritual essence."
 cd_tourism_activity_6_cta:
-  other: "Historic Visit →"
+    other: 'Historic Visit →'
 cd_venue_name:
-  other: "Universidad UAPA (UAPA)"
+    other: 'Universidad UAPA (UAPA)'
 cd_venue_desc:
-  other: "Official venue of Containers Day 2026. A modern campus designed for education and technological innovation."
+    other: 'Official venue of Containers Day 2026. A modern campus designed for education and technological innovation.'
 cd_venue_address:
-  other: "Av. Hispanoamericana #100, Thomén, Postal code 51000, Santiago de los Caballeros, Dominican Republic"
+    other: 'Av. Hispanoamericana #100, Thomén, Postal code 51000, Santiago de los Caballeros, Dominican Republic'
 cd_venue_about_title:
-  other: "About the Venue"
+    other: 'About the Venue'
 cd_venue_about_desc:
-  other: "The Open University for Adults (UAPA) is a pioneer in distance higher education in the Dominican Republic. Its Santiago campus features auditoriums, smart classrooms, and modern spaces ideal for a tech conference."
+    other: 'The Open University for Adults (UAPA) is a pioneer in distance higher education in the Dominican Republic. Its Santiago campus features auditoriums, smart classrooms, and modern spaces ideal for a tech conference.'
 cd_venue_accessibility_title:
-  other: "Accessibility"
+    other: 'Accessibility'
 cd_venue_accessibility_desc:
-  other: "The UAPA campus has accessible facilities including ramps, elevators, and adapted restrooms for people with reduced mobility."
+    other: 'The UAPA campus has accessible facilities including ramps, elevators, and adapted restrooms for people with reduced mobility.'
 cd_venue_amenities_title:
-  other: "Amenities"
+    other: 'Amenities'
 cd_venue_amenity_wifi:
-  other: "High-speed WiFi throughout the campus"
+    other: 'High-speed WiFi throughout the campus'
 cd_venue_amenity_ac:
-  other: "Air conditioning in all rooms"
+    other: 'Air conditioning in all rooms'
 cd_venue_amenity_power:
-  other: "Power outlets at every seat"
+    other: 'Power outlets at every seat'
 cd_venue_amenity_parking:
-  other: "Parking available"
+    other: 'Parking available'
 cd_transport_title:
-  other: "Getting There"
+    other: 'Getting There'
 cd_transport_from_sti:
-  other: "From Cibao Airport (STI)"
+    other: 'From Cibao Airport (STI)'
 cd_transport_from_sti_desc:
-  other: "Cibao International Airport is just 20 minutes by car from UAPA — the most convenient option. A taxi or Uber costs approximately RD$600-900."
+    other: 'Cibao International Airport is just 20 minutes by car from UAPA — the most convenient option. A taxi or Uber costs approximately RD$600-900.'
 cd_transport_from_sdq:
-  other: "From Las Américas Airport (SDQ)"
+    other: 'From Las Américas Airport (SDQ)'
 cd_transport_from_sdq_desc:
-  other: "Located in Santo Domingo, 2.5 hours from Santiago. Take a bus (guagua) from Santo Domingo to Santiago for RD$400-600, or rent a car. Main operators: Caribe Tours and APTPRA."
+    other: 'Located in Santo Domingo, 2.5 hours from Santiago. Take a bus (guagua) from Santo Domingo to Santiago for RD$400-600, or rent a car. Main operators: Caribe Tours and APTPRA.'
 cd_transport_public:
-  other: "Public Transit"
+    other: 'Public Transit'
 cd_transport_public_desc:
-  other: "Santiago has public car routes (conchos) and buses connecting the entire city. The closest route to UAPA runs along Av. Hispanoamericana. Average fare: RD$35 per trip."
+    other: 'Santiago has public car routes (conchos) and buses connecting the entire city. The closest route to UAPA runs along Av. Hispanoamericana. Average fare: RD$35 per trip.'
 cd_transport_private:
-  other: "Private Transport"
+    other: 'Private Transport'
 cd_transport_private_desc:
-  other: "Several private transport companies offer door-to-door service. A taxi from anywhere in Santiago to UAPA costs RD$200-500 depending on distance."
+    other: 'Several private transport companies offer door-to-door service. A taxi from anywhere in Santiago to UAPA costs RD$200-500 depending on distance.'
 cd_transport_rideshare:
-  other: "Uber / Indriver"
+    other: 'Uber / Indriver'
 cd_transport_rideshare_desc:
-  other: "Uber and InDriver operate in Santiago with affordable rates. From downtown to UAPA costs approximately RD$150-300. The most recommended option for comfort and price."
+    other: 'Uber and InDriver operate in Santiago with affordable rates. From downtown to UAPA costs approximately RD$150-300. The most recommended option for comfort and price.'
 cd_transport_rental:
-  other: "Car Rental"
+    other: 'Car Rental'
 cd_transport_rental_desc:
-  other: "At Cibao Airport you'll find Hertz, Avis, and Budget. Prices range from USD $30-60 per day. Driving in Santiago is straightforward with ample parking at UAPA."
+    other: "At Cibao Airport you'll find Hertz, Avis, and Budget. Prices range from USD $30-60 per day. Driving in Santiago is straightforward with ample parking at UAPA."
 cd_hotels_label:
-  other: "Accommodation"
+    other: 'Accommodation'
 cd_hotels_heading:
-  other: "Hotels Near UAPA"
+    other: 'Hotels Near UAPA'
 cd_hotel_1_name:
-  other: "Hotel Matum & Suites"
+    other: 'Hotel Matum & Suites'
 cd_hotel_1_distance:
-  other: "1.5 km from venue — 5 min by car"
+    other: '1.5 km from venue — 5 min by car'
 cd_hotel_1_desc:
-  other: "5-star hotel with pool, gym, restaurant, and business center. Spacious rooms with city views."
+    other: '5-star hotel with pool, gym, restaurant, and business center. Spacious rooms with city views.'
 cd_hotel_2_name:
-  other: "Hodelpa Gran Almirante"
+    other: 'Hodelpa Gran Almirante'
 cd_hotel_2_distance:
-  other: "2 km from venue — 7 min by car"
+    other: '2 km from venue — 7 min by car'
 cd_hotel_2_desc:
-  other: "5-star hotel with spa, multiple restaurants, and casino. Located in the heart of Santiago's commercial center."
+    other: "5-star hotel with spa, multiple restaurants, and casino. Located in the heart of Santiago's commercial center."
 cd_hotel_3_name:
-  other: "Hotel Centro Plaza"
+    other: 'Hotel Centro Plaza'
 cd_hotel_3_distance:
-  other: "1 km from venue — 3 min by car"
+    other: '1 km from venue — 3 min by car'
 cd_hotel_3_desc:
-  other: "Modern 4-star hotel with excellent value. Comfortable rooms and complimentary breakfast."
+    other: 'Modern 4-star hotel with excellent value. Comfortable rooms and complimentary breakfast.'
 cd_hotel_4_name:
-  other: "Hotel Madre Vieja"
+    other: 'Hotel Madre Vieja'
 cd_hotel_4_distance:
-  other: "0.8 km from venue — 10 min walking"
+    other: '0.8 km from venue — 10 min walking'
 cd_hotel_4_desc:
-  other: "Cozy 3-star hotel, ideal for attendees looking for affordability and proximity to the event."
+    other: 'Cozy 3-star hotel, ideal for attendees looking for affordability and proximity to the event.'
 cd_hotel_5_name:
-  other: "Hotel Camino Real"
+    other: 'Hotel Camino Real'
 cd_hotel_5_distance:
-  other: "2.5 km from venue — 8 min by car"
+    other: '2.5 km from venue — 8 min by car'
 cd_hotel_5_desc:
-  other: "3-star hotel with pool and restaurant. Good budget option near the main avenue."
+    other: '3-star hotel with pool and restaurant. Good budget option near the main avenue.'
 cd_hotel_6_name:
-  other: "Hotel Colonial"
+    other: 'Hotel Colonial'
 cd_hotel_6_distance:
-  other: "3 km from venue — 10 min by car"
+    other: '3 km from venue — 10 min by car'
 cd_hotel_6_desc:
-  other: "3-star hotel with historic charm in downtown Santiago. Close to restaurants and nightlife."
+    other: '3-star hotel with historic charm in downtown Santiago. Close to restaurants and nightlife.'
 cd_restaurants_label:
-  other: "Dining"
+    other: 'Dining'
 cd_restaurants_heading:
-  other: "Nearby Restaurants"
+    other: 'Nearby Restaurants'
 cd_restaurant_1_name:
-  other: "El Tablado"
+    other: 'El Tablado'
 cd_restaurant_1_cuisine:
-  other: "Dominican cuisine & grill — 5 min from venue"
+    other: 'Dominican cuisine & grill — 5 min from venue'
 cd_restaurant_2_name:
-  other: "La Trattoria"
+    other: 'La Trattoria'
 cd_restaurant_2_cuisine:
-  other: "Italian food & artisan pizza — 10 min from venue"
+    other: 'Italian food & artisan pizza — 10 min from venue'
 cd_restaurant_3_name:
-  other: "Café Santo Domingo"
+    other: 'Café Santo Domingo'
 cd_restaurant_3_cuisine:
-  other: "Coffee, pastries & light meals — 3 min from venue"
+    other: 'Coffee, pastries & light meals — 3 min from venue'
 cd_restaurant_4_name:
-  other: "PikNik"
+    other: 'PikNik'
 cd_restaurant_4_cuisine:
-  other: "Gourmet burgers & fast food — 7 min from venue"
+    other: 'Gourmet burgers & fast food — 7 min from venue'
 cd_restaurant_5_name:
-  other: "Marítimo Restaurante"
+    other: 'Marítimo Restaurante'
 cd_restaurant_5_cuisine:
-  other: "Fresh fish & seafood — 12 min from venue"
+    other: 'Fresh fish & seafood — 12 min from venue'
 cd_restaurant_6_name:
-  other: "Green Bar"
+    other: 'Green Bar'
 cd_restaurant_6_cuisine:
-  other: "Healthy food, bowls & smoothies — 8 min from venue"
+    other: 'Healthy food, bowls & smoothies — 8 min from venue'
 cd_tourism_ready_to_live:
-  other: "Ready to experience Santiago?"
+    other: 'Ready to experience Santiago?'
 cd_tourism_ready_desc:
-  other: "Combine cutting-edge tech learning with the warmth and culture of the Heart City."
+    other: 'Combine cutting-edge tech learning with the warmth and culture of the Heart City.'
 cd_register_now:
-  other: "Register Now!"
+    other: 'Register Now!'
 cd_our_community:
-  other: "Our Community"
+    other: 'Our Community'
 cd_community_expectations:
-  other: "What our university community expects from the event"
+    other: 'What our university community expects from the event'
 event_highlights_section.number_of_speakers:
-  one: '{{ . }} Speaker'
-  other: '{{ . }} Speakers'
+    one: '{{ . }} Speaker'
+    other: '{{ . }} Speakers'
 event_highlights_section.number_of_sessions:
-  one: '{{ . }} Session'
-  other: '{{ . }} Sessions'
+    one: '{{ . }} Session'
+    other: '{{ . }} Sessions'
 event_highlights_section.number_of_days:
-  one: '{{ . }} Day'
-  other: '{{ . }} Days'
+    one: '{{ . }} Day'
+    other: '{{ . }} Days'
 event_highlights_section.number_of_workshops:
-  one: "{{ . }} Workshop"
-  other: "{{ . }} Workshops"
+    one: '{{ . }} Workshop'
+    other: '{{ . }} Workshops'
 cd_initiative_partners_desc:
-  other: "Containers Day is part of the Horizon Europe Scale2Connect initiative — a collaboration between UAPA, CADESOFT, and partners funded by the European Union."
+    other: 'Containers Day is part of the Horizon Europe Scale2Connect initiative — a collaboration between UAPA, CADESOFT, and partners funded by the European Union.'
 cd_initiative_partners_heading:
-  other: "Initiative Partners"
+    other: 'Initiative Partners'
 cd_partner_with_us:
-  other: "Partner With Us"
+    other: 'Partner With Us'
 cd_partner_with_us_desc:
-  other: "Fuel the growth of the Cloud Native community in Santiago de los Caballeros. Join Containers Day and position your brand at the vanguard of tech leadership."
+    other: 'Fuel the growth of the Cloud Native community in Santiago de los Caballeros. Join Containers Day and position your brand at the vanguard of tech leadership.'
 cd_download_prospectus:
-  other: "Download Prospectus"
+    other: 'Download Prospectus'
 cd_contact_team:
-  other: "Contact Team"
+    other: 'Contact Team'
 
 cd_hero_organizers_title:
-  other: "AN INITIATIVE DRIVEN BY"
+    other: 'AN INITIATIVE DRIVEN BY'
 cd_hero_innovation:
-  other: "INNOVATION"
+    other: 'INNOVATION'
 cd_hero_technology:
-  other: "TECHNOLOGY"
+    other: 'TECHNOLOGY'
 cd_hero_collaboration:
-  other: "COLLABORATION"
+    other: 'COLLABORATION'
 cd_hero_sustainability:
-  other: "SUSTAINABILITY"
+    other: 'SUSTAINABILITY'
 cd_hero_global_impact:
-  other: "GLOBAL IMPACT"
+    other: 'GLOBAL IMPACT'
 
 cd_testimonial_text:
-  other: "“Containers don't just transform the way we develop software; they transform the way we think about innovation. Learning Cloud Native today is preparing to build the smart, scalable, and resilient solutions that the world will need tomorrow”"
+    other: "“Containers don't just transform the way we develop software; they transform the way we think about innovation. Learning Cloud Native today is preparing to build the smart, scalable, and resilient solutions that the world will need tomorrow”"
 cd_testimonial_name:
-  other: "Ing. Ismael Paulino Ureña"
+    other: 'Ing. Ismael Paulino Ureña'
 cd_testimonial_role:
-  other: "Software Engineer"
+    other: 'Software Engineer'
 cd_testimonial_subtitle:
-  other: "mentor at the School of Engineering and Technology"
+    other: 'mentor at the School of Engineering and Technology'
 
 cd_testimonial_moises_text:
-  other: "“Artificial Intelligence and Cloud Native are not future technologies; they are the tools with which we are building the present. Containers Day represents an opportunity for our university community to connect innovation, software development, and real impact on a global scale”"
+    other: '“Artificial Intelligence and Cloud Native are not future technologies; they are the tools with which we are building the present. Containers Day represents an opportunity for our university community to connect innovation, software development, and real impact on a global scale”'
 cd_testimonial_moises_name:
-  other: "Lic. Moises Alain Mayet Solano"
+    other: 'Lic. Moises Alain Mayet Solano'
 cd_testimonial_moises_role:
-  other: "Cyberneticist, Director of the UAPA Artificial Intelligence Department"
+    other: 'Cyberneticist, Director of the UAPA Artificial Intelligence Department'
 cd_testimonial_moises_subtitle:
-  other: "developer of institutional solutions and lead developer of Scale2Connect"
+    other: 'developer of institutional solutions and lead developer of Scale2Connect'
 
 cd_testimonial_reyna_text:
-  other: "“Continuous training is the key to remaining relevant in a technological world that evolves every day. Containers Day represents an opportunity to learn, innovate, and strengthen competencies in high-impact technologies such as Cloud Native and containers, preparing professionals capable of leading the digital transformation of the future.”"
+    other: '“Continuous training is the key to remaining relevant in a technological world that evolves every day. Containers Day represents an opportunity to learn, innovate, and strengthen competencies in high-impact technologies such as Cloud Native and containers, preparing professionals capable of leading the digital transformation of the future.”'
 cd_testimonial_reyna_name:
-  other: "Dra. Reyna Hiraldo Trejo"
+    other: 'Dra. Reyna Hiraldo Trejo'
 cd_testimonial_reyna_role:
-  other: "Director of the UCAP Continuous Training Center, UAPA"
+    other: 'Director of the UCAP Continuous Training Center, UAPA'
 cd_testimonial_reyna_subtitle:
-  other: "Facilitator at the School of Engineering and Technology and Postgraduate Program"
+    other: 'Facilitator at the School of Engineering and Technology and Postgraduate Program'
 
 menu.more:
-  other: "Menu"
+    other: 'Menu'
 main_menu.label:
-  other: "Main navigation"
+    other: 'Main navigation'
 language:
-  other: "Language"
+    other: 'Language'
 speaker_page.sessions_by:
-  other: "Sessions by"
+    other: 'Sessions by'
 cd_event_date:
-  other: "Date"
+    other: 'Date'
 cd_event_location_label:
-  other: "Location"
+    other: 'Location'
 
 countdown.days:
-  one: "Day"
-  other: "Days"
+    one: 'Day'
+    other: 'Days'
 countdown.hours:
-  other: "Hours"
+    other: 'Hours'
 countdown.minutes:
-  other: "Min"
+    other: 'Min'
 countdown.seconds:
-  other: "Sec"
+    other: 'Sec'
 
-coming_soon.agenda.heading: "Coming Soon"
-coming_soon.agenda.message: "The full schedule is being curated with expert talks and workshops. Stay tuned!"
-coming_soon.speakers.heading: "Coming Soon"
-coming_soon.speakers.message: "Featured speakers are being announced. Check back soon!"
-coming_soon.sessions.heading: "Coming Soon"
+coming_soon.agenda.heading: 'Coming Soon'
+coming_soon.agenda.message: 'The full schedule is being curated with expert talks and workshops. Stay tuned!'
+coming_soon.speakers.heading: 'Coming Soon'
+coming_soon.speakers.message: 'Featured speakers are being announced. Check back soon!'
+coming_soon.sessions.heading: 'Coming Soon'
 coming_soon.sessions.message: "Featured sessions coming soon! We're curating the best talks for you."
-coming_soon.tracks.heading: "Coming Soon"
-coming_soon.tracks.message: "Session tracks are being defined. More information coming soon!"
-cfp_banner.heading: "Call for Papers Open"
+coming_soon.tracks.heading: 'Coming Soon'
+coming_soon.tracks.message: 'Session tracks are being defined. More information coming soon!'
+cfp_banner.heading: 'Call for Papers Open'
 cfp_banner.message: "Want to share your knowledge at Containers Day? Submit your talk proposal — we're looking for talks on Cloud Native, AI, Kubernetes, DevOps, and more."
-featured_speakers_section.all_speakers: "All Speakers"
-agenda.coming_soon.label: "Agenda — Coming Soon"
-agenda.coming_soon.title: "The full schedule is being curated"
-agenda.coming_soon.message: "The agenda is in preparation. While you wait, check out our Call for Papers above!"
+featured_speakers_section.all_speakers: 'All Speakers'
+agenda.coming_soon.label: 'Agenda — Coming Soon'
+agenda.coming_soon.title: 'The full schedule is being curated'
+agenda.coming_soon.message: 'The agenda is in preparation. While you wait, check out our Call for Papers above!'
 cd_organizers_intro:
-  other: "Meet the organizing team behind Containers Day 2026, dedicated to bringing Cloud Native learning and innovation to the heart of the Dominican Republic."
+    other: 'Meet the organizing team behind Containers Day 2026, dedicated to bringing Cloud Native learning and innovation to the heart of the Dominican Republic.'
 cd_organizer_role_harys:
-  other: "Co-organizer of Containers Day, Software & DevOps Engineer"
+    other: 'Co-organizer of Containers Day, Software & DevOps Engineer'
 cd_organizer_role_victor:
-  other: "Co-organizer of Containers Day, Cloud Solutions Architect"
+    other: 'Co-organizer of Containers Day, Cloud Solutions Architect'
 cd_organizer_role_angel:
-  other: "Co-organizer of Containers Day, Software Engineer"
+    other: 'Co-organizer of Containers Day, Software Engineer'
 cd_organizer_role_winifer:
-  other: "Co-organizer of Containers Day, Logistics & Tech Coordinator"
+    other: 'Co-organizer of Containers Day, Logistics & Tech Coordinator'
 cd_organizer_role_paul:
-  other: "Co-organizer of Containers Day, Tech Community Builder"
+    other: 'Co-organizer of Containers Day, Tech Community Builder'
 cd_organizer_role_luz:
-  other: "Co-organizer of Containers Day, Legal Advisor & Operations"
+    other: 'Co-organizer of Containers Day, Legal Advisor & Operations'
 cd_organizer_role_zoila:
-  other: "Co-organizer of Containers Day, Director of the School of Engineering and Technology, UAPA"
+    other: 'Co-organizer of Containers Day, Director of the School of Engineering and Technology, UAPA'
 
 location_page.heading:
-  other: "Our Location"
+    other: 'Our Location'
 location_page.directions_heading:
-  other: "Directions"
+    other: 'Directions'
 location_page.map_frame:
-  other: "Interactive map showing the location of the event"
+    other: 'Interactive map showing the location of the event'
 location_page.map_fullscreen:
-  other: "View larger map of the event location"
+    other: 'View larger map of the event location'
 
-
-
-
-
+cd_volunteers_intro:
+    other: "Volunteers are the heart of Containers Day. Fill out this form and we'll reach out to coordinate how you can help make the conference a success."
+cd_volunteers_form_title:
+    other: 'Volunteer Application'

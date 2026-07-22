@@ -1,438 +1,441 @@
 cd_home:
-  other: "Inicio"
+    other: 'Inicio'
 cd_tickets:
-  other: "Tickets"
+    other: 'Tickets'
 cd_buy_tickets:
-  other: "Comprar Boletos"
+    other: 'Comprar Boletos'
 cd_become_speaker:
-  other: "Ser Orador"
+    other: 'Ser Orador'
 cd_apply_speaker:
-  other: "Aplicar como Orador"
+    other: 'Aplicar como Orador'
 cd_why_participate:
-  other: "¿Por qué participar?"
+    other: '¿Por qué participar?'
 cd_event_benefits:
-  other: "Beneficios del Evento"
+    other: 'Beneficios del Evento'
 cd_conferences:
-  other: "Conferencias"
+    other: 'Conferencias'
 cd_conferences_desc:
-  other: "Escucha a expertos compartiendo sus conocimientos y experiencias en el mundo real."
+    other: 'Escucha a expertos compartiendo sus conocimientos y experiencias en el mundo real.'
 cd_community:
-  other: "Comunidad"
+    other: 'Comunidad'
 cd_community_desc:
-  other: "Asiste a charlas de alto nivel y aprende nuevas habilidades junto a apasionados de la tecnología."
+    other: 'Asiste a charlas de alto nivel y aprende nuevas habilidades junto a apasionados de la tecnología.'
 cd_networking:
-  other: "Networking"
+    other: 'Networking'
 cd_networking_desc:
-  other: "Conéctate con otros profesionales, startups y empresas líderes del sector tecnológico."
+    other: 'Conéctate con otros profesionales, startups y empresas líderes del sector tecnológico.'
 cd_innovation:
-  other: "Innovación"
+    other: 'Innovación'
 cd_innovation_desc:
-  other: "Explora las últimas tendencias y novedades relacionadas con Contenedores y Cloud Native."
+    other: 'Explora las últimas tendencias y novedades relacionadas con Contenedores y Cloud Native.'
 cd_mentoring:
-  other: "Mentoría"
+    other: 'Mentoría'
 cd_mentoring_desc:
-  other: "Recibe orientación directa y consejos prácticos de expertos con años de experiencia."
+    other: 'Recibe orientación directa y consejos prácticos de expertos con años de experiencia.'
 cd_inspiration:
-  other: "Inspiración"
+    other: 'Inspiración'
 cd_inspiration_desc:
-  other: "Descubre nuevas ideas y enfoques innovadores para potenciar tus proyectos personales y profesionales."
+    other: 'Descubre nuevas ideas y enfoques innovadores para potenciar tus proyectos personales y profesionales.'
 cd_career:
-  other: "Carrera Profesional"
+    other: 'Carrera Profesional'
 cd_career_desc:
-  other: "Accede a oportunidades laborales exclusivas y conéctate con empresas que buscan talento especializado."
+    other: 'Accede a oportunidades laborales exclusivas y conéctate con empresas que buscan talento especializado.'
 cd_certification:
-  other: "Certificación"
+    other: 'Certificación'
 cd_certification_desc:
-  other: "Obtén un certificado de participación oficial para potenciar tu currículum y perfil profesional."
+    other: 'Obtén un certificado de participación oficial para potenciar tu currículum y perfil profesional.'
 cd_code_of_conduct:
-  other: "Código de Conducta"
+    other: 'Código de Conducta'
 cd_all_rights:
-  other: "Todos los derechos reservados."
+    other: 'Todos los derechos reservados.'
 menu.sessions:
-  other: "Agenda"
+    other: 'Agenda'
 menu.speakers:
-  other: "Ponentes"
+    other: 'Ponentes'
 menu.tourism:
-  other: "Turismo Tropical"
+    other: 'Turismo Tropical'
 menu.sponsors:
-  other: "Patrocinadores"
+    other: 'Patrocinadores'
 cd_event_title:
-  other: "Containers Day"
+    other: 'Containers Day'
 cd_event_slogan:
-  other: "¡La conferencia tecnológica más importante del Caribe!"
+    other: '¡La conferencia tecnológica más importante del Caribe!'
 cd_event_location:
-  other: "UAPA, Santiago"
+    other: 'UAPA, Santiago'
 countdown.days:
-  other: "Días"
+    other: 'Días'
 countdown.hours:
-  other: "Horas"
+    other: 'Horas'
 countdown.minutes:
-  other: "Min"
+    other: 'Min'
 countdown.seconds:
-  other: "Seg"
+    other: 'Seg'
 countdown.ended:
-  other: "🚀 ¡El evento ha comenzado!"
+    other: '🚀 ¡El evento ha comenzado!'
 countdown.thanks:
-  other: "🙏 ¡Gracias a todos por hacer de Containers Day una experiencia inolvidable! Nos vemos el próximo año."
+    other: '🙏 ¡Gracias a todos por hacer de Containers Day una experiencia inolvidable! Nos vemos el próximo año.'
 cd_hero_subtitle_1:
-  other: "Innovación"
+    other: 'Innovación'
 cd_hero_title_1:
-  other: "Orquestando el Mañana: Donde la IA se encuentra con el Cloud Native."
+    other: 'Orquestando el Mañana: Donde la IA se encuentra con el Cloud Native.'
 cd_hero_desc_1:
-  other: "Impulsamos la convergencia de la Inteligencia Artificial y las arquitecturas modernas para definir el futuro tecnológico del Caribe."
+    other: 'Impulsamos la convergencia de la Inteligencia Artificial y las arquitecturas modernas para definir el futuro tecnológico del Caribe.'
 cd_hero_subtitle_2:
-  other: "Escalabilidad"
+    other: 'Escalabilidad'
 cd_hero_title_2:
-  other: "Infraestructura Inteligente: Desplegando Modelos de IA a Escala Global."
+    other: 'Infraestructura Inteligente: Desplegando Modelos de IA a Escala Global.'
 cd_hero_desc_2:
-  other: "Aprende cómo las tecnologías Cloud Native permiten que la IA trascienda fronteras con un rendimiento y eficiencia sin precedentes."
+    other: 'Aprende cómo las tecnologías Cloud Native permiten que la IA trascienda fronteras con un rendimiento y eficiencia sin precedentes.'
 cd_hero_subtitle_3:
-  other: "Tecnología"
+    other: 'Tecnología'
 cd_hero_title_3:
-  other: "El Motor de la Innovación: Contenedores, IA y la Nube del Futuro."
+    other: 'El Motor de la Innovación: Contenedores, IA y la Nube del Futuro.'
 cd_hero_desc_3:
-  other: "Descubre el poder de los contenedores como base fundamental para la nueva era de aplicaciones inteligentes y distribuidas."
+    other: 'Descubre el poder de los contenedores como base fundamental para la nueva era de aplicaciones inteligentes y distribuidas.'
 cd_hero_subtitle_4:
-  other: "Seguridad"
+    other: 'Seguridad'
 cd_hero_title_4:
-  other: "Modernización Blindada: Seguridad Infalible para Arquitecturas Cloud Native."
+    other: 'Modernización Blindada: Seguridad Infalible para Arquitecturas Cloud Native.'
 cd_hero_desc_4:
-  other: "Protege tus activos digitales con las mejores prácticas y herramientas de seguridad en entornos de nube altamente dinámicos."
+    other: 'Protege tus activos digitales con las mejores prácticas y herramientas de seguridad en entornos de nube altamente dinámicos.'
 cd_hero_subtitle_5:
-  other: "Rendimiento"
+    other: 'Rendimiento'
 cd_hero_title_5:
-  other: "Más allá de la Nube: Escalabilidad, Seguridad y Almacenamiento de Alto Rendimiento."
+    other: 'Más allá de la Nube: Escalabilidad, Seguridad y Almacenamiento de Alto Rendimiento.'
 cd_hero_desc_5:
-  other: "Domina el arte de escalar infraestructuras masivas manteniendo la integridad y la velocidad en cada capa de tu stack."
+    other: 'Domina el arte de escalar infraestructuras masivas manteniendo la integridad y la velocidad en cada capa de tu stack.'
 cd_sponsors:
-  other: "Patrocinadores"
+    other: 'Patrocinadores'
 cd_sponsors_thanks:
-  other: "¡Gracias a quienes lo hacen posible!"
+    other: '¡Gracias a quienes lo hacen posible!'
 cd_sponsor_default_desc:
-  other: "Un patrocinador clave que impulsa la excelencia en Containers Day."
+    other: 'Un patrocinador clave que impulsa la excelencia en Containers Day.'
 cd_sponsor_space_available:
-  other: "🚀 Este espacio está disponible para tu organización."
+    other: '🚀 Este espacio está disponible para tu organización.'
 cd_sponsor_cta:
-  other: "¡Quiero patrocinar el evento!"
+    other: '¡Quiero patrocinar el evento!'
 sponsor_desc.NixVersity:
-  other: "Líderes en formación de DevOps y Cloud Native en la región. NixVersity impulsa el talento local hacia estándares globales."
+    other: 'Líderes en formación de DevOps y Cloud Native en la región. NixVersity impulsa el talento local hacia estándares globales.'
 sponsor_desc.UAPA:
-  other: "Sede oficial de Containers Day 2026. La Universidad para Adultos (UAPA) es pionera en educación a distancia y liderazgo tecnológico en Santiago."
+    other: 'Sede oficial de Containers Day 2026. La Universidad para Adultos (UAPA) es pionera en educación a distancia y liderazgo tecnológico en Santiago.'
 sponsor_desc.Innmotrix:
-  other: "Socio de innovación en soluciones tecnológicas aplicadas al sector de la salud y el bienestar."
+    other: 'Socio de innovación en soluciones tecnológicas aplicadas al sector de la salud y el bienestar.'
 cd_sponsor_tier_platinum:
-  other: "🏆 Patrocinador Platinum"
+    other: '🏆 Patrocinador Platinum'
 cd_sponsor_tier_gold:
-  other: "🥇 Patrocinador Oro"
+    other: '🥇 Patrocinador Oro'
 cd_sponsor_tier_silver:
-  other: "🥈 Patrocinador Plata"
+    other: '🥈 Patrocinador Plata'
 cd_sponsor_tier_community:
-  other: "🤝 Patrocinador Comunitario"
+    other: '🤝 Patrocinador Comunitario'
 cd_tourism_intro:
-  other: "Aprovecha tu viaje a Containers Day en Santiago de los Caballeros para sumergirte en la historia, la cultura y la alegría."
+    other: 'Aprovecha tu viaje a Containers Day en Santiago de los Caballeros para sumergirte en la historia, la cultura y la alegría.'
 cd_tourism_activity_1_tag:
-  other: "Cultura"
+    other: 'Cultura'
 cd_tourism_activity_1_title:
-  other: "Monumento a la Restauración"
+    other: 'Monumento a la Restauración'
 cd_tourism_activity_1_desc:
-  other: "El icono indiscutible de Santiago. Una torre majestuosa de 70 metros que ofrece las mejores vistas panorámicas de la ciudad y el valle del Cibao."
+    other: 'El icono indiscutible de Santiago. Una torre majestuosa de 70 metros que ofrece las mejores vistas panorámicas de la ciudad y el valle del Cibao.'
 cd_tourism_activity_1_cta:
-  other: "Explorar Museo →"
+    other: 'Explorar Museo →'
 cd_tourism_activity_2_tag:
-  other: "Arte"
+    other: 'Arte'
 cd_tourism_activity_2_title:
-  other: "Centro Cultural León"
+    other: 'Centro Cultural León'
 cd_tourism_activity_2_desc:
-  other: "Uno de los museos más modernos y premiados del Caribe. Una inmersión profunda en la identidad, el arte y la ecología dominicana."
+    other: 'Uno de los museos más modernos y premiados del Caribe. Una inmersión profunda en la identidad, el arte y la ecología dominicana.'
 cd_tourism_activity_2_cta:
-  other: "Ver Exposiciones →"
+    other: 'Ver Exposiciones →'
 cd_tourism_activity_3_tag:
-  other: "Tradición"
+    other: 'Tradición'
 cd_tourism_activity_3_title:
-  other: "La Aurora Cigar World"
+    other: 'La Aurora Cigar World'
 cd_tourism_activity_3_desc:
-  other: "Visita la fábrica de cigarros más antigua del país. Conoce el proceso artesanal del tabaco premium que ha puesto a Santiago en el mapa mundial."
+    other: 'Visita la fábrica de cigarros más antigua del país. Conoce el proceso artesanal del tabaco premium que ha puesto a Santiago en el mapa mundial.'
 cd_tourism_activity_3_cta:
-  other: "Agendar Tour →"
+    other: 'Agendar Tour →'
 cd_tourism_activity_4_tag:
-  other: "Urbano"
+    other: 'Urbano'
 cd_tourism_activity_4_title:
-  other: "Murales de Los Pepines"
+    other: 'Murales de Los Pepines'
 cd_tourism_activity_4_desc:
-  other: "Un estallido de creatividad en las calles. Arte urbano vibrante que celebra el carnaval, la música y las tradiciones santiagueras."
+    other: 'Un estallido de creatividad en las calles. Arte urbano vibrante que celebra el carnaval, la música y las tradiciones santiagueras.'
 cd_tourism_activity_4_cta:
-  other: "Paseo Fotográfico →"
+    other: 'Paseo Fotográfico →'
 cd_tourism_activity_5_tag:
-  other: "Gastronomía"
+    other: 'Gastronomía'
 cd_tourism_activity_5_title:
-  other: "Sabor del Cibao"
+    other: 'Sabor del Cibao'
 cd_tourism_activity_5_desc:
-  other: "Desde el legendario Mofongo hasta la alta cocina fusión. Santiago es el epicentro gastronómico para los paladares más exigentes."
+    other: 'Desde el legendario Mofongo hasta la alta cocina fusión. Santiago es el epicentro gastronómico para los paladares más exigentes.'
 cd_tourism_activity_5_cta:
-  other: "Guía Gastronómica →"
+    other: 'Guía Gastronómica →'
 cd_tourism_activity_6_tag:
-  other: "Historia"
+    other: 'Historia'
 cd_tourism_activity_6_title:
-  other: "Catedral Santiago Apóstol"
+    other: 'Catedral Santiago Apóstol'
 cd_tourism_activity_6_desc:
-  other: "Pillar del centro histórico. Una joya arquitectónica de finales del siglo XIX que guarda la esencia espiritual y patriótica de la ciudad."
+    other: 'Pillar del centro histórico. Una joya arquitectónica de finales del siglo XIX que guarda la esencia espiritual y patriótica de la ciudad.'
 cd_tourism_activity_6_cta:
-  other: "Visita Histórica →"
+    other: 'Visita Histórica →'
 cd_venue_name:
-  other: "Universidad UAPA (UAPA)"
+    other: 'Universidad UAPA (UAPA)'
 cd_venue_desc:
-  other: "Sede oficial de Containers Day 2026. Un campus moderno con instalaciones diseñadas para la educación y la innovación tecnológica."
+    other: 'Sede oficial de Containers Day 2026. Un campus moderno con instalaciones diseñadas para la educación y la innovación tecnológica.'
 cd_venue_address:
-  other: "Av. Hispanoamericana #100, Thomén, Código postal 51000, Santiago de los Caballeros, República Dominicana"
+    other: 'Av. Hispanoamericana #100, Thomén, Código postal 51000, Santiago de los Caballeros, República Dominicana'
 cd_venue_about_title:
-  other: "Sobre la Sede"
+    other: 'Sobre la Sede'
 cd_venue_about_desc:
-  other: "La Universidad para Adultos (UAPA) es una institución pionera en educación superior a distancia en República Dominicana. Su campus en Santiago cuenta con auditorios, aulas inteligentes y espacios modernos ideales para un evento tecnológico."
+    other: 'La Universidad para Adultos (UAPA) es una institución pionera en educación superior a distancia en República Dominicana. Su campus en Santiago cuenta con auditorios, aulas inteligentes y espacios modernos ideales para un evento tecnológico.'
 cd_venue_accessibility_title:
-  other: "Accesibilidad"
+    other: 'Accesibilidad'
 cd_venue_accessibility_desc:
-  other: "El campus de la UAPA cuenta con instalaciones accesibles, incluyendo rampas, ascensores y baños adaptados para personas con movilidad reducida."
+    other: 'El campus de la UAPA cuenta con instalaciones accesibles, incluyendo rampas, ascensores y baños adaptados para personas con movilidad reducida.'
 cd_venue_amenities_title:
-  other: "Servicios"
+    other: 'Servicios'
 cd_venue_amenity_wifi:
-  other: "WiFi de alta velocidad en todo el campus"
+    other: 'WiFi de alta velocidad en todo el campus'
 cd_venue_amenity_ac:
-  other: "Aire acondicionado en todas las salas"
+    other: 'Aire acondicionado en todas las salas'
 cd_venue_amenity_power:
-  other: "Tomas de corriente en cada asiento"
+    other: 'Tomas de corriente en cada asiento'
 cd_venue_amenity_parking:
-  other: "Estacionamiento disponible"
+    other: 'Estacionamiento disponible'
 cd_transport_title:
-  other: "Cómo Llegar"
+    other: 'Cómo Llegar'
 cd_transport_from_sti:
-  other: "Desde el Aeropuerto del Cibao (STI)"
+    other: 'Desde el Aeropuerto del Cibao (STI)'
 cd_transport_from_sti_desc:
-  other: "El aeropuerto internacional del Cibao está a solo 20 minutos en carro desde la UAPA. Es la opción más conveniente. En taxi o Uber el trayecto cuesta aproximadamente RD$600-900."
+    other: 'El aeropuerto internacional del Cibao está a solo 20 minutos en carro desde la UAPA. Es la opción más conveniente. En taxi o Uber el trayecto cuesta aproximadamente RD$600-900.'
 cd_transport_from_sdq:
-  other: "Desde el Aeropuerto Las Américas (SDQ)"
+    other: 'Desde el Aeropuerto Las Américas (SDQ)'
 cd_transport_from_sdq_desc:
-  other: "Ubicado en Santo Domingo, a 2.5 horas de Santiago. Puedes tomar una guagua (autobús) desde la terminal de Santo Domingo hasta Santiago por RD$400-600, o alquilar un carro. Las principales operadoras son Caribe Tours y APTPRA."
+    other: 'Ubicado en Santo Domingo, a 2.5 horas de Santiago. Puedes tomar una guagua (autobús) desde la terminal de Santo Domingo hasta Santiago por RD$400-600, o alquilar un carro. Las principales operadoras son Caribe Tours y APTPRA.'
 cd_transport_public:
-  other: "Transporte Público"
+    other: 'Transporte Público'
 cd_transport_public_desc:
-  other: "Santiago cuenta con rutas de carros públicos (conchos) y guaguas que conectan toda la ciudad. La ruta más cercana a la UAPA pasa por la Av. Hispanoamericana. El costo promedio es de RD$35 por viaje."
+    other: 'Santiago cuenta con rutas de carros públicos (conchos) y guaguas que conectan toda la ciudad. La ruta más cercana a la UAPA pasa por la Av. Hispanoamericana. El costo promedio es de RD$35 por viaje.'
 cd_transport_private:
-  other: "Transporte Privado"
+    other: 'Transporte Privado'
 cd_transport_private_desc:
-  other: "Varias empresas de transporte privado ofrecen servicios puerta a puerta. Taxi desde cualquier punto de Santiago hasta la UAPA cuesta entre RD$200-500 dependiendo de la distancia."
+    other: 'Varias empresas de transporte privado ofrecen servicios puerta a puerta. Taxi desde cualquier punto de Santiago hasta la UAPA cuesta entre RD$200-500 dependiendo de la distancia.'
 cd_transport_rideshare:
-  other: "Uber / Indriver"
+    other: 'Uber / Indriver'
 cd_transport_rideshare_desc:
-  other: "Uber e InDriver operan en Santiago con tarifas accesibles. Desde el centro de la ciudad hasta la UAPA el viaje cuesta aproximadamente RD$150-300. Es la opción más recomendada por su comodidad y precio."
+    other: 'Uber e InDriver operan en Santiago con tarifas accesibles. Desde el centro de la ciudad hasta la UAPA el viaje cuesta aproximadamente RD$150-300. Es la opción más recomendada por su comodidad y precio.'
 cd_transport_rental:
-  other: "Alquiler de Autos"
+    other: 'Alquiler de Autos'
 cd_transport_rental_desc:
-  other: "En el aeropuerto del Cibao encontrás rentadoras como Hertz, Avis y Budget. Los precios oscilan entre USD $30-60 por día. Conducir en Santiago es sencillo y hay amplio estacionamiento en la UAPA."
+    other: 'En el aeropuerto del Cibao encontrás rentadoras como Hertz, Avis y Budget. Los precios oscilan entre USD $30-60 por día. Conducir en Santiago es sencillo y hay amplio estacionamiento en la UAPA.'
 cd_hotels_label:
-  other: "Alojamiento"
+    other: 'Alojamiento'
 cd_hotels_heading:
-  other: "Hoteles Cercanos a la UAPA"
+    other: 'Hoteles Cercanos a la UAPA'
 cd_hotel_1_name:
-  other: "Hotel Matum & Suites"
+    other: 'Hotel Matum & Suites'
 cd_hotel_1_distance:
-  other: "1.5 km del venue — 5 min en carro"
+    other: '1.5 km del venue — 5 min en carro'
 cd_hotel_1_desc:
-  other: "Hotel 5 estrellas con piscina, gimnasio, restaurante y centro de negocios. Habitaciones amplias con vistas a la ciudad."
+    other: 'Hotel 5 estrellas con piscina, gimnasio, restaurante y centro de negocios. Habitaciones amplias con vistas a la ciudad.'
 cd_hotel_2_name:
-  other: "Hodelpa Gran Almirante"
+    other: 'Hodelpa Gran Almirante'
 cd_hotel_2_distance:
-  other: "2 km del venue — 7 min en carro"
+    other: '2 km del venue — 7 min en carro'
 cd_hotel_2_desc:
-  other: "Hotel 5 estrellas con spa, múltiples restaurantes y casino. Ubicado en el corazón del centro comercial de Santiago."
+    other: 'Hotel 5 estrellas con spa, múltiples restaurantes y casino. Ubicado en el corazón del centro comercial de Santiago.'
 cd_hotel_3_name:
-  other: "Hotel Centro Plaza"
+    other: 'Hotel Centro Plaza'
 cd_hotel_3_distance:
-  other: "1 km del venue — 3 min en carro"
+    other: '1 km del venue — 3 min en carro'
 cd_hotel_3_desc:
-  other: "Hotel 4 estrellas moderno con excelente relación calidad-precio. Habitaciones confortables y desayuno incluido."
+    other: 'Hotel 4 estrellas moderno con excelente relación calidad-precio. Habitaciones confortables y desayuno incluido.'
 cd_hotel_4_name:
-  other: "Hotel Madre Vieja"
+    other: 'Hotel Madre Vieja'
 cd_hotel_4_distance:
-  other: "0.8 km del venue — 10 min caminando"
+    other: '0.8 km del venue — 10 min caminando'
 cd_hotel_4_desc:
-  other: "Hotel 3 estrellas acogedor, ideal para asistentes que buscan economía y proximidad al evento."
+    other: 'Hotel 3 estrellas acogedor, ideal para asistentes que buscan economía y proximidad al evento.'
 cd_hotel_5_name:
-  other: "Hotel Camino Real"
+    other: 'Hotel Camino Real'
 cd_hotel_5_distance:
-  other: "2.5 km del venue — 8 min en carro"
+    other: '2.5 km del venue — 8 min en carro'
 cd_hotel_5_desc:
-  other: "Hotel 3 estrellas con piscina y restaurante. Buena opción económica cerca de la avenida principal."
+    other: 'Hotel 3 estrellas con piscina y restaurante. Buena opción económica cerca de la avenida principal.'
 cd_hotel_6_name:
-  other: "Hotel Colonial"
+    other: 'Hotel Colonial'
 cd_hotel_6_distance:
-  other: "3 km del venue — 10 min en carro"
+    other: '3 km del venue — 10 min en carro'
 cd_hotel_6_desc:
-  other: "Hotel 3 estrellas con encanto histórico en el centro de Santiago. Cerca de restaurantes y vida nocturna."
+    other: 'Hotel 3 estrellas con encanto histórico en el centro de Santiago. Cerca de restaurantes y vida nocturna.'
 cd_restaurants_label:
-  other: "Gastronomía"
+    other: 'Gastronomía'
 cd_restaurants_heading:
-  other: "Restaurantes Cercanos"
+    other: 'Restaurantes Cercanos'
 cd_restaurant_1_name:
-  other: "El Tablado"
+    other: 'El Tablado'
 cd_restaurant_1_cuisine:
-  other: "Cocina dominicana y parrillada — A 5 min del venue"
+    other: 'Cocina dominicana y parrillada — A 5 min del venue'
 cd_restaurant_2_name:
-  other: "La Trattoria"
+    other: 'La Trattoria'
 cd_restaurant_2_cuisine:
-  other: "Comida italiana y pizzas artesanales — A 10 min del venue"
+    other: 'Comida italiana y pizzas artesanales — A 10 min del venue'
 cd_restaurant_3_name:
-  other: "Café Santo Domingo"
+    other: 'Café Santo Domingo'
 cd_restaurant_3_cuisine:
-  other: "Café, repostería y platos ligeros — A 3 min del venue"
+    other: 'Café, repostería y platos ligeros — A 3 min del venue'
 cd_restaurant_4_name:
-  other: "PikNik"
+    other: 'PikNik'
 cd_restaurant_4_cuisine:
-  other: "Hamburguesas gourmet y comida rápida — A 7 min del venue"
+    other: 'Hamburguesas gourmet y comida rápida — A 7 min del venue'
 cd_restaurant_5_name:
-  other: "Marítimo Restaurante"
+    other: 'Marítimo Restaurante'
 cd_restaurant_5_cuisine:
-  other: "Pescados y mariscos frescos — A 12 min del venue"
+    other: 'Pescados y mariscos frescos — A 12 min del venue'
 cd_restaurant_6_name:
-  other: "Green Bar"
+    other: 'Green Bar'
 cd_restaurant_6_cuisine:
-  other: "Comida saludable, bowls y smoothies — A 8 min del venue"
+    other: 'Comida saludable, bowls y smoothies — A 8 min del venue'
 cd_tourism_ready_to_live:
-  other: "¿Listo para vivir Santiago?"
+    other: '¿Listo para vivir Santiago?'
 cd_tourism_ready_desc:
-  other: "Combina el aprendizaje tecnológico de vanguardia con la calidez y cultura de la Ciudad Corazón."
+    other: 'Combina el aprendizaje tecnológico de vanguardia con la calidez y cultura de la Ciudad Corazón.'
 cd_register_now:
-  other: "¡Regístrate Ahora!"
+    other: '¡Regístrate Ahora!'
 cd_our_community:
-  other: "Nuestra Comunidad"
+    other: 'Nuestra Comunidad'
 cd_community_expectations:
-  other: "Lo que espera del evento nuestra comunidad universitaria"
+    other: 'Lo que espera del evento nuestra comunidad universitaria'
 event_highlights_section.number_of_speakers:
-  one: "{{ . }} Ponente"
-  other: "{{ . }} Ponentes"
+    one: '{{ . }} Ponente'
+    other: '{{ . }} Ponentes'
 event_highlights_section.number_of_sessions:
-  one: "{{ . }} Sesión"
-  other: "{{ . }} Sesiones"
+    one: '{{ . }} Sesión'
+    other: '{{ . }} Sesiones'
 event_highlights_section.number_of_workshops:
-  one: "{{ . }} Taller"
-  other: "{{ . }} Talleres"
+    one: '{{ . }} Taller'
+    other: '{{ . }} Talleres'
 event_highlights_section.number_of_days:
-  one: "{{ . }} Día"
-  other: "{{ . }} Días"
+    one: '{{ . }} Día'
+    other: '{{ . }} Días'
 cd_initiative_partners_desc:
-  other: "Containers Day forma parte de la iniciativa Scale2Connect de Horizon Europe — una colaboración entre UAPA, CADESOFT y aliados financiados por la Unión Europea."
+    other: 'Containers Day forma parte de la iniciativa Scale2Connect de Horizon Europe — una colaboración entre UAPA, CADESOFT y aliados financiados por la Unión Europea.'
 cd_initiative_partners_heading:
-  other: "Aliados de la Iniciativa"
+    other: 'Aliados de la Iniciativa'
 cd_partner_with_us:
-  other: "Conviértete en Patrocinador"
+    other: 'Conviértete en Patrocinador'
 cd_partner_with_us_desc:
-  other: "Impulsa el crecimiento de la comunidad Cloud Native en Santiago de los Caballeros. Únete a Containers Day y posiciona tu marca en la vanguardia del liderazgo tecnológico."
+    other: 'Impulsa el crecimiento de la comunidad Cloud Native en Santiago de los Caballeros. Únete a Containers Day y posiciona tu marca en la vanguardia del liderazgo tecnológico.'
 cd_download_prospectus:
-  other: "Descargar Prospecto"
+    other: 'Descargar Prospecto'
 cd_contact_team:
-  other: "Contactar al Equipo"
+    other: 'Contactar al Equipo'
 
 cd_hero_organizers_title:
-  other: "UNA INICIATIVA IMPULSADA POR"
+    other: 'UNA INICIATIVA IMPULSADA POR'
 cd_hero_innovation:
-  other: "INNOVACIÓN"
+    other: 'INNOVACIÓN'
 cd_hero_technology:
-  other: "TECNOLOGÍA"
+    other: 'TECNOLOGÍA'
 cd_hero_collaboration:
-  other: "COLABORACIÓN"
+    other: 'COLABORACIÓN'
 cd_hero_sustainability:
-  other: "SOSTENIBILIDAD"
+    other: 'SOSTENIBILIDAD'
 cd_hero_global_impact:
-  other: "IMPACTO GLOBAL"
+    other: 'IMPACTO GLOBAL'
 
 cd_testimonial_text:
-  other: "“Los contenedores no solo transforman la forma en que desarrollamos software; transforman la manera en que pensamos la innovación. Aprender Cloud Native hoy es prepararse para construir las soluciones inteligentes, escalables y resilientes que el mundo necesitará mañana”"
+    other: '“Los contenedores no solo transforman la forma en que desarrollamos software; transforman la manera en que pensamos la innovación. Aprender Cloud Native hoy es prepararse para construir las soluciones inteligentes, escalables y resilientes que el mundo necesitará mañana”'
 cd_testimonial_name:
-  other: "Ing. Ismael Paulino Ureña"
+    other: 'Ing. Ismael Paulino Ureña'
 cd_testimonial_role:
-  other: "Ingeniero en Software"
+    other: 'Ingeniero en Software'
 cd_testimonial_subtitle:
-  other: "mentor de la Escuela de Ingeniería y Tecnología"
+    other: 'mentor de la Escuela de Ingeniería y Tecnología'
 
 cd_testimonial_moises_text:
-  other: "“La Inteligencia Artificial y el Cloud Native no son tecnologías del futuro; son las herramientas con las que estamos construyendo el presente. Containers Day representa una oportunidad para que nuestra comunidad universitaria conecte innovación, desarrollo de software e impacto real a escala global”"
+    other: '“La Inteligencia Artificial y el Cloud Native no son tecnologías del futuro; son las herramientas con las que estamos construyendo el presente. Containers Day representa una oportunidad para que nuestra comunidad universitaria conecte innovación, desarrollo de software e impacto real a escala global”'
 cd_testimonial_moises_name:
-  other: "Lic. Moises Alain Mayet Solano"
+    other: 'Lic. Moises Alain Mayet Solano'
 cd_testimonial_moises_role:
-  other: "Cibernético, Director del Departamento de Inteligencia Artificial de UAPA"
+    other: 'Cibernético, Director del Departamento de Inteligencia Artificial de UAPA'
 cd_testimonial_moises_subtitle:
-  other: "desarrollador de soluciones institucionales y programador principal de Scale2Connect"
+    other: 'desarrollador de soluciones institucionales y programador principal de Scale2Connect'
 
 cd_testimonial_reyna_text:
-  other: "“La capacitación continua es la clave para mantenerse vigente en un mundo tecnológico que evoluciona cada día. Containers Day representa una oportunidad para aprender, innovar y fortalecer competencias en tecnologías de alto impacto como Cloud Native y contenedores, preparando profesionales capaces de liderar la transformación digital del futuro.”"
+    other: '“La capacitación continua es la clave para mantenerse vigente en un mundo tecnológico que evoluciona cada día. Containers Day representa una oportunidad para aprender, innovar y fortalecer competencias en tecnologías de alto impacto como Cloud Native y contenedores, preparando profesionales capaces de liderar la transformación digital del futuro.”'
 cd_testimonial_reyna_name:
-  other: "Dra. Reyna Hiraldo Trejo"
+    other: 'Dra. Reyna Hiraldo Trejo'
 cd_testimonial_reyna_role:
-  other: "Directora del Centro de Capacitación Continua UCAP, UAPA"
+    other: 'Directora del Centro de Capacitación Continua UCAP, UAPA'
 cd_testimonial_reyna_subtitle:
-  other: "Facilitadora de la Escuela de Ingeniería y Tecnología y el Posgrado"
+    other: 'Facilitadora de la Escuela de Ingeniería y Tecnología y el Posgrado'
 
 menu.more:
-  other: "Menú"
+    other: 'Menú'
 main_menu.label:
-  other: "Navegación principal"
+    other: 'Navegación principal'
 language:
-  other: "Idioma"
+    other: 'Idioma'
 speaker_page.sessions_by:
-  other: "Sesiones de"
+    other: 'Sesiones de'
 cd_event_date:
-  other: "Fecha"
+    other: 'Fecha'
 cd_event_location_label:
-  other: "Ubicación"
+    other: 'Ubicación'
 
-coming_soon.agenda.heading: "Próximamente"
-coming_soon.agenda.message: "La agenda completa está siendo curada con charlas y talleres de expertos. ¡Mantente atento!"
-coming_soon.speakers.heading: "Próximamente"
-coming_soon.speakers.message: "Los oradores destacados están siendo anunciados. ¡Vuelve pronto!"
-coming_soon.sessions.heading: "Próximamente"
-coming_soon.sessions.message: "Las sesiones destacadas están en preparación. ¡Estamos seleccionando las mejores charlas para ti!"
-coming_soon.tracks.heading: "Próximamente"
-coming_soon.tracks.message: "Los tracks de sesiones están siendo definidos. ¡Más información próximamente!"
-cfp_banner.heading: "Call for Papers Abierto"
-cfp_banner.message: "¿Quieres compartir tu conocimiento en Containers Day? Envía tu propuesta de charla — buscamos talks sobre Cloud Native, IA, Kubernetes, DevOps y más."
-featured_speakers_section.all_speakers: "Todos los Speakers"
-agenda.coming_soon.label: "Agenda — Próximamente"
-agenda.coming_soon.title: "La agenda completa está siendo curada"
-agenda.coming_soon.message: "La agenda está en preparación. Mientras tanto, ¡revisa nuestro Call for Papers arriba!"
+coming_soon.agenda.heading: 'Próximamente'
+coming_soon.agenda.message: 'La agenda completa está siendo curada con charlas y talleres de expertos. ¡Mantente atento!'
+coming_soon.speakers.heading: 'Próximamente'
+coming_soon.speakers.message: 'Los oradores destacados están siendo anunciados. ¡Vuelve pronto!'
+coming_soon.sessions.heading: 'Próximamente'
+coming_soon.sessions.message: 'Las sesiones destacadas están en preparación. ¡Estamos seleccionando las mejores charlas para ti!'
+coming_soon.tracks.heading: 'Próximamente'
+coming_soon.tracks.message: 'Los tracks de sesiones están siendo definidos. ¡Más información próximamente!'
+cfp_banner.heading: 'Call for Papers Abierto'
+cfp_banner.message: '¿Quieres compartir tu conocimiento en Containers Day? Envía tu propuesta de charla — buscamos talks sobre Cloud Native, IA, Kubernetes, DevOps y más.'
+featured_speakers_section.all_speakers: 'Todos los Speakers'
+agenda.coming_soon.label: 'Agenda — Próximamente'
+agenda.coming_soon.title: 'La agenda completa está siendo curada'
+agenda.coming_soon.message: 'La agenda está en preparación. Mientras tanto, ¡revisa nuestro Call for Papers arriba!'
 cd_organizers_intro:
-  other: "Conoce al equipo organizador detrás del Containers Day 2026, comprometido con llevar el aprendizaje y la innovación Cloud Native al corazón de la República Dominicana."
+    other: 'Conoce al equipo organizador detrás del Containers Day 2026, comprometido con llevar el aprendizaje y la innovación Cloud Native al corazón de la República Dominicana.'
 cd_organizer_role_harys:
-  other: "Co-organizador de Containers Day, Ingeniero de Software & DevOps"
+    other: 'Co-organizador de Containers Day, Ingeniero de Software & DevOps'
 cd_organizer_role_victor:
-  other: "Co-organizador de Containers Day, Cloud Solutions Architect"
+    other: 'Co-organizador de Containers Day, Cloud Solutions Architect'
 cd_organizer_role_angel:
-  other: "Co-organizador de Containers Day, Ingeniero de Software"
+    other: 'Co-organizador de Containers Day, Ingeniero de Software'
 cd_organizer_role_winifer:
-  other: "Co-organizadora de Containers Day, Coordinadora de Logística & Tecnología"
+    other: 'Co-organizadora de Containers Day, Coordinadora de Logística & Tecnología'
 cd_organizer_role_paul:
-  other: "Co-organizador de Containers Day, Tech Community Builder"
+    other: 'Co-organizador de Containers Day, Tech Community Builder'
 cd_organizer_role_luz:
-  other: "Co-organizadora de Containers Day, Asesora Legal & Operaciones"
+    other: 'Co-organizadora de Containers Day, Asesora Legal & Operaciones'
 cd_organizer_role_zoila:
-  other: "Co-organizadora de Containers Day, Directora de la Escuela de Ingeniería y Tecnología, UAPA"
+    other: 'Co-organizadora de Containers Day, Directora de la Escuela de Ingeniería y Tecnología, UAPA'
 
 location_page.heading:
-  other: "Nuestra Sede"
+    other: 'Nuestra Sede'
 location_page.directions_heading:
-  other: "Cómo llegar"
+    other: 'Cómo llegar'
 location_page.map_frame:
-  other: "Mapa interactivo de la sede del evento"
+    other: 'Mapa interactivo de la sede del evento'
 location_page.map_fullscreen:
-  other: "Ver mapa de la sede en pantalla completa"
+    other: 'Ver mapa de la sede en pantalla completa'
 
 cta_banner.message:
-  other: "¡Consigue tu entrada ahora!"
+    other: '¡Consigue tu entrada ahora!'
 cta_button.get_ticket:
-  other: "¡Regístrate ahora!"
+    other: '¡Regístrate ahora!'
 cta_section.heading:
-  other: "¿Quieres ser parte de la conferencia de tecnología más importante del Caribe?"
+    other: '¿Quieres ser parte de la conferencia de tecnología más importante del Caribe?'
 cta_section.subheading:
-  other: "¡Regístrate hoy mismo!"
+    other: '¡Regístrate hoy mismo!'
 cta_section.message:
-  other: "No pierdas la oportunidad de aprender de los principales expertos de la industria, descubrir tendencias Cloud Native y hacer contactos valiosos."
+    other: 'No pierdas la oportunidad de aprender de los principales expertos de la industria, descubrir tendencias Cloud Native y hacer contactos valiosos.'
 
-
+cd_volunteers_intro:
+    other: 'Los voluntarios son el corazón de Containers Day. Completa este formulario y te contactaremos para coordinar cómo puedes ayudar a que la conferencia sea un éxito.'
+cd_volunteers_form_title:
+    other: 'Formulario de Voluntarios'

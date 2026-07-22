@@ -6,80 +6,86 @@ defaultContentLanguage: es
 languages:
     es:
         disabled: false
-        languageName: "Español"
-        contentDir: "content"
+        languageName: 'Español'
+        contentDir: 'content'
         weight: 1
         params:
             themes:
                 event:
                     directions: |
                         La **Universidad Abierta para Adultos (UAPA)** se encuentra en la Av. Hispanoamericana #100, Thomén, Código postal 51000, Santiago de los Caballeros, República Dominicana.
-                        
+
                         **En vehículo particular o taxi:**  
                         Puedes llegar fácilmente tomando la Autopista Duarte. La UAPA está ubicada en la Av. Hispanoamericana, una de las principales vías de acceso en la zona sur de la ciudad. Hay amplio estacionamiento disponible para los asistentes.
-                        
+
                         **Desde el Aeropuerto Internacional del Cibao (STI):**  
                         El campus se encuentra a unos 15 minutos en taxi desde el aeropuerto siguiendo la Autopista Duarte hacia el este y luego tomando la Av. Hispanoamericana.
         menus:
             main:
-
                 - identifier: speakers
-                  name: "Ponentes"
+                  name: 'Ponentes'
                   pageRef: /speakers
                   weight: 30
                 - identifier: organizers
-                  name: "Organizadores"
+                  name: 'Organizadores'
                   pageRef: /organizers
                   weight: 35
+                - identifier: volunteers
+                  name: 'Voluntarios'
+                  pageRef: /volunteers
+                  weight: 37
                 - identifier: venue
-                  name: "Sede"
+                  name: 'Sede'
                   pageRef: /venue
                   weight: 40
                 - identifier: tourism
-                  name: "Turismo Tropical"
+                  name: 'Turismo Tropical'
                   pageRef: /tourism
                   weight: 45
                 - identifier: sponsors
-                  name: "Patrocinadores"
+                  name: 'Patrocinadores'
                   pageRef: /sponsors
                   weight: 50
     en:
         disabled: false
-        languageName: "English"
-        contentDir: "content/en"
+        languageName: 'English'
+        contentDir: 'content/en'
         weight: 2
         params:
             themes:
                 event:
                     directions: |
                         The **Universidad Abierta para Adultos (UAPA)** is located at Av. Hispanoamericana #100, Thomén, Postal code 51000, Santiago de los Caballeros, Dominican Republic.
-                        
+
                         **By car or taxi:**  
                         You can easily reach the campus via the Duarte Highway (Autopista Duarte). UAPA is situated on Av. Hispanoamericana, one of the main access roads in the southern part of the city. Ample parking is available for attendees.
-                        
+
                         **From Cibao International Airport (STI):**  
                         The campus is approximately a 15-minute taxi ride from the airport. Follow the Duarte Highway west and exit onto Av. Hispanoamericana.
         menus:
             main:
-
                 - identifier: speakers
-                  name: "Speakers"
+                  name: 'Speakers'
                   pageRef: /speakers
                   weight: 30
                 - identifier: organizers
-                  name: "Organizers"
+                  name: 'Organizers'
                   pageRef: /organizers
                   weight: 35
+                - identifier: volunteers
+                  name: 'Volunteer'
+                  pageRef: /volunteers
+                  weight: 37
                 - identifier: venue
-                  name: "Venue"
+                  name: 'Venue'
                   pageRef: /venue
                   weight: 40
                 - identifier: tourism
-                  name: "Tropical Tourism"
+                  name: 'Tropical Tourism'
                   pageRef: /tourism
                   weight: 45
                 - identifier: sponsors
-                  name: "Sponsors"
+                  name: 'Sponsors'
                   pageRef: /sponsors
                   weight: 50
 
@@ -88,29 +94,30 @@ params:
         - logos/logo-containersday-v2.png
     themes:
         event:
-            description: "Containers Day 2026 — la conferencia Cloud Native más importante del Caribe. IA, contenedores, Kubernetes y más en Santiago, RD. 22 de agosto de 2026."
-            title: "Containers Day"
-            slogan: "¡La conferencia tecnológica más importante del Caribe!"
-            location: "UAPA, Santiago"
-            contactEmail: "hola@containers.day"
-            favicon: "logos/logo-containersday-v2.png"
-            startDate: "2026-08-22"
-            endDate: "2026-08-22"
+            description: 'Containers Day 2026 — la conferencia Cloud Native más importante del Caribe. IA, contenedores, Kubernetes y más en Santiago, RD. 22 de agosto de 2026.'
+            title: 'Containers Day'
+            slogan: '¡La conferencia tecnológica más importante del Caribe!'
+            location: 'UAPA, Santiago'
+            contactEmail: 'hola@containers.day'
+            volunteersTallyFormId: 'ODe8qR'
+            favicon: 'logos/logo-containersday-v2.png'
+            startDate: '2026-08-22'
+            endDate: '2026-08-22'
             address:
-                - "Av. Hispanoamericana #100, Thomén"
-                - "Santiago de los Caballeros"
-                - "51000, República Dominicana"
+                - 'Av. Hispanoamericana #100, Thomén'
+                - 'Santiago de los Caballeros'
+                - '51000, República Dominicana'
             map:
-                embeddableMapUrl: "https://www.google.com/maps?q=Av.+Hispanoamericana+%23100,+Thom%C3%A9n,+51000+Santiago+de+los+Caballeros,+Rep%C3%BAblica+Dominicana&output=embed"
-                viewLargerMapUrl: "https://www.google.com/maps/dir/?api=1&destination=Av.+Hispanoamericana+%23100,+Thom%C3%A9n,+51000+Santiago+de+los+Caballeros,+Rep%C3%BAblica+Dominicana"
-            sessionizeId: "hnm5gsws"
+                embeddableMapUrl: 'https://www.google.com/maps?q=Av.+Hispanoamericana+%23100,+Thom%C3%A9n,+51000+Santiago+de+los+Caballeros,+Rep%C3%BAblica+Dominicana&output=embed'
+                viewLargerMapUrl: 'https://www.google.com/maps/dir/?api=1&destination=Av.+Hispanoamericana+%23100,+Thom%C3%A9n,+51000+Santiago+de+los+Caballeros,+Rep%C3%BAblica+Dominicana'
+            sessionizeId: 'hnm5gsws'
             callToAction:
-                url: "https://cap.uapa.edu.do/producto/containers-day-2026/"
+                url: 'https://cap.uapa.edu.do/producto/containers-day-2026/'
                 other:
-                    url: "https://cap.uapa.edu.do/producto/containers-day-2026/"
+                    url: 'https://cap.uapa.edu.do/producto/containers-day-2026/'
             callToActionSecondary:
-                url: "https://sessionize.com/containers-days-dr/"
-                label: "Ser Orador"
+                url: 'https://sessionize.com/containers-days-dr/'
+                label: 'Ser Orador'
             socialLinks:
                 xUrl: https://x.com/containerslatam
                 facebookUrl: https://www.facebook.com/containersday
@@ -120,79 +127,84 @@ params:
                 titleBackground: images/hero-background-v2.jpg
                 location: images/uapa-campus.jpg
             heroSlides:
-                - title: "Orquestando el Mañana"
-                  subtitle: "Innovación"
-                  description: "IA + Cloud Native"
+                - title: 'Orquestando el Mañana'
+                  subtitle: 'Innovación'
+                  description: 'IA + Cloud Native'
                   image: images/hero-background-v2.jpg
-                - title: "Infraestructura Inteligente"
-                  subtitle: "Escalabilidad"
-                  description: "Modelos de IA"
+                - title: 'Infraestructura Inteligente'
+                  subtitle: 'Escalabilidad'
+                  description: 'Modelos de IA'
                   image: images/hero-background-v3.jpg
-                - title: "El Motor de la Innovación"
-                  subtitle: "Tecnología"
-                  description: "Contenedores e IA"
+                - title: 'El Motor de la Innovación'
+                  subtitle: 'Tecnología'
+                  description: 'Contenedores e IA'
                   image: images/hero-background-v4.png
-                - title: "Modernización Blindada"
-                  subtitle: "Seguridad"
-                  description: "Arquitecturas Cloud Native"
+                - title: 'Modernización Blindada'
+                  subtitle: 'Seguridad'
+                  description: 'Arquitecturas Cloud Native'
                   image: images/hero-background-v5.png
-                - title: "Más allá de la Nube"
-                  subtitle: "Rendimiento"
-                  description: "Escalabilidad y Seguridad"
+                - title: 'Más allá de la Nube'
+                  subtitle: 'Rendimiento'
+                  description: 'Escalabilidad y Seguridad'
                   image: images/hero-background-v2.jpg
             sponsors:
-                - logo: "logos/nixversity-cover.png"
-                  url: "https://nixversity.com/"
+                - logo: 'logos/nixversity-cover.png'
+                  url: 'https://nixversity.com/'
                   name: 'NixVersity'
                   description: 'Líderes en formación de DevOps y Cloud Native en la región.'
-                  tier: "platinum"
-                - logo: "logos/uapa-logo.png"
-                  url: "https://www.uapa.edu.do/"
+                  tier: 'platinum'
+                - logo: 'logos/uapa-logo.png'
+                  url: 'https://www.uapa.edu.do/'
                   name: 'UAPA'
                   description: 'Sede oficial de Containers Day 2026.'
-                  tier: "platinum"
-                - logo: "logos/innmotrix.png"
-                  url: "https://innmotrix.com/"
+                  tier: 'platinum'
+                - logo: 'logos/innmotrix.png'
+                  url: 'https://innmotrix.com/'
                   name: 'Innmotrix'
                   description: 'Socio de salud y tecnología.'
-                  tier: "silver"
-                - logo: "logos/darian-vargas-color.png"
-                  url: "https://darianvargas.com/"
+                  tier: 'silver'
+                - logo: 'logos/darian-vargas-color.png'
+                  url: 'https://darianvargas.com/'
                   name: 'Darian Vargas'
                   description: 'Ministro de Educación Independiente'
-                  tier: "silver"
-                - logo: "logos/docker-rd-hq.png"
-                  url: "https://www.meetup.com/dockerrd/"
+                  tier: 'silver'
+                - logo: 'logos/docker-rd-hq.png'
+                  url: 'https://www.meetup.com/dockerrd/'
                   name: 'Docker República Dominicana'
                   description: 'Comunidad Oficial de Docker en República Dominicana'
-                  tier: "community"
+                  tier: 'community'
+                - logo: 'logos/redteamrd.png'
+                  url: 'https://redteamrd.org/'
+                  name: 'RedTeamRD'
+                  description: 'Comunidad dominicana de ciberseguridad y hacking ético.'
+                  tier: 'community'
             sponsorTiers:
                 platinum:
-                    label: "🏆 Patrocinador Platinum"
-                    color: "#cfe0f5"
+                    label: '🏆 Patrocinador Platinum'
+                    color: '#cfe0f5'
                 gold:
-                    label: "🥇 Patrocinador Oro"
-                    color: "#f59e0b"
+                    label: '🥇 Patrocinador Oro'
+                    color: '#f59e0b'
                 silver:
-                    label: "🥈 Patrocinador Plata"
-                    color: "#8899aa"
+                    label: '🥈 Patrocinador Plata'
+                    color: '#8899aa'
                 community:
-                    label: "🤝 Patrocinador Comunitario"
-                    color: "#5dade2"
+                    label: '🤝 Patrocinador Comunitario'
+                    color: '#5dade2'
             initiativePartners:
-                - logo: "/logos/organizers/scale2connect-v3.png"
-                  url: "https://scale2connect.eu/"
-                  name: "Scale2Connect"
-                - logo: "/logos/organizers/eu-flag-v1.png"
-                  url: "https://cordis.europa.eu/project/id/101214553"
-                  name: "Funded by the European Union"
+                - logo: '/logos/organizers/scale2connect-v3.png'
+                  url: 'https://scale2connect.eu/'
+                  name: 'Scale2Connect'
+                - logo: '/logos/organizers/eu-flag-v1.png'
+                  url: 'https://cordis.europa.eu/project/id/101214553'
+                  name: 'Funded by the European Union'
                   wide: true
-                - logo: "/logos/organizers/cadesoft-color.png"
-                  url: "https://cadesoft.do/"
-                  name: "CADESOFT"
-                - logo: "/logos/organizers/mente-de-hackers.png"
-                  url: "https://www.instagram.com/mentedehackers/?hl=en"
-                  name: "Mente de Hackers"
+                - logo: '/logos/organizers/cadesoft-color.png'
+                  url: 'https://cadesoft.do/'
+                  name: 'CADESOFT'
+                - logo: '/logos/organizers/mente-de-hackers.png'
+                  url: 'https://www.instagram.com/mentedehackers/?hl=en'
+                  name: 'Mente de Hackers'
             colors:
                 primary: '#5dade2'
                 primaryDarker: '#143e8b'
@@ -202,4 +214,3 @@ markup:
     goldmark:
         renderer:
             unsafe: true
-
