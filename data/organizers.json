@@ -1,0 +1,66 @@
+[
+    {
+        "id": "harys",
+        "name": "Harys Vizcaíno",
+        "image": "/images/harys-vizcaino.jpg",
+        "roleKey": "cd_organizer_role_harys",
+        "socials": [
+            { "type": "linkedin", "url": "https://www.linkedin.com/in/harys-vizcaino/" }
+        ]
+    },
+    {
+        "id": "victor",
+        "name": "Víctor Recio",
+        "image": "/images/victor-recio.jpg",
+        "roleKey": "cd_organizer_role_victor",
+        "socials": [
+            { "type": "linkedin", "url": "https://www.linkedin.com/in/vsrecio/" }
+        ]
+    },
+    {
+        "id": "angel",
+        "name": "Angel Jose",
+        "image": "/images/angel-jose.jpg",
+        "roleKey": "cd_organizer_role_angel",
+        "socials": [
+            { "type": "linkedin", "url": "https://www.linkedin.com/in/ajose19/" }
+        ]
+    },
+    {
+        "id": "winifer",
+        "name": "Winifer Mosquea Cabrera",
+        "image": "/images/winifer-mosquea.jpg",
+        "roleKey": "cd_organizer_role_winifer",
+        "socials": [
+            { "type": "linkedin", "url": "https://www.linkedin.com/in/winifer-mosquea-cabrera-18708b142/" }
+        ]
+    },
+    {
+        "id": "paul",
+        "name": "Paul García",
+        "image": "/images/paul-garcia.jpg",
+        "roleKey": "cd_organizer_role_paul",
+        "socials": [
+            { "type": "instagram", "url": "https://www.instagram.com/pagarciax/" }
+        ]
+    },
+    {
+        "id": "luz",
+        "name": "Luz Yahaira Ramírez de Peña",
+        "image": "/images/luz-yahaira.jpg",
+        "roleKey": "cd_organizer_role_luz",
+        "socials": [
+            { "type": "linkedin", "url": "https://www.linkedin.com/in/luz-yahaira-ram%C3%ADrez-de-pe%C3%B1a-46383971/" }
+        ]
+    },
+    {
+        "id": "zoila",
+        "name": "Zoila Esther Morales Tabares",
+        "image": "/images/zoila-morales-tabares.jpg",
+        "roleKey": "cd_organizer_role_zoila",
+        "hidden": true,
+        "socials": [
+            { "type": "linkedin", "url": "https://www.linkedin.com/in/zoila-esther-morales-tabares-62403993/" }
+        ]
+    }
+]

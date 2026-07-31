@@ -1,5 +1,5 @@
 {{ $event := site.Params.themes.event }}
-{{ $allSponsors := $event.sponsors }}
+{{ $allSponsors := site.Data.sponsors }}
 {{ $initiativePartners := $event.initiativePartners | default slice }}
 {{ $carouselItems := slice }}
 {{ range $sponsor := $allSponsors }}

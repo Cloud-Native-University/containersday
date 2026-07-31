@@ -55,44 +55,15 @@
 
             <div class="volunteers-form-card">
                 <iframe
-                    data-tally-src="https://tally.so/embed/{{ site.Params.themes.event.volunteersTallyFormId }}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                    src="{{ site.Params.themes.event.volunteersFormUrl }}?embedded=true"
                     loading="lazy"
                     width="100%"
-                    height="200"
+                    height="1200"
                     frameborder="0"
                     marginheight="0"
                     marginwidth="0"
-                    title="{{ T `cd_volunteers_form_title` }}"></iframe>
+                    title="{{ T `cd_volunteers_form_title` }}">Loading…</iframe>
             </div>
         </div>
     </div>
-
-    <script src="https://tally.so/widgets/embed.js"></script>
-    <script>
-        (function () {
-            function fallbackSetSrc() {
-                document.querySelectorAll('iframe[data-tally-src]:not([src])').forEach(function (iframe) {
-                    iframe.src = iframe.dataset.tallySrc;
-                });
-            }
-
-            function loadTallyEmbeds() {
-                if (typeof Tally !== 'undefined') {
-                    Tally.loadEmbeds();
-                    // Tally's own lazy-loader can occasionally miss the iframe
-                    // (e.g. IntersectionObserver not firing yet) - fall back to
-                    // setting src directly if it still hasn't loaded shortly after.
-                    setTimeout(fallbackSetSrc, 1500);
-                    return;
-                }
-                fallbackSetSrc();
-            }
-
-            if (document.readyState === 'complete') {
-                loadTallyEmbeds();
-            } else {
-                window.addEventListener('load', loadTallyEmbeds);
-            }
-        })();
-    </script>
 {{ end }}

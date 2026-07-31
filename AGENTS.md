@@ -6,44 +6,58 @@ After any change below, verify with `make serve` and check both the Spanish page
 
 ## Organizers
 
-Organizers are **hand-authored HTML cards**, not a data list — there is no array in `hugo.yaml` to edit. Everything lives in `themes/event/layouts/miscellaneous/organizers.html`, one `.organizer-card` block per person, rendered on `/organizers` (and `/en/organizers`).
+Organizers are **data-driven** — `data/organizers.json` at the repo root, a single list shared by both languages, loaded in templates as `site.Data.organizers`. It's rendered as `.organizer-card` blocks by `themes/event/layouts/miscellaneous/organizers.html` on `/organizers` (and `/en/organizers`).
+
+Each entry:
+```json
+{
+    "id": "<slug>",
+    "name": "Full Name",
+    "image": "/images/<slug>.jpg",
+    "alt": "Optional alt text (defaults to name)",
+    "roleKey": "cd_organizer_role_<slug>",
+    "hidden": false,
+    "socials": [
+        { "type": "linkedin", "url": "https://..." }
+    ]
+}
+```
+`socials[].type` must be `linkedin` or `instagram` (the only icons/hover styles wired up in the template — see `$socialIcons`/`$socialLabels` in `organizers.html`); add a new type there first if a person uses a different network. `hidden: true` keeps an entry in the list (and its i18n/photo) without rendering it — used to pull someone from the page without deleting their data.
 
 ### Add an organizer
 
 1. Add a square headshot to `static/images/<slug>.jpg`.
-2. In `themes/event/layouts/miscellaneous/organizers.html`, duplicate an existing `.organizer-card` block inside `.organizers-grid` and update:
-   - `<img src="/images/<slug>.jpg" ... alt="<Full Name>">`
-   - the `<h3 class="organizer-name">` text
-   - `{{ T "cd_organizer_role_<slug>" }}` — pick a new, unique key
-   - the social link `href` (LinkedIn and Instagram have dedicated hover styles; other networks fall back to the default icon style)
-3. Add the matching `cd_organizer_role_<slug>` key to **both** `i18n/es.yaml` and `i18n/en.yaml` with the Spanish and English role text.
+2. Append an entry to `data/organizers.json` (see shape above), with a new, unique `roleKey`.
+3. Add the matching `roleKey` to **both** `i18n/es.yaml` and `i18n/en.yaml` with the Spanish and English role text.
 
 ### Remove an organizer
 
-1. Delete their `.organizer-card` block from `organizers.html`.
-2. Delete the `cd_organizer_role_<slug>` key from both `i18n/es.yaml` and `i18n/en.yaml`.
-3. Delete the now-unused photo from `static/images/` if it isn't reused elsewhere.
+- To hide them but keep their data (reversible): set `"hidden": true` on their entry.
+- To fully delete: remove their entry from `data/organizers.json`, delete the `roleKey` from both `i18n/es.yaml` and `i18n/en.yaml`, and delete the now-unused photo from `static/images/` if it isn't reused elsewhere.
 
 ## Sponsors
 
-Sponsors **are** pure data — `params.themes.event.sponsors` in `hugo.yaml`, a single top-level list shared by both languages. This drives the `/sponsors` page, the homepage sponsor carousel, and the logo strip at the bottom of `/organizers`.
+Sponsors **are** pure data — `data/sponsors.json` at the repo root, a single list shared by both languages, loaded in templates as `site.Data.sponsors`. This drives the `/sponsors` page, the homepage sponsor carousel, and the logo strip at the bottom of `/organizers`.
 
 ### Add a sponsor
 
 1. Add the logo file to `assets/logos/` (this is processed by Hugo's asset pipeline via `resources.Get` — **not** `static/logos/`, which is for unprocessed static assets).
-2. Append an entry to `params.themes.event.sponsors`:
-   ```yaml
-   - logo: "logos/<file>.png"
-     url: "https://sponsor-site-or-social-link/"
-     name: "Sponsor Name"
-     description: "One-line description shown with the logo."
-     tier: "platinum" # platinum | gold | silver | community — must match a key in sponsorTiers
+2. Append an entry to `data/sponsors.json`:
+   ```json
+   {
+       "logo": "logos/<file>.png",
+       "url": "https://sponsor-site-or-social-link/",
+       "name": "Sponsor Name",
+       "description": "One-line description shown with the logo.",
+       "tier": "platinum"
+   }
    ```
+   `tier` is `platinum` | `gold` | `silver` | `community` and must match a key in `params.themes.event.sponsorTiers` (still in `hugo.yaml` — only the sponsor list itself moved to JSON).
 3. `community`-tier sponsors show only on `/sponsors` and in the `/organizers` footer strip. `platinum`/`gold`/`silver` sponsors also appear in the homepage carousel (`partials/sections/our-sponsors.html`).
 
 ### Remove a sponsor
 
-Delete its entry from the `sponsors` array. Optionally delete the now-unused logo from `assets/logos/` if nothing else references it.
+Delete its entry from `data/sponsors.json`. Optionally delete the now-unused logo from `assets/logos/` if nothing else references it.
 
 ### Initiative partners (related, separate list)
 
@@ -51,18 +65,18 @@ Delete its entry from the `sponsors` array. Optionally delete the now-unused log
 
 ## Volunteers
 
-Unlike organizers and sponsors, there is **no roster stored in the repo**. `/volunteers` (`content/volunteers.md` + `content/en/volunteers.md`, layout `volunteers`) just wraps a hero + intro paragraph around an embedded **Tally** form, rendered by `themes/event/layouts/miscellaneous/volunteers.html`.
+Unlike organizers and sponsors, there is **no roster stored in the repo**. `/volunteers` (`content/volunteers.md` + `content/en/volunteers.md`, layout `volunteers`) just wraps a hero + intro paragraph around an embedded **Google Form**, rendered by `themes/event/layouts/miscellaneous/volunteers.html`.
 
-The site has no backend or database (static Hugo build on GitHub Pages), so the actual form — fields, options, required/optional flags, and the conditional logic (e.g. "if you live in the DR, ask about Santiago; otherwise ask which country") — lives entirely on **Tally's side**, not in this repo. The embedded iframe just points at `params.themes.event.volunteersTallyFormId` (a Tally form ID) in `hugo.yaml`. Submissions land in the Tally dashboard for that form, and Tally also emails a copy to `params.themes.event.contactEmail` (`hola@containers.day`) on every submission (configured in the form's Settings → Notifications in Tally).
+The site has no backend or database (static Hugo build on GitHub Pages), so the actual form — fields, options, required/optional flags, and any conditional logic — lives entirely on **Google Forms' side**, not in this repo. The embedded iframe just points at `params.themes.event.volunteersFormUrl` (a `forms.gle` link) in `hugo.yaml`, with `?embedded=true` appended in the template to get Google's frameless embed view. Submissions land in the linked Google Form's Responses tab (and its linked Sheet, if one is attached).
 
 ### Edit the form
 
-- **Fields, options, conditional logic**: edit directly in the Tally dashboard for the form (`https://tally.so/r/<volunteersTallyFormId>`) — there is nothing to change in this repo for question content. Tally's own API (`api.tally.so`, Bearer token auth — see `https://developers.tally.so/api-reference/api-keys`) can also be scripted for bulk edits; the block/question schema is documented via its OpenAPI spec at `https://developers.tally.so/api-reference/openapi.json` (the human-readable docs pages are mostly stubs, the OpenAPI JSON has the real schema).
-- **Swap in a different Tally form** (or point at a new one): update `volunteersTallyFormId` in `hugo.yaml` (`params.themes.event`) to the new form's ID. No template changes needed.
-- **Embed styling/behavior**: `themes/event/layouts/miscellaneous/volunteers.html` — the iframe uses `alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1` query params and the `https://tally.so/widgets/embed.js` loader script. See `https://developers.tally.so/widgets/embeds`.
+- **Fields, options, conditional logic**: edit directly at the form's edit URL in Google Forms — there is nothing to change in this repo for question content.
+- **Swap in a different Google Form** (or point at a new one): update `volunteersFormUrl` in `hugo.yaml` (`params.themes.event`) to the new form's `forms.gle` (or full `docs.google.com/forms/.../viewform`) URL. No template changes needed.
+- **Embed height**: Google's embed has no dynamic-height API like Tally did, so the iframe uses a fixed `height="1200"` in `volunteers.html`. If a new form is noticeably longer/shorter, adjust that value so the form doesn't scroll inside its own box.
 - **Menu entry**: `hugo.yaml` → `menus.main` (`identifier: volunteers`) in both the `es` and `en` language blocks.
-- **Notification email**: change the "self email" recipient in the Tally form's Settings → Notifications (or via the API's `settings.selfEmailTo`), not in this repo.
+- **Response notifications**: enable "Get email notifications for new responses" in the form's Responses tab (⋮ menu) in Google Forms — not configured in this repo.
 
-### If you'd rather not depend on Tally
+### If you'd rather not depend on Google Forms
 
-Swap the iframe's `data-tally-src` for a different form service, or replace the whole block with a `mailto:`-based custom HTML form (fields built in this repo, no external dependency, but no dashboard/spreadsheet of applicants either) — see the git history of `volunteers.html` for a previous mailto-based version to start from.
+Swap the iframe's `src` for a different form service, or replace the whole block with a `mailto:`-based custom HTML form (fields built in this repo, no external dependency, but no dashboard/spreadsheet of applicants either) — see the git history of `volunteers.html` for a previous mailto-based version to start from.

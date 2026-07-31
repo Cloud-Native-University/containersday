@@ -1,6 +1,6 @@
 {{ define "main" }}
     {{ $event := .Site.Params.themes.event }}
-    {{ $allSponsors := site.Params.themes.event.sponsors }}
+    {{ $allSponsors := site.Data.sponsors }}
     {{ $initiativePartners := $event.initiativePartners | default slice }}
     {{ $tierOrder := slice "platinum" "gold" "silver" "community" }}
     {{ $tierConfig := $event.sponsorTiers }}
