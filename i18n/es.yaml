@@ -401,19 +401,41 @@ agenda.coming_soon.message: 'La agenda está en preparación. Mientras tanto, ¡
 cd_organizers_intro:
     other: 'Conoce al equipo organizador detrás del Containers Day 2026, comprometido con llevar el aprendizaje y la innovación Cloud Native al corazón de la República Dominicana.'
 cd_organizer_role_harys:
-    other: 'Co-organizador de Containers Day, Ingeniero de Software & DevOps'
+    other: 'Co-fundador de Containers Day, Ingeniero de Software & DevOps'
 cd_organizer_role_victor:
-    other: 'Co-organizador de Containers Day, Cloud Solutions Architect'
+    other: 'Founder de Containers Day DR, Cloud Solutions Architect, SRE'
 cd_organizer_role_angel:
-    other: 'Co-organizador de Containers Day, Ingeniero de Software'
+    other: 'Co-fundador de Containers Day, Ingeniero de Software'
 cd_organizer_role_winifer:
-    other: 'Co-organizadora de Containers Day, Coordinadora de Logística & Tecnología'
+    other: 'Co-fundadora de Containers Day, Coordinadora de Logística & Tecnología'
 cd_organizer_role_paul:
-    other: 'Co-organizador de Containers Day, Tech Community Builder'
+    other: 'Co-fundador de Containers Day, Tech Community Builder'
 cd_organizer_role_luz:
-    other: 'Co-organizadora de Containers Day, Asesora Legal & Operaciones'
+    other: 'Co-fundadora de Containers Day, Asesora Legal & Operaciones'
 cd_organizer_role_zoila:
     other: 'Co-organizadora de Containers Day, Directora de la Escuela de Ingeniería y Tecnología, UAPA'
+cd_organizer_role_yaquelyn:
+    other: 'Co-organizadora de Containers Day, Directora de Protocolo, UAPA'
+cd_organizer_role_yolanda:
+    other: 'Co-organizadora de Containers Day, Encargada Académica de UCAP, UAPA'
+cd_organizer_role_reyna:
+    other: 'Co-organizadora de Containers Day, Directora de UCAP-UAPA Centro de Capacitación Profesional'
+cd_organizer_role_laura:
+    other: 'Co-organizadora de Containers Day, Encargada de Gestión de Marca, Depto. de Comunicación Corporativa, UAPA'
+cd_organizer_role_eduardo:
+    other: 'Co-organizador de Containers Day, Encargado de Producción Audiovisual, Depto. de Comunicación Corporativa, UAPA'
+cd_organizer_role_thelma:
+    other: 'Co-organizadora de Containers Day, Coordinadora de Protocolo, UAPA'
+cd_organizer_role_juan:
+    other: 'Co-organizador de Containers Day, Unidad de Diseño Gráfico, Depto. de Comunicación Corporativa, UAPA'
+cd_team_founders_title:
+    other: 'Co-Fundadores'
+cd_team_uapa_title:
+    other: 'Equipo Co-Organizador UAPA'
+cd_team_volunteers_title:
+    other: 'Equipo de Voluntarios'
+cd_organizer_role_miguel_matos:
+    other: 'Voluntario de Containers Day'
 
 location_page.heading:
     other: 'Nuestra Sede'

@@ -191,6 +191,17 @@
         .organizers-sponsor-item:hover img {
             transform: scale(1.05);
         }
+        .organizers-team-title {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 35px 0;
+            letter-spacing: -0.02em;
+        }
+        .organizers-team-title.uapa-team-title {
+            margin-top: 70px;
+        }
     </style>
 
     <div class="organizers-section">
@@ -202,9 +213,50 @@
             {{- $socialIcons := dict "linkedin" "fab fa-linkedin-in" "instagram" "fab fa-instagram" -}}
             {{- $socialLabels := dict "linkedin" "LinkedIn" "instagram" "Instagram" -}}
 
+            <h2 class="organizers-team-title">{{ T "cd_team_founders_title" }}</h2>
             <div class="organizers-grid">
                 {{- range $organizer := site.Data.organizers -}}
-                    {{- if not $organizer.hidden -}}
+                    {{- if and (not $organizer.hidden) (or (eq $organizer.team "founders") (not $organizer.team)) -}}
+                        <div class="organizer-card">
+                            <div class="organizer-img-wrapper">
+                                <img src="{{ $organizer.image }}" class="organizer-img" alt="{{ $organizer.alt | default $organizer.name }}">
+                            </div>
+                            <h3 class="organizer-name">{{ $organizer.name }}</h3>
+                            <p class="organizer-role">{{ T $organizer.roleKey }}</p>
+                            <div class="organizer-socials">
+                                {{- range $social := $organizer.socials -}}
+                                    <a href="{{ $social.url }}" target="_blank" class="organizer-social-link" aria-label="{{ index $socialLabels $social.type }}"><i class="{{ index $socialIcons $social.type }}"></i></a>
+                                {{- end -}}
+                            </div>
+                        </div>
+                    {{- end -}}
+                {{- end -}}
+            </div>
+
+            <h2 class="organizers-team-title uapa-team-title">{{ T "cd_team_uapa_title" }}</h2>
+            <div class="organizers-grid">
+                {{- range $organizer := site.Data.organizers -}}
+                    {{- if and (not $organizer.hidden) (eq $organizer.team "uapa") -}}
+                        <div class="organizer-card">
+                            <div class="organizer-img-wrapper">
+                                <img src="{{ $organizer.image }}" class="organizer-img" alt="{{ $organizer.alt | default $organizer.name }}">
+                            </div>
+                            <h3 class="organizer-name">{{ $organizer.name }}</h3>
+                            <p class="organizer-role">{{ T $organizer.roleKey }}</p>
+                            <div class="organizer-socials">
+                                {{- range $social := $organizer.socials -}}
+                                    <a href="{{ $social.url }}" target="_blank" class="organizer-social-link" aria-label="{{ index $socialLabels $social.type }}"><i class="{{ index $socialIcons $social.type }}"></i></a>
+                                {{- end -}}
+                            </div>
+                        </div>
+                    {{- end -}}
+                {{- end -}}
+            </div>
+
+            <h2 class="organizers-team-title uapa-team-title">{{ T "cd_team_volunteers_title" }}</h2>
+            <div class="organizers-grid">
+                {{- range $organizer := site.Data.organizers -}}
+                    {{- if and (not $organizer.hidden) (eq $organizer.team "volunteers") -}}
                         <div class="organizer-card">
                             <div class="organizer-img-wrapper">
                                 <img src="{{ $organizer.image }}" class="organizer-img" alt="{{ $organizer.alt | default $organizer.name }}">

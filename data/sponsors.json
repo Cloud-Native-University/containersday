@@ -1,16 +1,16 @@
 [
     {
-        "logo": "logos/nixversity-cover.png",
-        "url": "https://nixversity.com/",
-        "name": "NixVersity",
-        "description": "Líderes en formación de DevOps y Cloud Native en la región.",
-        "tier": "platinum"
-    },
-    {
         "logo": "logos/uapa-logo.png",
         "url": "https://www.uapa.edu.do/",
         "name": "UAPA",
         "description": "Sede oficial de Containers Day 2026.",
+        "tier": "platinum"
+    },
+    {
+        "logo": "logos/mente-de-hackers.png",
+        "url": "https://www.instagram.com/mentedehackers/?hl=en",
+        "name": "Mente de Hackers",
+        "description": "Comunidad de ciberseguridad, tecnología y podcast.",
         "tier": "platinum"
     },
     {
@@ -25,6 +25,20 @@
         "url": "https://darianvargas.com/",
         "name": "Darian Vargas",
         "description": "Ministro de Educación Independiente",
+        "tier": "silver"
+    },
+    {
+        "logo": "logos/reinventa.png",
+        "url": "https://reinventa.com/",
+        "name": "Reinventa",
+        "description": "Transformación digital y soluciones tecnológicas.",
+        "tier": "silver"
+    },
+    {
+        "logo": "logos/evopoint.png",
+        "url": "https://www.evopoint.io/",
+        "name": "EvoPoint",
+        "description": "Soluciones y alianzas tecnológicas en la nube.",
         "tier": "silver"
     },
     {

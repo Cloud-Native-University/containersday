@@ -403,19 +403,41 @@ agenda.coming_soon.message: 'The agenda is in preparation. While you wait, check
 cd_organizers_intro:
     other: 'Meet the organizing team behind Containers Day 2026, dedicated to bringing Cloud Native learning and innovation to the heart of the Dominican Republic.'
 cd_organizer_role_harys:
-    other: 'Co-organizer of Containers Day, Software & DevOps Engineer'
+    other: 'Co-founder of Containers Day, Software & DevOps Engineer'
 cd_organizer_role_victor:
-    other: 'Co-organizer of Containers Day, Cloud Solutions Architect'
+    other: 'Founder de Containers Day DR, Cloud Solutions Architect, SRE'
 cd_organizer_role_angel:
-    other: 'Co-organizer of Containers Day, Software Engineer'
+    other: 'Co-founder of Containers Day, Software Engineer'
 cd_organizer_role_winifer:
-    other: 'Co-organizer of Containers Day, Logistics & Tech Coordinator'
+    other: 'Co-founder of Containers Day, Logistics & Tech Coordinator'
 cd_organizer_role_paul:
-    other: 'Co-organizer of Containers Day, Tech Community Builder'
+    other: 'Co-founder of Containers Day, Tech Community Builder'
 cd_organizer_role_luz:
-    other: 'Co-organizer of Containers Day, Legal Advisor & Operations'
+    other: 'Co-founder of Containers Day, Legal Advisor & Operations'
 cd_organizer_role_zoila:
     other: 'Co-organizer of Containers Day, Director of the School of Engineering and Technology, UAPA'
+cd_organizer_role_yaquelyn:
+    other: 'Co-organizer of Containers Day, Protocol Director, UAPA'
+cd_organizer_role_yolanda:
+    other: 'Co-organizer of Containers Day, Academic Manager of UCAP, UAPA'
+cd_organizer_role_reyna:
+    other: 'Co-organizer of Containers Day, Director of UCAP-UAPA Professional Training Center'
+cd_organizer_role_laura:
+    other: 'Co-organizer of Containers Day, Brand Management Officer, Corporate Communication Dept., UAPA'
+cd_organizer_role_eduardo:
+    other: 'Co-organizer of Containers Day, Audiovisual Production Manager, Corporate Communication Dept., UAPA'
+cd_organizer_role_thelma:
+    other: 'Co-organizer of Containers Day, Protocol Coordinator, UAPA'
+cd_organizer_role_juan:
+    other: 'Co-organizer of Containers Day, Graphic Design Unit, Corporate Communication Dept., UAPA'
+cd_team_founders_title:
+    other: 'Co-Founders'
+cd_team_uapa_title:
+    other: 'UAPA Co-Organizers Team'
+cd_team_volunteers_title:
+    other: 'Volunteers Team'
+cd_organizer_role_miguel_matos:
+    other: 'Containers Day Volunteer'
 
 location_page.heading:
     other: 'Our Location'

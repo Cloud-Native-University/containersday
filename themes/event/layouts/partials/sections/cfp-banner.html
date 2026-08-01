@@ -69,8 +69,8 @@
         <span class="cfp-banner__icon">🎤</span>
         <h2 class="cfp-banner__heading">{{ T "cfp_banner.heading" }}</h2>
         <p class="cfp-banner__subtext">{{ T "cfp_banner.message" }}</p>
-        <a href="{{ $input.cfpUrl }}" class="cfp-banner__button" target="_blank" rel="noopener">
-            {{ $input.cfpLabel }} →
-        </a>
+        <span class="cfp-banner__button btn-disabled" title="Convocatoria de oradores cerrada" style="opacity: 0.5; cursor: not-allowed; pointer-events: none; text-decoration: line-through;">
+            {{ $input.cfpLabel }} (Cerrado)
+        </span>
     </div>
 </div>

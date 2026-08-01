@@ -414,9 +414,9 @@
                             {{ T "cd_buy_tickets" }} <i class="fas fa-arrow-right"></i>
                         </a>
                         {{ if $event.callToActionSecondary.url }}
-                        <a href="{{ $event.callToActionSecondary.url }}" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">
-                            <i class="fas fa-microphone" aria-hidden="true"></i> {{ T "cd_apply_speaker" }}
-                        </a>
+                        <span class="btn-hero-secondary btn-disabled" title="Convocatoria de oradores cerrada">
+                            <i class="fas fa-microphone-slash" aria-hidden="true"></i> {{ T "cd_apply_speaker" }} (Cerrado)
+                        </span>
                         {{ end }}
                     </div>
                 </div>
