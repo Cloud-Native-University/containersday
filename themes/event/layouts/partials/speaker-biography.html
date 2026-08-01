@@ -1,8 +1,71 @@
 {{ $input := . }}
 
+{{ $drSpeakers := slice "Victor Corniel" "Miguel De Los Santos" "José Elías" "Jose Elias" "Bladimir Garcia" "Raynnier Gomez" "Antonio José Lorenzo" "Leonardo Núñez" "Leomaris Reyes" "Eneldo Serrata" "Luis Tangui Arias" "Darian Vargas" "Ayesha Yege" "Karla Yofraciel Aquino Meran" "Karla" }}
+{{ $coSpeakers := slice "Julián Luna" "Julian Luna" "judlup" }}
+{{ $esSpeakers := slice "Leafar Maina De Jesús" "Leafar Maina" "Leafar" }}
+{{ $usSpeakers := slice "Christopher Tineo" "Christopher" "Erik Taveras" "Erik" "eriktaveras" }}
+{{ $paSpeakers := slice "Fabrizio Sgura" "Fabrizio" "fabriziosgura" }}
+
+{{ $isDominican := false }}
+{{ range $drSpeakers }}
+    {{ if in $input.speakerName . }}
+        {{ $isDominican = true }}
+    {{ end }}
+{{ end }}
+
+{{ $isColombian := false }}
+{{ range $coSpeakers }}
+    {{ if in $input.speakerName . }}
+        {{ $isColombian = true }}
+    {{ end }}
+{{ end }}
+
+{{ $isSpanish := false }}
+{{ range $esSpeakers }}
+    {{ if in $input.speakerName . }}
+        {{ $isSpanish = true }}
+    {{ end }}
+{{ end }}
+
+{{ $isAmerican := false }}
+{{ range $usSpeakers }}
+    {{ if in $input.speakerName . }}
+        {{ $isAmerican = true }}
+    {{ end }}
+{{ end }}
+
+{{ $isPanamanian := false }}
+{{ range $paSpeakers }}
+    {{ if in $input.speakerName . }}
+        {{ $isPanamanian = true }}
+    {{ end }}
+{{ end }}
 
 <article class="speaker-biography">
-    <h1 class="h1 speaker-biography__name">{{- $input.speakerName }}</h1>
+    <h1 class="h1 speaker-biography__name">
+        {{- $input.speakerName }}
+        {{- if $isDominican }}
+            <span class="speaker-country-badge" title="República Dominicana" style="display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; font-size: 0.52em; font-weight: 700; padding: 4px 12px; border-radius: 100px; background: linear-gradient(135deg, rgba(20, 62, 139, 0.08) 0%, rgba(93, 173, 226, 0.15) 100%); border: 1px solid rgba(93, 173, 226, 0.35); color: #143e8b; vertical-align: middle; font-family: var(--font-body); letter-spacing: 0;">
+                <span style="font-size: 1.2em; line-height: 1;">🇩🇴</span> República Dominicana
+            </span>
+        {{- else if $isColombian }}
+            <span class="speaker-country-badge" title="Colombia" style="display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; font-size: 0.52em; font-weight: 700; padding: 4px 12px; border-radius: 100px; background: linear-gradient(135deg, rgba(255, 205, 0, 0.18) 0%, rgba(0, 48, 135, 0.12) 100%); border: 1px solid rgba(255, 205, 0, 0.5); color: #9c6c00; vertical-align: middle; font-family: var(--font-body); letter-spacing: 0;">
+                <span style="font-size: 1.2em; line-height: 1;">🇨🇴</span> Colombia
+            </span>
+        {{- else if $isSpanish }}
+            <span class="speaker-country-badge" title="España" style="display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; font-size: 0.52em; font-weight: 700; padding: 4px 12px; border-radius: 100px; background: linear-gradient(135deg, rgba(198, 11, 30, 0.1) 0%, rgba(255, 196, 0, 0.2) 100%); border: 1px solid rgba(198, 11, 30, 0.35); color: #aa1923; vertical-align: middle; font-family: var(--font-body); letter-spacing: 0;">
+                <span style="font-size: 1.2em; line-height: 1;">🇪🇸</span> España
+            </span>
+        {{- else if $isAmerican }}
+            <span class="speaker-country-badge" title="Estados Unidos" style="display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; font-size: 0.52em; font-weight: 700; padding: 4px 12px; border-radius: 100px; background: linear-gradient(135deg, rgba(10, 49, 97, 0.08) 0%, rgba(187, 19, 62, 0.1) 100%); border: 1px solid rgba(10, 49, 97, 0.35); color: #0a3161; vertical-align: middle; font-family: var(--font-body); letter-spacing: 0;">
+                <span style="font-size: 1.2em; line-height: 1;">🇺🇸</span> Estados Unidos
+            </span>
+        {{- else if $isPanamanian }}
+            <span class="speaker-country-badge" title="Panamá" style="display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; font-size: 0.52em; font-weight: 700; padding: 4px 12px; border-radius: 100px; background: linear-gradient(135deg, rgba(7, 35, 87, 0.08) 0%, rgba(218, 18, 26, 0.1) 100%); border: 1px solid rgba(7, 35, 87, 0.35); color: #072357; vertical-align: middle; font-family: var(--font-body); letter-spacing: 0;">
+                <span style="font-size: 1.2em; line-height: 1;">🇵🇦</span> Panamá
+            </span>
+        {{- end }}
+    </h1>
     <h2 class="speaker-biography__slogan">{{- $input.speakerSlogan }}</h2>
     <div class="speaker-biography__description markdown">{{- $input.speakerBiography | safeHTML }}</div>
 </article>

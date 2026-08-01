@@ -22,7 +22,61 @@
                     height="{{ .Height }}" />
             {{- end }}
         {{- end }}
-        <h2 class="heading">{{ $input.name }}</h2>
+        {{ $drSpeakers := slice "Victor Corniel" "Miguel De Los Santos" "José Elías" "Jose Elias" "Bladimir Garcia" "Raynnier Gomez" "Antonio José Lorenzo" "Leonardo Núñez" "Leomaris Reyes" "Eneldo Serrata" "Luis Tangui Arias" "Darian Vargas" "Ayesha Yege" "Karla Yofraciel Aquino Meran" "Karla" }}
+        {{ $coSpeakers := slice "Julián Luna" "Julian Luna" "judlup" }}
+        {{ $esSpeakers := slice "Leafar Maina De Jesús" "Leafar Maina" "Leafar" }}
+        {{ $usSpeakers := slice "Christopher Tineo" "Christopher" "Erik Taveras" "Erik" "eriktaveras" }}
+        {{ $paSpeakers := slice "Fabrizio Sgura" "Fabrizio" "fabriziosgura" }}
+
+        {{ $isDominican := false }}
+        {{ range $drSpeakers }}
+            {{ if in $input.name . }}
+                {{ $isDominican = true }}
+            {{ end }}
+        {{ end }}
+
+        {{ $isColombian := false }}
+        {{ range $coSpeakers }}
+            {{ if in $input.name . }}
+                {{ $isColombian = true }}
+            {{ end }}
+        {{ end }}
+
+        {{ $isSpanish := false }}
+        {{ range $esSpeakers }}
+            {{ if in $input.name . }}
+                {{ $isSpanish = true }}
+            {{ end }}
+        {{ end }}
+
+        {{ $isAmerican := false }}
+        {{ range $usSpeakers }}
+            {{ if in $input.name . }}
+                {{ $isAmerican = true }}
+            {{ end }}
+        {{ end }}
+
+        {{ $isPanamanian := false }}
+        {{ range $paSpeakers }}
+            {{ if in $input.name . }}
+                {{ $isPanamanian = true }}
+            {{ end }}
+        {{ end }}
+
+        <h2 class="heading">
+            {{ $input.name }}
+            {{- if $isDominican }}
+                <span title="República Dominicana" style="margin-left: 6px; font-size: 1rem; vertical-align: middle;">🇩🇴</span>
+            {{- else if $isColombian }}
+                <span title="Colombia" style="margin-left: 6px; font-size: 1rem; vertical-align: middle;">🇨🇴</span>
+            {{- else if $isSpanish }}
+                <span title="España" style="margin-left: 6px; font-size: 1rem; vertical-align: middle;">🇪🇸</span>
+            {{- else if $isAmerican }}
+                <span title="Estados Unidos" style="margin-left: 6px; font-size: 1rem; vertical-align: middle;">🇺🇸</span>
+            {{- else if $isPanamanian }}
+                <span title="Panamá" style="margin-left: 6px; font-size: 1rem; vertical-align: middle;">🇵🇦</span>
+            {{- end }}
+        </h2>
         <p class="speaker-card__description">{{ $input.description }}</p>
     </a>
     <div class="speaker-card__social-links">
