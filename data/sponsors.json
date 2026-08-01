@@ -14,6 +14,27 @@
         "tier": "platinum"
     },
     {
+        "logo": "logos/google-cloud.png",
+        "url": "https://cloud.google.com/",
+        "name": "Google Cloud",
+        "description": "Plataforma de infraestructura y servicios en la nube.",
+        "tier": "gold"
+    },
+    {
+        "logo": "logos/aws.png",
+        "url": "https://aws.amazon.com/",
+        "name": "Amazon Web Services (AWS)",
+        "description": "Plataforma de nube más adoptada a nivel mundial.",
+        "tier": "gold"
+    },
+    {
+        "logo": "logos/nutanix.png",
+        "url": "https://www.nutanix.com/",
+        "name": "Nutanix",
+        "description": "Líder en infraestructura hiperconvergente y nube híbrida.",
+        "tier": "gold"
+    },
+    {
         "logo": "logos/innmotrix.png",
         "url": "https://innmotrix.com/",
         "name": "Innmotrix",

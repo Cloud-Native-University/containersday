@@ -218,7 +218,7 @@
                     <div class="sponsor-slide" role="group" aria-roledescription="slide" aria-label="{{ $name }}">
                         <a href="{{ $url }}" target="_blank" rel="noopener noreferrer" class="sponsor-slide__card{{ if eq $panel "dark" }} sponsor-slide__card--dark{{ end }}" aria-label="{{ $name }}">
                             {{ with $logo }}
-                                <img src="{{ .RelPermalink }}" alt="{{ $name }}" loading="lazy"{{ if and .Width .Height }} width="{{ .Width }}" height="{{ .Height }}"{{ end }}>
+                                <img src="{{ .RelPermalink }}" alt="{{ $name }}" loading="lazy"{{ if and (ne .MediaType.SubType "svg") .Width .Height }} width="{{ .Width }}" height="{{ .Height }}"{{ end }}>
                             {{ else }}
                                 <img src="{{ $logoPath | relURL }}" alt="{{ $name }}" loading="lazy">
                             {{ end }}
@@ -235,7 +235,7 @@
                     <div class="sponsor-slide" aria-hidden="true">
                         <a href="{{ $url }}" target="_blank" rel="noopener noreferrer" class="sponsor-slide__card{{ if eq $panel "dark" }} sponsor-slide__card--dark{{ end }}" tabindex="-1" aria-hidden="true">
                             {{ with $logo }}
-                                <img src="{{ .RelPermalink }}" alt="{{ $name }}" loading="lazy"{{ if and .Width .Height }} width="{{ .Width }}" height="{{ .Height }}"{{ end }}>
+                                <img src="{{ .RelPermalink }}" alt="{{ $name }}" loading="lazy"{{ if and (ne .MediaType.SubType "svg") .Width .Height }} width="{{ .Width }}" height="{{ .Height }}"{{ end }}>
                             {{ else }}
                                 <img src="{{ $logoPath | relURL }}" alt="{{ $name }}" loading="lazy">
                             {{ end }}
