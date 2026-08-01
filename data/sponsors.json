@@ -14,6 +14,13 @@
         "tier": "platinum"
     },
     {
+        "logo": "logos/docker.png",
+        "url": "https://www.docker.com/",
+        "name": "Docker",
+        "description": "Plataforma estándar mundial para la creación y ejecución de contenedores.",
+        "tier": "gold"
+    },
+    {
         "logo": "logos/google-cloud.png",
         "url": "https://cloud.google.com/",
         "name": "Google Cloud",
