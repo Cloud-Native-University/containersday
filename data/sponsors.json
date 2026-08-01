@@ -1,5 +1,12 @@
 [
     {
+        "logo": "logos/nixversity-cover.png",
+        "url": "https://nixversity.com/",
+        "name": "NixVersity",
+        "description": "Líderes en formación de DevOps y Cloud Native en la región.",
+        "tier": "platinum"
+    },
+    {
         "logo": "logos/uapa-logo.png",
         "url": "https://www.uapa.edu.do/",
         "name": "UAPA",
