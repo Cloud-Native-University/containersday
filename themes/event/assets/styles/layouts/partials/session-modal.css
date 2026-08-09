@@ -310,3 +310,28 @@ a.session-card__speaker-link:hover { color: var(--accent, #2378b0); text-decorat
 .session-card__agenda-link:hover {
     text-decoration: underline;
 }
+
+.session-card__labels {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 2px 0 0;
+    padding: 0;
+}
+
+.session-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: #eef2f7;
+    color: #4a5c6f;
+    border: 1px solid #dbe3ec;
+}
+
+.session-card[hidden] {
+    display: none;
+}

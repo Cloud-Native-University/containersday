@@ -70,14 +70,12 @@
             min-height: 60px;
         }
 
-        /* Sticky room header, shown once the schedule splits into parallel rooms */
+        /* Room header, shown once the schedule splits into parallel rooms.
+           Not sticky: the filter bar above already owns the sticky slot. */
         .rooms-header {
             display: grid;
             grid-template-columns: 104px repeat(var(--cols, 1), minmax(0, 1fr));
             gap: 16px;
-            position: sticky;
-            top: 0;
-            z-index: 5;
             background: #fff;
             padding: 12px 0;
             margin-bottom: 8px;
@@ -95,8 +93,130 @@
            assets/styles/layouts/partials/session-modal.css, shared with the popup
            and the speaker pages. */
 
+        /* The filter script toggles the hidden attribute, and display:flex/grid
+           beats the browser default for [hidden]. */
+        .schedule [hidden] { display: none !important; }
+
+        /* Filter bar. Offset by the sticky site header (73px) so its first row
+           doesn't slide underneath; the header is hidden below 1024px. */
+        .agenda-filters {
+            position: sticky;
+            top: 73px;
+            z-index: 6;
+            background: var(--bg-light);
+            border-bottom: 1px solid #dbe3ec;
+            padding: 14px 0 12px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .agenda-filters__row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+        .agenda-filters__legend {
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-right: 4px;
+        }
+        .filter-pill {
+            all: unset;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid #c3d6e8;
+            color: #17567f;
+            background: #fff;
+        }
+        .filter-pill:hover { border-color: var(--accent); }
+        .filter-pill--active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+        .filter-pill:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .agenda-filters__search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1 1 240px;
+            max-width: 420px;
+            border: 1px solid #c3d6e8;
+            border-radius: 999px;
+            padding: 8px 16px;
+            background: #fff;
+            color: var(--text-muted);
+        }
+        .agenda-filters__search:focus-within { border-color: var(--accent); }
+        .agenda-filters__search input {
+            all: unset;
+            flex: 1;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .agenda-filters__now {
+            all: unset;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: #0f7b45;
+            color: #fff;
+        }
+        .agenda-filters__now:focus-visible { outline: 3px solid #0f7b45; outline-offset: 2px; }
+        .agenda-filters__pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #fff;
+            animation: agenda-pulse 1.6s ease-in-out infinite;
+        }
+        @keyframes agenda-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.25; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .agenda-filters__pulse { animation: none; }
+        }
+
+        .agenda-filters__empty {
+            margin: 4px 0 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* Happening now, only on the event date */
+        .session-card--live {
+            border-color: #0f7b45;
+            box-shadow: 0 0 0 2px rgba(15, 123, 69, 0.25);
+        }
+        .session-chip--live {
+            background: #0f7b45;
+            color: #fff;
+        }
+
         @media (max-width: 900px) {
             .rooms-header { display: none; }
+            .agenda-filters { padding: 10px 0; top: 0; }
+            .agenda-filters__legend { width: 100%; margin-bottom: 2px; }
             .slot-row {
                 grid-template-columns: 1fr;
                 gap: 10px;
@@ -128,6 +248,52 @@
                             {{ T "sessions_page.subject_to_change" }}
                         </p>
 
+                        {{- /* Filters. Rooms and labels come from the feed, so an empty
+                               schedule renders no bar at all. */}}
+                        {{- $allLabels := slice }}
+                        {{- range $day.timeSlots }}
+                            {{- range .rooms }}
+                                {{- if not .session.isServiceSession }}
+                                    {{- range partial "session-labels.html" (dict "title" .session.title "description" .session.description) }}
+                                        {{- if not (in $allLabels .) }}{{ $allLabels = $allLabels | append . }}{{ end }}
+                                    {{- end }}
+                                {{- end }}
+                            {{- end }}
+                        {{- end }}
+
+                        <div class="agenda-filters" data-agenda-filters data-live-label="{{ T "sessions_page.live_now" }}">
+                            <div class="agenda-filters__row">
+                                <label class="agenda-filters__search">
+                                    <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+                                    <input type="search" data-filter-search placeholder="{{ T "sessions_page.search_placeholder" }}" aria-label="{{ T "sessions_page.search_placeholder" }}" />
+                                </label>
+                                <button type="button" class="agenda-filters__now" data-jump-now hidden>
+                                    <span class="agenda-filters__pulse" aria-hidden="true"></span>
+                                    {{ T "sessions_page.jump_now" }}
+                                </button>
+                            </div>
+
+                            <div class="agenda-filters__row">
+                                <span class="agenda-filters__legend">{{ T "sessions_page.filter_room" }}</span>
+                                <button type="button" class="filter-pill filter-pill--active" data-filter-room="">{{ T "sessions_page.all_rooms" }}</button>
+                                {{- range $rooms }}
+                                    <button type="button" class="filter-pill" data-filter-room="{{ .name }}">{{ .name }}</button>
+                                {{- end }}
+                            </div>
+
+                            {{- with $allLabels }}
+                                <div class="agenda-filters__row">
+                                    <span class="agenda-filters__legend">{{ T "sessions_page.filter_topic" }}</span>
+                                    <button type="button" class="filter-pill filter-pill--active" data-filter-label="">{{ T "sessions_page.all_topics" }}</button>
+                                    {{- range . }}
+                                        <button type="button" class="filter-pill" data-filter-label="{{ . }}">{{ T (printf "session_label.%s" .) }}</button>
+                                    {{- end }}
+                                </div>
+                            {{- end }}
+
+                            <p class="agenda-filters__empty" data-filter-empty hidden>{{ T "sessions_page.no_matches" }}</p>
+                        </div>
+
                         {{- $headerPrinted := false }}
                         {{- range $day.timeSlots }}
                             {{- $slot := . }}
@@ -135,7 +301,7 @@
 
                             {{- if and $isParallel (not $headerPrinted) }}
                                 {{- $headerPrinted = true }}
-                                <div class="rooms-header" style="--cols: {{ $cols }}">
+                                <div class="rooms-header" style="--cols: {{ $cols }}" data-rooms-header>
                                     <span class="rooms-header__room">{{ T "sessions_page.heading_time" }}</span>
                                     {{- range $rooms }}
                                         <span class="rooms-header__room">{{ .name }}</span>
@@ -144,7 +310,7 @@
                             {{- end }}
 
                             {{- $first := (index $slot.rooms 0).session }}
-                            <div class="slot-row{{ if not $isParallel }} slot-row--full{{ end }}" style="--cols: {{ $cols }}">
+                            <div class="slot-row{{ if not $isParallel }} slot-row--full{{ end }}" style="--cols: {{ $cols }}" data-slot-row>
                                 <div class="slot-row__time">
                                     {{ ($first.startsAt | time.AsTime).Format "15:04" }}
                                     <small>{{ ($first.endsAt | time.AsTime).Format "15:04" }}</small>
@@ -182,4 +348,102 @@
     {{- end }}
 
     {{- partial "sections/cta.html" (dict "eventbriteId" .Site.Params.themes.event.callToAction.eventbrite.eventId "ctaUrl" .Site.Params.themes.event.callToAction.other.url ) }}
+
+    <script>
+        (function () {
+            var bar = document.querySelector('[data-agenda-filters]');
+            if (!bar) return;
+
+            var cards = Array.prototype.slice.call(document.querySelectorAll('[data-session]'));
+            var rows = Array.prototype.slice.call(document.querySelectorAll('[data-slot-row]'));
+            var header = document.querySelector('[data-rooms-header]');
+            var empty = bar.querySelector('[data-filter-empty]');
+            var search = bar.querySelector('[data-filter-search]');
+            var nowButton = bar.querySelector('[data-jump-now]');
+            var state = { room: '', label: '', query: '' };
+
+            function matches(card) {
+                if (state.room && card.dataset.room !== state.room) return false;
+                if (state.label && (card.dataset.labels || '').split('|').indexOf(state.label) === -1) return false;
+                if (state.query && (card.dataset.search || '').indexOf(state.query) === -1) return false;
+                return true;
+            }
+
+            function apply() {
+                var filtering = !!(state.room || state.label || state.query);
+                var visible = 0;
+
+                cards.forEach(function (card) {
+                    // Breaks and ceremonies are landmarks, not results: keep them while
+                    // browsing unfiltered, drop them once a filter narrows the day.
+                    var show = card.hasAttribute('data-service') ? !filtering : matches(card);
+                    card.hidden = !show;
+                    if (show && !card.hasAttribute('data-service')) visible++;
+                });
+
+                rows.forEach(function (row) {
+                    var shown = row.querySelectorAll('[data-session]:not([hidden])').length;
+                    row.hidden = shown === 0;
+                });
+
+                // With a single room selected the column headings are noise.
+                if (header) header.hidden = !!state.room;
+                if (empty) empty.hidden = visible > 0;
+            }
+
+            bar.addEventListener('click', function (event) {
+                var pill = event.target.closest('[data-filter-room], [data-filter-label]');
+                if (!pill) return;
+                var key = pill.hasAttribute('data-filter-room') ? 'room' : 'label';
+                var group = key === 'room' ? '[data-filter-room]' : '[data-filter-label]';
+                state[key] = pill.dataset[key === 'room' ? 'filterRoom' : 'filterLabel'];
+                bar.querySelectorAll(group).forEach(function (other) {
+                    other.classList.toggle('filter-pill--active', other === pill);
+                });
+                apply();
+            });
+
+            if (search) {
+                search.addEventListener('input', function () {
+                    state.query = search.value.trim().toLowerCase();
+                    apply();
+                });
+            }
+
+            // "Happening now" only means anything on the event date itself.
+            function refreshLive() {
+                var now = new Date();
+                var live = null;
+                cards.forEach(function (card) {
+                    var starts = new Date(card.dataset.start);
+                    var ends = new Date(card.dataset.end);
+                    var isLive = now >= starts && now < ends;
+                    card.classList.toggle('session-card--live', isLive);
+                    var badge = card.querySelector('.session-chip--live');
+                    if (isLive && !badge) {
+                        badge = document.createElement('span');
+                        badge.className = 'session-chip session-chip--live';
+                        badge.textContent = bar.dataset.liveLabel;
+                        card.querySelector('.session-card__meta').prepend(badge);
+                    } else if (!isLive && badge) {
+                        badge.remove();
+                    }
+                    if (isLive && !live) live = card;
+                });
+                if (nowButton) nowButton.hidden = !live;
+                return live;
+            }
+
+            if (nowButton) {
+                nowButton.addEventListener('click', function () {
+                    var live = refreshLive();
+                    if (live) live.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            }
+
+            apply();
+            refreshLive();
+            setInterval(refreshLive, 60000);
+        })();
+    </script>
 {{- end }}

@@ -1,0 +1,51 @@
+{{- /* Topic labels for a session, max 3, most relevant first.
+
+       Sessionize returns an empty `categories` array for this event, so labels are
+       derived from the title and description. A hit in the title scores 10, in the
+       description 1, so "Platform Engineering in Emerging Markets" leads with
+       Platform Engineering instead of whatever its abstract happens to mention.
+
+       ponytail: keyword table, not a classifier. If Sessionize ever gets a real
+       Track category, read that instead and delete this.
+
+       Expects: title, description. Returns a slice of i18n keys (session_label.*). */}}
+
+{{- $rules := slice
+    (dict "key" "kubernetes" "words" (slice "kubernetes" "k8s" " pod" "helm" "cluster"))
+    (dict "key" "ai" "words" (slice "inteligencia artificial" "ia " " ia" "ai " "agente" "agentic" "llm" "machine learning" "copilot"))
+    (dict "key" "security" "words" (slice "segurid" "security" "vulnerab" "ofensiv" "supply chain" "breach" "isolated" "hacker" "exploit" "pentest"))
+    (dict "key" "containers" "words" (slice "contenedor" "container" "docker" "imagen base" "base image"))
+    (dict "key" "cloud" "words" (slice "cloud" "aws" "azure" "gcp" " ecs" "nube" "multi-region"))
+    (dict "key" "devops" "words" (slice "devops" "ci/cd" "pipeline" "despliegue" "deploy" "automatiz" "cloudformation" "infrastructure as code"))
+    (dict "key" "platform" "words" (slice "platform engineering" "developer platform" "internal developer"))
+    (dict "key" "architecture" "words" (slice "arquitect" "architect" "microservic" "infraestructura" "infrastructure"))
+    (dict "key" "data" "words" (slice "datos" "data " "database"))
+    (dict "key" "career" "words" (slice "carrera" "career" "open source" "soft skill" "comunidad" "ascend" "mentor" "futuro del trabajo" "future of work"))
+    (dict "key" "observability" "words" (slice "observab" "monitor" "mttr" "remediaci" "sre"))
+}}
+
+{{- $title := lower (.title | default "") }}
+{{- $description := lower (.description | default "" | plainify) }}
+{{- $scored := slice }}
+
+{{- range $rules }}
+    {{- $score := 0 }}
+    {{- $key := .key }}
+    {{- range .words }}
+        {{- if in $title . }}
+            {{- $score = add $score 10 }}
+        {{- else if in $description . }}
+            {{- $score = add $score 1 }}
+        {{- end }}
+    {{- end }}
+    {{- if gt $score 0 }}
+        {{- $scored = $scored | append (dict "key" $key "score" $score) }}
+    {{- end }}
+{{- end }}
+
+{{- $labels := slice }}
+{{- range first 3 (sort $scored "score" "desc") }}
+    {{- $labels = $labels | append .key }}
+{{- end }}
+
+{{- return $labels }}

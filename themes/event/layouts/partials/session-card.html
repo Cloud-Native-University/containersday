@@ -37,7 +37,24 @@
 
 {{- $hasDetail := and (not $isService) $session.description }}
 
-<article class="session-card{{ if $isBreak }} session-card--break{{ else if $isService }} session-card--ceremony{{ end }}">
+{{- $labels := slice }}
+{{- if not $isService }}
+    {{- $labels = partial "session-labels.html" (dict "title" $session.title "description" $session.description) }}
+{{- end }}
+
+{{- /* Lower-cased haystack for the search box: title, speakers, room, labels. */}}
+{{- $searchTerms := slice $session.title $session.room }}
+{{- range $speakers }}{{ $searchTerms = $searchTerms | append .name }}{{ end }}
+{{- range $labels }}{{ $searchTerms = $searchTerms | append (T (printf "session_label.%s" .)) }}{{ end }}
+
+<article class="session-card{{ if $isBreak }} session-card--break{{ else if $isService }} session-card--ceremony{{ end }}"
+    data-session
+    {{- if $isService }} data-service{{ end }}
+    data-room="{{ $session.room }}"
+    data-labels="{{ delimit $labels "|" }}"
+    data-start="{{ $session.startsAt }}"
+    data-end="{{ $session.endsAt }}"
+    data-search="{{ lower (delimit $searchTerms " ") }}">
     <div class="session-card__meta">
         {{- if $input.showDate }}
             <span class="session-chip session-chip--date">
@@ -100,6 +117,14 @@
         <a class="session-card__agenda-link" href="{{ $input.agendaUrl }}">
             {{ T "sessions_page.view_in_agenda" }} <i class="fas fa-arrow-right" aria-hidden="true"></i>
         </a>
+    {{- end }}
+
+    {{- with $labels }}
+        <ul class="session-card__labels">
+            {{- range . }}
+                <li class="session-label">{{ T (printf "session_label.%s" .) }}</li>
+            {{- end }}
+        </ul>
     {{- end }}
 </article>
 
