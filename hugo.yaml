@@ -22,30 +22,42 @@ languages:
                         El campus se encuentra a unos 15 minutos en taxi desde el aeropuerto siguiendo la Autopista Duarte hacia el este y luego tomando la Av. Hispanoamericana.
         menus:
             main:
+                - identifier: sessions
+                  name: 'Agenda'
+                  pageRef: /sessions
+                  weight: 25
+                  params:
+                      primary: true
                 - identifier: speakers
                   name: 'Ponentes'
                   pageRef: /speakers
                   weight: 30
-                - identifier: organizers
-                  name: 'Organizadores'
-                  pageRef: /organizers
+                  params:
+                      primary: true
+                - identifier: sponsors
+                  name: 'Patrocinadores'
+                  pageRef: /sponsors
                   weight: 35
-                - identifier: volunteers
-                  name: 'Voluntarios'
-                  pageRef: /volunteers
-                  weight: 37
+                  params:
+                      primary: true
                 - identifier: venue
                   name: 'Sede'
                   pageRef: /venue
                   weight: 40
+                  params:
+                      primary: true
+                - identifier: organizers
+                  name: 'Organizadores'
+                  pageRef: /organizers
+                  weight: 60
+                - identifier: volunteers
+                  name: 'Voluntarios'
+                  pageRef: /volunteers
+                  weight: 65
                 - identifier: tourism
                   name: 'Turismo Tropical'
                   pageRef: /tourism
-                  weight: 45
-                - identifier: sponsors
-                  name: 'Patrocinadores'
-                  pageRef: /sponsors
-                  weight: 50
+                  weight: 70
     en:
         disabled: false
         languageName: 'English'
@@ -64,30 +76,42 @@ languages:
                         The campus is approximately a 15-minute taxi ride from the airport. Follow the Duarte Highway west and exit onto Av. Hispanoamericana.
         menus:
             main:
+                - identifier: sessions
+                  name: 'Schedule'
+                  pageRef: /sessions
+                  weight: 25
+                  params:
+                      primary: true
                 - identifier: speakers
                   name: 'Speakers'
                   pageRef: /speakers
                   weight: 30
-                - identifier: organizers
-                  name: 'Organizers'
-                  pageRef: /organizers
+                  params:
+                      primary: true
+                - identifier: sponsors
+                  name: 'Sponsors'
+                  pageRef: /sponsors
                   weight: 35
-                - identifier: volunteers
-                  name: 'Volunteer'
-                  pageRef: /volunteers
-                  weight: 37
+                  params:
+                      primary: true
                 - identifier: venue
                   name: 'Venue'
                   pageRef: /venue
                   weight: 40
+                  params:
+                      primary: true
+                - identifier: organizers
+                  name: 'Organizers'
+                  pageRef: /organizers
+                  weight: 60
+                - identifier: volunteers
+                  name: 'Volunteer'
+                  pageRef: /volunteers
+                  weight: 65
                 - identifier: tourism
                   name: 'Tropical Tourism'
                   pageRef: /tourism
-                  weight: 45
-                - identifier: sponsors
-                  name: 'Sponsors'
-                  pageRef: /sponsors
-                  weight: 50
+                  weight: 70
 
 params:
     images:
@@ -115,8 +139,10 @@ params:
                 url: 'https://cap.uapa.edu.do/producto/containers-day-2026/'
                 other:
                     url: 'https://cap.uapa.edu.do/producto/containers-day-2026/'
+            # CFP closed: leave `url` empty to hide every "Ser Orador" CTA and the CFP banner.
+            # Restore the URL to reopen it.
             callToActionSecondary:
-                url: 'https://sessionize.com/containers-days-dr/'
+                url: ''
                 label: 'Ser Orador'
             socialLinks:
                 xUrl: https://x.com/containerslatam

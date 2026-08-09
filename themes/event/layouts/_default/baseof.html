@@ -273,7 +273,7 @@
         .site-header__nav {
             display: flex;
             align-items: center;
-            gap: 32px;
+            gap: clamp(16px, 2.2vw, 32px);
             list-style: none;
             margin: 0;
             padding: 0;
@@ -614,7 +614,12 @@
             line-height: 1.6;
         }
 
-        @media (max-width: 991px) {
+        /* Below 1100px the two CTAs squeeze the nav; keep only Tickets. */
+        @media (max-width: 1100px) {
+            .site-header__actions .btn-pill-outline { display: none; }
+        }
+
+        @media (max-width: 1024px) {
             .site-topbar { display: none; }
             .site-header { display: none; }
             .mobile-header { display: flex; }
@@ -669,14 +674,17 @@
             </a>
             <nav aria-label="{{ T "main_menu.label" }}">
                 <ul class="site-header__nav">
-                    <li><a href="{{ site.Home.RelPermalink }}" {{ if .IsHome }}class="active"{{ end }}>{{ T "cd_home" }}</a></li>
                     {{ range .Site.Menus.main }}
-                        <li><a href="{{ .URL }}" {{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}class="active"{{ end }}>{{ .Name }}</a></li>
+                        {{ if .Params.primary }}
+                            <li><a href="{{ .URL }}" {{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}class="active"{{ end }}>{{ .Name }}</a></li>
+                        {{ end }}
                     {{ end }}
                 </ul>
             </nav>
             <div class="site-header__actions">
-                <span class="btn-pill btn-pill-disabled" title="Convocatoria de oradores cerrada">{{ T "cd_become_speaker" }} (Cerrado)</span>
+                {{ with .Site.Params.themes.event.callToActionSecondary.url }}
+                    <a href="{{ . }}" class="btn-pill btn-pill-outline" target="_blank">{{ T "cd_become_speaker" }}</a>
+                {{ end }}
                 <a href="{{ .Site.Params.themes.event.callToAction.url }}" class="btn-pill btn-pill-primary" target="_blank">{{ T "cd_tickets" }} <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
@@ -705,7 +713,9 @@
         <div class="offcanvas-body mobile-menu__body">
             <div class="mobile-menu__ctas">
                 <a href="{{ .Site.Params.themes.event.callToAction.url }}" class="btn-pill btn-pill-primary" target="_blank" rel="noopener noreferrer">{{ T "cd_tickets" }}</a>
-                <span class="btn-pill btn-pill-disabled" title="Convocatoria de oradores cerrada">{{ T "cd_become_speaker" }} (Cerrado)</span>
+                {{ with .Site.Params.themes.event.callToActionSecondary.url }}
+                    <a href="{{ . }}" class="btn-pill btn-pill-outline-light" target="_blank" rel="noopener noreferrer">{{ T "cd_become_speaker" }}</a>
+                {{ end }}
             </div>
 
             <div class="mobile-menu__lang">
@@ -734,7 +744,12 @@
 
     <footer class="site-footer">
         <div class="site-footer__links">
-            <a href="/code-of-conduct">{{ T "cd_code_of_conduct" }}</a>
+            {{ range .Site.Menus.main }}
+                {{ if not .Params.primary }}
+                    <a href="{{ .URL }}">{{ .Name }}</a>
+                {{ end }}
+            {{ end }}
+            <a href="{{ "code-of-conduct" | relLangURL }}">{{ T "cd_code_of_conduct" }}</a>
             <a href="{{ .Site.Params.themes.event.socialLinks.xUrl }}" target="_blank">X / Twitter</a>
             <a href="{{ .Site.Params.themes.event.socialLinks.linkedinUrl }}" target="_blank">LinkedIn</a>
         </div>

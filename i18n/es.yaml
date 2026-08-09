@@ -384,6 +384,23 @@ cd_event_date:
 cd_event_location_label:
     other: 'Ubicación'
 
+sessions_page.heading: 'Agenda'
+sessions_page.day: 'Día {{ . }}'
+sessions_page.heading_day_filter: 'Fecha'
+sessions_page.heading_track_filter: 'Track'
+sessions_page.speaker: 'Ponente'
+sessions_page.room: 'Salón'
+sessions_page.read_more: 'ver más'
+sessions_page.heading_time: 'Hora'
+sessions_page.grid_hint: 'Desde la 1:00 PM la agenda se divide en salones paralelos. Haz clic en una sesión para ver su descripción.'
+sessions_page.description_toggle: 'Ver descripción'
+sessions_page.break: 'Receso'
+sessions_page.general: 'General'
+sessions_page.subject_to_change: 'Agenda preliminar: los horarios, salones y sesiones pueden cambiar sin previo aviso.'
+sessions_page.plenary: 'Plenaria'
+sessions_page.heading_no_sessions: 'Aún no hay sesiones programadas'
+sessions_page.heading_come_back_soon: 'Vuelve pronto o síguenos en redes sociales'
+
 coming_soon.agenda.heading: 'Próximamente'
 coming_soon.agenda.message: 'La agenda completa está siendo curada con charlas y talleres de expertos. ¡Mantente atento!'
 coming_soon.speakers.heading: 'Próximamente'

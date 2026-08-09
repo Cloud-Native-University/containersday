@@ -386,6 +386,14 @@ countdown.minutes:
 countdown.seconds:
     other: 'Sec'
 
+sessions_page.heading_time: 'Time'
+sessions_page.grid_hint: 'From 1:00 PM the schedule splits into parallel rooms. Click a session to read its description.'
+sessions_page.description_toggle: 'View description'
+sessions_page.break: 'Break'
+sessions_page.general: 'General'
+sessions_page.subject_to_change: 'Preliminary schedule: times, rooms and sessions are subject to change without notice.'
+sessions_page.plenary: 'Plenary'
+
 coming_soon.agenda.heading: 'Coming Soon'
 coming_soon.agenda.message: 'The full schedule is being curated with expert talks and workshops. Stay tuned!'
 coming_soon.speakers.heading: 'Coming Soon'

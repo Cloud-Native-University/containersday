@@ -1,0 +1,11 @@
+{{ $input := . }}
+{{ $data := slice }}
+
+{{ $url := printf "https://sessionize.com/api/v2/%s/view/GridSmart" $input.sessionizeId }}
+{{ with resources.GetRemote $url }}
+    {{ $data = . | transform.Unmarshal }}
+{{ else }}
+    {{ errorf "Unable to get remote resource %s" $url }}
+{{ end }}
+
+{{ return $data }}
