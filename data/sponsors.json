@@ -42,6 +42,20 @@
         "tier": "gold"
     },
     {
+        "logo": "logos/flypack.png",
+        "url": "https://flypack.com.do/",
+        "name": "Flypack Courier",
+        "description": "Servicios de transporte de paquetería y courier internacional.",
+        "tier": "gold"
+    },
+    {
+        "logo": "logos/importadex.png",
+        "url": "https://importadex.com/",
+        "name": "Importadex",
+        "description": "Soluciones de logística, importación y transporte de carga.",
+        "tier": "gold"
+    },
+    {
         "logo": "logos/innmotrix.png",
         "url": "https://innmotrix.com/",
         "name": "Innmotrix",
