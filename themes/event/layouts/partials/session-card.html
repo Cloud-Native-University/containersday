@@ -9,19 +9,45 @@
 {{- range slice "lunch" "almuerzo" "break" "receso" "coffee" "café" "pausa" "descanso" }}
     {{- if in $lowerTitle . }}{{ $isBreak = true }}{{ end }}
 {{- end }}
-{{- $starts := $session.startsAt | time.AsTime }}
-{{- $ends := $session.endsAt | time.AsTime }}
 
-{{- $sessionPage := "" }}
-{{- with where $input.sessionPages "Params.sessionId" $session.id | first 1 }}
-    {{- $sessionPage = index . 0 }}
+{{- $starts := ($session.startsAt | time.AsTime).Format "15:04" }}
+{{- $ends := ($session.endsAt | time.AsTime).Format "15:04" }}
+
+{{- /* Resolve each speaker to their bio page and avatar once, reused by card and modal. */}}
+{{- $speakers := slice }}
+{{- range $session.speakers }}
+    {{- $profileUrl := "" }}
+    {{- $avatarUrl := "" }}
+    {{- with where $input.speakerPages "Params.speakerId" .id | first 1 }}
+        {{- $page := index . 0 }}
+        {{- $profileUrl = $page.RelPermalink }}
+        {{- with $page.Resources.GetMatch "avatar.*" }}
+            {{- with images.Filter (images.Process "resize 128x") . }}
+                {{- $avatarUrl = .RelPermalink }}
+            {{- end }}
+        {{- end }}
+    {{- end }}
+    {{- if not $avatarUrl }}
+        {{- with resources.Get "images/avatar-image-fallback.webp" }}
+            {{- $avatarUrl = .RelPermalink }}
+        {{- end }}
+    {{- end }}
+    {{- $speakers = $speakers | append (dict "name" .name "profileUrl" $profileUrl "avatarUrl" $avatarUrl) }}
 {{- end }}
+
+{{- $hasDetail := and (not $isService) $session.description }}
 
 <article class="session-card{{ if $isBreak }} session-card--break{{ else if $isService }} session-card--ceremony{{ end }}">
     <div class="session-card__meta">
+        {{- if $input.showDate }}
+            <span class="session-chip session-chip--date">
+                <i class="far fa-calendar" aria-hidden="true"></i>
+                {{ $session.startsAt | time.AsTime | time.Format ":date_medium" }}
+            </span>
+        {{- end }}
         <span class="session-chip session-chip--time">
             <i class="far fa-clock" aria-hidden="true"></i>
-            {{ $starts.Format "15:04" }}&ndash;{{ $ends.Format "15:04" }}
+            {{ $starts }}&ndash;{{ $ends }}
         </span>
         {{- with $session.room }}
             <span class="session-chip session-chip--room">
@@ -36,50 +62,32 @@
         {{- else if $session.isPlenumSession }}
             <span class="session-chip session-chip--plenary">{{ T "sessions_page.plenary" }}</span>
         {{- end }}
-        {{- range $session.categories }}
-            {{- range .categoryItems }}
-                <span class="session-chip session-chip--track">{{ .name }}</span>
-            {{- end }}
-        {{- end }}
     </div>
 
     <h3 class="session-card__title">
-        {{- if $sessionPage }}
-            <a href="{{ $sessionPage.RelPermalink }}">{{ $session.title }}</a>
+        {{- if $hasDetail }}
+            {{- /* Button, not a link: the detail lives in a popup, not on its own page.
+                   ::after stretches it over the whole card so anywhere is clickable. */}}
+            <button type="button" class="session-card__trigger" data-session-modal="session-modal-{{ $session.id }}">
+                {{ $session.title }}
+            </button>
         {{- else }}
             {{ $session.title }}
         {{- end }}
     </h3>
 
-    {{- with $session.speakers }}
+    {{- with (and (not $input.hideSpeakers) $speakers) }}
         <ul class="session-card__speakers">
             {{- range . }}
-                {{- $speakerPage := "" }}
-                {{- with where $input.speakerPages "Params.speakerId" .id | first 1 }}
-                    {{- $speakerPage = index . 0 }}
-                {{- end }}
-                {{- $avatarUrl := "" }}
-                {{- with $speakerPage }}
-                    {{- with .Resources.GetMatch "avatar.*" }}
-                        {{- with images.Filter (images.Process "resize 128x") . }}
-                            {{- $avatarUrl = .RelPermalink }}
-                        {{- end }}
-                    {{- end }}
-                {{- end }}
-                {{- if not $avatarUrl }}
-                    {{- with resources.Get "images/avatar-image-fallback.webp" }}
-                        {{- $avatarUrl = .RelPermalink }}
-                    {{- end }}
-                {{- end }}
                 <li class="session-card__speaker">
-                    {{- if $speakerPage }}
-                        <a class="session-card__speaker-link" href="{{ $speakerPage.RelPermalink }}">
-                            <img class="session-card__avatar" src="{{ $avatarUrl }}" alt="{{ .name }}" width="44" height="44" loading="lazy" />
+                    {{- if .profileUrl }}
+                        <a class="session-card__speaker-link" href="{{ .profileUrl }}">
+                            <img class="session-card__avatar" src="{{ .avatarUrl }}" alt="{{ .name }}" width="44" height="44" loading="lazy" />
                             <span>{{ .name }}</span>
                         </a>
                     {{- else }}
                         <span class="session-card__speaker-link">
-                            <img class="session-card__avatar" src="{{ $avatarUrl }}" alt="{{ .name }}" width="44" height="44" loading="lazy" />
+                            <img class="session-card__avatar" src="{{ .avatarUrl }}" alt="{{ .name }}" width="44" height="44" loading="lazy" />
                             <span>{{ .name }}</span>
                         </span>
                     {{- end }}
@@ -88,10 +96,21 @@
         </ul>
     {{- end }}
 
-    {{- with $session.description }}
-        <details class="session-card__details">
-            <summary>{{ T "sessions_page.description_toggle" }}</summary>
-            <div class="session-card__description">{{ . | markdownify }}</div>
-        </details>
+    {{- if $input.agendaUrl }}
+        <a class="session-card__agenda-link" href="{{ $input.agendaUrl }}">
+            {{ T "sessions_page.view_in_agenda" }} <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
     {{- end }}
 </article>
+
+{{- if $hasDetail }}
+    {{- partial "session-modal.html" (dict
+        "id" $session.id
+        "title" $session.title
+        "startsAt" $starts
+        "ends" $ends
+        "endsAt" $ends
+        "room" $session.room
+        "description" $session.description
+        "speakers" $speakers) }}
+{{- end }}

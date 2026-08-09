@@ -42,3 +42,10 @@
 .speaker-sessions-section__hashtag {
     font-weight: 900;
 }
+
+.speaker-sessions-section__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+}

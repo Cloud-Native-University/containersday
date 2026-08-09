@@ -391,6 +391,9 @@ sessions_page.grid_hint: 'From 1:00 PM the schedule splits into parallel rooms. 
 sessions_page.description_toggle: 'View description'
 sessions_page.break: 'Break'
 sessions_page.general: 'General'
+sessions_page.close: 'Close'
+sessions_page.view_profile: 'View profile'
+sessions_page.view_in_agenda: 'View in schedule'
 sessions_page.subject_to_change: 'Preliminary schedule: times, rooms and sessions are subject to change without notice.'
 sessions_page.plenary: 'Plenary'
 

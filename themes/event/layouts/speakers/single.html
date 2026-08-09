@@ -35,23 +35,29 @@
             </div>
         </section>
 
-        {{- $hasScheduledSessions := gt (len (where (where $.Site.RegularPages "Section" "sessions") "Params.isScheduled" true)) 0 }}
-        {{- if $hasScheduledSessions }}
-            {{- $speakerSessions := slice }}
-            {{ range where .Site.RegularPages "Section" "sessions" }}
-                {{ if in .Params.speakerIds page.Params.speakerId }}
-                    {{- $speakerSessions = $speakerSessions | append (
-                        dict
-                        "title" .Title
-                        "track" .Params.track
-                        "startsAt" .Params.startsAt
-                        "room" .Params.room.name
-                        "sessionUrl" .RelPermalink
-                        )
-                    }}
-                {{ end }}
-            {{ end }}
+        {{- /* Sessions come straight from the Sessionize payload stored on this page
+               by the speaker content adapter; there are no session pages any more,
+               each card opens the same popup the agenda uses. */}}
+        {{- /* Times and rooms come from GridSmart, the same feed the agenda renders,
+               so a session never shows one slot here and a different one there
+               (/view/all carries the submitted duration, not the scheduled one). */}}
+        {{- $scheduled := dict }}
+        {{- with .Site.Params.themes.event.sessionizeId }}
+            {{- range partialCached "sessionize-api/view-grid-smart.html" (dict "sessionizeId" .) }}
+                {{- range .timeSlots }}
+                    {{- range .rooms }}
+                        {{- $scheduled = merge $scheduled (dict (string .session.id) .session) }}
+                    {{- end }}
+                {{- end }}
+            {{- end }}
+        {{- end }}
+        {{- $speakerPages := where .Site.Pages "Section" "speakers" }}
+        {{- $agendaUrl := "" }}
+        {{- with .Site.GetPage "/sessions" }}
+            {{- $agendaUrl = .RelPermalink }}
+        {{- end }}
 
+        {{- with page.Params.sessions }}
             <div class="section-container section-container--dimmed">
                 <section class="section speaker-sessions-section">
                     <h1 class="h1 speaker-sessions-section__heading">
@@ -62,12 +68,35 @@
                             {{- partial "elements/hashtag.html" (dict "hashtag" $hashtag "keepCase" $keepCase) }}
                         </span>
                     </h1>
-                    {{- partial "sessions-menu.html" (
-                        dict
-                        "title" page.Title
-                        "sessions" $speakerSessions
-                        )
-                    }}
+                    <div class="speaker-sessions-section__cards">
+                        {{- range . }}
+                            {{- $session := . }}
+                            {{- $starts := .startsAt }}
+                            {{- $ends := .endsAt }}
+                            {{- $roomName := "" }}
+                            {{- $slot := index $scheduled (string .id) }}
+                            {{- if $slot }}
+                                {{- $starts = $slot.startsAt }}
+                                {{- $ends = $slot.endsAt }}
+                                {{- $roomName = $slot.room }}
+                            {{- end }}
+                            {{- partial "session-card.html" (dict
+                                "session" (dict
+                                    "id" $session.id
+                                    "title" $session.title
+                                    "description" $session.description
+                                    "startsAt" $starts
+                                    "endsAt" $ends
+                                    "room" $roomName
+                                    "isServiceSession" $session.isServiceSession
+                                    "isPlenumSession" false
+                                    "speakers" (slice (dict "id" page.Params.speakerId "name" page.Title)))
+                                "speakerPages" $speakerPages
+                                "showDate" true
+                                "hideSpeakers" true
+                                "agendaUrl" ($agendaUrl | default "")) }}
+                        {{- end }}
+                    </div>
                 </section>
             </div>
         {{- end }}

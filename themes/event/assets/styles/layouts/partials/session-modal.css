@@ -1,0 +1,312 @@
+/* Session detail popup and the chips shared by cards and popup.
+   Lives here (not in a page <style>) because the agenda and the speaker pages
+   both render sessions. */
+
+.session-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #eef2f7;
+    color: #33475b;
+}
+
+.session-chip i {
+    font-size: 0.7rem;
+}
+
+.session-chip--time {
+    background: #1a2a36;
+    color: #fff;
+}
+
+.session-chip--track,
+.session-chip--ceremony {
+    background: rgba(35, 120, 176, 0.12);
+    color: #17567f;
+}
+
+.session-chip--plenary {
+    background: #fdf1d8;
+    color: #7a5510;
+}
+
+.session-modal {
+    width: min(680px, calc(100vw - 32px));
+    max-height: min(85vh, 900px);
+    padding: 0;
+    border: 0;
+    border-radius: 16px;
+    /* Light surface, so it sets its own text colour instead of inheriting the
+       light body text. See the contrast rule in AGENTS.md. */
+    background: #fff;
+    color: var(--text-dark, #1a2a36);
+    box-shadow: 0 24px 60px rgba(10, 17, 40, 0.35);
+    overflow: hidden;
+}
+
+.session-modal::backdrop {
+    background: rgba(10, 17, 40, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+.session-modal__close-form {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px 12px 0;
+    background: #fff;
+    z-index: 1;
+}
+
+.session-modal__close {
+    all: unset;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #33475b;
+    background: #eef2f7;
+}
+
+.session-modal__close:hover {
+    background: #dbe3ec;
+}
+
+.session-modal__close:focus-visible {
+    outline: 3px solid var(--accent, #2378b0);
+    outline-offset: 2px;
+}
+
+.session-modal__body {
+    padding: 8px 28px 28px;
+    overflow-y: auto;
+    max-height: calc(85vh - 60px);
+}
+
+.session-modal__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.session-modal__title {
+    font-family: var(--font-display, inherit);
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--text-dark, #1a2a36);
+    margin: 0 0 18px;
+}
+
+.session-modal__speakers {
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.session-modal__speaker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #33475b;
+}
+
+.session-modal__speaker img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(10, 17, 40, 0.2);
+}
+
+.session-modal__speaker strong {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-dark, #1a2a36);
+}
+
+.session-modal__speaker small {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent, #2378b0);
+}
+
+a.session-modal__speaker:hover strong {
+    color: var(--accent, #2378b0);
+    text-decoration: underline;
+}
+
+a.session-modal__speaker:focus-visible {
+    outline: 3px solid var(--accent, #2378b0);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+.session-modal__description {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: #33475b;
+}
+
+.session-modal__description p {
+    margin: 0 0 12px;
+}
+
+@media (max-width: 576px) {
+    .session-modal__body {
+        padding: 8px 18px 22px;
+    }
+}
+
+/* Cards */
+.session-card {
+    background: #fff;
+    border: 1px solid #dbe3ec;
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.session-card:hover {
+    border-color: var(--accent, #2378b0);
+    box-shadow: 0 6px 18px rgba(35, 120, 176, 0.12);
+}
+.session-card--break {
+    background: #eef2f7;
+    border-style: dashed;
+    border-color: #c7d3e0;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.session-card--ceremony {
+    background: #f4f8fc;
+    border-color: #c3d6e8;
+    border-left: 4px solid var(--accent, #2378b0);
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.session-card--break .session-card__title,
+.session-card--ceremony .session-card__title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
+}
+
+.session-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.session-card__title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text-dark, #1a2a36);
+    margin: 0;
+}
+.session-card__title a {
+    color: inherit;
+    text-decoration: none;
+}
+.session-card__title a:hover { color: var(--accent, #2378b0); text-decoration: underline; }
+
+.session-card__speakers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+.session-card__speaker-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #33475b;
+    text-decoration: none;
+}
+a.session-card__speaker-link:hover { color: var(--accent, #2378b0); text-decoration: underline; }
+.session-card__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 6px rgba(10, 17, 40, 0.18);
+}
+
+/* The title is a button; its ::after covers the card so the whole card opens
+   the popup, while the speaker links stay clickable above it. */
+.session-card { position: relative; }
+.session-card__trigger {
+    all: unset;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+}
+.session-card__trigger::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+.session-card__trigger:hover { color: var(--accent, #2378b0); text-decoration: underline; }
+.session-card__speaker { position: relative; z-index: 1; }
+
+.session-card a:focus-visible,
+.session-card__trigger:focus-visible {
+    outline: 3px solid var(--accent, #2378b0);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.session-chip--date {
+    background: rgba(35, 120, 176, 0.12);
+    color: #17567f;
+}
+
+.session-card__agenda-link {
+    position: relative;
+    z-index: 1;
+    align-self: flex-start;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent, #2378b0);
+    text-decoration: none;
+}
+
+.session-card__agenda-link:hover {
+    text-decoration: underline;
+}

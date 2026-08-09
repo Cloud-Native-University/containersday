@@ -73,6 +73,9 @@ html {
 /* An non-attention-capturing section container. */
 .section-container--dimmed {
     background-color: var(--color-secondary);
+    /* Light background, so override the light body text or everything inside
+       (session titles, times) inherits white on near-white. */
+    color: var(--color-primary-darkest);
 }
 
 .section {

@@ -1,0 +1,53 @@
+{{- /* Session detail popup. Replaces the old /sessions/<slug>/ page.
+       Expects: id, title, startsAt, endsAt, room, description, speakers
+       (slice of dicts: name, profileUrl, avatarUrl), isBreak. */}}
+{{- $input := . }}
+
+<dialog class="session-modal" id="session-modal-{{ $input.id }}" aria-labelledby="session-modal-title-{{ $input.id }}">
+    <form method="dialog" class="session-modal__close-form">
+        <button class="session-modal__close" value="close" aria-label="{{ T "sessions_page.close" }}">&times;</button>
+    </form>
+
+    <div class="session-modal__body">
+        <div class="session-modal__meta">
+            <span class="session-chip session-chip--time">
+                <i class="far fa-clock" aria-hidden="true"></i>
+                {{ $input.startsAt }}&ndash;{{ $input.endsAt }}
+            </span>
+            {{- with $input.room }}
+                <span class="session-chip session-chip--room">
+                    <i class="fas fa-location-dot" aria-hidden="true"></i>{{ . }}
+                </span>
+            {{- end }}
+        </div>
+
+        <h2 class="session-modal__title" id="session-modal-title-{{ $input.id }}">{{ $input.title }}</h2>
+
+        {{- with $input.speakers }}
+            <ul class="session-modal__speakers">
+                {{- range . }}
+                    <li>
+                        {{- if .profileUrl }}
+                            <a class="session-modal__speaker" href="{{ .profileUrl }}">
+                                <img src="{{ .avatarUrl }}" alt="{{ .name }}" width="56" height="56" loading="lazy" />
+                                <span>
+                                    <strong>{{ .name }}</strong>
+                                    <small>{{ T "sessions_page.view_profile" }}</small>
+                                </span>
+                            </a>
+                        {{- else }}
+                            <span class="session-modal__speaker">
+                                <img src="{{ .avatarUrl }}" alt="{{ .name }}" width="56" height="56" loading="lazy" />
+                                <span><strong>{{ .name }}</strong></span>
+                            </span>
+                        {{- end }}
+                    </li>
+                {{- end }}
+            </ul>
+        {{- end }}
+
+        {{- with $input.description }}
+            <div class="session-modal__description">{{ . | markdownify }}</div>
+        {{- end }}
+    </div>
+</dialog>

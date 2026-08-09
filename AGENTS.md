@@ -4,6 +4,21 @@ This file documents how to maintain the organizers, volunteers, and sponsors con
 
 After any change below, verify with `make serve` and check both the Spanish page and its `/en/...` counterpart.
 
+## Contrast rule (applies to every template and stylesheet)
+
+**Light background → dark text. Dark background → light text.** Never leave it to inheritance.
+
+`body` is dark navy (`--bg-dark`) with light text (`rgba(255,255,255,0.8)`), so *any* element that paints a light background must also set its own `color`, or its contents inherit white-on-white. This has already caused two rounds of unreadable text (`.section-container--dimmed`, the agenda `.schedule` section).
+
+Whenever you add a `background`/`background-color`:
+
+- Light surface → set `color: var(--text-dark)` (or `--color-primary-darkest` in legacy theme CSS). Secondary text: `--text-muted` / `#33475b`.
+- Dark surface → set `color: var(--text-light)` or white.
+- Set the pair **on the container**, not on each child — one declaration covers everything nested inside.
+- Watch for `all: unset` in the legacy theme CSS: it resets `color` to `inherit`, so those elements depend entirely on the container being correct.
+
+Target WCAG AA (4.5:1 for body text, 3:1 for large text). The site tokens already satisfy this: `--text-dark #1a2a36` (13.8:1 on white), `--text-muted #64748b` (4.8:1), `--accent #2378b0` (5.0:1). `--accent-light #5dade2` is **only 2.0:1 on white** — decorative use only, never text.
+
 ## Organizers
 
 Organizers are **data-driven** — `data/organizers.json` at the repo root, a single list shared by both languages, loaded in templates as `site.Data.organizers`. It's rendered as `.organizer-card` blocks by `themes/event/layouts/miscellaneous/organizers.html` on `/organizers` (and `/en/organizers`).

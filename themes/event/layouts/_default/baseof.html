@@ -757,6 +757,25 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Session detail popups (agenda + speaker pages). Native <dialog>: Esc and
+        // focus trapping come for free, so this only wires up open and click-outside.
+        document.addEventListener('click', function (event) {
+            var trigger = event.target.closest('[data-session-modal]');
+            if (trigger) {
+                var dialog = document.getElementById(trigger.dataset.sessionModal);
+                if (dialog && typeof dialog.showModal === 'function') {
+                    event.preventDefault();
+                    dialog.showModal();
+                }
+                return;
+            }
+            // A click landing on the dialog element itself is the backdrop, not the content.
+            if (event.target.tagName === 'DIALOG' && event.target.classList.contains('session-modal')) {
+                event.target.close();
+            }
+        });
+    </script>
     {{- partial "firebase-init.html" . -}}
 
     <script>
