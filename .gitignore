@@ -8,3 +8,6 @@ node_modules
 # Claude Code local settings and skill-sync lockfile — not site content
 .claude
 skills-lock.json
+
+# Agent skills synced into the repo — tooling, not site content
+.agents/skills/
