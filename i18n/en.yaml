@@ -331,7 +331,7 @@ countdown.seconds:
     other: 'Sec'
 
 sessions_page.heading_time: 'Time'
-sessions_page.grid_hint: 'From 1:00 PM the schedule splits into parallel rooms. Click a session to read its description.'
+sessions_page.grid_hint: "From 1:00 PM the schedule splits into parallel rooms. Each card's height reflects how long the session runs. Click a session to read its description."
 sessions_page.description_toggle: 'View description'
 sessions_page.break: 'Break'
 sessions_page.general: 'General'
@@ -359,6 +359,9 @@ session_label.career: 'Career'
 session_label.observability: 'Observability'
 sessions_page.subject_to_change: 'Preliminary schedule: times, rooms and sessions are subject to change without notice.'
 sessions_page.plenary: 'Plenary'
+sessions_page.type_keynote: 'Keynote'
+sessions_page.type_panel: 'Panel'
+sessions_page.duration_minutes: '{{ . }} min'
 
 coming_soon.agenda.heading: 'Coming Soon'
 coming_soon.agenda.message: 'The full schedule is being curated with expert talks and workshops. Stay tuned!'

@@ -7,6 +7,7 @@
 
     {{- $speakerPages := where .Site.Pages "Section" "speakers" }}
 
+
     <style>
         .schedule {
             /* Light section on a dark body, so it owns both background and text colour. */
@@ -14,7 +15,9 @@
             color: var(--text-dark);
             padding: 48px 0 72px;
         }
-        .schedule__day + .schedule__day { margin-top: 64px; }
+        .schedule__day + .schedule__day {
+            margin-top: 64px;
+        }
         .schedule__date {
             font-size: clamp(1.5rem, 3vw, 2.1rem);
             font-weight: 800;
@@ -29,7 +32,7 @@
 
         .schedule__notice {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 10px;
             background: #fdf1d8;
             color: #6b4a0d;
@@ -41,15 +44,54 @@
             margin-bottom: 28px;
         }
 
-        /* Grid rows: time rail + one column per room */
-        .slot-row {
+        /* One grid per day: time rail + one column per room, one row per time slot.
+           Cards are placed with grid-area, so a session that outruns its slot spans
+           the slots it covers instead of leaving a hole beside it. */
+        .day-grid {
             display: grid;
             grid-template-columns: 104px repeat(var(--cols, 1), minmax(0, 1fr));
+            /* A row is a time slot: every card gets the same height, and a session
+               that runs long spans the slots it covers. */
+            grid-auto-rows: auto;
             gap: 16px;
             align-items: stretch;
-            margin-bottom: 16px;
         }
-        .slot-row__time {
+        /* Every card fills its slot, breaks and lunch included: the block of time is
+           the point. Centre the content so a short entry isn't stranded at the top. */
+        .day-grid:not(.day-grid--flat) .session-card {
+            justify-content: center;
+        }
+
+        .day-grid {
+            position: relative;
+        }
+
+        /* Desktop grid only. A card that outgrows its row drags the whole row taller
+           and the day stops looking uniform, so inside the grid the card is capped:
+           topic labels drop (the topic filter still lists them) and the title clamps.
+           Full text is in the popup, and both come back in the flat list. */
+        @media (min-width: 901px) {
+            .day-grid:not(.day-grid--flat) .session-card__labels {
+                display: none;
+            }
+            .day-grid:not(.day-grid--flat) .session-card__title {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            /* Unbroken rule down the time rail, tying the slots together. */
+            .day-grid:not(.day-grid--flat)::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 112px;
+                width: 1px;
+                background: #dbe3ec;
+            }
+        }
+        .day-grid__time {
             font-weight: 800;
             font-size: 1rem;
             color: var(--text-dark);
@@ -57,17 +99,17 @@
             border-top: 2px solid var(--accent);
             white-space: nowrap;
         }
-        .slot-row__time small {
+
+        /* Filtering punches holes in a proportional grid, so a filtered day
+           collapses to the same plain list mobile already uses. */
+        .day-grid--flat {
             display: block;
-            font-weight: 600;
-            font-size: 0.8rem;
-            color: var(--text-muted);
         }
-        .slot-row--full > .session-card { grid-column: 2 / -1; }
-        .slot-row__empty {
-            border: 1px dashed #dbe3ec;
-            border-radius: 12px;
-            min-height: 60px;
+        .day-grid--flat > * {
+            margin-bottom: 16px;
+        }
+        .day-grid--flat .day-grid__time {
+            margin-top: 24px;
         }
 
         /* Room header, shown once the schedule splits into parallel rooms.
@@ -95,7 +137,9 @@
 
         /* The filter script toggles the hidden attribute, and display:flex/grid
            beats the browser default for [hidden]. */
-        .schedule [hidden] { display: none !important; }
+        .schedule [hidden] {
+            display: none !important;
+        }
 
         /* Filter bar. Offset by the sticky site header (73px) so its first row
            doesn't slide underneath; the header is hidden below 1024px. */
@@ -136,7 +180,9 @@
             color: #17567f;
             background: #fff;
         }
-        .filter-pill:hover { border-color: var(--accent); }
+        .filter-pill:hover {
+            border-color: var(--accent);
+        }
         .filter-pill--active {
             background: var(--accent);
             border-color: var(--accent);
@@ -153,7 +199,9 @@
             cursor: pointer;
             width: fit-content;
         }
-        .agenda-filters__topics[open] > .agenda-filters__row { margin-top: 8px; }
+        .agenda-filters__topics[open] > .agenda-filters__row {
+            margin-top: 8px;
+        }
         /* Keep a picked topic visible while collapsed. */
         .agenda-filters__topics:has(.filter-pill--active:not([data-filter-label=''])) > summary {
             color: var(--accent);
@@ -171,7 +219,9 @@
             background: #fff;
             color: var(--text-muted);
         }
-        .agenda-filters__search:focus-within { border-color: var(--accent); }
+        .agenda-filters__search:focus-within {
+            border-color: var(--accent);
+        }
         .agenda-filters__search input {
             all: unset;
             flex: 1;
@@ -192,7 +242,10 @@
             background: #0f7b45;
             color: #fff;
         }
-        .agenda-filters__now:focus-visible { outline: 3px solid #0f7b45; outline-offset: 2px; }
+        .agenda-filters__now:focus-visible {
+            outline: 3px solid #0f7b45;
+            outline-offset: 2px;
+        }
         .agenda-filters__pulse {
             width: 8px;
             height: 8px;
@@ -201,11 +254,18 @@
             animation: agenda-pulse 1.6s ease-in-out infinite;
         }
         @keyframes agenda-pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.25; }
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.25;
+            }
         }
         @media (prefers-reduced-motion: reduce) {
-            .agenda-filters__pulse { animation: none; }
+            .agenda-filters__pulse {
+                animation: none;
+            }
         }
 
         .agenda-filters__empty {
@@ -226,18 +286,27 @@
         }
 
         @media (max-width: 900px) {
-            .rooms-header { display: none; }
-            .agenda-filters { padding: 10px 0; top: 0; }
-            .agenda-filters__legend { width: 100%; margin-bottom: 2px; }
-            .slot-row {
-                grid-template-columns: 1fr;
-                gap: 10px;
-                margin-bottom: 24px;
+            .rooms-header {
+                display: none;
             }
-            .slot-row--full > .session-card { grid-column: auto; }
-            .slot-row__empty { display: none; }
-            .slot-row__time {
-                border-top: 2px solid var(--accent);
+            .agenda-filters {
+                padding: 10px 0;
+                top: 0;
+            }
+            .agenda-filters__legend {
+                width: 100%;
+                margin-bottom: 2px;
+            }
+            /* Spans mean nothing in one column: fall back to the flat list, which
+               reads chronologically because the markup is emitted in time order. */
+            .day-grid {
+                display: block;
+            }
+            .day-grid > * {
+                margin-bottom: 10px;
+            }
+            .day-grid__time {
+                margin-top: 24px;
                 padding-top: 10px;
             }
         }
@@ -255,13 +324,21 @@
                     <section class="schedule__day">
                         <h2 class="schedule__date">{{ $day.date | time.AsTime | time.Format ":date_long" }}</h2>
                         <p class="schedule__hint">{{ T "sessions_page.grid_hint" }}</p>
-                        <p class="schedule__notice" role="note">
+                        {{- /* "Preliminary" stops being true on the day itself. Checked in
+                            the browser, not at build time, so a stale build still
+                            drops it.
+                        */}}
+                        <p
+                            class="schedule__notice"
+                            role="note"
+                            data-preliminary-until="{{ printf "%sT00:00:00%s" $.Site.Params.themes.event.startDate ($.Site.Params.themes.event.utcOffset | default "-04:00") }}">
                             <i class="fas fa-triangle-exclamation" aria-hidden="true"></i>
                             {{ T "sessions_page.subject_to_change" }}
                         </p>
 
                         {{- /* Filters. Rooms and labels come from the feed, so an empty
-                               schedule renders no bar at all. */}}
+                            schedule renders no bar at all.
+                        */}}
                         {{- $allLabels := slice }}
                         {{- range $day.timeSlots }}
                             {{- range .rooms }}
@@ -273,11 +350,16 @@
                             {{- end }}
                         {{- end }}
 
+
                         <div class="agenda-filters" data-agenda-filters data-live-label="{{ T "sessions_page.live_now" }}">
                             <div class="agenda-filters__row">
                                 <label class="agenda-filters__search">
                                     <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
-                                    <input type="search" data-filter-search placeholder="{{ T "sessions_page.search_placeholder" }}" aria-label="{{ T "sessions_page.search_placeholder" }}" />
+                                    <input
+                                        type="search"
+                                        data-filter-search
+                                        placeholder="{{ T "sessions_page.search_placeholder" }}"
+                                        aria-label="{{ T "sessions_page.search_placeholder" }}" />
                                 </label>
                                 <button type="button" class="agenda-filters__now" data-jump-now hidden>
                                     <span class="agenda-filters__pulse" aria-hidden="true"></span>
@@ -287,7 +369,9 @@
 
                             <div class="agenda-filters__row">
                                 <span class="agenda-filters__legend">{{ T "sessions_page.filter_room" }}</span>
-                                <button type="button" class="filter-pill filter-pill--active" data-filter-room="">{{ T "sessions_page.all_rooms" }}</button>
+                                <button type="button" class="filter-pill filter-pill--active" data-filter-room="">
+                                    {{ T "sessions_page.all_rooms" }}
+                                </button>
                                 {{- range $rooms }}
                                     <button type="button" class="filter-pill" data-filter-room="{{ .name }}">{{ .name }}</button>
                                 {{- end }}
@@ -297,57 +381,87 @@
                                 <details class="agenda-filters__topics">
                                     <summary class="agenda-filters__legend">{{ T "sessions_page.filter_topic" }}</summary>
                                     <div class="agenda-filters__row">
-                                        <button type="button" class="filter-pill filter-pill--active" data-filter-label="">{{ T "sessions_page.all_topics" }}</button>
+                                        <button type="button" class="filter-pill filter-pill--active" data-filter-label="">
+                                            {{ T "sessions_page.all_topics" }}
+                                        </button>
                                         {{- range . }}
-                                            <button type="button" class="filter-pill" data-filter-label="{{ . }}">{{ T (printf "session_label.%s" .) }}</button>
+                                            <button type="button" class="filter-pill" data-filter-label="{{ . }}">
+                                                {{ T (printf "session_label.%s" .) }}
+                                            </button>
                                         {{- end }}
                                     </div>
                                 </details>
                             {{- end }}
 
+
                             <p class="agenda-filters__empty" data-filter-empty hidden>{{ T "sessions_page.no_matches" }}</p>
                         </div>
 
-                        {{- $headerPrinted := false }}
+                        {{- /* Every session of the day, flattened once, for the day
+                            bounds and the overlap test below.
+                        */}}
+                        {{- $sessions := slice }}
                         {{- range $day.timeSlots }}
-                            {{- $slot := . }}
-                            {{- $isParallel := gt (len $slot.rooms) 1 }}
-
-                            {{- if and $isParallel (not $headerPrinted) }}
-                                {{- $headerPrinted = true }}
-                                <div class="rooms-header" style="--cols: {{ $cols }}" data-rooms-header>
-                                    <span class="rooms-header__room">{{ T "sessions_page.heading_time" }}</span>
-                                    {{- range $rooms }}
-                                        <span class="rooms-header__room">{{ .name }}</span>
-                                    {{- end }}
-                                </div>
+                            {{- range .rooms }}
+                                {{- $sessions = $sessions | append .session }}
                             {{- end }}
+                        {{- end }}
 
-                            {{- $first := (index $slot.rooms 0).session }}
-                            <div class="slot-row{{ if not $isParallel }} slot-row--full{{ end }}" style="--cols: {{ $cols }}" data-slot-row>
-                                <div class="slot-row__time">
-                                    {{ ($first.startsAt | time.AsTime).Format "15:04" }}
-                                    <small>{{ ($first.endsAt | time.AsTime).Format "15:04" }}</small>
-                                </div>
-
-                                {{- if $isParallel }}
-                                    {{- range $room := $rooms }}
-                                        {{- $cell := where $slot.rooms "id" $room.id }}
-                                        {{- if $cell }}
-                                            {{- partial "session-card.html" (dict
-                                                "session" (index $cell 0).session
-                                                "speakerPages" $speakerPages) }}
-                                        {{- else }}
-                                            <div class="slot-row__empty" aria-hidden="true"></div>
-                                        {{- end }}
+                        {{- /* A session gets the full width when nothing else runs
+                            while it does. Neither the room count of its slot nor
+                            isPlenumSession can tell us that: a slot lists fewer
+                            rooms when a neighbour is mid-span, and Sessionize
+                            flags Lunch as plenary but not the keynotes.
+                            ponytail: O(n^2) over ~30 sessions, fine.
+                        */}}
+                        {{- $soloById := dict }}
+                        {{- range $s := $sessions }}
+                            {{- $sStart := ($s.startsAt | time.AsTime).Unix }}
+                            {{- $sEnd := ($s.endsAt | time.AsTime).Unix }}
+                            {{- $solo := true }}
+                            {{- range $o := $sessions }}
+                                {{- if ne (printf "%v" $o.id) (printf "%v" $s.id) }}
+                                    {{- if and (lt ($o.startsAt | time.AsTime).Unix $sEnd) (gt ($o.endsAt | time.AsTime).Unix $sStart) }}
+                                        {{- $solo = false }}
                                     {{- end }}
-                                {{- else }}
-                                    {{- partial "session-card.html" (dict
-                                        "session" $first
-                                        "speakerPages" $speakerPages) }}
+                                {{- end }}
+                            {{- end }}
+                            {{- $soloById = merge $soloById (dict (printf "%v" $s.id) $solo) }}
+                        {{- end }}
+
+                        {{- /* The single-track morning and the parallel afternoon are two
+                            grids with the room header between them, so the header
+                            doesn't eat a 15-minute row.
+                        */}}
+                        {{- $splitAt := len $day.timeSlots }}
+                        {{- range $i, $slot := $day.timeSlots }}
+                            {{- if and (gt (len $slot.rooms) 1) (eq $splitAt (len $day.timeSlots)) }}
+                                {{- $splitAt = $i }}
+                            {{- end }}
+                        {{- end }}
+
+                        {{- partial "agenda-day-grid.html" (dict
+                            "slots" (first $splitAt $day.timeSlots)
+                            "rooms" $rooms
+                            "soloById" $soloById
+                            "speakerPages" $speakerPages)
+                        }}
+
+                        {{- if lt $splitAt (len $day.timeSlots) }}
+                            <div class="rooms-header" style="--cols: {{ $cols }}" data-rooms-header>
+                                <span class="rooms-header__room">{{ T "sessions_page.heading_time" }}</span>
+                                {{- range $rooms }}
+                                    <span class="rooms-header__room">{{ .name }}</span>
                                 {{- end }}
                             </div>
                         {{- end }}
+
+                        {{- partial "agenda-day-grid.html" (dict
+                            "slots" (after $splitAt $day.timeSlots)
+                            "rooms" $rooms
+                            "soloById" $soloById
+                            "speakerPages" $speakerPages)
+                        }}
                     </section>
                 {{- end }}
             </div>
@@ -363,13 +477,19 @@
 
     {{- partial "sections/cta.html" (dict "eventbriteId" .Site.Params.themes.event.callToAction.eventbrite.eventId "ctaUrl" .Site.Params.themes.event.callToAction.other.url ) }}
 
+
     <script>
         (function () {
+            document.querySelectorAll('[data-preliminary-until]').forEach(function (notice) {
+                if (Date.now() >= new Date(notice.dataset.preliminaryUntil).getTime()) notice.remove();
+            });
+
             var bar = document.querySelector('[data-agenda-filters]');
             if (!bar) return;
 
             var cards = Array.prototype.slice.call(document.querySelectorAll('[data-session]'));
-            var rows = Array.prototype.slice.call(document.querySelectorAll('[data-slot-row]'));
+            var times = Array.prototype.slice.call(document.querySelectorAll('[data-slot-time]'));
+            var grids = Array.prototype.slice.call(document.querySelectorAll('[data-day-grid]'));
             var header = document.querySelector('[data-rooms-header]');
             var empty = bar.querySelector('[data-filter-empty]');
             var search = bar.querySelector('[data-filter-search]');
@@ -390,18 +510,27 @@
                 cards.forEach(function (card) {
                     // Breaks and ceremonies are landmarks, not results: keep them while
                     // browsing unfiltered, drop them once a filter narrows the day.
-                    var show = card.hasAttribute('data-service') ? !filtering : matches(card);
+                    var isService = card.dataset.service === 'true';
+                    var show = isService ? !filtering : matches(card);
                     card.hidden = !show;
-                    if (show && !card.hasAttribute('data-service')) visible++;
+                    if (show && !isService) visible++;
                 });
 
-                rows.forEach(function (row) {
-                    var shown = row.querySelectorAll('[data-session]:not([hidden])').length;
-                    row.hidden = shown === 0;
+                // A filtered day has holes where its columns used to line up, so
+                // collapse it to a plain chronological list.
+                grids.forEach(function (grid) {
+                    grid.classList.toggle('day-grid--flat', filtering);
                 });
 
-                // With a single room selected the column headings are noise.
-                if (header) header.hidden = !!state.room;
+                times.forEach(function (time) {
+                    var slot = time.dataset.slotTime;
+                    time.hidden = !cards.some(function (card) {
+                        return !card.hidden && card.dataset.slot === slot;
+                    });
+                });
+
+                // Meaningless once the columns are gone or a single room is picked.
+                if (header) header.hidden = filtering;
                 if (empty) empty.hidden = visible > 0;
             }
 

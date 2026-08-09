@@ -2,16 +2,34 @@
 {{- $session := $input.session }}
 {{- $isService := $session.isServiceSession }}
 {{- /* Sessionize flags registration/closing as service sessions too, so match the
-       title to tell an actual break apart from a ceremony/logistics slot.
-       ponytail: keyword match, move to a hugo.yaml list if the titles get exotic. */}}
+    title to tell an actual break apart from a ceremony/logistics slot.
+    ponytail: keyword match, move to a hugo.yaml list if the titles get exotic.
+*/}}
 {{- $isBreak := false }}
 {{- $lowerTitle := lower $session.title }}
 {{- range slice "lunch" "almuerzo" "break" "receso" "coffee" "café" "pausa" "descanso" }}
     {{- if in $lowerTitle . }}{{ $isBreak = true }}{{ end }}
 {{- end }}
 
-{{- $starts := ($session.startsAt | time.AsTime).Format "15:04" }}
-{{- $ends := ($session.endsAt | time.AsTime).Format "15:04" }}
+{{- /* Session type. Sessionize sends no categories, so the keyword lists come
+    from hugo.yaml (themes.event.sessionTypes) and match on the title.
+*/}}
+{{- $type := "" }}
+{{- if not $isService }}
+    {{- range $name, $keywords := site.Params.themes.event.sessionTypes }}
+        {{- range $keywords }}
+            {{- if and (not $type) (in $lowerTitle .) }}
+                {{- $type = $name }}
+            {{- end }}
+        {{- end }}
+    {{- end }}
+{{- end }}
+
+{{- $startTime := $session.startsAt | time.AsTime }}
+{{- $endTime := $session.endsAt | time.AsTime }}
+{{- $starts := $startTime.Format "15:04" }}
+{{- $ends := $endTime.Format "15:04" }}
+{{- $minutes := div (sub $endTime.Unix $startTime.Unix) 60 }}
 
 {{- /* Resolve each speaker to their bio page and avatar once, reused by card and modal. */}}
 {{- $speakers := slice }}
@@ -48,11 +66,25 @@
 {{- range $labels }}{{ $searchTerms = $searchTerms | append (T (printf "session_label.%s" .)) }}{{ end }}
 
 {{- /* Only real breaks get the compact band. Registration, Opening Remarks and
-       Closing Remarks are flagged as service sessions in Sessionize but read as
-       part of the programme, so they render as ordinary cards. */}}
-<article class="session-card{{ if $isBreak }} session-card--break{{ end }}"
-    data-session
-    {{- if $isService }} data-service{{ end }}
+    Closing Remarks are flagged as service sessions in Sessionize but read as
+    part of the programme, so they render as ordinary cards.
+*/}}
+{{- /* Built as a list, not as conditionals inside the attribute: Prettier eats the
+    leading space in an inline conditional and welds the class names together.
+*/}}
+{{- $classes := slice "session-card" }}
+{{- if $isBreak }}
+    {{- $classes = $classes | append "session-card--break" }}
+{{- end }}
+{{- with $type }}
+    {{- $classes = $classes | append (printf "session-card--%s" .) }}
+{{- end }}
+<article
+    class="{{ delimit $classes " " }}"
+    style="grid-area: {{ $input.gridArea | default "auto" | safeCSS }}"
+    data-session="{{ $session.id }}"
+    data-service="{{ $isService }}"
+    data-slot="{{ $input.slot }}"
     data-room="{{ $session.room }}"
     data-labels="{{ delimit $labels "|" }}"
     data-start="{{ $session.startsAt }}"
@@ -72,22 +104,32 @@
         {{- with $session.room }}
             <span class="session-chip session-chip--room">
                 <i class="fas fa-location-dot" aria-hidden="true"></i>
-                <span class="visually-hidden">{{ T "sessions_page.room" }}: </span>{{ . }}
+                <span class="visually-hidden">{{ T "sessions_page.room" }}:</span>
+                {{ . }}
             </span>
         {{- end }}
         {{- if $isBreak }}
             <span class="session-chip session-chip--break">{{ T "sessions_page.break" }}</span>
         {{- else if $isService }}
             <span class="session-chip session-chip--ceremony">{{ T "sessions_page.general" }}</span>
+        {{- else if $type }}
+            <span class="session-chip session-chip--{{ $type }}">{{ T (printf "sessions_page.type_%s" $type) }}</span>
         {{- else if $session.isPlenumSession }}
             <span class="session-chip session-chip--plenary">{{ T "sessions_page.plenary" }}</span>
+        {{- end }}
+        {{- /* Spelled out because the grid collapses to a plain list on mobile,
+            where card height no longer carries the length.
+        */}}
+        {{- if not $isService }}
+            <span class="session-chip session-chip--duration">{{ T "sessions_page.duration_minutes" $minutes }}</span>
         {{- end }}
     </div>
 
     <h3 class="session-card__title">
         {{- if $hasDetail }}
             {{- /* Button, not a link: the detail lives in a popup, not on its own page.
-                   ::after stretches it over the whole card so anywhere is clickable. */}}
+                ::after stretches it over the whole card so anywhere is clickable.
+            */}}
             <button type="button" class="session-card__trigger" data-session-modal="session-modal-{{ $session.id }}">
                 {{ $session.title }}
             </button>
@@ -102,12 +144,24 @@
                 <li class="session-card__speaker">
                     {{- if .profileUrl }}
                         <a class="session-card__speaker-link" href="{{ .profileUrl }}">
-                            <img class="session-card__avatar" src="{{ .avatarUrl }}" alt="{{ .name }}" width="44" height="44" loading="lazy" />
+                            <img
+                                class="session-card__avatar"
+                                src="{{ .avatarUrl }}"
+                                alt="{{ .name }}"
+                                width="44"
+                                height="44"
+                                loading="lazy" />
                             <span>{{ .name }}</span>
                         </a>
                     {{- else }}
                         <span class="session-card__speaker-link">
-                            <img class="session-card__avatar" src="{{ .avatarUrl }}" alt="{{ .name }}" width="44" height="44" loading="lazy" />
+                            <img
+                                class="session-card__avatar"
+                                src="{{ .avatarUrl }}"
+                                alt="{{ .name }}"
+                                width="44"
+                                height="44"
+                                loading="lazy" />
                             <span>{{ .name }}</span>
                         </span>
                     {{- end }}
@@ -118,7 +172,8 @@
 
     {{- if $input.agendaUrl }}
         <a class="session-card__agenda-link" href="{{ $input.agendaUrl }}">
-            {{ T "sessions_page.view_in_agenda" }} <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            {{ T "sessions_page.view_in_agenda" }}
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
         </a>
     {{- end }}
 
@@ -140,5 +195,6 @@
         "endsAt" $ends
         "room" $session.room
         "description" $session.description
-        "speakers" $speakers) }}
+        "speakers" $speakers)
+    }}
 {{- end }}

@@ -1,0 +1,65 @@
+{{- /*
+    One grid for a run of time slots: a time rail plus one column per room.
+
+    A row is a time slot, not a fixed number of minutes, so every card in the day
+    is the same height. A session that outruns its slot spans the slots it covers
+    — the 60-minute panel takes exactly the space of the two 30-minute talks
+    beside it.
+
+    Params: slots (timeSlots to render), rooms (the day's rooms), soloById (session
+    id -> "runs alone", from the caller's overlap test), speakerPages.
+*/}}
+{{- $slots := .slots }}
+{{- $rooms := .rooms }}
+{{- $soloById := .soloById }}
+{{- $speakerPages := .speakerPages }}
+{{- if $slots }}
+    {{- /* Slot start times once, so the span below is a lookup and not a re-parse. */}}
+    {{- $slotStarts := slice }}
+    {{- range $slots }}
+        {{- $slotStarts = $slotStarts | append ((index .rooms 0).session.startsAt | time.AsTime).Unix }}
+    {{- end }}
+
+
+    <div class="day-grid" style="--cols: {{ len $rooms }}" data-day-grid>
+        {{- range $si, $slot := $slots }}
+            {{- $first := (index $slot.rooms 0).session }}
+            {{- $slotStart := $first.startsAt | time.AsTime }}
+            {{- $row := add 1 $si }}
+
+            {{- /* Start time only: a slot can hold sessions that end at different
+                times, so the end stays on each card.
+            */}}
+            <div
+                class="day-grid__time"
+                style="grid-area: {{ printf "%d / 1 / span 1 / 2" $row | safeCSS }}"
+                data-slot-time="{{ $first.startsAt }}">
+                {{ $slotStart.Format "15:04" }}
+            </div>
+
+            {{- range $ri, $room := $rooms }}
+                {{- with where $slot.rooms "id" $room.id }}
+                    {{- $session := (index . 0).session }}
+                    {{- $endsAt := ($session.endsAt | time.AsTime).Unix }}
+                    {{- $span := 0 }}
+                    {{- range $j, $start := $slotStarts }}
+                        {{- if and (ge $j $si) (lt $start $endsAt) }}
+                            {{- $span = add $span 1 }}
+                        {{- end }}
+                    {{- end }}
+                    {{- $solo := index $soloById (printf "%v" $session.id) }}
+                    {{- $area := printf "%d / %d / span %d / span 1" $row (add 2 $ri) $span }}
+                    {{- if $solo }}
+                        {{- $area = printf "%d / 2 / span %d / -1" $row $span }}
+                    {{- end }}
+                    {{- partial "session-card.html" (dict
+                        "session" $session
+                        "gridArea" $area
+                        "slot" $first.startsAt
+                        "speakerPages" $speakerPages)
+                    }}
+                {{- end }}
+            {{- end }}
+        {{- end }}
+    </div>
+{{- end }}
