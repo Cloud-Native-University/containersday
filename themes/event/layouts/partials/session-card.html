@@ -47,7 +47,10 @@
 {{- range $speakers }}{{ $searchTerms = $searchTerms | append .name }}{{ end }}
 {{- range $labels }}{{ $searchTerms = $searchTerms | append (T (printf "session_label.%s" .)) }}{{ end }}
 
-<article class="session-card{{ if $isBreak }} session-card--break{{ else if $isService }} session-card--ceremony{{ end }}"
+{{- /* Only real breaks get the compact band. Registration, Opening Remarks and
+       Closing Remarks are flagged as service sessions in Sessionize but read as
+       part of the programme, so they render as ordinary cards. */}}
+<article class="session-card{{ if $isBreak }} session-card--break{{ end }}"
     data-session
     {{- if $isService }} data-service{{ end }}
     data-room="{{ $session.room }}"

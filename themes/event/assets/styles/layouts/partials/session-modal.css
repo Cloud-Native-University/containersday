@@ -195,17 +195,7 @@ a.session-modal__speaker:focus-visible {
     gap: 16px;
     flex-wrap: wrap;
 }
-.session-card--ceremony {
-    background: #f4f8fc;
-    border-color: #c3d6e8;
-    border-left: 4px solid var(--accent, #2378b0);
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-.session-card--break .session-card__title,
-.session-card--ceremony .session-card__title {
+.session-card--break .session-card__title {
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
