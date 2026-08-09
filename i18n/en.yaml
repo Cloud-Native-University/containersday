@@ -52,8 +52,6 @@ menu.sessions:
     other: 'Schedule'
 menu.speakers:
     other: 'Speakers'
-menu.tourism:
-    other: 'Tropical Tourism'
 menu.sponsors:
     other: 'Sponsors'
 cd_event_title:
@@ -120,56 +118,6 @@ cd_sponsor_tier_silver:
     other: '🥈 Silver Sponsor'
 cd_sponsor_tier_community:
     other: '🤝 Community Sponsor'
-cd_tourism_intro:
-    other: 'Take advantage of your trip to Containers Day in Santiago de los Caballeros to immerse yourself in history, culture, and joy.'
-cd_tourism_activity_1_tag:
-    other: 'Culture'
-cd_tourism_activity_1_title:
-    other: 'Monument to the Restoration'
-cd_tourism_activity_1_desc:
-    other: 'The undisputed icon of Santiago. A majestic 70-meter tower offering the best panoramic views of the city and the Cibao Valley.'
-cd_tourism_activity_1_cta:
-    other: 'Explore Museum →'
-cd_tourism_activity_2_tag:
-    other: 'Art'
-cd_tourism_activity_2_title:
-    other: 'León Cultural Center'
-cd_tourism_activity_2_desc:
-    other: 'One of the most modern and award-winning museums in the Caribbean. A deep dive into Dominican identity, art, and ecology.'
-cd_tourism_activity_2_cta:
-    other: 'View Exhibitions →'
-cd_tourism_activity_3_tag:
-    other: 'Tradition'
-cd_tourism_activity_3_title:
-    other: 'La Aurora Cigar World'
-cd_tourism_activity_3_desc:
-    other: "Visit the country's oldest cigar factory. Learn about the artisanal process of premium tobacco that has put Santiago on the world map."
-cd_tourism_activity_3_cta:
-    other: 'Schedule Tour →'
-cd_tourism_activity_4_tag:
-    other: 'Urban'
-cd_tourism_activity_4_title:
-    other: 'Los Pepines Murals'
-cd_tourism_activity_4_desc:
-    other: 'A burst of creativity in the streets. Vibrant urban art celebrating carnival, music, and Santiago traditions.'
-cd_tourism_activity_4_cta:
-    other: 'Photo Walk →'
-cd_tourism_activity_5_tag:
-    other: 'Gastronomy'
-cd_tourism_activity_5_title:
-    other: 'Taste of Cibao'
-cd_tourism_activity_5_desc:
-    other: 'From legendary Mofongo to high-end fusion cuisine. Santiago is the gastronomic epicenter for the most demanding palates.'
-cd_tourism_activity_5_cta:
-    other: 'Food Guide →'
-cd_tourism_activity_6_tag:
-    other: 'History'
-cd_tourism_activity_6_title:
-    other: 'Santiago Apostle Cathedral'
-cd_tourism_activity_6_desc:
-    other: "Pillar of the historic center. An architectural gem from the late 19th century that holds the city's spiritual essence."
-cd_tourism_activity_6_cta:
-    other: 'Historic Visit →'
 cd_venue_name:
     other: 'Universidad UAPA (UAPA)'
 cd_venue_desc:
@@ -288,10 +236,6 @@ cd_restaurant_6_name:
     other: 'Green Bar'
 cd_restaurant_6_cuisine:
     other: 'Healthy food, bowls & smoothies — 8 min from venue'
-cd_tourism_ready_to_live:
-    other: 'Ready to experience Santiago?'
-cd_tourism_ready_desc:
-    other: 'Combine cutting-edge tech learning with the warmth and culture of the Heart City.'
 cd_register_now:
     other: 'Register Now!'
 cd_our_community:

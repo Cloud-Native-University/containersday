@@ -52,8 +52,6 @@ menu.sessions:
     other: 'Agenda'
 menu.speakers:
     other: 'Ponentes'
-menu.tourism:
-    other: 'Turismo Tropical'
 menu.sponsors:
     other: 'Patrocinadores'
 cd_event_title:
@@ -128,56 +126,6 @@ cd_sponsor_tier_silver:
     other: '🥈 Patrocinador Plata'
 cd_sponsor_tier_community:
     other: '🤝 Patrocinador Comunitario'
-cd_tourism_intro:
-    other: 'Aprovecha tu viaje a Containers Day en Santiago de los Caballeros para sumergirte en la historia, la cultura y la alegría.'
-cd_tourism_activity_1_tag:
-    other: 'Cultura'
-cd_tourism_activity_1_title:
-    other: 'Monumento a la Restauración'
-cd_tourism_activity_1_desc:
-    other: 'El icono indiscutible de Santiago. Una torre majestuosa de 70 metros que ofrece las mejores vistas panorámicas de la ciudad y el valle del Cibao.'
-cd_tourism_activity_1_cta:
-    other: 'Explorar Museo →'
-cd_tourism_activity_2_tag:
-    other: 'Arte'
-cd_tourism_activity_2_title:
-    other: 'Centro Cultural León'
-cd_tourism_activity_2_desc:
-    other: 'Uno de los museos más modernos y premiados del Caribe. Una inmersión profunda en la identidad, el arte y la ecología dominicana.'
-cd_tourism_activity_2_cta:
-    other: 'Ver Exposiciones →'
-cd_tourism_activity_3_tag:
-    other: 'Tradición'
-cd_tourism_activity_3_title:
-    other: 'La Aurora Cigar World'
-cd_tourism_activity_3_desc:
-    other: 'Visita la fábrica de cigarros más antigua del país. Conoce el proceso artesanal del tabaco premium que ha puesto a Santiago en el mapa mundial.'
-cd_tourism_activity_3_cta:
-    other: 'Agendar Tour →'
-cd_tourism_activity_4_tag:
-    other: 'Urbano'
-cd_tourism_activity_4_title:
-    other: 'Murales de Los Pepines'
-cd_tourism_activity_4_desc:
-    other: 'Un estallido de creatividad en las calles. Arte urbano vibrante que celebra el carnaval, la música y las tradiciones santiagueras.'
-cd_tourism_activity_4_cta:
-    other: 'Paseo Fotográfico →'
-cd_tourism_activity_5_tag:
-    other: 'Gastronomía'
-cd_tourism_activity_5_title:
-    other: 'Sabor del Cibao'
-cd_tourism_activity_5_desc:
-    other: 'Desde el legendario Mofongo hasta la alta cocina fusión. Santiago es el epicentro gastronómico para los paladares más exigentes.'
-cd_tourism_activity_5_cta:
-    other: 'Guía Gastronómica →'
-cd_tourism_activity_6_tag:
-    other: 'Historia'
-cd_tourism_activity_6_title:
-    other: 'Catedral Santiago Apóstol'
-cd_tourism_activity_6_desc:
-    other: 'Pillar del centro histórico. Una joya arquitectónica de finales del siglo XIX que guarda la esencia espiritual y patriótica de la ciudad.'
-cd_tourism_activity_6_cta:
-    other: 'Visita Histórica →'
 cd_venue_name:
     other: 'Universidad UAPA (UAPA)'
 cd_venue_desc:
@@ -296,10 +244,6 @@ cd_restaurant_6_name:
     other: 'Green Bar'
 cd_restaurant_6_cuisine:
     other: 'Comida saludable, bowls y smoothies — A 8 min del venue'
-cd_tourism_ready_to_live:
-    other: '¿Listo para vivir Santiago?'
-cd_tourism_ready_desc:
-    other: 'Combina el aprendizaje tecnológico de vanguardia con la calidez y cultura de la Ciudad Corazón.'
 cd_register_now:
     other: '¡Regístrate Ahora!'
 cd_our_community:

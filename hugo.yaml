@@ -58,12 +58,6 @@ languages:
                   weight: 65
                   params:
                       primary: true
-                - identifier: tourism
-                  name: 'Turismo Tropical'
-                  pageRef: /tourism
-                  weight: 70
-                  params:
-                      primary: true
     en:
         disabled: false
         languageName: 'English'
@@ -116,12 +110,6 @@ languages:
                   name: 'Volunteer'
                   pageRef: /volunteers
                   weight: 65
-                  params:
-                      primary: true
-                - identifier: tourism
-                  name: 'Tropical Tourism'
-                  pageRef: /tourism
-                  weight: 70
                   params:
                       primary: true
 
