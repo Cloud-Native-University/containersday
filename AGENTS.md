@@ -4,6 +4,22 @@ This file documents how to maintain the organizers, volunteers, and sponsors con
 
 After any change below, verify with `make serve` and check both the Spanish page and its `/en/...` counterpart.
 
+## Sessionize sync
+
+Sessions, speakers and the whole agenda are fetched from the Sessionize API at **build time** — nothing about them lives in this repo. Editing the Schedule Builder does not change the published site until a build runs.
+
+**Sessionize has no webhooks.** The API is read-only and pull-based, so polling is the only integration available; anything promising push notifications (see the deleted `webhook-receiver.js` in commit `4616952`) was built against a feature that does not exist.
+
+`.github/workflows/hugo.yaml` polls every 15 minutes. A `check` job hashes the two feeds the site renders — `/view/GridSmart` (agenda) and `/view/all` (speaker pages) — and compares that digest against the payload of the last successful deploy via the Actions cache. Unchanged means no build and no deploy, so the schedule stays cheap.
+
+Expect **15–30 minutes** from edit to live: GitHub's scheduler drifts under load, and Sessionize serves its own ~4 minute cache (`Cache-Control: max-age=240`) on top.
+
+To publish immediately:
+- **Actions tab → Deploy Hugo site to Pages → Run workflow**, or `gh workflow run "Deploy Hugo site to Pages"`. Manual runs and pushes bypass the digest check entirely.
+- If the edit was *just* made, clear the Sessionize cache first from the event's Get Code page, otherwise the build may fetch the stale cached payload.
+
+The `SESSIONIZE_ID` env var at the top of the workflow must stay in sync with `params.themes.event.sessionizeId` in `hugo.yaml`.
+
 ## Contrast rule (applies to every template and stylesheet)
 
 **Light background → dark text. Dark background → light text.** Never leave it to inheritance.
