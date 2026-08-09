@@ -12,7 +12,7 @@
 
 {{- $rules := slice
     (dict "key" "kubernetes" "words" (slice "kubernetes" "k8s" " pod" "helm" "cluster"))
-    (dict "key" "ai" "words" (slice "inteligencia artificial" "ia " " ia" "ai " "agente" "agentic" "llm" "machine learning" "copilot"))
+    (dict "key" "ai" "titleOnly" true "words" (slice "inteligencia artificial" "ia " " ia" "ai " "agente" "agentic" "llm" "machine learning" "copilot"))
     (dict "key" "security" "words" (slice "segurid" "security" "vulnerab" "ofensiv" "supply chain" "breach" "isolated" "hacker" "exploit" "pentest"))
     (dict "key" "containers" "words" (slice "contenedor" "container" "docker" "imagen base" "base image"))
     (dict "key" "cloud" "words" (slice "cloud" "aws" "azure" "gcp" " ecs" "nube" "multi-region"))
@@ -31,10 +31,11 @@
 {{- range $rules }}
     {{- $score := 0 }}
     {{- $key := .key }}
+    {{- $titleOnly := .titleOnly | default false }}
     {{- range .words }}
         {{- if in $title . }}
             {{- $score = add $score 10 }}
-        {{- else if in $description . }}
+        {{- else if and (not $titleOnly) (in $description .) }}
             {{- $score = add $score 1 }}
         {{- end }}
     {{- end }}
