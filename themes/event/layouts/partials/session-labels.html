@@ -11,7 +11,7 @@
        Expects: title, description. Returns a slice of i18n keys (session_label.*). */}}
 
 {{- $rules := slice
-    (dict "key" "kubernetes" "words" (slice "kubernetes" "k8s" " pod" "helm" "cluster"))
+    (dict "key" "kubernetes" "titleOnly" true "words" (slice "kubernetes" "k8s"))
     (dict "key" "ai" "titleOnly" true "words" (slice "inteligencia artificial" "ia " " ia" "ai " "agente" "agentic" "llm" "machine learning" "copilot"))
     (dict "key" "security" "words" (slice "segurid" "security" "vulnerab" "ofensiv" "supply chain" "breach" "isolated" "hacker" "exploit" "pentest"))
     (dict "key" "containers" "words" (slice "contenedor" "container" "docker" "imagen base" "base image"))
