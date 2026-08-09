@@ -50,6 +50,8 @@ languages:
                   name: 'Organizadores'
                   pageRef: /organizers
                   weight: 60
+                  params:
+                      primary: true
                 - identifier: volunteers
                   name: 'Voluntarios'
                   pageRef: /volunteers
@@ -108,6 +110,8 @@ languages:
                   name: 'Organizers'
                   pageRef: /organizers
                   weight: 60
+                  params:
+                      primary: true
                 - identifier: volunteers
                   name: 'Volunteer'
                   pageRef: /volunteers
