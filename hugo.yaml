@@ -127,6 +127,11 @@ params:
             favicon: 'logos/logo-containersday-v2.png'
             startDate: '2026-08-22'
             endDate: '2026-08-22'
+            # Local clock for the countdowns. endTime is when the countdown
+            # retires and the thank-you message takes over.
+            startTime: '09:00'
+            endTime: '23:59'
+            utcOffset: '-04:00'
             address:
                 - 'Av. Hispanoamericana #100, Thomén'
                 - 'Santiago de los Caballeros'

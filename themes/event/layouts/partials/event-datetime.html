@@ -1,0 +1,14 @@
+{{- /*
+    Builds one RFC 3339 timestamp for the event from config, so no layout has to
+    hardcode a date, a time, or the venue's UTC offset.
+
+    Params: event (site event params), which ("start" | "end").
+    Config:  startDate / endDate, startTime / endTime, utcOffset.
+*/ -}}
+{{- $event := .event -}}
+{{- $offset := $event.utcOffset | default "-04:00" -}}
+{{- if eq .which "end" -}}
+    {{- printf "%sT%s:00%s" ($event.endDate | default $event.startDate) ($event.endTime | default "23:59") $offset -}}
+{{- else -}}
+    {{- printf "%sT%s:00%s" $event.startDate ($event.startTime | default "09:00") $offset -}}
+{{- end -}}

@@ -20,6 +20,62 @@ To publish immediately:
 
 The `SESSIONIZE_ID` env var at the top of the workflow must stay in sync with `params.themes.event.sessionizeId` in `hugo.yaml`.
 
+## Event dates and times
+
+Every date and time the site counts against lives in `hugo.yaml` under `params.themes.event`. **Do not hardcode a date in a template or in JavaScript** — a past incident left `¡Es Hoy!` frozen in the topbar and the wrong weekday in a tooltip because the date was written into `baseof.html`.
+
+```yaml
+startDate: '2026-08-22'   # YYYY-MM-DD
+endDate: '2026-08-22'
+startTime: '09:00'        # local wall clock, HH:MM
+endTime: '23:59'          # when the countdown retires and the thank-you takes over
+utcOffset: '-04:00'       # the venue's offset (America/Santo_Domingo)
+```
+
+`themes/event/layouts/partials/event-datetime.html` turns those into one RFC 3339 timestamp. Call it instead of writing a date yourself:
+
+```go-html-template
+{{ partial "event-datetime.html" (dict "event" .Site.Params.themes.event "which" "start") }}
+{{ partial "event-datetime.html" (dict "event" .Site.Params.themes.event "which" "end") }}
+```
+
+Two consumers today, both driven off that partial so their clocks can't drift apart:
+
+- **Topbar ticker** (`themes/event/layouts/_default/baseof.html`) — counts down to `start`; once `end` passes it removes `.topbar-countdown` from the DOM entirely.
+- **Hero meta band** (`partials/countdown.html`, fed by `partials/sections/hero-slider.html`) — days/hours/minutes/seconds before `start`, `countdown.ended` ("the event has started") between `start` and `end`, then `countdown.thanks` ("thank you / see you next year") after `end`. Both strings are in `i18n/es.yaml` and `i18n/en.yaml`.
+
+Human-readable dates are formatted from the same config: `{{ .Site.Params.themes.event.startDate | time.AsTime | time.Format ":date_full" }}`. Never type the date out in prose in a template — the one remaining hand-written date is in `params.themes.event.description` (SEO copy) and must be updated by hand when the event moves.
+
+To move the event, change `startDate`/`endDate` (and the description) — nothing else. Verify with `make serve`: the topbar should show a live `NNd HHh MMm SSs` ticker and the hero should show four counters agreeing with it.
+
+### Simulating another date
+
+There is no date-override flag. To see the site as it will look during or after the event, temporarily set `startDate`/`endDate` to a past date and reload — `hugo server` picks up `hugo.yaml` changes, but restart it if a rebuild sticks on an error page. **Revert before committing.** For the agenda's "happening now" state, don't touch config: run this in the browser console on `/agenda`, since that logic reads the session times from the page, not from `hugo.yaml`:
+
+```js
+for (let i = 1; i < 5000; i++) clearInterval(i);
+const now = new Date('2026-08-22T11:00:00-04:00');
+document.querySelectorAll('[data-session]').forEach(c => {
+  c.classList.toggle('session-card--live', now >= new Date(c.dataset.start) && now < new Date(c.dataset.end));
+});
+```
+
+## Agenda content (`/agenda`)
+
+The page is `content/sessions/_index.md` (Spanish, `url: /agenda`) and `content/en/sessions/_index.md` (`url: /en/agenda`), rendered by `themes/event/layouts/sessions/list.html`. The `_content.gotmpl` next to them generates one content page per session — **never create or edit those by hand.**
+
+**What comes from Sessionize (not editable here):** session titles, abstracts, speakers, start/end times, room assignments, and the order of the day. Change them in the Sessionize Schedule Builder and wait for the poll (see *Sessionize sync* above) or trigger the workflow manually. Nothing in this repo can override a session's time or room.
+
+**What is editable here:**
+
+- **Page intro, title, description** — the front matter and body of `content/sessions/_index.md` and its `/en/` twin.
+- **All UI copy** — `i18n/es.yaml` and `i18n/en.yaml`, keys under `sessions_page.*` (search placeholder, filter legends, `grid_hint`, `no_matches`, `live_now`, `jump_now`) and `session_label.*` (the topic pill labels). A topic with no `session_label.<slug>` key renders as an **empty pill** — `T` returns an empty string for a missing key — so add the key in both files whenever a new topic appears in Sessionize.
+- **Topic pills** — derived from Sessionize session categories, collapsed behind a `<details>` in `list.html` because there are enough of them to push the schedule below the fold. Room pills stay expanded.
+- **Break and ceremony cards** — sessions Sessionize marks as service sessions render as gray "Receso" cards and are hidden as soon as any filter is applied. Whether something counts as a break is decided in `list.html`; see commit `446d35f` for the Opening Remarks case.
+- **Live-session behavior** — `list.html` adds `.session-card--live` plus an "En curso" chip to whatever session is running, shows the "Ahora mismo" jump button, and on load scrolls to the live session (skipped when the URL has a `#hash`, so deep links still win).
+
+After changing agenda copy, check both `/agenda` and `/en/agenda`, and confirm the topic filter still narrows the schedule.
+
 ## Contrast rule (applies to every template and stylesheet)
 
 **Light background → dark text. Dark background → light text.** Never leave it to inheritance.

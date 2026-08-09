@@ -640,7 +640,7 @@
         <div class="site-topbar__inner">
             <div class="site-topbar__left">
                 <span>{{ T "cd_event_title" }} {{ now.Format "2006" }}</span>
-                <div class="topbar-countdown" title="Sábado 22 de Agosto de 2026">
+                <div class="topbar-countdown" title="{{ .Site.Params.themes.event.startDate | time.AsTime | time.Format ":date_full" }}">
                     <i class="fas fa-stopwatch topbar-countdown__icon"></i>
                     <span class="topbar-countdown__timer">--d --h --m --s</span>
                 </div>
@@ -780,12 +780,22 @@
 
     <script>
     (function() {
-        const targetDate = new Date('2026-08-22T09:00:00-04:00').getTime();
+        const targetDate = new Date('{{ partial "event-datetime.html" (dict "event" .Site.Params.themes.event "which" "start") }}').getTime();
+        // Once the day is over the ticker has nothing left to count: drop it and
+        // let the hero band carry the thank-you message.
+        const eventEnd = new Date('{{ partial "event-datetime.html" (dict "event" .Site.Params.themes.event "which" "end") }}').getTime();
+        let timer;
         function updateCountdown() {
             const now = new Date().getTime();
             const diff = targetDate - now;
             const elements = document.querySelectorAll('.topbar-countdown__timer');
             if (!elements.length) return;
+
+            if (now >= eventEnd) {
+                document.querySelectorAll('.topbar-countdown').forEach(el => el.remove());
+                clearInterval(timer);
+                return;
+            }
 
             if (diff <= 0) {
                 elements.forEach(el => el.textContent = '¡Es Hoy!');
@@ -801,7 +811,7 @@
             elements.forEach(el => el.textContent = text);
         }
         updateCountdown();
-        setInterval(updateCountdown, 1000);
+        timer = setInterval(updateCountdown, 1000);
     })();
     </script>
 </body>

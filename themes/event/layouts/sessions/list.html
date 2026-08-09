@@ -147,6 +147,18 @@
             outline-offset: 2px;
         }
 
+        /* Topic pills collapse behind a native <details> — there are enough of
+           them to crowd out the schedule itself. */
+        .agenda-filters__topics > summary {
+            cursor: pointer;
+            width: fit-content;
+        }
+        .agenda-filters__topics[open] > .agenda-filters__row { margin-top: 8px; }
+        /* Keep a picked topic visible while collapsed. */
+        .agenda-filters__topics:has(.filter-pill--active:not([data-filter-label=''])) > summary {
+            color: var(--accent);
+        }
+
         .agenda-filters__search {
             display: flex;
             align-items: center;
@@ -282,13 +294,15 @@
                             </div>
 
                             {{- with $allLabels }}
-                                <div class="agenda-filters__row">
-                                    <span class="agenda-filters__legend">{{ T "sessions_page.filter_topic" }}</span>
-                                    <button type="button" class="filter-pill filter-pill--active" data-filter-label="">{{ T "sessions_page.all_topics" }}</button>
-                                    {{- range . }}
-                                        <button type="button" class="filter-pill" data-filter-label="{{ . }}">{{ T (printf "session_label.%s" .) }}</button>
-                                    {{- end }}
-                                </div>
+                                <details class="agenda-filters__topics">
+                                    <summary class="agenda-filters__legend">{{ T "sessions_page.filter_topic" }}</summary>
+                                    <div class="agenda-filters__row">
+                                        <button type="button" class="filter-pill filter-pill--active" data-filter-label="">{{ T "sessions_page.all_topics" }}</button>
+                                        {{- range . }}
+                                            <button type="button" class="filter-pill" data-filter-label="{{ . }}">{{ T (printf "session_label.%s" .) }}</button>
+                                        {{- end }}
+                                    </div>
+                                </details>
                             {{- end }}
 
                             <p class="agenda-filters__empty" data-filter-empty hidden>{{ T "sessions_page.no_matches" }}</p>
@@ -442,7 +456,10 @@
             }
 
             apply();
-            refreshLive();
+            var liveOnLoad = refreshLive();
+            // During the event the top of the day is dead weight — open on what's
+            // running right now, unless the visitor deep-linked to a session.
+            if (liveOnLoad && !location.hash) liveOnLoad.scrollIntoView({ block: 'center' });
             setInterval(refreshLive, 60000);
         })();
     </script>
