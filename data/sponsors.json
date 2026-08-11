@@ -56,6 +56,13 @@
         "tier": "gold"
     },
     {
+        "logo": "logos/velocitytech.png",
+        "url": "https://www.velocitytech.us",
+        "name": "Velocity Tech Solutions",
+        "description": "Soluciones de infraestructura de TI, servicios en la nube y consultoría.",
+        "tier": "gold"
+    },
+    {
         "logo": "logos/innmotrix.png",
         "url": "https://innmotrix.com/",
         "name": "Innmotrix",
