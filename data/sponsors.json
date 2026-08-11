@@ -63,6 +63,13 @@
         "tier": "gold"
     },
     {
+        "logo": "logos/evopoint.png",
+        "url": "https://www.evopoint.io/",
+        "name": "EvoPoint",
+        "description": "Soluciones y alianzas tecnológicas en la nube.",
+        "tier": "gold"
+    },
+    {
         "logo": "logos/innmotrix.png",
         "url": "https://innmotrix.com/",
         "name": "Innmotrix",
@@ -81,13 +88,6 @@
         "url": "https://reinventa.com/",
         "name": "Reinventa",
         "description": "Transformación digital y soluciones tecnológicas.",
-        "tier": "silver"
-    },
-    {
-        "logo": "logos/evopoint.png",
-        "url": "https://www.evopoint.io/",
-        "name": "EvoPoint",
-        "description": "Soluciones y alianzas tecnológicas en la nube.",
         "tier": "silver"
     },
     {
