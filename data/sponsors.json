@@ -112,6 +112,13 @@
         "tier": "silver"
     },
     {
+        "logo": "logos/el-pensum.png",
+        "url": "https://elpensum.com/",
+        "name": "El Pensum",
+        "description": "Plataforma educativa y comunidad académica.",
+        "tier": "community"
+    },
+    {
         "logo": "logos/docker-rd-hq.png",
         "url": "https://www.meetup.com/dockerrd/",
         "name": "Docker República Dominicana",
