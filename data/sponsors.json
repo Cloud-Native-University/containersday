@@ -70,6 +70,13 @@
         "tier": "gold"
     },
     {
+        "logo": "logos/gedsul.png",
+        "url": "https://gedsul.com/",
+        "name": "GEDSUL IT Consulting",
+        "description": "Consultoría y soluciones de TI, ciberseguridad e infraestructura tecnológica.",
+        "tier": "silver"
+    },
+    {
         "logo": "logos/cosmos-tech.png",
         "url": "https://cosmostech.com.do/",
         "name": "Cosmos Tech",
