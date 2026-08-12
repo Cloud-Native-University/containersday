@@ -70,6 +70,20 @@
         "tier": "gold"
     },
     {
+        "logo": "logos/cosmos-tech.png",
+        "url": "https://cosmostech.com.do/",
+        "name": "Cosmos Tech",
+        "description": "Soluciones tecnológicas y sistemas de telecomunicaciones satelitales.",
+        "tier": "silver"
+    },
+    {
+        "logo": "logos/cosmos-satelites.png",
+        "url": "https://cosmostech.com.do/",
+        "name": "Cosmos Sistemas de Satélites",
+        "description": "Proveedores de infraestructura y comunicaciones por satélite en la región.",
+        "tier": "silver"
+    },
+    {
         "logo": "logos/innmotrix.png",
         "url": "https://innmotrix.com/",
         "name": "Innmotrix",
