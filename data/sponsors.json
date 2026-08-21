@@ -70,6 +70,13 @@
         "tier": "gold"
     },
     {
+        "logo": "logos/clm.png",
+        "url": "https://clmcloudsolutions.es/en",
+        "name": "CLM Cloud Solutions",
+        "description": "Soluciones de nube, arquitectura cloud native y transformación tecnológica.",
+        "tier": "gold"
+    },
+    {
         "logo": "logos/yncell.png",
         "url": "https://yncell.com.do/",
         "name": "YNCELL",
