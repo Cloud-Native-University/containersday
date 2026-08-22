@@ -20,6 +20,15 @@ To publish immediately:
 
 The `SESSIONIZE_ID` env var at the top of the workflow must stay in sync with `params.themes.event.sessionizeId` in `hugo.yaml`.
 
+### Event-day sync
+
+The `*/15 * * * *` poll is a promise GitHub does not keep: scheduled workflows are throttled and dropped under load, and on 22 August 2026 that line fired every **25–56 minutes**. A schedule change made mid-morning sat unpublished for most of an hour. Two things cover the event day:
+
+- **A second, denser workflow cron** — `*/5 11-23 22 8 *` (07:00–19:59 in Santo Domingo). More attempts, better odds; still subject to the same throttling, so treat it as backup rather than the mechanism.
+- **A real cron on an organizer machine** — `scripts/sessionize-sync.sh`, copied to `~/.local/bin/containersday-sessionize-sync.sh` and run every 15 minutes from the user crontab (`*/15 7-19 22 8 *`). It hashes the same two feeds the `check` job hashes, keeps the digest in `~/.cache/containersday-sessionize.digest`, and calls `gh workflow run` only when the payload actually moved — a `workflow_dispatch` bypasses the digest check, so it must not fire blindly. It logs every tick to `~/.cache/containersday-sessionize.log` and no-ops on any date other than the one hardcoded at the top of the script.
+
+Install it on a second machine the same way — `cp scripts/sessionize-sync.sh ~/.local/bin/containersday-sessionize-sync.sh` plus the crontab line — and the two will not fight: each keeps its own digest, and a duplicate dispatch is absorbed by the `pages` concurrency group. The machine has to be awake and `gh` has to stay authenticated for the local cron to work; check the log if the site looks stale. When the event moves, update the date in the script, the day/month in both crons, and the hours if the doors open earlier.
+
 ## Event dates and times
 
 Every date and time the site counts against lives in `hugo.yaml` under `params.themes.event`. **Do not hardcode a date in a template or in JavaScript** — a past incident left `¡Es Hoy!` frozen in the topbar and the wrong weekday in a tooltip because the date was written into `baseof.html`.

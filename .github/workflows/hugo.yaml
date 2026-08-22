@@ -10,8 +10,19 @@ on:
 
     # Poll Sessionize. It has no webhooks, so polling is the only way to pick up
     # schedule changes. The check job below skips the build when nothing moved.
+    #
+    # GitHub throttles scheduled workflows and silently drops runs under load —
+    # on the 2026 event day the */15 line actually fired every 25–56 minutes. So
+    # the event day gets a denser schedule to raise the odds of landing inside a
+    # 15 minute window, and a real cron on an organizer machine drives the sync
+    # for that day (see the "Sessionize sync" section of AGENTS.md). Neither can
+    # cause a redundant deploy: the check job hashes the feeds first.
     schedule:
         - cron: '*/15 * * * *'
+        # Event day only (22 August, 11:00–23:59 UTC = 07:00–19:59 in Santo
+        # Domingo). Update the day/month when the event moves; it is a no-op on
+        # every other date.
+        - cron: '*/5 11-23 22 8 *'
 
 env:
     # Keep in sync with params.themes.event.sessionizeId in hugo.yaml.
