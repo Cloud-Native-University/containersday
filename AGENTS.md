@@ -14,8 +14,7 @@ Sessions, speakers and the whole agenda are fetched from the Sessionize API at *
 
 Expect **15–30 minutes** from edit to live: GitHub's scheduler drifts under load, and Sessionize serves its own ~4 minute cache (`Cache-Control: max-age=240`) on top.
 
-To publish immediately:
-- **Actions tab → Deploy Hugo site to Pages → Run workflow**, or `gh workflow run "Deploy Hugo site to Pages"`. Manual runs and pushes bypass the digest check entirely.
+To publish immediately, `make sync`. It dispatches the build, waits for it, and then checks that every session in the feed actually reached the page — a green workflow only means the build ran, not that the schedule you edited is the one on the site. It needs an authenticated `gh`; the equivalent by hand is **Actions tab → Deploy Hugo site to Pages → Run workflow**, or `gh workflow run "Deploy Hugo site to Pages"`. Manual runs and pushes bypass the digest check entirely.
 - If the edit was *just* made, clear the Sessionize cache first from the event's Get Code page, otherwise the build may fetch the stale cached payload.
 
 The `SESSIONIZE_ID` env var at the top of the workflow must stay in sync with `params.themes.event.sessionizeId` in `hugo.yaml`.
@@ -31,10 +30,10 @@ What is never gated: pushes, manual dispatches and the year-round `*/15` poll al
 Twelve attempts an hour instead of four does not defeat GitHub's throttling, it only shortens the expected wait; **it is not a 15 minute guarantee.** Nothing in GitHub Actions can promise one. If the agenda on the site has to match the agenda on the wall within minutes, drive it by hand:
 
 ```shell
-gh workflow run "Deploy Hugo site to Pages"
+make sync
 ```
 
-A manual dispatch bypasses the digest check and deploys unconditionally, so it is always safe to run and takes about a minute. On event day, run it after every Schedule Builder change rather than trusting the poll.
+A manual dispatch bypasses the digest check and deploys unconditionally, so it is always safe to run when nothing has changed, and it takes about a minute. On event day, run it after every Schedule Builder change rather than trusting the poll. If the verification at the end reports sessions missing from the page, the build read Sessionize's ~4 minute cache: clear it on the event's Get Code page and run `make sync` again.
 
 To test the gate without waiting for a schedule, run the script directly — `CONFIG` points it at a doctored copy of the config:
 

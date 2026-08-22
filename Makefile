@@ -3,7 +3,7 @@ BASE_URL ?=
 
 default: build
 
-.PHONY: default build serve clean install
+.PHONY: default build serve clean install sync
 
 install:
 ifeq ($(shell uname),Linux)
@@ -21,3 +21,9 @@ serve:
 
 clean:
 	rm -rf public resources/_gen
+
+# Push the current Sessionize schedule live: dispatch the deploy, wait for it,
+# then check every session in the feed actually made it onto the page. Needs an
+# authenticated gh. See "Sessionize sync" in AGENTS.md.
+sync:
+	@bash scripts/sync.sh
