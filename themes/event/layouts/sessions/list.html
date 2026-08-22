@@ -332,6 +332,33 @@
                 padding-top: 10px;
             }
         }
+        /* Live list. Rendered inside .schedule > .container, which is a light
+           surface with dark text, so the cards land on the same background the
+           grid uses and inherit the right pair. */
+        .schedule-live {
+            margin-top: 8px;
+        }
+        .schedule-live__notice {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: #fdf1d8;
+            color: #7a5510;
+            font-weight: 600;
+        }
+        .schedule-live__list {
+            display: grid;
+            gap: 12px;
+        }
+        .schedule-live__list .session-card {
+            /* The grid places cards by grid-area; in a plain list they size
+               themselves. */
+            grid-area: auto !important;
+        }
+
         /* Dark bar on a light section: it sets both halves of the pair, per the
            contrast rule in AGENTS.md. */
         .agenda-freshness {
@@ -521,6 +548,42 @@
                         }}
                     </section>
                 {{- end }}
+
+            {{- /* Live mode. On the day itself the build is not the source of truth
+                for long: the Schedule Builder moves and the site trails it by a
+                Sessionize cache plus a build. Sessionize serves the feed with
+                Access-Control-Allow-Origin *, so the page can read it directly and
+                show what the organisers just changed, without waiting for a deploy.
+
+                Everything it needs rides in on data attributes: no date, id or
+                colour is repeated in the script.
+            */}}
+            {{- $event := .Site.Params.themes.event }}
+            {{- $offset := $event.utcOffset | default "-04:00" }}
+            {{- $floors := dict }}
+            {{- with $event.roomFloors }}
+                {{- $rooms := dict }}
+                {{- range .rooms | default slice }}
+                    {{- $rooms = merge $rooms (dict .name (dict "floor" .floor "color" (.color | default "#1a2a36") "text" (.text | default "#ffffff"))) }}
+                {{- end }}
+                {{- $floors = dict "from" (.from | default "00:00") "rooms" $rooms }}
+            {{- end }}
+            <section
+                class="schedule-live"
+                data-agenda-live
+                data-feed="https://sessionize.com/api/v2/{{ $sessionizeId }}/view/GridSmart"
+                data-from="{{ printf "%sT00:00:00%s" $event.startDate $offset }}"
+                data-until="{{ printf "%sT23:59:59%s" $event.endDate $offset }}"
+                data-floors="{{ jsonify $floors }}"
+                data-label-floor="{{ T "sessions_page.floor_label" "%s" }}"
+                data-label-live="{{ T "sessions_page.live_now" }}"
+                hidden>
+                <p class="schedule-live__notice">
+                    <i class="fas fa-tower-broadcast" aria-hidden="true"></i>
+                    {{ T "sessions_page.live_source" }}
+                </p>
+                <div class="schedule-live__list" data-agenda-live-list></div>
+            </section>
             </div>
         </div>
     {{- else }}
@@ -712,6 +775,204 @@
             });
             setInterval(check, 60000);
             check();
+        })();
+
+        // Live agenda. On the day of the event, read Sessionize directly rather
+        // than trusting HTML that was built minutes ago: the Schedule Builder
+        // moves during the conference and a deploy is not instant.
+        //
+        // The built grid stays untouched while the feed agrees with it, which is
+        // almost always. Only a real disagreement swaps in a list rendered from
+        // the feed — a flat chronological list, not the column grid, because the
+        // grid's rows and spans are computed at build time and a card cannot be
+        // dropped into a row that no longer matches its time. The list is a
+        // deliberate downgrade in layout for an upgrade in truth, and it lasts
+        // only until the next deploy lands, at which point the stamp poller
+        // above reloads the page and the grid comes back.
+        (function () {
+            var box = document.querySelector('[data-agenda-live]');
+            if (!box || !window.fetch) return;
+
+            var now = Date.now();
+            if (now < Date.parse(box.dataset.from) || now > Date.parse(box.dataset.until)) return;
+
+            var floors = {};
+            try {
+                floors = JSON.parse(box.dataset.floors || '{}');
+            } catch (error) {
+                floors = {};
+            }
+
+            var list = box.querySelector('[data-agenda-live-list]');
+            var built = snapshotOfPage();
+            var showing = false;
+
+            function hhmm(stamp) {
+                return String(stamp).slice(11, 16);
+            }
+
+            // What the build put on the page, keyed by session id.
+            function snapshotOfPage() {
+                var out = {};
+                document.querySelectorAll('[data-session]').forEach(function (card) {
+                    out[card.dataset.session] = {
+                        start: card.dataset.start,
+                        end: card.dataset.end,
+                        room: card.dataset.room,
+                        title: (card.querySelector('.session-card__title') || {}).textContent || '',
+                    };
+                });
+                return out;
+            }
+
+            // The same shape, out of the feed.
+            function snapshotOfFeed(days) {
+                var out = {};
+                days.forEach(function (day) {
+                    (day.rooms || []).forEach(function (room) {
+                        (room.sessions || []).forEach(function (session) {
+                            out[String(session.id)] = {
+                                start: session.startsAt,
+                                end: session.endsAt,
+                                room: room.name,
+                                title: session.title || '',
+                                speakers: (session.speakers || []).map(function (s) {
+                                    return s.name;
+                                }),
+                                service: !!session.isServiceSession,
+                            };
+                        });
+                    });
+                });
+                return out;
+            }
+
+            function sameSchedule(a, b) {
+                var ids = Object.keys(a);
+                if (ids.length !== Object.keys(b).length) return false;
+                return ids.every(function (id) {
+                    var x = a[id];
+                    var y = b[id];
+                    return (
+                        y &&
+                        x.start === y.start &&
+                        x.end === y.end &&
+                        x.room === y.room &&
+                        // Titles round-trip through HTML, so compare loosely.
+                        x.title.replace(/\s+/g, ' ').trim() === y.title.replace(/\s+/g, ' ').trim()
+                    );
+                });
+            }
+
+            function chip(className, text, style) {
+                var span = document.createElement('span');
+                span.className = 'session-chip ' + className;
+                span.textContent = text;
+                if (style) span.setAttribute('style', style);
+                return span;
+            }
+
+            function cardFor(id, session) {
+                var card = document.createElement('article');
+                card.className = 'session-card';
+                card.dataset.session = id;
+                card.dataset.room = session.room;
+                card.dataset.start = session.start;
+                card.dataset.end = session.end;
+
+                var meta = document.createElement('div');
+                meta.className = 'session-card__meta';
+                meta.appendChild(
+                    chip('session-chip--time', hhmm(session.start) + '\u2013' + hhmm(session.end))
+                );
+                if (session.room) meta.appendChild(chip('session-chip--room', session.room));
+
+                var floor = floors.rooms && floors.rooms[session.room];
+                if (floor && hhmm(session.start) >= (floors.from || '00:00')) {
+                    meta.appendChild(
+                        chip(
+                            'session-chip--floor',
+                            box.dataset.labelFloor.replace('%s', floor.floor),
+                            '--floor-bg:' + floor.color + ';--floor-fg:' + floor.text
+                        )
+                    );
+                }
+
+                var start = Date.parse(session.start);
+                var end = Date.parse(session.end);
+                if (now >= start && now < end) {
+                    card.classList.add('session-card--live');
+                    meta.appendChild(chip('session-chip--live', box.dataset.labelLive));
+                }
+                card.appendChild(meta);
+
+                var title = document.createElement('h3');
+                title.className = 'session-card__title';
+                title.textContent = session.title;
+                card.appendChild(title);
+
+                if (session.speakers.length) {
+                    var names = document.createElement('ul');
+                    names.className = 'session-card__speakers';
+                    session.speakers.forEach(function (name) {
+                        var item = document.createElement('li');
+                        item.className = 'session-card__speaker';
+                        // No avatar: the images are build-time resources and this
+                        // session may not have existed at build time.
+                        item.textContent = name;
+                        names.appendChild(item);
+                    });
+                    card.appendChild(names);
+                }
+                return card;
+            }
+
+            function render(feed) {
+                var ids = Object.keys(feed).sort(function (a, b) {
+                    if (feed[a].start !== feed[b].start) return feed[a].start < feed[b].start ? -1 : 1;
+                    return feed[a].room < feed[b].room ? -1 : 1;
+                });
+                list.textContent = '';
+                ids.forEach(function (id) {
+                    list.appendChild(cardFor(id, feed[id]));
+                });
+
+                // The filter bar and the time rail describe the built grid, and
+                // neither survives a schedule that no longer matches it.
+                document.querySelectorAll('[data-day-grid], [data-rooms-header], [data-agenda-filters]').forEach(
+                    function (node) {
+                        node.hidden = true;
+                    }
+                );
+                box.hidden = false;
+                showing = true;
+            }
+
+            function poll() {
+                fetch(box.dataset.feed + '?t=' + Date.now(), { cache: 'no-store' })
+                    .then(function (response) {
+                        return response.ok ? response.json() : null;
+                    })
+                    .then(function (days) {
+                        if (!days || !days.length) return;
+                        now = Date.now();
+                        var feed = snapshotOfFeed(days);
+                        if (sameSchedule(built, feed)) {
+                            if (showing) location.reload();
+                            return;
+                        }
+                        render(feed);
+                    })
+                    .catch(function () {
+                        // Conference wifi. The built grid is still on screen.
+                    });
+            }
+
+            document.addEventListener('visibilitychange', function () {
+                if (!document.hidden) poll();
+            });
+            setInterval(poll, 60000);
+            poll();
         })();
     </script>
 {{- end }}
