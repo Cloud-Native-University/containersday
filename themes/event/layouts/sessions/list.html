@@ -7,6 +7,28 @@
 
     {{- $speakerPages := where .Site.Pages "Section" "speakers" }}
 
+    {{- /* Freshness stamp. GitHub Pages serves this page with max-age=600 and an
+        attendee who opened the agenda in the morning keeps that tab all day, so
+        a schedule change reaches nobody until they think to reload. Nothing can
+        purge their browser from here — instead the page fingerprints the
+        schedule it was built from and polls a copy of that fingerprint, which is
+        small enough to fetch every couple of minutes and is requested with a
+        cache-busting query so the CDN cannot answer it stale.
+
+        Only ids, times and rooms go into the digest: an abstract fixed after the
+        fact should not shove the whole room into a reload.
+    */}}
+    {{- $fingerprint := slice }}
+    {{- range $grid }}
+        {{- range .timeSlots }}
+            {{- range .rooms }}
+                {{- $fingerprint = $fingerprint | append (printf "%v@%s-%s#%s" .session.id .session.startsAt .session.endsAt .session.room) }}
+            {{- end }}
+        {{- end }}
+    {{- end }}
+    {{- $stamp := substr (crypto.SHA256 (delimit $fingerprint "|")) 0 16 }}
+    {{- $stampUrl := (resources.FromString "agenda-stamp.json" (jsonify (dict "stamp" $stamp))).RelPermalink }}
+
 
     <style>
         .schedule {
@@ -310,6 +332,41 @@
                 padding-top: 10px;
             }
         }
+        /* Dark bar on a light section: it sets both halves of the pair, per the
+           contrast rule in AGENTS.md. */
+        .agenda-freshness {
+            position: fixed;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            z-index: 60;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            max-width: calc(100vw - 24px);
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: #111928;
+            color: #fff;
+            box-shadow: 0 12px 32px rgba(10, 17, 40, 0.45);
+            font-size: 0.9rem;
+        }
+        .agenda-freshness[hidden] {
+            display: none;
+        }
+        .agenda-freshness__button {
+            flex: none;
+            padding: 7px 16px;
+            border: 0;
+            border-radius: 999px;
+            /* Explicit pair rather than --color-primary: that token is a mid
+               blue on this site, and dark text on it misses 4.5:1. */
+            background: #fff;
+            color: #111928;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
     </style>
 
     {{- partial "generic-hero.html" . }}
@@ -477,6 +534,21 @@
 
     {{- partial "sections/cta.html" (dict "eventbriteId" .Site.Params.themes.event.callToAction.eventbrite.eventId "ctaUrl" .Site.Params.themes.event.callToAction.other.url ) }}
 
+    {{- if $grid }}
+        <div
+            class="agenda-freshness"
+            data-agenda-freshness
+            data-stamp="{{ $stamp }}"
+            data-stamp-url="{{ $stampUrl }}"
+            role="status"
+            hidden>
+            <span>{{ T "sessions_page.updated_notice" }}</span>
+            <button type="button" class="agenda-freshness__button" data-agenda-reload>
+                {{ T "sessions_page.updated_reload" }}
+            </button>
+        </div>
+    {{- end }}
+
 
     <script>
         (function () {
@@ -590,6 +662,56 @@
             // running right now, unless the visitor deep-linked to a session.
             if (liveOnLoad && !location.hash) liveOnLoad.scrollIntoView({ block: 'center' });
             setInterval(refreshLive, 60000);
+        })();
+
+        // Did the schedule move since this page was built? The tab may have been
+        // open since the morning, and the HTML behind it is cacheable for ten
+        // minutes, so waiting for the attendee to reload is not a plan.
+        (function () {
+            var box = document.querySelector('[data-agenda-freshness]');
+            if (!box || !window.fetch) return;
+
+            var built = box.dataset.stamp;
+            var url = box.dataset.stampUrl;
+            var stale = false;
+
+            function reload() {
+                // reload() revalidates with the origin, so max-age does not get
+                // to serve the same stale HTML straight back.
+                location.reload();
+            }
+
+            function check() {
+                if (stale) return;
+                // Query string and no-store together: one defeats the CDN, the
+                // other the browser.
+                fetch(url + '?t=' + Date.now(), { cache: 'no-store' })
+                    .then(function (response) {
+                        return response.ok ? response.json() : null;
+                    })
+                    .then(function (data) {
+                        if (!data || !data.stamp || data.stamp === built) return;
+                        stale = true;
+                        // Nobody is reading a hidden tab: swap it silently
+                        // rather than greeting them with a banner.
+                        if (document.hidden) reload();
+                        else box.hidden = false;
+                    })
+                    .catch(function () {
+                        // Offline in a conference hall is normal. Try again later.
+                    });
+            }
+
+            box.querySelector('[data-agenda-reload]').addEventListener('click', reload);
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    if (stale) reload();
+                } else {
+                    check();
+                }
+            });
+            setInterval(check, 120000);
+            check();
         })();
     </script>
 {{- end }}

@@ -167,7 +167,7 @@ params:
                       color: '#c2410c'
                       text: '#ffffff'
                     - name: 'Octagonal 2'
-                      floor: '5'
+                      floor: '4'
                       color: '#111928'
                       text: '#ffffff'
                     - name: 'Octagonal 3'
