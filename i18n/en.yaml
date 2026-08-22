@@ -333,6 +333,9 @@ countdown.seconds:
 sessions_page.heading_time: 'Time'
 sessions_page.grid_hint: "From 1:00 PM the schedule splits into parallel rooms. Each card's height reflects how long the session runs. Click a session to read its description."
 sessions_page.description_toggle: 'View description'
+sessions_page.room: 'Room'
+sessions_page.floor: 'Floor'
+sessions_page.floor_label: 'Floor {{ . }}'
 sessions_page.break: 'Break'
 sessions_page.general: 'General'
 sessions_page.close: 'Close'

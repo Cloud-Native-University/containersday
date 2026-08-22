@@ -40,6 +40,15 @@
     color: #fff;
 }
 
+/* Wayfinding pill. Both colours come from themes.event.roomFloors in hugo.yaml
+   and arrive as custom properties, so a room keeps its signage colour without a
+   class per room. The pair is always set together: a chip that paints its own
+   background must paint its own text too (contrast rule, AGENTS.md). */
+.session-chip--floor {
+    background: var(--floor-bg, #1a2a36);
+    color: var(--floor-fg, #fff);
+}
+
 .session-chip--duration {
     background: transparent;
     border: 1px solid #c3d6e8;

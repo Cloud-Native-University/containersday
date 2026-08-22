@@ -1,6 +1,7 @@
 {{- /* Session detail popup. Replaces the old /sessions/<slug>/ page.
-       Expects: id, title, startsAt, endsAt, room, description, speakers
-       (slice of dicts: name, profileUrl, avatarUrl), isBreak. */}}
+       Expects: id, title, startsAt, endsAt, room, floor (dict from
+       session-floor.html, or false), description, speakers (slice of dicts:
+       name, profileUrl, avatarUrl), isBreak. */}}
 {{- $input := . }}
 
 <dialog class="session-modal" id="session-modal-{{ $input.id }}" aria-labelledby="session-modal-title-{{ $input.id }}">
@@ -17,6 +18,14 @@
             {{- with $input.room }}
                 <span class="session-chip session-chip--room">
                     <i class="fas fa-location-dot" aria-hidden="true"></i>{{ . }}
+                </span>
+            {{- end }}
+            {{- with $input.floor }}
+                <span
+                    class="session-chip session-chip--floor"
+                    style="{{ printf "--floor-bg:%s;--floor-fg:%s" .color .text | safeCSS }}">
+                    <i class="fas fa-stairs" aria-hidden="true"></i>
+                    {{ T "sessions_page.floor_label" .floor }}
                 </span>
             {{- end }}
         </div>

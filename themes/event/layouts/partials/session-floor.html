@@ -1,0 +1,33 @@
+{{- /* Which floor of the building a session is on, or nothing.
+
+       Sessionize has no field for it: the feed names the room and stops there.
+       The mapping lives in hugo.yaml (themes.event.roomFloors) next to the other
+       things the feed cannot tell us, so moving a track to another floor is a
+       config edit and not a template edit.
+
+       A room that is not listed, or a session starting before `from`, gets no
+       pill — the morning slots in these rooms are registration, which is staffed
+       at the door and does not need wayfinding on the card.
+
+       Expects: room, startsAt (Sessionize's local wall-clock timestamp).
+       Returns: dict with floor, color, text — or false when there is no pill. */}}
+
+{{- $input := . }}
+{{- $floor := false }}
+{{- $config := site.Params.themes.event.roomFloors }}
+
+{{- if and $config $input.room }}
+    {{- $starts := ($input.startsAt | time.AsTime).Format "15:04" }}
+    {{- if ge $starts ($config.from | default "00:00") }}
+        {{- with first 1 (where ($config.rooms | default slice) "name" $input.room) }}
+            {{- $room := index . 0 }}
+            {{- $floor = dict
+                "floor" $room.floor
+                "color" ($room.color | default "#1a2a36")
+                "text" ($room.text | default "#ffffff")
+            }}
+        {{- end }}
+    {{- end }}
+{{- end }}
+
+{{- return $floor }}

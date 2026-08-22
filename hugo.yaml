@@ -145,6 +145,35 @@ params:
             sessionTypes:
                 panel: ['panel']
                 keynote: ['keynote', 'charla magistral', 'conferencia magistral']
+            # Which floor of the building a room is on. Sessionize sends the
+            # room name but never says where the room is, and the parallel
+            # tracks run on two different floors — attendees move between them
+            # between talks, so the floor belongs on the card next to the room.
+            # Keyed by the exact room name in the feed; a room that is not
+            # listed simply gets no pill.
+            roomFloors:
+                # Only sessions starting at or after this local time carry the
+                # pill. The Octagonal rooms hold nothing but registration in the
+                # morning, which is staffed and signposted at the door.
+                from: '13:00'
+                # `color` is the room's signage colour and `text` rides along
+                # with it, because a chip that sets a background must set its
+                # own foreground — see the contrast rule in AGENTS.md. These
+                # three are darkened from the flat brand colours so white text
+                # clears 4.5:1 on them.
+                rooms:
+                    - name: 'Octagonal 1'
+                      floor: '4'
+                      color: '#c2410c'
+                      text: '#ffffff'
+                    - name: 'Octagonal 2'
+                      floor: '5'
+                      color: '#111928'
+                      text: '#ffffff'
+                    - name: 'Octagonal 3'
+                      floor: '5'
+                      color: '#1d4ed8'
+                      text: '#ffffff'
             callToAction:
                 url: 'https://cap.uapa.edu.do/producto/containers-day-2026/'
                 other:
