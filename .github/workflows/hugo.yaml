@@ -57,18 +57,28 @@ jobs:
             changed: ${{ steps.decide.outputs.changed }}
             digest: ${{ steps.digest.outputs.digest }}
         steps:
-            # hugo.yaml only, so this stays a couple-of-seconds job.
+            # The config and the gate script, nothing else, so this stays a
+            # couple-of-seconds job. Non-cone mode, so these are gitignore-style
+            # patterns and both need their leading slash.
             - name: Check out the site config
               uses: actions/checkout@v4
               with:
-                  sparse-checkout: hugo.yaml
+                  sparse-checkout: |
+                      /hugo.yaml
+                      /.github/scripts/*
                   sparse-checkout-cone-mode: false
 
             # Is today the event day? Read it from the same params the countdowns
             # and the agenda read, so the dense poll window moves when the event
             # moves and no date is written down twice.
+            #
+            # continue-on-error, and every consumer below tests for an explicit
+            # 'false', so a gate that breaks degrades to polling every tick
+            # instead of silently ending all deploys. The script fails open for
+            # the same reason.
             - name: Read the event window from hugo.yaml
               id: window
+              continue-on-error: true
               run: bash .github/scripts/event-window.sh
               env:
                   DENSE_CRON: '*/5 * * * *'
@@ -77,7 +87,7 @@ jobs:
 
             - name: Hash the Sessionize feeds
               id: digest
-              if: steps.window.outputs.active == 'true'
+              if: steps.window.outputs.active != 'false'
               run: |
                   set -euo pipefail
                   base="https://sessionize.com/api/v2/${SESSIONIZE_ID}/view"
@@ -88,7 +98,7 @@ jobs:
 
             - name: Look for a build that already published this payload
               id: cache
-              if: steps.window.outputs.active == 'true'
+              if: steps.window.outputs.active != 'false'
               uses: actions/cache/restore@v4
               with:
                   path: .sessionize-digest
@@ -102,7 +112,7 @@ jobs:
                   # always deploys, since the change may be in the templates.
                   if [ "${{ github.event_name }}" != "schedule" ]; then
                       echo "changed=true" >> "$GITHUB_OUTPUT"
-                  elif [ "${{ steps.window.outputs.active }}" != "true" ]; then
+                  elif [ "${{ steps.window.outputs.active }}" = "false" ]; then
                       echo "changed=false" >> "$GITHUB_OUTPUT"
                   elif [ "${{ steps.cache.outputs.cache-hit }}" = "true" ]; then
                       echo "changed=false" >> "$GITHUB_OUTPUT"
