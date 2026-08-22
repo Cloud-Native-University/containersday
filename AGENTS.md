@@ -22,12 +22,29 @@ The `SESSIONIZE_ID` env var at the top of the workflow must stay in sync with `p
 
 ### Event-day sync
 
-The `*/15 * * * *` poll is a promise GitHub does not keep: scheduled workflows are throttled and dropped under load, and on 22 August 2026 that line fired every **25–56 minutes**. A schedule change made mid-morning sat unpublished for most of an hour. Two things cover the event day:
+The `*/15 * * * *` poll is a promise GitHub does not keep: scheduled workflows are throttled and dropped under load, and on 22 August 2026 that line fired every **25–56 minutes**. A schedule change made mid-morning sat unpublished for most of an hour while the event was already running.
 
-- **A second, denser workflow cron** — `*/5 11-23 22 8 *` (07:00–19:59 in Santo Domingo). More attempts, better odds; still subject to the same throttling, so treat it as backup rather than the mechanism.
-- **A real cron on an organizer machine** — `scripts/sessionize-sync.sh`, copied to `~/.local/bin/containersday-sessionize-sync.sh` and run every 15 minutes from the user crontab (`*/15 7-19 22 8 *`). It hashes the same two feeds the `check` job hashes, keeps the digest in `~/.cache/containersday-sessionize.digest`, and calls `gh workflow run` only when the payload actually moved — a `workflow_dispatch` bypasses the digest check, so it must not fire blindly. It logs every tick to `~/.cache/containersday-sessionize.log` and no-ops on any date other than the one hardcoded at the top of the script.
+So there is a second schedule, `*/5 * * * *`, that only does work while the event is on. A cron expression cannot read site config, so it fires year-round and `.github/scripts/event-window.sh` throws away the ticks that land outside the event: it reads `startDate`, `endDate` and `utcOffset` from `params.themes.event` in `hugo.yaml` — the same params the countdowns and the agenda read — and sets the `active` output the rest of the `check` job keys off. **Move the event in `hugo.yaml` and the dense poll window moves with it; there is no date written down twice and nothing to edit in the workflow.** A multi-day `startDate`/`endDate` span covers every day in it.
 
-Install it on a second machine the same way — `cp scripts/sessionize-sync.sh ~/.local/bin/containersday-sessionize-sync.sh` plus the crontab line — and the two will not fight: each keeps its own digest, and a duplicate dispatch is absorbed by the `pages` concurrency group. The machine has to be awake and `gh` has to stay authenticated for the local cron to work; check the log if the site looks stale. When the event moves, update the date in the script, the day/month in both crons, and the hours if the doors open earlier.
+What is never gated: pushes, manual dispatches and the year-round `*/15` poll always check Sessionize. Only the dense tick can be skipped, and a skipped tick exits in seconds without touching the API. The script also **fails open** — an unreadable or unparseable `hugo.yaml` polls anyway and annotates the run, because a stale agenda during the event is a worse failure than a wasted build.
+
+Twelve attempts an hour instead of four does not defeat GitHub's throttling, it only shortens the expected wait; **it is not a 15 minute guarantee.** Nothing in GitHub Actions can promise one. If the agenda on the site has to match the agenda on the wall within minutes, drive it by hand:
+
+```shell
+gh workflow run "Deploy Hugo site to Pages"
+```
+
+A manual dispatch bypasses the digest check and deploys unconditionally, so it is always safe to run and takes about a minute. On event day, run it after every Schedule Builder change rather than trusting the poll.
+
+To test the gate without waiting for a schedule, run the script directly — `CONFIG` points it at a doctored copy of the config:
+
+```shell
+GITHUB_OUTPUT=/dev/stdout CONFIG=/tmp/hugo.yaml \
+  EVENT_NAME=schedule EVENT_SCHEDULE='*/5 * * * *' DENSE_CRON='*/5 * * * *' \
+  bash .github/scripts/event-window.sh
+```
+
+Editing anything under `.github/workflows/` needs a credential with the `workflow` OAuth scope — a `gh`-issued HTTPS token does not have it, so push over SSH.
 
 ## Event dates and times
 

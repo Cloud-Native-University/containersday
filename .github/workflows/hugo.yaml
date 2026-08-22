@@ -11,18 +11,20 @@ on:
     # Poll Sessionize. It has no webhooks, so polling is the only way to pick up
     # schedule changes. The check job below skips the build when nothing moved.
     #
-    # GitHub throttles scheduled workflows and silently drops runs under load —
-    # on the 2026 event day the */15 line actually fired every 25–56 minutes. So
-    # the event day gets a denser schedule to raise the odds of landing inside a
-    # 15 minute window, and a real cron on an organizer machine drives the sync
-    # for that day (see the "Sessionize sync" section of AGENTS.md). Neither can
-    # cause a redundant deploy: the check job hashes the feeds first.
+    # Two schedules, because GitHub throttles scheduled workflows and silently
+    # drops runs under load — on the 2026 event day the */15 line actually fired
+    # every 25–56 minutes. The dense one exists to shorten that wait while the
+    # event is running. It is odds, not a guarantee: for an immediate publish,
+    # dispatch the workflow by hand (see "Sessionize sync" in AGENTS.md).
+    #
+    # A cron expression cannot read site config, so the dense schedule runs
+    # year-round and the *event day itself* is decided at run time from
+    # params.themes.event in hugo.yaml (see the `window` step below). Off-day
+    # dense ticks exit in seconds without touching Sessionize; move the event in
+    # hugo.yaml and the dense window follows, with nothing to edit here.
     schedule:
         - cron: '*/15 * * * *'
-        # Event day only (22 August, 11:00–23:59 UTC = 07:00–19:59 in Santo
-        # Domingo). Update the day/month when the event moves; it is a no-op on
-        # every other date.
-        - cron: '*/5 11-23 22 8 *'
+        - cron: '*/5 * * * *'
 
 env:
     # Keep in sync with params.themes.event.sessionizeId in hugo.yaml.
@@ -55,8 +57,27 @@ jobs:
             changed: ${{ steps.decide.outputs.changed }}
             digest: ${{ steps.digest.outputs.digest }}
         steps:
+            # hugo.yaml only, so this stays a couple-of-seconds job.
+            - name: Check out the site config
+              uses: actions/checkout@v4
+              with:
+                  sparse-checkout: hugo.yaml
+                  sparse-checkout-cone-mode: false
+
+            # Is today the event day? Read it from the same params the countdowns
+            # and the agenda read, so the dense poll window moves when the event
+            # moves and no date is written down twice.
+            - name: Read the event window from hugo.yaml
+              id: window
+              run: bash .github/scripts/event-window.sh
+              env:
+                  DENSE_CRON: '*/5 * * * *'
+                  EVENT_SCHEDULE: ${{ github.event.schedule }}
+                  EVENT_NAME: ${{ github.event_name }}
+
             - name: Hash the Sessionize feeds
               id: digest
+              if: steps.window.outputs.active == 'true'
               run: |
                   set -euo pipefail
                   base="https://sessionize.com/api/v2/${SESSIONIZE_ID}/view"
@@ -67,6 +88,7 @@ jobs:
 
             - name: Look for a build that already published this payload
               id: cache
+              if: steps.window.outputs.active == 'true'
               uses: actions/cache/restore@v4
               with:
                   path: .sessionize-digest
@@ -80,6 +102,8 @@ jobs:
                   # always deploys, since the change may be in the templates.
                   if [ "${{ github.event_name }}" != "schedule" ]; then
                       echo "changed=true" >> "$GITHUB_OUTPUT"
+                  elif [ "${{ steps.window.outputs.active }}" != "true" ]; then
+                      echo "changed=false" >> "$GITHUB_OUTPUT"
                   elif [ "${{ steps.cache.outputs.cache-hit }}" = "true" ]; then
                       echo "changed=false" >> "$GITHUB_OUTPUT"
                       echo "Sessionize unchanged since the last deploy, skipping." >> "$GITHUB_STEP_SUMMARY"
